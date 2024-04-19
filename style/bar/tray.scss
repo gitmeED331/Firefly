@@ -1,0 +1,44 @@
+.tray {
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 0rem 0rem 3rem 3rem;
+  margin-right: 10px;
+  padding: 0px 8px;
+  > * {
+    margin: 0 3px;
+    margin-right: 4px;
+    margin-left: 4px;
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
+	padding: 1px 2px;
+  }}
+.systrayitem:hover {
+	background-color: #1e1e2e;
+	border-radius: 0rem 0rem 3rem 3rem;
+    border: 2px solid #0000FF;
+}   
+menu {
+    menuitem {
+        background: linear-gradient(0deg, rgba(15,155,255,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 65%, rgba(15,155,255,1) 100%);
+        border-radius: 15px;
+        border: 2px solid #11111b;
+        color: #FF0000;
+        margin: 1px;
+        padding: 5px;
+        &:hover {
+            color: #FFF000;
+            border: 2px solid #0000FF;
+            font-weight: bold;
+        };
+    }
+}
+
+tooltip {
+  box-shadow: rgba(0.0,155,0.5);
+}
+
+tooltip.background {
+	background: linear-gradient(0deg, rgba(15,155,255,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 65%, rgba(15,155,255,1) 100%);
+	border-radius: 0.8rem;
+	color: yellow;
+}

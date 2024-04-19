@@ -1,0 +1,12 @@
+.title {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 0rem 0rem 3rem 3rem;
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 0px 20px;
+    &:hover {
+        color: cyan;
+        border: 2px solid #0000FF;
+    }
+}

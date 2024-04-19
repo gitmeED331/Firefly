@@ -1,0 +1,15 @@
+@import "clock";
+@import "calendar";
+@import "media";
+@import "notification";
+@import "sysinfo";
+@import "title";
+@import "tray";
+@import "workspaces";
+@import "dashbtn";
+
+.bar {
+    font-family: $font;
+    color: $font-color;
+	background: linear-gradient(180deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+    }

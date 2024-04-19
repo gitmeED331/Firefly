@@ -1,0 +1,21 @@
+.calendarWidget {
+	background: linear-gradient(45deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+	border-radius: 2rem;
+    border: 2px solid #11111b;
+    padding: 5px;
+    }
+
+.calwid {
+	border-radius: 3rem;
+    font-size: 1.5rem;
+	&:selected {
+		background: linear-gradient(0deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+		border-radius: 1.6rem;
+		box-shadow: inset 5px -5px 5px -5px rgba(19, 55, 111, 1);
+	}
+	&.button {
+		background-color: rgba(0,160,255,1);
+		box-shadow: inset 5px -5px 5px -5px rgba(19, 55, 111, 1);
+	}
+}
+
