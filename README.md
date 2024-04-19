@@ -44,6 +44,10 @@ Elements of this project:
   - Status: nearly complete
   - Issues:
     - popup window (auto close on click off, spanning notification section to bottom)
+- Lockscreen:
+  - Status: started, not functioning
+- AGS Greeter (greetd):
+  - Status: started, not functioning
 - Theming/Styling
   - Status: almost complete
   - Issues:
