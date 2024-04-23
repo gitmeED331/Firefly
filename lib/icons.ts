@@ -1,22 +1,19 @@
 export const substitutes = {
-    "transmission-gtk": "transmission",
-    "blueberry.py": "blueberry",
-    "Caprine": "facebook-messenger",
-    "com.raggesilver.BlackBox-symbolic": "terminal-symbolic",
-    "org.wezfurlong.wezterm-symbolic": "terminal-symbolic",
+    "geany": "geany-symbolic",
+    "vivaldi": "vivaldi-symbolic",
+    "konsole": "terminal-symbolic",
     "audio-headset-bluetooth": "audio-headphones-symbolic",
     "audio-card-analog-usb": "audio-speakers-symbolic",
     "audio-card-analog-pci": "audio-card-symbolic",
     "preferences-system": "emblem-system-symbolic",
     "com.github.Aylur.ags-symbolic": "controls-symbolic",
     "com.github.Aylur.ags": "controls-symbolic",
+    "pcloud1":"pcloud-symbolic",
+    "deezer":"deezer-symbolic",
 }
 
 export default {
     missing: "image-missing-symbolic",
-    nix: {
-        nix: "nix-snowflake-symbolic",
-    },
     app: {
         terminal: "terminal-symbolic",
     },

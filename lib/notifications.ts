@@ -1,5 +1,6 @@
 import options from "options"
-const notifs = await Service.import("notifications")
+import { Notifications } from "../imports"
+const notifs = Notifications
 
 // TODO: consider adding this to upstream
 
