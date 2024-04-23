@@ -54,5 +54,4 @@ Elements of this project:
     - Need to consolidate and refine (eliminate duplicate code)
   
 
-
-
+A gigantic thanks to Aylur and Kotontrion for all their work and help!
