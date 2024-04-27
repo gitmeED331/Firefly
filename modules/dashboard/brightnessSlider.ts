@@ -1,6 +1,6 @@
-import { Widget, Utils } from "../../imports";
-import Gio from "gi://Gio";
+import { Widget, Utils, Gio } from "../../imports";
 import Brightness from "./brightness";
+
 const { monitorFile, readFile, exec } = Utils
 const { Box } = Widget;
 
@@ -23,16 +23,21 @@ const Icon = () =>
 
 export const BrightnessSlider = () =>
 	Box({
-		className: "Slider",
+		className: "brightSlider",
 		vertical: true,
 		children: [
-			Widget.Label({
-				className: "sldLabel",
-				label: "Brightness",
-				hpack: "start",
-			}),
 			Box({
-				children: [Icon(), Slider()],
+				hpack: "center",
+				vpack: "center",
+				children: [
+					Icon(),
+					Widget.Label({
+						className: "sldLabel-bright",
+						label: "Brightness",
+						hpack: "center",
+					}),
+				]
 			}),
+			Slider(),
 		],
 	});

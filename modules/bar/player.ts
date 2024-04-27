@@ -1,8 +1,9 @@
 const mpris = await Service.import("mpris");;
 const players = mpris.bind("players");
-
+import {RoundedAngleEnd} from "../roundedCorner/index";
 import { Widget, Utils, Mpris, Hyprland, Utils } from "../../imports";
 import icons from "../icons/index.js";
+import options from "../../options";
 
 const { Window, Box, CenterBox, Button, Icon, Label, Slider } = Widget;
 const { lookUpIcon, execAsync } = Utils;

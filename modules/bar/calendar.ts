@@ -12,19 +12,22 @@ const layout = Utils.derive([bar.position, datewin.position], (bar, qs) =>
 
 const DateWin = () =>  PopupWindow({
     name: "calendar",
+    className: "calpopwin",
     anchor: pos,
-    margins: [25, 15],
     transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
-    keymode: 'on-demand',
-    vpack: 'end',
+    layer: "top",
+    hexpand: true,
+    vexpand: false,
     child: 
         Box({
-			className: "calendarWidget",
+			className: "calendar",
             children: [
               Widget.Calendar({
 					className: "calwid",
-                    hexpand: true,
+                    hexpand: false,
+                    vexpand: true,
                     hpack: "center",
+                    vpack: "center",
                 })
             ]
         })

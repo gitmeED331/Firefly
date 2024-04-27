@@ -15,10 +15,8 @@ const layout = Utils.derive([bar.position, dashvol.position], (bar, qs) =>
 const DVol = () =>  PopupWindow({
     name: "dashvol",
     anchor: pos,
-    margins: [25, 15],
-    keymode: 'on-demand',
-    transition: "slide_down",
-    layer: "overlay",
+    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+    layer: "top",
     child: 
         Box({
             vertical:true,

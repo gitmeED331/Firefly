@@ -2,7 +2,7 @@ import { Widget, Notifications, Utils, Gio, Gtk } from "../../imports";
 
 const { Box } = Widget;
 
-const Notifs = Widget.Box({
+const Notifs = Box({
     class_name: "panel-notifs",
     spacing: 20,
     vertical: true,
@@ -57,7 +57,7 @@ const NotifBox = Widget.Scrollable({
     vscroll: 'always',
     hscroll: 'never',
     vexpand: true,
-    class_name: 'notificationBox',
+    className: 'notificationBox',
     child: Notifs,
 })
 
@@ -69,7 +69,7 @@ const Empty = Widget.Box({
   vertical: true,
   children: [
     Widget.Label({
-      label: ` 󱙎 `,
+      label: `󱙎 `,
       vpack: "center",
       vexpand: true,
     })
@@ -78,20 +78,24 @@ const Empty = Widget.Box({
 
 export const NotificationList = () => Widget.Box({
     class_name: "notificationList",
-    spacing: 20,
+    //spacing: 20,
     vertical: true,
     vexpand: true,
     children: [
         Widget.CenterBox({
+			className: 'notifTitleBox',
             start_widget: Widget.Label({
+				className: "notifTitle",
                 label: "Notifications",
-                hpack: 'start',
-                class_name: "nt"
+                vpack: 'end',
+                hpack: 'end',
             }),
             end_widget: Widget.Button({
                 label: "  ",
                 hpack: 'end',
+                vpack: 'end',
                 class_name: "icon ni",
+                className: "trashicon",
                 on_clicked: () => {
                     const list = Array.from(Notifications.notifications);
                     for (let i = 0; i < list.length; i++) {

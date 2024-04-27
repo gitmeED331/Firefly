@@ -1,10 +1,10 @@
-import Window from "./Window"
-import { Gdk, Gtk, Hyprland } from "../../../imports"
-import options from "../../../options"
+import Window from "./Window";
+import { Gdk, Gtk, Hyprland, Utils } from "../../../imports";
+import options from "../../../options";
+
+const { overview } = options
 
 const TARGET = [Gtk.TargetEntry.new("text/plain", Gtk.TargetFlags.SAME_APP, 0)]
-
-const scale = (size: number) => (options.overview.scale.value / 100) * size
 
 const dispatch = (args: string) => Hyprland.messageAsync(`dispatch ${args}`)
 
@@ -18,12 +18,14 @@ const size = (id: number) => {
     return mon ? { h: mon.height, w: mon.width } : def
 }
 
+const scale = (size: number) => (overview.scale.value / 100) * size
+
 export default (id: number) => {
     const fixed = Widget.Fixed()
 
     // TODO: early return if position is unchaged
     async function update() {
-        const json = await Hyprland.messageAsync("j/clients").catch(() => null)
+        const json = await Hyprland.messageAsync("j/clients").catch(()=>null)
         if (!json)
             return
 
@@ -42,14 +44,14 @@ export default (id: number) => {
     return Widget.Box({
         attribute: { id },
         tooltipText: `${id}`,
-        class_name: "workspace",
+        className: "workspace",
         vpack: "center",
-        css: options.overview.scale.bind().as(v => `
+        css: overview.scale.bind().as(v => `
             min-width: ${(v / 100) * size(id).w}px;
             min-height: ${(v / 100) * size(id).h}px;
         `),
         setup(box) {
-            box.hook(options.overview.scale, update)
+            box.hook(overview.scale, update)
             box.hook(Hyprland, update, "notify::clients")
             box.hook(Hyprland.active.client, update)
             box.hook(Hyprland.active.workspace, () => {
@@ -73,3 +75,4 @@ export default (id: number) => {
         }),
     })
 }
+

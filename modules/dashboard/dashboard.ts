@@ -9,10 +9,10 @@ import options from "../../options";
 const { Box } = Widget;
 const { execAsync } = Utils;
 
-const { bar, dashboard } = options;
-const pos = dashboard.position.bind();
-const layout = Utils.derive([bar.position, dashboard.position], (bar, qs) => 
-		`${bar}-${qs}` as const,
+const { dashboard } = options;
+const pos = options.dashboard.position.bind();
+const layout = Utils.derive([dashboard.position], (dashboard, qs) => 
+		`${dashboard}-${qs}` as const,
 	);
 
 const quickAccess = Box({
@@ -44,12 +44,15 @@ const quickAccess = Box({
 	
  const Dash = () =>  PopupWindow({
     name: "dashboard",
+    className: "dashboard",
 	anchor: pos,
-	margins: [25, 15],
+	vexpand: true,
+	margins: [20,0,0,0],
     transition: "slide_left",
-    layer: "overlay",
+    layer: "top",
     child: 
         Box({
+			className: "dashcontainer",
             vertical:true,
             vexpand:true,
             children: [

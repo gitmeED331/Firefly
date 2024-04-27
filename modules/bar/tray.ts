@@ -1,12 +1,11 @@
-import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import Gdk from "gi://Gdk?version=3.0";
+import { Widget, SystemTray, Gdk } from "../../imports";
 
+const { Box, Button } = Widget;
 
 /**
  * @param {import('types/service/systemtray').TrayItem} item
  */
-const SysTrayItem = item => Widget.Button({
+const SysTrayItem = item => Button({
   class_name: "systrayitem",
   child: Widget.Icon({
     hpack: "center",
@@ -17,8 +16,8 @@ const SysTrayItem = item => Widget.Button({
   on_secondary_click: btn => item.menu?.popup_at_widget(btn, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null),
 });
 
-const Tray = () => Widget.Box({
-  class_name: "tray",
+const Tray = () => Box({
+  className: "tray",
   attribute: {
     "items": new Map(),
     /**
@@ -51,6 +50,5 @@ const Tray = () => Widget.Box({
 })
   .hook(SystemTray, (box, id) => box.attribute.onAdded(box, id), "added")
   .hook(SystemTray, (box, id) => box.attribute.onRemoved(box, id), "removed");
-
 
 export default Tray;

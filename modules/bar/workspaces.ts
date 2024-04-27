@@ -1,6 +1,6 @@
 import { Utils, Widget, Hyprland } from "../../imports";
 const { execAsync } = Utils;
-const { Box } = Widget;
+const { Box, Button, Label } = Widget;
 
 export const Workspaces = () => Box({
 	className: "workspaces",
@@ -8,8 +8,8 @@ export const Workspaces = () => Box({
 		vpack: 'center',
 		vexpand: true,
 		children: Array.from({ length: 4 }, (_, i) => i + 1).map((i) =>
-			Widget.Button({
-				child: Widget.Label({label:`${i}`}),
+			Button({
+				child: Label({label:`${i}`}),
 				cursor: "pointer",
 				attribute: { index: i },
 				onMiddleClick: () => App.toggleWindow("overview"),

@@ -1,9 +1,9 @@
-import { Widget, Utils, Mpris, Hyprland, PopupWindow } from "../../imports";
+import { Widget, Utils, Mpris, Hyprland, PopupWindow, Roundedges } from "../../imports";
 import { Muppet } from "./player";
 import options from "../../options";
 
 //const mpris = await Service.import("mpris");
-
+const RoundedAngleEnd = Roundedges;
 const { Window, Box, CenterBox, Button, Icon, Label, EventBox } = Widget;
 const { execAsync } = Utils;
 const player = Mpris.getPlayer();
@@ -16,16 +16,17 @@ const layout = Utils.derive([bar.position, playwin.position], (bar, qs) =>
 
 const PWin = () =>  PopupWindow({
     name: "playwin",
+    className: "playwin",
     anchor: pos,
-    margins: [25, 0],
-    layer: "overlay",
-    keymode: 'on-demand',
-    transition: "slide_down",
+    layer: "top",
+    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     child: Box({
 		vexpand: true,
 		hexpand: true,
 		className: "playwin",
-		child: Muppet(),
+		children: [
+			Muppet(),
+		]
 	})
 });
 
@@ -37,20 +38,19 @@ export function Playwin() {
     })
 }
 
-export const MediaBTN = ( ) => Box({
-	child: Button({
-		vpack: 'center',
-		className: 'mediabtn',
-		onPrimaryClick: ( ) => App.toggleWindow("playwin"),
-		onSecondaryClickRelease: ( ) => { Hyprland.messageAsync('dispatch exec deezer') },
-		child: Label('-').hook(Mpris, self => {
-			if (Mpris.players[0]) {
-				const { track_title } = Mpris.players[0];
-				self.label = track_title.length > 60 ? `${track_title.substring(0, 60)}...` : track_title;
-			} 
-			else {
-				self.label = 'Nothing is playing';
-			}
-		}, 'player-changed'),
-	})
+export const MediaBTN = ( ) => Button({
+	className: 'mediabtn',
+	vexpand: true,
+	hexpand: true,
+	onPrimaryClick: ( ) => App.toggleWindow("playwin"),
+	onSecondaryClickRelease: ( ) => { Hyprland.messageAsync('dispatch exec deezer') },
+	child: Label('-').hook(Mpris, self => {
+		if (Mpris.players[0]) {
+			const { track_title } = Mpris.players[0];
+			self.label = track_title.length > 60 ? `${track_title.substring(0, 60)}...` : track_title;
+		} 
+	else {
+		self.label = 'Nothing is playing';
+	}
+	}, 'player-changed'),
 });

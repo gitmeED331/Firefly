@@ -4,7 +4,7 @@ import { Hyprland, PopupWindow } from "../../../imports"
 import options from "../../../options"
 
 const Overview = (ws: number) => Widget.Box({
-    class_name: "overview horizontal",
+    className: "ovhorizontal",
     children: ws > 0
         ? range(ws).map(Workspace)
         : Hyprland.workspaces

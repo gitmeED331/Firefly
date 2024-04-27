@@ -1,11 +1,15 @@
 import { Widget, Hyprland, Utils } from "../../imports";
 const { execAsync } = Utils;
+const { Box, Button } = Widget;
 
-export const Title = () => Widget.Button({
+export const Title = () => Button({
     className: 'title',
     visible:Hyprland.active.client.bind('title').transform(title => title.length > 0),
     label: Hyprland.active.client.bind('title').transform(title => title.length > 40 ? title.substring(0, 40) + '...' : title),
-    onClicked: () => {
-        execAsync(['bash', '-c', 'hyprctl dispatch killactive', '&']);
+    onSecondaryClick: () => {
+        execAsync(['bash', '-c', 'hyprctl dispatch killactive', '&'])
     },
+    onPrimaryClick: () => {
+		 App.toggleWindow("overview")
+	}
 });

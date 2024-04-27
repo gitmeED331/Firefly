@@ -1,6 +1,6 @@
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import {monitorFile, readFile, exec} from "resource:///com/github/Aylur/ags/utils.js";
-import Gio from "gi://Gio";
+import {Gio, Service, Utils } from "../../imports"
+
+const {monitorFile, readFile, exec} = Utils
 
 /**
  * @param {number} num

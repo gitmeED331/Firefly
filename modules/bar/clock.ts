@@ -1,9 +1,9 @@
 import { Widget, Utils } from "../../imports";
 import { Calendar } from "./calendar"
-
+const { Box, Button } = Widget;
 const { execAsync } = Utils;
 
-export const Clock = () => Widget.Button({
+export const Clock = () => Button({
     className: "clock",
     onClicked: () => App.toggleWindow("calendar"),
     setup: (self) => {

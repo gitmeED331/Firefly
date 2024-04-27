@@ -64,11 +64,11 @@ const micIcon = () => Button({
 
 
 export const VolumeSlider = () => Box({
-    className: "Slider",
+    className: "volSlider",
     vertical: true,
     children: [
         Widget.Label({
-            className: "sldLabel",
+            className: "sldLabel-vol",
             label: "Speaker",
             hpack: "center",
         }),
@@ -79,7 +79,7 @@ export const VolumeSlider = () => Box({
             ],
 		}),
 		Widget.Label({
-            className: "sldLabel",
+            className: "sldLabel-vol",
             label: "Microphone",
             hpack: "center",
         }),
