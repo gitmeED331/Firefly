@@ -1,11 +1,8 @@
 
 This is a work in progress.
 
-![AGSscreenshot1](https://github.com/gitmeED331/dotfiles/assets/142960718/3a1a3261-3ce9-4915-b7e3-c6d4ffae75e5)
+![AGSscreenshot0](https://github.com/gitmeED331/FireflyAGS/assets/142960718/0330167d-c7f1-4e18-bb2c-2a6fa12f41a2)
 
-![AGSscreenshot2](https://github.com/gitmeED331/dotfiles/assets/142960718/91f82d67-2011-486e-aee7-35da3e531f82)
-
-![AGSscreenshot3](https://github.com/gitmeED331/dotfiles/assets/142960718/0385371f-0460-4b87-a8c8-75c797c356e0)
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
@@ -15,7 +12,8 @@ Elements of this project:
 - [ ] Overview
   - Status: nearly complete
   - Issues:
-    - [ ] Overview - dimensions and styling
+    - [ ] styling
+    - [X] Dimensions
 - [X] Title box
 - [ ] Media Ticker & Player Popup:
   - Status: nearly complete
@@ -25,10 +23,11 @@ Elements of this project:
   - status: nearly complete
   - issues:
     - [X] some program menus are not working properly (such as Deezer)
-    - want to make is dynamic (open and close with arrow button)
+    - [ ] want to make is dynamic (open and close with arrow button)
 - [ ] System Info Tray
   - Status: nearly complete
   - issues:
+    - [X] Reactive Volume icon with popup window sliders
     - [ ] need to move the wifi controls from the system tray to the system info tray
     - [ ] need to create bluetooth control
     - [ ] need to make power profile selection menu for the battery indicator
@@ -36,12 +35,12 @@ Elements of this project:
   - Status: nearly complete
   - Issues:
     - [ ] popup window (auto close on click off)
-- Dashboard Button & Dashboard
+- [ ] Dashboard Button & Dashboard
   - Status: nearly complete
   - Issues:
     - popup window
       - [ ] auto close on click off
-      - [X] spanning notification section to bottom)
+      - [X] spanning notification section to the bottom of screen
 - [X] Lockscreen:
 - [X] AGS Greeter (greetd):
 - Theming/Styling
