@@ -1,0 +1,60 @@
+.notificationList {
+	//background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,160,255,1) 50%, rgba(19,55,111,1) 100%);
+	//background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0) 100%);
+    //border-radius: 3rem 0rem 0rem 3rem;
+    text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
+}
+.notifTitleBox {
+margin-right: 3rem;
+margin-left: 3rem;
+margin-top: 1.5rem;
+}
+.notifTitle {
+	font-size: 1.5rem;
+	color: $Primfont-color;
+	text-shadow: none;
+	padding-top: 1rem;
+}
+.panel-notifs {
+	background-color: rgba(0,0,0,0);
+	border-radius: 5rem;
+	margin-left: 2.5rem;
+	margin-right: 2.5rem;
+	margin-top: 0rem;
+	margin-bottom: 1rem;
+	padding: 2rem;
+}
+.notificationEmpty {
+    color: #313244;
+    font-size: 7rem;
+}
+.notificationImage {
+    color: #cdd6f4;
+    font-size: 30px;
+}
+.notification {
+    background: $NotificationBG;
+    border-radius: 5rem;
+    padding:10px;
+    box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.8), -15px 0px 10px rgba(0, 0, 0, 0.8), 0px 0px 0px rgba(255, 0, 0, 0), 0px 0px 0px rgba(0, 0, 255, 0);
+}
+.notificationTitle {
+    color: #cdd6f4;
+    text-shadow: none;
+}
+.notificationDescription { 
+    color: #bac2de;
+    text-shadow: none;
+}
+// ------------- bar
+.barNotification {
+    background-color: #1e1e2e;
+    border-radius: 2rem;
+    border: 2px solid #11111b;
+    color: #cdd6f4;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 1px 15px;
+}
+
+

@@ -1,11 +1,12 @@
 .quicktoggles {
-	background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,160,255,1) 50%, rgba(19,55,111,1) 100%);
-    border: 2px solid #11111b;
+	//background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,160,255,1) 50%, rgba(19,55,111,1) 100%);
+	//background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0) 100%);
+    //border-radius: 10rem 10rem 0rem 0rem;
     margin-bottom: 5px;
     min-width: 200px;
     padding: 10px;
 	&:hover{
-    background: #313244;
+		background: $Hoverfont-color;
 	}
 }
 
@@ -40,11 +41,11 @@
     min-height: 24px;
     min-width: 24px;
     &:hover{
-    background: #0FFE0E;
-    color: #FF0000;
-    font-size: 2rem;
-    margin: 2px;
-    padding: 2px;
+		background: #0FFE0E;
+		color: #FF0000;
+		font-size: 2rem;
+		margin: 2px;
+		padding: 2px;
 	}
 }
 

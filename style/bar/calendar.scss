@@ -1,15 +1,19 @@
-.calendarWidget {
-	background: linear-gradient(45deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+.calendar {
+	//background: linear-gradient(45deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+	background: linear-gradient(35deg, rgba(0,0,0,0.5) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0.5) 100%);
 	border-radius: 2rem;
-    border: 2px solid #11111b;
     padding: 5px;
+    font-family: $font;
+    margin-top: 1.6rem;
+    margin-right: 35rem;
     }
 
 .calwid {
+	font-family: $font;
 	border-radius: 3rem;
     font-size: 1.5rem;
 	&:selected {
-		background: linear-gradient(0deg, rgba(19,55,111,1) 0%, rgba(0,160,255,1) 50%, rgba(0,0,0,1) 100%);
+		background-image: radial-gradient(rgba(0,0,0,0) 0%, rgba(0,0,25,1) 10%, rgba(0,0,255,1) 40%,rgba(0,0,255,0) 50%,rgba(0,0,255,1) 60%, rgba(0,0,25,1) 90%, rgba(0,0,0,0) 100%);
 		border-radius: 1.6rem;
 		box-shadow: inset 5px -5px 5px -5px rgba(19, 55, 111, 1);
 	}
@@ -17,5 +21,8 @@
 		background-color: rgba(0,160,255,1);
 		box-shadow: inset 5px -5px 5px -5px rgba(19, 55, 111, 1);
 	}
+	&:hover {
+		color: $Hoverfont-color
+		}
 }
 

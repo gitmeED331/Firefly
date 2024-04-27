@@ -1,0 +1,17 @@
+.corner {
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(15,155,255,1) 54%, rgba(0,0,0,1) 100%);
+  border-radius: 1rem
+}
+
+.angleRight {
+	background: $BarWidgetBG;
+	margin-right: 30px;
+    margin-left: 15px;
+	}
+.angleLeft {
+	background: $BarWidgetBG;
+	margin-right: 30px;
+    margin-left: 15px;
+	}
+
+.spacer { min-width: 10px }

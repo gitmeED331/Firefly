@@ -13,12 +13,17 @@ import Mpris from "resource:///com/github/Aylur/ags/service/mpris.js";
 import Network from "resource:///com/github/Aylur/ags/service/network.js";
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
+
 import Gio from "gi://Gio";
 import Gtk from 'gi://Gtk';
 import Gdk from "gi://Gdk";
 import GLib from "gi://GLib";
+import Lock from "gi://GtkSessionLock";
+import Cairo from "gi://cairo";
 
-import PopupWindow from "./utils/PopupWindow.ts";
+import PopupWindow from "./lib/PopupWindow.ts";
+import RegularWindow from "./lib/RegularWindow.ts";
+import * as Roundedges from "./lib/roundedCorner";
 
 export {
     App,
@@ -39,5 +44,8 @@ export {
     Gtk,
     Gdk,
     GLib,
+    Cairo,
     PopupWindow,
+    Roundedges,
+    Lock,
 };

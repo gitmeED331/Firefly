@@ -6,7 +6,7 @@ import icons from "./lib/icons"
 const options = mkOptions(OPTIONS, {
     autotheme: opt(false),
 
-transition: opt(200),
+	transition: opt(200),
 
     bar: {
 		flatButtons: opt(false),
@@ -14,6 +14,7 @@ transition: opt(200),
         workspaces: {
             workspaces: opt(4),
         }},
+        
   layout: {
             start: opt<Array<import("./modules/bar/bar").BarWidget>>([
                 "workspaces",
@@ -28,21 +29,23 @@ transition: opt(200),
                 "dashbtn",
             ]),
         },
+        
     overview: {
-        scale: opt(9),
+        scale: opt(15),
         workspaces: opt(4),
+        monochrome: opt(true),
     },
 
     datewin: {
-        position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
-    },
-    
-    playwin: {
         position: opt<Array<"top" | "bottom" | "left" | "right">>(["top"]),
     },
     
-    dashvol: {
+    playwin: {
         position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
+    },
+    
+    dashvol: {
+        position: opt<Array<"top" | "bottom" | "left" | "right">>(["top"]),
     },
     
     dashboard: {

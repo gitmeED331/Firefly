@@ -1,7 +1,8 @@
 import { Utils, App, Gio, Gtk, Hyprland } from "./imports";
 import "./lib/session";
 import init from "./lib/init";
-import options from "options";
+import options from "./options";
+
 
 // Windows
 import { Bar } from "./modules/bar/bar";

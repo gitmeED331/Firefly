@@ -1,17 +1,20 @@
 .workspaces {
-	margin: 0px 3px;
+	background-image: $BarWidgetBG;
+	box-shadow: 25px 0px 5px rgba(0, 0, 0, 0.8), -25px 0px 5px rgba(0, 0, 0, 0.5), -25px 0px 5px rgba(0, 0, 0, 0.8), 25px 0px 5px rgba(0, 0, 0, 0.5);
     & button {
-        background-color: rgba(0,0,0,0.5);
-        color: #00FFCC;
+        //background-color: rgba(0,0,0,0.5);
+        background-image: $BarBG;
+        color: $Secfont-color;
         border-radius: 0rem 0rem 3rem 3rem;
-        margin: 0px 3px 0px 0px;
+        margin-left: 5px;
         padding: 1px;
         min-height: 8px;
         min-width: 14px;
         transition: all 0.3s $materialStandard;
+        box-shadow: 5px 0px 3px rgba(0, 0, 0, 0.8), -5px 0px 3px rgba(0, 0, 0, 0.5), -5px 0px 3px rgba(0, 0, 0, 0.8), 5px 0px 3px rgba(0, 0, 0, 0.5);
         &:hover {
-            border: 2px solid #0000FF;
-            color: #FFFE00;
+            //border: 2px solid #0000FF;
+            color: $Hoverfont-color;
             font-weight: bold;
             min-width: 18px;
             }
