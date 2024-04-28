@@ -1,7 +1,11 @@
 @import "mixins/mixins";
 
  .overview {
-	background-image: $OverviewBG;
+	background-image: url("./assets/overviewBG.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: rgba(0,0,0,1);
+	
     @include floating-widget;
     @include spacing;
 
