@@ -11,10 +11,10 @@ The folder structure is a mess and will be cleaned up at a later time, when I re
 Many of the files are not being used and will not be used, they will be removed later, they remain until I reach a point I am happy with my setup.
 
 Elements of this project:
-- [ ] Overview
-  - Status: nearly complete
+- [X] Overview
+  - Status: I'm good with it
   - Issues:
-    - [ ] styling
+    - [X] styling
     - [X] Dimensions
 - [X] Title box
 - [ ] Media Ticker & Player Popup:
@@ -25,14 +25,17 @@ Elements of this project:
   - status: nearly complete
   - issues:
     - [X] some program menus are not working properly (such as Deezer)
-    - [ ] want to make is dynamic (open and close with arrow button)
+    - [X] want to make is dynamic (open and close with arrow button)
+    - [ ] Need to find a way for specific "favorite" or "always show" apps so I can shrink the bar but keep the ones I use most always visible
 - [ ] System Info Tray
   - Status: nearly complete
   - issues:
     - [X] Reactive Volume icon with popup window sliders
+      - [X] added app mixer and sink selector, thanks to Aylur
     - [ ] need to move the wifi controls from the system tray to the system info tray
     - [ ] need to create bluetooth control
     - [ ] need to make power profile selection menu for the battery indicator
+    - [X] Added battery bar, thanks to Aylur
 - [ ] Date/Clock & Calendar Popup
   - Status: nearly complete
   - Issues:
