@@ -3,7 +3,6 @@ import "./lib/session";
 import init from "./lib/init";
 import options from "./options";
 
-
 // Windows
 import { Bar } from "./modules/bar/bar";
 import { Dashboard } from "./modules/dashboard/dashboard";
@@ -11,12 +10,13 @@ import { Playwin } from "./modules/bar/media";
 import { Calendar } from "./modules/bar/calendar";
 import{ Dashvol } from "./modules/bar/sysinfo/volume";
 import Overview from "./modules/bar/overview/Overview";
+import NotificationPopups from "./modules/notificationPopups";
 
 const { execAsync, exec, monitorFile } = Utils;
 
 const scss = `${App.configDir}/style/main.scss`;
 const css = `${App.configDir}/style.css`;
-const icons = `${App.configDir}/Icons`;
+const icons = `${App.configDir}/assets`;
 
 const applyScss = () => {
 	// monitor for changes
@@ -42,6 +42,7 @@ App.config({
         Dashvol()
         Playwin()
         Calendar()
+        NotificationPopups()
         },
 	closeWindowDelay: {
         "overview": options.transition.value,

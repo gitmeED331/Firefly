@@ -13,7 +13,27 @@ const options = mkOptions(OPTIONS, {
         position: opt<"top" | "bottom">("top"),
         workspaces: {
             workspaces: opt(4),
-        }},
+        },
+        battery: {
+            bar: opt<"hidden" | "regular" | "whole">("whole"),
+            charging: opt("#00D787"),
+            percentage: opt(true),
+            blocks: opt(7),
+            width: opt(50),
+            low: opt(30),
+        },
+        systray: {
+			stitem: opt(false),
+            ignore: opt([ 
+				'Deezer'
+            ]),
+            include: opt([
+				'Cryptomator',
+				'Keepassxc',
+				'Enpass',
+            ]),
+        },
+    },
         
   layout: {
             start: opt<Array<import("./modules/bar/bar").BarWidget>>([
@@ -54,7 +74,10 @@ const options = mkOptions(OPTIONS, {
     
     notifications: {
         position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
-        width: opt(440),
+		width: opt(440),
+		blacklist: opt([
+			"Synology"
+		]),
     },
 })
 

@@ -28,17 +28,30 @@
     margin-left: 4px;
     margin-right: 4px;
 }
-.batIcon {
-    margin-left: 4px;
-    margin-right: 4px;
+.battery {
+    margin-left: 0px;
+    margin-right: 0px;
+    border: none;
+    color: black;
     &.low {
-        animation: lowBlink 2s infinite;
+        animation: lowBlink 3s infinite;
     }
         &:hover {
         color: $Hoverfont-color;
-        border: 2px solid #0000FF;
     }
 }
+.whole, .regular {
+	border-radius: 20rem;
+	background-color: black;
+	&.low {
+        animation: lowBlink 3s infinite;
+    }
+	& trough {
+		background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,35,0,0.8) 10%, rgba(15,200,15,1) 50%, rgba(0,35,0,0.8) 90%, rgba(0,0,0,0) 100%);;
+		border-radius: 20rem;
+	}
+}
+
 .reloadconfig {
 	margin-left: 4px;
 	&:hover {

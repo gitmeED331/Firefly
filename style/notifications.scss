@@ -15,6 +15,12 @@ margin-top: 1.5rem;
 	text-shadow: none;
 	padding-top: 1rem;
 }
+.trashicon  {
+	font-size: 1.25rem;
+	color: $Primfont-color;
+	text-shadow: none;
+	padding-top: 1rem;
+}
 .panel-notifs {
 	background-color: rgba(0,0,0,0);
 	border-radius: 5rem;
@@ -32,8 +38,8 @@ margin-top: 1.5rem;
     color: #cdd6f4;
     font-size: 30px;
 }
-.notification {
-    background: $NotificationBG;
+.notificationListItem {
+    background: $NotificationListItemBG;
     border-radius: 5rem;
     padding:10px;
     box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.8), -15px 0px 10px rgba(0, 0, 0, 0.8), 0px 0px 0px rgba(255, 0, 0, 0), 0px 0px 0px rgba(0, 0, 255, 0);
@@ -57,4 +63,55 @@ margin-top: 1.5rem;
     padding: 1px 15px;
 }
 
+// ------------ popups
+window.notification-popups box.notifications {
+    padding: .5rem;
+}
 
+.icon image {
+    font-size: 58px;
+    /* to center the icon */
+    margin: 5px;
+    color: $fg;
+}
+
+.icon box {
+    min-width: 68px;
+    min-height: 68px;
+    border-radius: 7px;
+}
+
+.notification {
+    min-width: 350px;
+    border-radius: 11px;
+    padding: 1rem;
+    margin: .5rem;
+    border: 1px solid $border-color;
+    background-image: $NotificationBG;
+}
+
+.notification.critical {
+    border: 2px solid red;
+}
+
+.notifTitle {
+    color: $fg;
+    font-size: 1.5rem;
+}
+
+.notifBody {
+    color: $fg;
+}
+
+.notifActions .action-button {
+    margin: 0 .4rem;
+    margin-top: .8rem;
+}
+
+.notifActions .action-button:first-child {
+    margin-left: 0;
+}
+
+.notifActions .action-button:last-child {
+    margin-right: 0;
+}

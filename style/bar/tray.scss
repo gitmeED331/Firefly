@@ -1,8 +1,10 @@
+.expandbtn {
+	background: $BarWidgetBG;
+}
 .tray {
   //background-color: rgba(0,0,0,0.5);
   background: $BarWidgetBG;
   //border-radius: 0rem 0rem 10rem 0rem;
-  box-shadow: 25px 0px 5px rgba(0, 0, 0, 0.8), -25px 0px 5px rgba(0, 0, 0, 0.5), -25px 0px 5px rgba(0, 0, 0, 0.8), 25px 0px 5px rgba(0, 0, 0, 0.5);
   //padding: 1px 0px;
   > * {
     margin: 0 3px;

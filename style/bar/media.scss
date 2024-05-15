@@ -21,48 +21,44 @@
 		//   border: 2px solid #0000FF;
 		}
 	}
-	//&btnbox {
-	//	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(15,155,255,1) 54%, rgba(0,0,0,1) 100%);
-	//	background-color: transparent;
-	//	border-radius: 3rem 3rem 3rem 3rem;
-	//	box-shadow: 15px 0px 0px 0px rgba(0, 255, 0, 1), 0px 15px 0px 0px rgba(155, 155, 55, 1), 0px 0px 15px 0px rgba(255, 0, 0, 1), 0px 0px 0px 15px rgba(0, 0, 255, 0);
-	//	box-shadow: inset 15px 0px 0px 0px rgba(0, 255, 0, 1), 0px 15px 0px 0px rgba(155, 155, 55, 1), 0px 0px 15px 0px rgba(255, 0, 0, 1), 0px 0px 0px 15px rgba(0, 0, 255, 0);
-	//	padding: 0px 15px;
-	//}
 }
 
 .playwin {
-	margin-right: 1.6rem;
+	margin-right: 5.75rem;
+	min-width: 300px;
+    min-height: 150px;
+    margin-top: 2.5rem;
 }
 .player {
-	//background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(15,155,255,1) 54%, rgba(0,0,0,1) 100%);
-	background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
-    padding: 10px;
-    min-width: 250px;
-    min-height: 100px;
-    margin-top: 2.5rem;
-    border-radius: 0rem;
+	background: linear-gradient(155deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 25%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
+    padding: 5px;
+    border-radius: 2rem;
+}
+.trackimg {
+	background-size: 50px;
+	background-position: center;
+	border-radius: 5px;
+	margin-right: 1rem;
+}
+.playicon {
+	padding: 0rem;
+	margin: 0rem 1rem;
 }
 
-.player .img {
-    background-size: 50px;
-    background-position: center;
-    border-radius: 5px;
-    margin-right: 1em;
+.tracktitle {
+	font-size: 1.2em;
+	border-radius: 3rem;
+	padding: 0.5rem 1rem;
+	background-color: rgba(0,0,0,0.5)
 }
 
-.player .mtitle {
-    font-size: 1.2em;
-    padding: 0.25em;
-    border-radius: 3em;
-    background-color: rgba(0,0,0,0.5)
-}
-
-.player .artist {
-    font-size: 1.15em;
-    color: cyan;
-}
-
+.artist {
+		font-size: 1.15em;
+		font-weight: bold;
+		margin-right: 2rem;
+		color: cyan;
+	}
+	
 .player scale.position {
     padding: 0;
     margin-bottom: .3em;
@@ -70,7 +66,7 @@
 }
 
 .player scale.position trough {
-    min-height: 8px;
+    min-height: 12px;
     background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(0,0,0,1) 54%, rgba(255,0,0,1) 100%);
 }
 
@@ -83,46 +79,41 @@
 }
 
 .player button {
-    min-height: 1em;
-    min-width: 1em;
+    min-height: 1rem;
+    min-width: 1rem;
+    margin: 0rem 1rem;
 }
 
 .player button.play-pause {
-    margin: 0em 1em;
-    padding: 0em 1em;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 3rem;
-    border: 2px solid #11111b;
+    margin: 0rem 1rem;
     color: #cdd6f4;
     font-weight: bold;
+    border: none;
     &:hover {
-        color: $Hoverfont-color;
-        border: 2px solid #FFF000;
+        color: yellow;
     }
 }
 
 .next {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 0rem 3rem 3rem 0rem;
-    border: 2px solid #11111b;
+    border: none;
     color: #cdd6f4;
     font-weight: bold;
-    padding: 0px 2px;
     &:hover {
-        color: $Hoverfont-color;
-        border: 2px solid #00FF00;
+        color: lime;
     }
 }
 
 .previous {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 3rem 0rem 0rem 3rem;
-    border: 2px solid #11111b;
+    border: none;
     color: #cdd6f4;
     font-weight: bold;
-    padding: 0px 2px;
     &:hover {
-        color: $Hoverfont-color;
-        border: 2px solid #FF0000;
+        color: #0BE0CE;
     }
+}
+
+.playercontrols {
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 3rem;
+	padding: 0.5rem 0.3rem;
 }
