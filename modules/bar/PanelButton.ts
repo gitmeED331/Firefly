@@ -1,5 +1,5 @@
 import options from "options"
-import { ButtonProps } from "types/widgets/button"
+import { ButtonProps } from "../../types/widgets/button"
 
 type PanelButtonProps = ButtonProps & {
     window?: string,

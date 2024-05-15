@@ -47,7 +47,7 @@ export const MediaBTN = ( ) => Button({
 	child: Label('-').hook(Mpris, self => {
 		if (Mpris.players[0]) {
 			const { track_title } = Mpris.players[0];
-			self.label = track_title.length > 60 ? `${track_title.substring(0, 60)}...` : track_title;
+			self.label = track_title.length > 30 ? `${track_title.substring(0, 30)}...` : track_title;
 		} 
 	else {
 		self.label = 'Nothing is playing';

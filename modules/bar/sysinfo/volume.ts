@@ -1,5 +1,5 @@
 import { Widget, Audio, Utils, PopupWindow } from "../../../imports";
-import { VolumeSlider } from "./volumeSlider";
+import { VolumeTabs, AppMixer, SinkSelector, VolumeSlider } from "./volumeSlider";
 import options from "../../../options";
 
 const audio = await Service.import('audio');
@@ -14,16 +14,18 @@ const layout = Utils.derive([bar.position, dashvol.position], (bar, qs) =>
 
 const DVol = () =>  PopupWindow({
     name: "dashvol",
+    className: "dashvol",
     anchor: pos,
     transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     layer: "top",
     child: 
         Box({
             vertical:true,
-            hexpand:false,
+            hpack: "center",
+            vpack: "start",
             children: [
-                VolumeSlider(),
-            ]
+				VolumeTabs(),
+			]
         })
 });
 
@@ -36,8 +38,8 @@ export function Dashvol() {
 }
 
 
-export const Volume = () => Box({
-	class_name: 'volume',
+export const Volumebtn = () => Box({
+	className: 'volumebtn',
 	child:
 		Button({
 			onPrimaryClick: () => { App.toggleWindow("dashvol")},

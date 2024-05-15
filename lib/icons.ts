@@ -8,8 +8,9 @@ export const substitutes = {
     "preferences-system": "emblem-system-symbolic",
     "com.github.Aylur.ags-symbolic": "controls-symbolic",
     "com.github.Aylur.ags": "controls-symbolic",
-    "pcloud1":"pcloud-symbolic",
+    "pcloud1*":"pcloud-symbolic",
     "deezer":"deezer-symbolic",
+    "keepassxc":"keepassxc-symbolic",
 }
 
 export default {
@@ -71,17 +72,6 @@ export default {
         balanced: "power-profile-balanced-symbolic",
         "power-saver": "power-profile-power-saver-symbolic",
         performance: "power-profile-performance-symbolic",
-    },
-    asusctl: {
-        profile: {
-            Balanced: "power-profile-balanced-symbolic",
-            Quiet: "power-profile-power-saver-symbolic",
-            Performance: "power-profile-performance-symbolic",
-        },
-        mode: {
-            Integrated: "processor-symbolic",
-            Hybrid: "controller-symbolic",
-        },
     },
     battery: {
         charging: "battery-flash-symbolic",

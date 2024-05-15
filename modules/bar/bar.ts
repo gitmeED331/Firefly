@@ -10,7 +10,7 @@ import { Workspaces } from "./workspaces";
 import { Title } from "./title";
 import { MediaBTN } from "./media";
 import { SysInfo } from	"./sysinfo/sysinfo";
-import Tray from "./tray";
+import {TrayReveal, Expandbtn} from "./tray";
 import { Clock } from "./clock";
 
 const pos = options.bar.position.bind();
@@ -62,7 +62,8 @@ const Center = () => Box({
 		RoundedAngleEnd("topright", {className: "angleRight"}),
 		Spacer(),
 		RoundedAngleEnd("topleft", {className: "angleLeft"}),
-		Tray(),
+		Expandbtn(),
+		TrayReveal(),
 		RoundedAngleEnd("topright", {className: "angleRight"}),
 		Spacer(),
 		SysInfo(),

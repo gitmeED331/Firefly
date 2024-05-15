@@ -25,7 +25,7 @@ function lengthStr(length) {
 /** @param {import('types/service/mpris').MprisPlayer} player */
 function Player(player) {
     const img = Box({
-        class_name: "img",
+        className: "trackimg",
         vpack: "start",
         css: player.bind("cover_path").transform(p => `
             background-image: url('${p}');
@@ -33,16 +33,20 @@ function Player(player) {
     })
 
     const title = Label({
-        class_name: "mtitle",
+        className: "tracktitle",
         wrap: true,
         hpack: "start",
+        vpack: "center",
+        vexpand: true,
+        truncate: 'end',
         label: player.bind("track_title"),
     })
 
     const artist = Label({
-        class_name: "artist",
+        className: "artist",
         wrap: true,
-        hpack: "start",
+        hpack: "end",
+        truncate: 'end',
         label: player.bind("track_artists").transform(a => a.join(", ")),
     })
 
@@ -63,7 +67,7 @@ function Player(player) {
     })
 
     const positionLabel = Label({
-        class_name: "position",
+        className: "position",
         hpack: "start",
         setup: self => {
             const update = (_, time) => {
@@ -77,26 +81,44 @@ function Player(player) {
     })
 
     const lengthLabel = Label({
-        class_name: "length",
+        className: "length",
         hpack: "end",
         visible: player.bind("length").transform(l => l > 0),
         label: player.bind("length").transform(lengthStr),
     })
 
-    const icon = Icon({
-        class_name: "icon",
-        hexpand: true,
-        hpack: "end",
-        vpack: "start",
-        tooltip_text: player.identity || "",
-        icon: player.bind("entry").transform(entry => {
-            const name = `${entry}-symbolic`
-            return Utils.lookUpIcon(name) ? name : FALLBACK_ICON
-        }),
-    })
-
+    const icon = () => Button({
+		onClicked: () => {
+			App.closeWindow('playwin');
+		},
+		vexpand: true,
+		hpack: "end",
+		vpack: "center",
+		child: Icon({
+			hexpand: true,
+			hpack: "end",
+			vpack: "center",
+			className: "playicon",
+			tooltip_text: player.identity || "",
+			icon: player.bind("entry").transform(entry => {
+				const name = `${entry}-symbolic`
+				return Utils.lookUpIcon(name) ? name : FALLBACK_ICON
+			}),
+		})
+	})
+	//
+	//const closebtn =  Button({
+	//	className: "close-button",
+	//	hpack: "end",
+	//	vpack: "center",
+	//	child: Widget.Icon("window-close-symbolic"),
+	//	onClicked: .close,
+	//	tooltip_text: 'Close',
+	//})
+	
     const playPause = Button({
         class_name: "play-pause",
+        vpack: "center",
         on_clicked: () => player.playPause(),
         visible: player.bind("can_play"),
         child: Widget.Icon({
@@ -112,6 +134,7 @@ function Player(player) {
 
     const prev = Button({
 		className: "previous",
+		vpack: "center",
         on_clicked: () => player.previous(),
         visible: player.bind("can_go_prev"),
         child: Widget.Icon(PREV_ICON),
@@ -119,33 +142,38 @@ function Player(player) {
 
     const next = Widget.Button({
 		className: "next",
+		vpack: "center",
         on_clicked: () => player.next(),
         visible: player.bind("can_go_next"),
         child: Widget.Icon(NEXT_ICON),
     })
 
     return Widget.Box(
-        { class_name: "player" },
+        { className: "player"},
         img,
         Box(
-            {
-                vertical: true,
-                hexpand: true,
-            },
+			{
+				vertical: true,
+				hexpand: true,
+			},
             Box([
-                artist,
-                icon,
+				title,
+                icon(),
+                //closebtn,
             ]),
-            title,
+            artist,
             Box({ vexpand: true }),
             positionSlider,
             Widget.CenterBox({
                 start_widget: positionLabel,
-                center_widget: Box([
-                    prev,
-                    playPause,
-                    next,
-                ]),
+                center_widget: Box({
+					className: "playercontrols",
+					children: [
+						prev,
+						playPause,
+						next,
+					]
+				}),
                 end_widget: lengthLabel,
             }),
         ),

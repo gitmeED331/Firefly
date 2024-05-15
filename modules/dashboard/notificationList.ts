@@ -10,7 +10,7 @@ const Notifs = Box({
     setup: (self) => {
         self.hook(Notifications, (self) => {
             self.children = Notifications.notifications.map(n => Widget.Box({
-                class_name: "notification",
+                class_name: "notificationListItem",
                 vertical: true,
                 children: [
                     Widget.Button({
@@ -92,9 +92,8 @@ export const NotificationList = () => Widget.Box({
             }),
             end_widget: Widget.Button({
                 label: "  ",
-                hpack: 'end',
+                hpack: 'center',
                 vpack: 'end',
-                class_name: "icon ni",
                 className: "trashicon",
                 on_clicked: () => {
                     const list = Array.from(Notifications.notifications);

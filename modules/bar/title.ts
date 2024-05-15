@@ -3,9 +3,9 @@ const { execAsync } = Utils;
 const { Box, Button } = Widget;
 
 export const Title = () => Button({
-    className: 'title',
+    className: 'wintitle',
     visible:Hyprland.active.client.bind('title').transform(title => title.length > 0),
-    label: Hyprland.active.client.bind('title').transform(title => title.length > 40 ? title.substring(0, 40) + '...' : title),
+    label: Hyprland.active.client.bind('title').transform(title => title.length > 35 ? title.substring(0, 35) + '...' : title),
     onSecondaryClick: () => {
         execAsync(['bash', '-c', 'hyprctl dispatch killactive', '&'])
     },

@@ -1,8 +1,8 @@
 import { Widget, Utils, Hyprland, Roundedges } from "../../../imports"
 //import{ NetWidget, WifiBTN } from "./network.js"
 //import{ BluetoothWidget } from "./bluetooth.js"
-import{ Volume, Dashvol } from "./volume"
-import{ BatteryWidget } from "./battery"
+import { Volumebtn } from "./volume"
+import Battery from "./battery"
 //import { Notification } from "./notification"
 
 const { RoundedAngleEnd } = Roundedges;
@@ -15,8 +15,8 @@ const SysInfoBox = () => Box({
 	spacing: 8,
 		children: [
 		//BluetoothWidget(),
-		Volume(),
-		BatteryWidget(),
+		Volumebtn(),
+		Battery(),
 		//WifiBTN(),
 		//Notification(),
         ]

@@ -6,7 +6,7 @@ const { Box } = Widget;
 
 const Slider = () =>
 	Widget.Slider({
-		className: "sldSlider",
+		className: "brightsld Slider",
 		drawValue: false,
 		on_change: self => Brightness.screen_value = self.value,
 		value: Brightness.bind('screen-value').as(n => n > 1 ? 1 : n),
@@ -14,7 +14,7 @@ const Slider = () =>
 	
 const Icon = () =>
 	Widget.Label({
-		className: "sldIcon",
+		className: "brightsldIcon",
 		setup: self => self.hook(Brightness, (self, screenValue) => {
         const icons = ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"];
         self.label =`${icons[Math.floor((Brightness.screen_value * 100) / 15)]}`;
@@ -32,7 +32,7 @@ export const BrightnessSlider = () =>
 				children: [
 					Icon(),
 					Widget.Label({
-						className: "sldLabel-bright",
+						className: "brightsldLabel",
 						label: "Brightness",
 						hpack: "center",
 					}),
