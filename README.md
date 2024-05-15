@@ -1,9 +1,11 @@
 
 This is a work in progress.
 
-![AGSscreenshot0](https://github.com/gitmeED331/FireflyAGS/assets/142960718/0330167d-c7f1-4e18-bb2c-2a6fa12f41a2)
+![AGSscreenshot0](https://github.com/gitmeED331/FireflyAGS/assets/142960718/759d6cf7-f9d6-41a9-bd4a-a2bda33381fa)
 
-![ags-overview](https://github.com/gitmeED331/FireflyAGS/assets/142960718/6386605a-6cb9-4921-86a9-9a261cd0df9f)
+![AGSscreenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/4d37db1a-02d3-4ff0-92d8-d347054a9259)
+
+![ags-overview](https://github.com/gitmeED331/FireflyAGS/assets/142960718/1b8d19ef-aba9-490b-8bdd-a8055a10e543)
 
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
