@@ -23,7 +23,7 @@ class BrightnessService extends Service {
         percent = clamp(percent, 0, 1);
         this._screenValue = percent;
 
-        Utils.execAsync(`brightnessctl s ${percent * 100}% -q`)
+        Utils.execAsync(`light  -S 100`)
             .then(() => {
                 // signals has to be explicity emitted
                 this.emit('screen-changed', percent);
@@ -37,8 +37,8 @@ class BrightnessService extends Service {
 
     constructor() {
         super();
-        const current = Number(exec('brightnessctl g'));
-        const max = Number(exec('brightnessctl m'));
+        const current = Number(exec('light'));
+        const max = Number(exec('light -S 100'));
         this._screenValue = current / max;
     }
 
