@@ -15,7 +15,7 @@ const speakerSlider = ( type: Type = 'speaker' ) => Slider({
     hexpand: true,
     drawValue: false,
     value: audio[type].bind('volume'),
-        on_change: ({ value, dragging }) => {
+	on_change: ({ value, dragging }) => {
         if (dragging) {
             audio[type].volume = value
             audio[type].is_muted = false

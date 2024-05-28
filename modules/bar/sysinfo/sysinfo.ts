@@ -1,6 +1,6 @@
 import { Widget, Utils, Hyprland, Roundedges } from "../../../imports"
-//import{ NetWidget, WifiBTN } from "./network.js"
-//import{ BluetoothWidget } from "./bluetooth.js"
+//import{ WifiBTN } from "./network"
+//import{ BluetoothWidget } from "./bluetooth"
 import { Volumebtn } from "./volume"
 import Battery from "./battery"
 //import { Notification } from "./notification"

@@ -1,18 +1,21 @@
-import Network from "resource:///com/github/Aylur/ags/service/network.js";
-import { Widget, Audio, Utils } from "../../../imports.";
-import PopupWindow from "../../../utils/popupWindow";
+import { Network, Widget, Audio, Utils, PopupWindow, Gtk } from "../../../imports";
 import icons from "../icons/index.js";
-import Gtk from "gi://Gtk?version=3.0";
 
 const { Box, Button } = Widget;
 const { execAsync } = Utils;
 
-export const NetWidget = () => PopupWindow({
+const { bar, datewin } = options;
+const pos = datewin.position.bind();
+const layout = Utils.derive([bar.position, datewin.position], (bar, qs) => 
+		`${bar}-${qs}` as const,
+	);
+	
+const NetWidgetWin = () => PopupWindow({
     name: "netwidget",
+    className: "netwidget",
     anchor: ["top", "right"],
     margins: [12, 12, 15],
     transition: "slide_down",
-    transitionDuration: 150,
     child: 
         Box({
             vertical:true,
@@ -21,6 +24,15 @@ export const NetWidget = () => PopupWindow({
             ]
         })
 });
+
+export function NetWidget() {
+    App.addWindow(NetWidgetWin())
+    layout.connect("changed", () => {
+        App.removeWindow("netwidget")
+        App.addWindow(NetWidgetWin())
+    })
+}
+
 
 const ap = Network;
 const Expander = Widget.subclass(Gtk.Expander);
