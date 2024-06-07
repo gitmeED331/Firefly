@@ -7,8 +7,9 @@ import options from "./options";
 import { Bar } from "./modules/bar/bar";
 import { Dashboard } from "./modules/dashboard/dashboard";
 import { Playwin } from "./modules/bar/media";
-import { Calendar } from "./modules/bar/calendar";
+import { CalendarWin } from "./modules/bar/calendar";
 import{ Dashvol } from "./modules/bar/sysinfo/volume";
+//import { NetWidget } from "./modules/bar/sysinfo/network";
 import Overview from "./modules/bar/overview/Overview";
 import NotificationPopups from "./modules/notificationPopups";
 
@@ -38,14 +39,14 @@ const applyScss = () => {
 // Main config
 App.config({
 	onConfigParsed: () => {
-        Dashboard()
-        Dashvol()
-        Playwin()
-        Calendar()
-        NotificationPopups()
-        },
+		Dashboard()
+		Dashvol()
+		Playwin()
+		CalendarWin()
+		NotificationPopups()
+		},
 	closeWindowDelay: {
-        "overview": options.transition.value,
+		"overview": options.transition.value,
 		},
 	style: applyScss(),
 	icons: icons,
