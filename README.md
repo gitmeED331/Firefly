@@ -12,7 +12,7 @@ The folder structure is a mess and will be cleaned up at a later time, when I re
 
 Many of the files are not being used and will not be used, they will be removed later, they remain until I reach a point I am happy with my setup.
 
-Elements of this project:
+# Elements of this project:
 - [X] Overview
   - Status: I'm good with it
   - Issues:
@@ -21,8 +21,9 @@ Elements of this project:
 - [X] Title box
 - [ ] Media Ticker & Player Popup:
   - Status: nearly complete
-  - Issues:
+    - Issues:
     - [ ] popup window (auto close on click off)
+    - [X] Window Placement issue: currently causes excess window and cover up * - now placed correctly without issue
 - [ ]System app Tray
   - status: nearly complete
   - issues:
@@ -42,18 +43,28 @@ Elements of this project:
   - Status: nearly complete
   - Issues:
     - [ ] popup window (auto close on click off)
+    - [X] Window Placement issue: currently causes excess window and cover up * - now placed correctly without issue
 - [ ] Dashboard Button & Dashboard
   - Status: nearly complete
   - Issues:
     - popup window
       - [ ] auto close on click off
       - [X] spanning notification section to the bottom of screen
-- [X] Lockscreen:
-- [X] AGS Greeter (greetd):
+- [X] Lockscreen
+- [X] AGS Greeter (greetd)
 - Theming/Styling
   - Status: almost complete
   - Issues:
     - [ ] Need to consolidate and refine (eliminate duplicate code)
-  
+
+**I am running Arch Linux**
+
+## Required apps/packages (all found in main repository and AUR)
+- pavcontrol
+- pipewire-pulse
+- light (for screen brightness control)
+- mpd
+- power-profiles-daemon
+- upower
 
 A gigantic thanks to Aylur and Kotontrion for all their work and help!
