@@ -1,7 +1,4 @@
 .quicktoggles {
-	//background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,160,255,1) 50%, rgba(19,55,111,1) 100%);
-	//background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0) 100%);
-    //border-radius: 10rem 10rem 0rem 0rem;
     margin-bottom: 5px;
     min-width: 200px;
     padding: 10px;
@@ -10,11 +7,12 @@
 	}
 }
 
+
 .buttons {
     margin-top: 10px;
 	font-size: 1.5rem;
 	border-radius: 50%;
-	padding: 10px 10px;
+	padding: 2rem;
 }
 
 .bluetooth, .wifi {
@@ -34,18 +32,18 @@
         margin-right: 6px;
     }
 }
-.Icon {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 100%;
-    margin: 5px;
-    min-height: 24px;
-    min-width: 24px;
-    &:hover{
-		background: #0FFE0E;
-		color: #FF0000;
-		font-size: 2rem;
-		margin: 2px;
-		padding: 2px;
+.quickaccess {
+	&icon {
+		background-color: rgba(0,0,0,1);
+		border-radius: 100%;
+		margin: 5px;
+		min-height: 24px;
+		min-width: 24px;
+		padding: 0.5rem;
+		font-size: 1.5rem;
+		&:hover{
+			background-color: rgba(15,155,255,1);
+		}
 	}
 }
 

@@ -4,9 +4,9 @@
 
 // Vars
 $font: Liberation Mono;
-$Primfont-color: cyan;
+$Primfont-color: rgba(15,155,255,1);
 $Secfont-color: rgba(0,0,0,1);
-$Hoverfont-color: rgba(15,155,255,1);
+$Hoverfont-color: rgba(255,0,0,1);
 $font-size: 10pt;
 $materialStandard: cubic-bezier(0.2, 0, 0, 1);
 $materialAccel: cubic-bezier(0.3, 0, 1, 1);
@@ -14,10 +14,10 @@ $materialDecel: cubic-bezier(0, 0, 0, 1);
 
 //backgrounds
 $BarBG: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,25,0.8) 10%, rgba(15,155,255,1) 50%, rgba(0,0,35,0.8) 90%, rgba(0,0,0,0) 100%);
-$BarWidgetBG: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(25,0,0,0.8) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,0.8) 90%, rgba(0,0,0,0) 100%);
-$DashboardBG: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(25,0,25,1) 10%, rgba(255,0,0,1) 50%, rgba(35,0,0,1) 90%, rgba(0,0,0,0) 100%);
-$NotificationBG:  linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(25,0,0,0.8) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,0.8) 90%, rgba(0,0,0,0) 100%);
-$NotificationListItemBG: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.25) 100%);
+$BarWidgetBG: rgba(0,0,0,0.75);
+$DashboardBG: rgba(0,0,0,0.5);
+$NotificationBG: rgba(0,0,0,0.5);
+$NotificationListItemBG: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 100%);
 $OverviewBG: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(15,155,255,0.75) 20%, rgba(255,0,0,1) 40%, rgba(0,0,0,1) 50%,rgba(255,0,0,1) 60%, rgba(15,155,255,0.75) 80%, rgba(0,0,0,1) 100%);
 
 $background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.25) 100%);
@@ -25,11 +25,20 @@ $primary-bg: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba
 $widget-bg: linear-gradient(0deg, rgba(15,155,255,0.5) 0%, rgba(0,0,0,1) 50%, rgba(15,155,255,1) 100%);
 $hover-bg: linear-gradient(0deg, rgba(55,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba(0,0,0,1) 100%);
 
-$border-width: 2px;
+$border-width: 3px;
 $border-color: rgba(15,155,255,1);
-$border: 2px solid rgba(255,0,255,1);
 $radius: 1rem;
+$radius1: 1rem;
+$radius2: 2rem;
+$radius3: 3rem;
+$radius-tbleft: 3rem 0rem 0rem 3rem;
+$radius-tbright: 0rem 3rem 3rem 0rem;
+$radius-rltop: 3rem 3rem 0rem 0rem;
+$radius-rlbottom: 0rem 0rem 3rem 3rem;
 $padding: 0.3rem;
+$border: 2px solid #0F9BFF;
+
+
 
 $boxshad-bg: rgba(15,155,255,0.5);
 $shadow-color: rgba(15,155,255,1);

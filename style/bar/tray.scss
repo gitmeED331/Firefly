@@ -1,11 +1,13 @@
 .expandbtn {
 	background: $BarWidgetBG;
+	border-bottom: $border;
 }
 .tray {
   //background-color: rgba(0,0,0,0.5);
   background: $BarWidgetBG;
   //border-radius: 0rem 0rem 10rem 0rem;
   //padding: 1px 0px;
+  	border-bottom: $border;
   > * {
     margin: 0 3px;
     margin-right: 4px;
@@ -23,7 +25,7 @@
 menu {
     menuitem {
         background: linear-gradient(0deg, rgba(15,155,255,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 65%, rgba(15,155,255,1) 100%);
-        border-radius: 15px;
+        border-radius: 10px;
         border: 2px solid #11111b;
         color: $Primfont-color;
         margin: 1px;

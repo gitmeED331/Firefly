@@ -15,28 +15,26 @@
 //------------- VOLUME SLIDER ---------------------
 
 .volSlider {
-	background: linear-gradient(160deg, rgba(0,0,0,0.5) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0.5) 100%);
-    border-radius: 2.5rem;
-    border: none;
-    padding: 2rem 1rem;
-	margin-top: 2.5rem;
-	margin-left: 40rem;
+	background: $BarWidgetBG;
+	border-radius: 2.5rem;
+	border: $border;
+	padding: 1rem;
 }
 
 .volumesld {
 	margin-top: 0.5rem;
-    &Label {
-        margin-bottom: 0.5rem;
+	&Label {
+		margin-bottom: 0.5rem;
 		font-size: 1.25rem;
 		font-weight: bold;
 		color: $Primfont-color;
 		//text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
-    }
-    &Icon {
-        margin-right: 0.5rem;
-        margin-top: 0.5rem;
-        text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
-    }
+	}
+	&Icon {
+		margin-right: 0.5rem;
+		margin-top: 0.5rem;
+		text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
+	}
 }
 
 //.volmenus {
@@ -64,6 +62,7 @@
 		}
 	}
 	&.sink-selector {
+		color: rgba(255,0,0,1);
 		.title {
 			background-image: $background;
 			box-shadow: inset 0.25rem 0.25rem 1rem rgba(0,0,0,1);
@@ -77,17 +76,21 @@
 		.icon {
 			margin-right: 0.5rem;
 			margin-top: 0.25rem;
+			color: rgba(15,155,255,1);
 		}
 	}
 }
 
 .mixeritem {
+	color: rgba(255,0,0,1);
 	&icon {
+		color: rgba(255,0,0,1);
 		margin-right: 0.25rem;
 		margin-top: 0.25rem;
 	}
 	&label {
-	margin-top: 0.25rem;
+		color: #cdd6f4;
+		margin-top: 0.25rem;
 	}
 
 		&:last-child {
@@ -113,20 +116,20 @@
 
 //----------- BRIGHTNESS SLIDER -------------
 .brightSlider {
-    margin-bottom: 5px;
-    padding-left: 4rem;
-    padding-right: 4rem;
+	margin-bottom: 5px;
+	padding-left: 4rem;
+	padding-right: 4rem;
 }
 
 .brightsld {
-    &Label {
-        margin-bottom: 0.5rem;
+	&Label {
+		margin-bottom: 0.5rem;
 		font-size: 1.5rem;
 		color: $Primfont-color;
 		//text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
-    }
-    &Icon {
-        margin-right: 1rem;
-        text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
-    }
+	}
+	&Icon {
+		margin-right: 1rem;
+		text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
+	}
 }

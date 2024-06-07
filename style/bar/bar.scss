@@ -10,7 +10,7 @@
 .bar {
     font-family: $font;
     color: $Primfont-color;
-	background-image: $BarBG;
+	background-image: none;
 	&left {
 		//background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
 		min-width: 100px;

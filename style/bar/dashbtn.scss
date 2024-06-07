@@ -1,12 +1,9 @@
 .dashbtn {
-    //background-color: rgba(0,0,0,0.5);
     background: $BarWidgetBG;
-    //border-radius: 3rem 0rem 0rem 3rem;
-    box-shadow: 25px 0px 5px rgba(0, 0, 0, 0.8), -25px 0px 5px rgba(0, 0, 0, 0.5), -25px 0px 5px rgba(0, 0, 0, 0.8), 25px 0px 5px rgba(0, 0, 0, 0.5);
     font-size: 1.4rem;
     padding-right: 5px;
+    border-bottom: $border;
     &:hover {
         color: $Hoverfont-color;
-        //border: 2px solid #0000FF;
-        };
+    };
 }

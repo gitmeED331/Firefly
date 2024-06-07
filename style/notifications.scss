@@ -1,106 +1,96 @@
-.notificationList {
-	//background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,160,255,1) 50%, rgba(19,55,111,1) 100%);
-	//background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(25,0,0,1) 10%, rgba(255,0,0,1) 50%, rgba(25,0,0,1) 90%, rgba(0,0,0,0) 100%);
-    //border-radius: 3rem 0rem 0rem 3rem;
-    text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
-}
-.notifTitleBox {
-margin-right: 3rem;
-margin-left: 3rem;
-margin-top: 1.5rem;
-}
-.notifTitle {
-	font-size: 1.5rem;
-	color: $Primfont-color;
-	text-shadow: none;
-	padding-top: 1rem;
-}
-.trashicon  {
-	font-size: 1.25rem;
-	color: $Primfont-color;
-	text-shadow: none;
-	padding-top: 1rem;
-}
-.panel-notifs {
-	background-color: rgba(0,0,0,0);
-	border-radius: 5rem;
-	margin-left: 2.5rem;
-	margin-right: 2.5rem;
-	margin-top: 0rem;
-	margin-bottom: 1rem;
-	padding: 2rem;
-}
-.notificationEmpty {
-    color: #313244;
-    font-size: 7rem;
-}
-.notificationImage {
-    color: #cdd6f4;
-    font-size: 30px;
-}
-.notificationListItem {
-    background: $NotificationListItemBG;
-    border-radius: 5rem;
-    padding:10px;
-    box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.8), -15px 0px 10px rgba(0, 0, 0, 0.8), 0px 0px 0px rgba(255, 0, 0, 0), 0px 0px 0px rgba(0, 0, 255, 0);
-}
-.notificationTitle {
-    color: #cdd6f4;
-    text-shadow: none;
-}
-.notificationDescription { 
-    color: #bac2de;
-    text-shadow: none;
-}
-// ------------- bar
-.barNotification {
-    background-color: #1e1e2e;
-    border-radius: 2rem;
-    border: 2px solid #11111b;
-    color: #cdd6f4;
-    font-weight: bold;
-    margin-right: 10px;
-    padding: 1px 15px;
+.notification {
+    min-width: 300px;
+    border-radius: 11px;
+    padding: 1rem;
+    margin: .5rem;
+    border: 1px solid $border-color;
+    background-color: $NotificationBG;
 }
 
-// ------------ popups
-window.notification-popups box.notifications {
-    padding: .5rem;
-}
-
-.icon image {
+.notiftemIcon image {
     font-size: 58px;
     /* to center the icon */
     margin: 5px;
     color: $fg;
 }
 
-.icon box {
+.notiftemIcon box {
     min-width: 68px;
     min-height: 68px;
     border-radius: 7px;
 }
 
-.notification {
-    min-width: 350px;
-    border-radius: 11px;
-    padding: 1rem;
-    margin: .5rem;
-    border: 1px solid $border-color;
-    background-image: $NotificationBG;
+.notification box {
+	background-color: transparent;
 }
 
 .notification.critical {
-    border: 2px solid red;
+    border: 3px dashed red;
+	color: red;
+	image { color: red;};
 }
 
-.notifTitle {
-    color: $fg;
-    font-size: 1.5rem;
+.notification.normal {
+    border: 3px dotted rgba(15,155,255,1);
+    color: $Primfont-color;
+    image { color: $Primfont-color;};
 }
 
-.notifBody {
-    color: $fg;
+.notification.low {
+    border: 3px groove white;
+    color: white;
+    image { color: white;};
+}
+
+.notif {
+	background-color: transparent;
+	margin-left: 0.5rem;
+	margin-right: 0rem;
+	margin-top: 0rem;
+	margin-bottom: 0.25rem;
+	padding: 0rem 1rem;
+	&Item {
+		&Body {
+			padding: 1rem;
+			border-radius: 2rem;
+			color: white;
+		}
+		&Icon {
+			font-size: 4rem;
+		}
+		&Title {
+			text-shadow: none;
+			font-size: 1.35rem;
+			font-weight: bold;
+		}
+		&Description { 
+			color: white;
+			text-shadow: none;
+			font-size: 0.9rem;
+		}
+	}
+	&Empty {
+		color: $Primfont-color;
+		font-size: 7rem;
+		text-shadow: 15px 0px 10px yellow, -15px 0px 10px yellow, 0px 0px 0px yellow;
+	}
+	&panel {
+		border-radius: 3rem 0rem 0rem 3rem;
+		margin-top: 1rem;
+		min-width: 300px;
+		&Box {
+			margin-right: 2rem;
+			margin-left: 2rem;
+			&Title {
+				font-size: 1.5rem;
+				color: $Primfont-color;
+			}
+			&Icon {
+				font-size: 1.25rem;
+				color: $Primfont-color;
+			}
+		}
+	}
 }
 
 .notifActions .action-button {
@@ -114,4 +104,19 @@ window.notification-popups box.notifications {
 
 .notifActions .action-button:last-child {
     margin-right: 0;
+}
+
+// ------------- bar
+.barNotification {
+    background-color: #1e1e2e;
+    border-radius: 2rem;
+    border: 2px solid #11111b;
+    color: #cdd6f4;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 1px 15px;
+}
+
+window.notification-popups box.notifications {
+    padding: .5rem;
 }

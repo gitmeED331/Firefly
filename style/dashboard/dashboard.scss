@@ -2,12 +2,35 @@
 
 .dashboard {
     font-weight: bold;
-    background: $DashboardBG;
+    background: none;
 }
 
 .dashcontainer {
-	background-color: rgba(0,0,0,0);
-	border-radius: 3rem;
-	min-width: 30rem;
-	min-height: 793pt;
+	background-color: rgba(0,0,0,0.5);
+	min-height: 71.75rem;
+	border-radius: $radius-tbleft;
+	border-left: 2px solid #0F9BFF;
+	border-bottom: 2px solid #0F9BFF;
+	border-top: 2px solid #0F9BFF;
+	margin-top: 0.25rem;
+}
+
+.pwrprofiles {
+	color: lime;
+	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 100%);
+	border: $border;
+	border-radius: $radius3;
+	padding: 0.35rem 0.5rem;
+	font-size: 1rem;
+	&cont {
+		border: $border;
+		border-radius: $radius1;
+		padding: 0.35rem 0.5rem;
+		margin-top: 1rem;
+		color: red;
+		font-size: 1.5rem;
+		background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
+	}
+	&Box {
+	}
 }
