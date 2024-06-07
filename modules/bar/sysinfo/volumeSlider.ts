@@ -69,7 +69,7 @@ const micIcon = (type: Type = 'microphone') => Button({
     }),
 });
 
-const SettingsButton = () => Widget.Button({
+const SettingsButton = () => Button({
     onClicked: () => {
         if (dependencies("pavucontrol"))
             sh("pavucontrol")

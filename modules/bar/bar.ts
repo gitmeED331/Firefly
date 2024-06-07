@@ -78,6 +78,7 @@ export const Bar = () => Window({
 	child: CenterBox({
 		className: "bar",
 		hexpand: true,
+		vexpand: true,
 		start_widget: Left(),
 		center_widget: Center(),
 		end_widget: Right(),

@@ -3,7 +3,7 @@ import { VolumeTabs, AppMixer, SinkSelector, VolumeSlider } from "./volumeSlider
 import options from "../../../options";
 
 const audio = await Service.import('audio');
-const { Box, Button } = Widget;
+const { Box, Button, Window } = Widget;
 const { execAsync } = Utils;
 
 const { bar, dashvol } = options;
@@ -18,11 +18,12 @@ const DVol = () =>  PopupWindow({
     anchor: pos,
     transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     layer: "top",
+	exclusivity: 'normal',
+    keymode: 'on-demand',
+    margins: [0,525],
     child: 
         Box({
             vertical:true,
-            hpack: "center",
-            vpack: "start",
             children: [
 				VolumeTabs(),
 			]

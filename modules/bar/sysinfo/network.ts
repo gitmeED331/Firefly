@@ -1,9 +1,36 @@
 import { Network, Widget, Audio, Utils, PopupWindow, Gtk } from "../../../imports";
 import icons from "../icons/index.js";
 
-const { Box, Button } = Widget;
+const { Box, Button, Label, Icon } = Widget;
 const { execAsync } = Utils;
+const network = await Service.import('network')
 
+const WifiIndicator = () => Box({
+    children: [
+        Icon({
+            icon: network.wifi.bind('icon_name'),
+        }),
+        Label({
+            label: network.wifi.bind('ssid')
+                .as(ssid => ssid || 'Unknown'),
+        }),
+    ],
+})
+
+const WiredIndicator = () => Icon({
+    icon: network.wired.bind('icon_name'),
+})
+
+export const NetworkIndicator = () => Widget.Stack({
+	className: "networkindicator",
+    children: {
+        wifi: WifiIndicator(),
+        wired: WiredIndicator(),
+    },
+    shown: network.bind('primary').as(p => p || 'wifi'),
+})
+
+/*
 const { bar, datewin } = options;
 const pos = datewin.position.bind();
 const layout = Utils.derive([bar.position, datewin.position], (bar, qs) => 
@@ -99,3 +126,4 @@ export const WifiList = () => Widget.Box({
 });
 
 export default WifiList;
+*/

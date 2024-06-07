@@ -19,11 +19,13 @@ const PWin = () =>  PopupWindow({
     className: "playwin",
     anchor: pos,
     layer: "top",
+    exclusivity: 'normal',
+    keymode: 'on-demand',
+    margins: [0,75],
     transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     child: Box({
 		vexpand: true,
 		hexpand: true,
-		className: "playwin",
 		children: [
 			Muppet(),
 		]
