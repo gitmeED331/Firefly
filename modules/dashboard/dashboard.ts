@@ -2,8 +2,9 @@ import { Widget, Utils, PopupWindow } from "../../imports";
 import { PowerIcon, TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
 /*import { WiFi } from "./wifi.js";
 import { BluetoothWidget } from "./bluetooth.js";*/
-import { BrightnessSlider }  from "./brightnessSlider.js";
-import { NotificationList } from "./notificationList.js";
+import { BrightnessSlider }  from "./brightnessSlider";
+import { NotificationList } from "./notificationList";
+import { PWRProfiles } from "./power"
 import options from "../../options";
 
 const { Box } = Widget;
@@ -16,6 +17,7 @@ const layout = Utils.derive([dashboard.position], (dashboard, qs) =>
 	);
 
 const quickAccess = Box({
+	className: "quickaccess",
 	vertical: true,
 	hexpand: false,
 	hpack: 'center',
@@ -55,7 +57,13 @@ const quickAccess = Box({
 			className: "dashcontainer",
             vertical:true,
             vexpand:true,
+            hexpand: false,
             children: [
+				Box({
+					hexpand: false,
+					hpack: 'center',
+					child: PWRProfiles(),
+				}),
                 Box({
                     className: "quicktoggles",
                     vertical: true,

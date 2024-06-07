@@ -5,10 +5,10 @@ const { execAsync } = Utils;
 App.addIcons(`${App.configDir}/Icons`);
 const { Box, Icon, Button, Revealer } = Widget;
 
-export const PowerIcon = () => Widget.Button({
-    className: 'Icon',
+export const PowerIcon = () => Button({
+    className: 'quickaccessicon',
     child: 
-		Widget.Icon({
+		Icon({
 			icon: 'preferences-system-network-wakeonlan'
 		}),
     onClicked: () => {
@@ -18,7 +18,7 @@ export const PowerIcon = () => Widget.Button({
 })
 
 export const TerminalIcon = () => Widget.Button({
-    className: 'Icon',
+    className: 'quickaccessicon',
     child: 
 		Widget.Icon({
 			icon: 'terminator'
@@ -30,7 +30,7 @@ export const TerminalIcon = () => Widget.Button({
 })
 
 export const KontactIcon = () => Widget.Button({
-    className: 'Icon',
+    className: 'quickaccessicon',
     child:
 		Widget.Icon({
 			icon: 'kube-mail'
@@ -42,7 +42,7 @@ export const KontactIcon = () => Widget.Button({
 })
 
 export const VPNIcon = item => Widget.Button({
-    className: 'Icon',
+    className: 'quickaccessicon',
     child: 
 		Widget.Icon({
 			icon: 'preferences-system-network-vpn'
@@ -54,7 +54,7 @@ export const VPNIcon = item => Widget.Button({
 })
 
 export const Enpass = () => Widget.Button({
-    className: 'Icon',
+    className: 'quickaccessicon',
     child: 
 		Widget.Icon({
 			icon: 'enpass'

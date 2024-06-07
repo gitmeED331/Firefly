@@ -1,58 +1,120 @@
 import { Widget, Notifications, Utils, Gio, Gtk } from "../../imports";
 
-const { Box } = Widget;
+const { Box, Label, Button } = Widget;
+
+function NotificationIcon({ app_entry, app_icon, image }) {
+    if (image) {
+        return Box({
+            css: `background-image: url("${image}");`
+                + "background-size: contain;"
+                + "background-repeat: no-repeat;"
+                + "background-position: center;",
+        })
+    }
+
+    let icon = "dialog-information-symbolic"
+    if (Utils.lookUpIcon(app_icon))
+        icon = app_icon
+
+    if (app_entry && Utils.lookUpIcon(app_entry))
+        icon = app_entry
+
+    return Box({
+        child: Widget.Icon(icon),
+    })
+}
+
+function Notification(n) {
+    const icon = Box({
+        vpack: "start",
+        className: "notiftemIcon",
+        child: NotificationIcon(n),
+    })
+
+    const title = Label({
+        className: "notifItemTitle",
+        xalign: 0,
+        justification: "left",
+        hexpand: true,
+        max_width_chars: 24,
+        truncate: "end",
+        wrap: true,
+        label: n.summary,
+        use_markup: true,
+    })
+
+    const body = Label({
+        className: "notifItemBody",
+        hexpand: true,
+        use_markup: true,
+        xalign: 0,
+        justification: "left",
+        max_width_chars: 24,
+        label: n.body.trim(),
+        wrap: true,
+    })
+
+    const actions = Box({
+        className: "actions",
+        children: n.actions.map(({ id, label }) => Button({
+            class_name: "action-button",
+            on_clicked: () => {
+                n.invoke(id)
+                n.dismiss()
+            },
+            hexpand: true,
+            child: Label(label),
+        })),
+    })
+
+    return Widget.EventBox(
+        {
+            attribute: { id: n.id },
+            on_primary_click: n.dismiss,
+        },
+        Box(
+            {
+                className: `notification ${n.urgency}`,
+                vertical: true,
+            },
+            Box([
+                icon,
+                Box(
+                    { vertical: true },
+                    title,
+                    body,
+                ),
+            ]),
+            actions,
+        ),
+    )
+}
 
 const Notifs = Box({
-    class_name: "panel-notifs",
-    spacing: 20,
+    className: "notif",
+    spacing: 7,
     vertical: true,
     vexpand: true,
     setup: (self) => {
         self.hook(Notifications, (self) => {
-            self.children = Notifications.notifications.map(n => Widget.Box({
-                class_name: "notificationListItem",
+            self.children = Notifications.notifications.map(n => Box({
+                className: "notifItem",
+                spacing: 20,
                 vertical: true,
                 children: [
-                    Widget.Button({
+                    Button({
                         on_clicked: () => {
                             n.close()
                         },
-                        child: Box({
-                            class_name: "notificationBody",
-                            spacing: 20,
-                            children: [
-                                Widget.Label({
-                                    label: "󰍡",
-                                    class_name: "notificationImage"
-                                }),
-                                Box({
-                                    vertical: true,
-                                    children: [
-                                        Widget.Label({
-                                            label: `${n.summary}`,
-                                            class_name: "notificationTitle",
-                                            xalign: 0,
-                                            wrap: true
-                                        }),
-                                        Widget.Label({
-                                            vpack: "start",
-                                            hpack: "start",
-                                            class_name: "notificationDescription",
-                                            xalign: 0,
-                                            wrap: true,
-                                            label: n.body
-                                        })
-                                    ]
-                                })
-                            ]
-                        })
+                        child: Notification(n),
                     })
-                ],
-            })
-            )
-        })
-    }
+                ]
+			}))
+		})
+	}
 })
+
+
 const NotifBox = Widget.Scrollable({
     vscroll: 'always',
     hscroll: 'never',
@@ -61,8 +123,8 @@ const NotifBox = Widget.Scrollable({
     child: Notifs,
 })
 
-const Empty = Widget.Box({
-  class_name: "notificationEmpty",
+const Empty = Box({
+  class_name: "notifEmpty",
   spacing: 20,
   hpack: "center",
   vpack: "center",
@@ -76,25 +138,25 @@ const Empty = Widget.Box({
   ]
 })
 
-export const NotificationList = () => Widget.Box({
-    class_name: "notificationList",
-    //spacing: 20,
+export const NotificationList = () => Box({
+    class_name: "notifpanel",
+    spacing: 20,
     vertical: true,
     vexpand: true,
     children: [
         Widget.CenterBox({
-			className: 'notifTitleBox',
-            start_widget: Widget.Label({
-				className: "notifTitle",
+			className: 'notifpanelBox',
+            start_widget: Label({
+				className: "notifpanelBoxTitle",
                 label: "Notifications",
                 vpack: 'end',
                 hpack: 'end',
             }),
-            end_widget: Widget.Button({
+            end_widget: Button({
                 label: "  ",
                 hpack: 'center',
                 vpack: 'end',
-                className: "trashicon",
+                className: "notifpanelBoxIcon",
                 on_clicked: () => {
                     const list = Array.from(Notifications.notifications);
                     for (let i = 0; i < list.length; i++) {
