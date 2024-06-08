@@ -221,5 +221,3 @@ export const VolumeTabs = () => Box({
         SettingsButton(),
     ],
 })
-
-//try { VolumeSlider()} catch (VolumeSlider) {console.error(VolumeSlider)}

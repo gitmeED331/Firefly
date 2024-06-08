@@ -17,20 +17,34 @@
 
 .pwrprofiles {
 	color: lime;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 100%);
-	border: $border;
+	border: 4px solid cyan;
 	border-radius: $radius3;
-	padding: 0.35rem 0.5rem;
+	padding: 0.75rem 1rem;
 	font-size: 1rem;
-	&cont {
+	&btn{
+		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 100%);
 		border: $border;
-		border-radius: $radius1;
 		padding: 0.35rem 0.5rem;
-		margin-top: 1rem;
-		color: red;
-		font-size: 1.5rem;
-		background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
 	}
-	&Box {
+}
+
+.pwrcontrols {
+	font-size: 3rem;
+	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 100%);
+	padding: 5px;
+	border: 4px dashed red;
+	&btn {
 	}
+}
+
+pwrcenterCont {
+	border: $border;
+	border-radius: $radius1;
+	padding: 0.35rem 0.5rem;
+	margin-top: 1rem;
+	color: red;
+	font-size: 1.5rem;
+	background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
+}
+pwrcenterBox {
 }

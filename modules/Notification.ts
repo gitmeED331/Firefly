@@ -1,6 +1,14 @@
 import { type Notification } from "../types/service/notifications"
 import icons from "../lib/icons"
-import { Utils, Notifications, GLib } from "../imports"
+import { Utils, Notifications, GLib, Widget } from "../imports"
+
+const {Box, Label} = Widget
+
+const notifications = await Service.import("notifications")
+notifications.popupTimeout = 30000;
+notifications.forceTimeout = false;
+notifications.cacheActions = false;
+notifications.clearDelay = 100;
 
 const time = (time: number, format = "%H:%M") => GLib.DateTime
     .new_from_unix_local(time)
@@ -8,10 +16,10 @@ const time = (time: number, format = "%H:%M") => GLib.DateTime
 
 const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (image) {
-        return Widget.Box({
+        return Box({
             vpack: "start",
             hexpand: false,
-            class_name: "icon img",
+            className: "icon img",
             css: `
                 background-image: url("${image}");
                 background-size: cover;
@@ -30,10 +38,10 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (Utils.lookUpIcon(app_entry || ""))
         icon = app_entry || ""
 
-    return Widget.Box({
+    return Box({
         vpack: "start",
         hexpand: false,
-        class_name: "icon",
+        className: "notiftemIcon",
         css: `
             min-width: 78px;
             min-height: 78px;
@@ -48,18 +56,19 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
 }
 
 export default (notification: Notification) => {
-    const content = Widget.Box({
-        class_name: "content",
+    const content = Box({
+        className: "content",
         children: [
             NotificationIcon(notification),
-            Widget.Box({
+            Box({
                 hexpand: true,
                 vertical: true,
                 children: [
-                    Widget.Box({
+                    Box({
                         children: [
-                            Widget.Label({
-                                class_name: "notifTitle",
+                            Label({
+                                className: "notifItemTitle",
+                                name: "nTitle",
                                 xalign: 0,
                                 justification: "left",
                                 hexpand: true,
@@ -69,21 +78,21 @@ export default (notification: Notification) => {
                                 label: notification.summary.trim(),
                                 use_markup: true,
                             }),
-                            Widget.Label({
-                                class_name: "time",
+                            Label({
+                                className: "time",
                                 vpack: "start",
                                 label: time(notification.time),
                             }),
                             Widget.Button({
-                                class_name: "close-button",
+                                className: "close-button",
                                 vpack: "start",
                                 child: Widget.Icon("window-close-symbolic"),
                                 on_clicked: notification.close,
                             }),
                         ],
                     }),
-                    Widget.Label({
-                        class_name: "notifDescription",
+                    Label({
+                        className: "notifItemBody",
                         hexpand: true,
                         use_markup: true,
                         xalign: 0,
@@ -100,13 +109,13 @@ export default (notification: Notification) => {
     const actionsbox = notification.actions.length > 0 ? Widget.Revealer({
         transition: "slide_down",
         child: Widget.EventBox({
-            child: Widget.Box({
-                class_name: "actions horizontal",
+            child: Box({
+                className: "actions horizontal",
                 children: notification.actions.map(action => Widget.Button({
-                    class_name: "action-button",
+                    className: "action-button",
                     on_clicked: () => notification.invoke(action.id),
                     hexpand: true,
-                    child: Widget.Label(action.label),
+                    child: Label(action.label),
                 })),
             }),
         }),
@@ -125,14 +134,14 @@ export default (notification: Notification) => {
 
             notification.dismiss()
         },
-        child: Widget.Box({
+        child: Box({
             vertical: true,
             children: actionsbox ? [content, actionsbox] : [content],
         }),
     })
 
-    return Widget.Box({
-        class_name: `notification ${notification.urgency}`,
+    return Box({
+        className: `notification ${notification.urgency}`,
         child: eventbox,
     })
 }

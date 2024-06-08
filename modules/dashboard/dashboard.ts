@@ -4,7 +4,7 @@ import { PowerIcon, TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconBut
 import { BluetoothWidget } from "./bluetooth.js";*/
 import { BrightnessSlider }  from "./brightnessSlider";
 import { NotificationList } from "./notificationList";
-import { PWRProfiles } from "./power"
+import { PowerCenter } from "./power"
 import options from "../../options";
 
 const { Box } = Widget;
@@ -62,7 +62,7 @@ const quickAccess = Box({
 				Box({
 					hexpand: false,
 					hpack: 'center',
-					child: PWRProfiles(),
+					child: PowerCenter(),
 				}),
                 Box({
                     className: "quicktoggles",

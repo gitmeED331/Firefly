@@ -1,10 +1,11 @@
 import Notification from "./Notification"
 import options from "../options"
-import { Utils, Notifications } from "../imports"
+import { Utils, Notifications, Widget } from "../imports"
 const notifications = await Service.import("notifications")
 const { transition } = options
 const { position } = options.notifications
 const { timeout, idle } = Utils
+const { Box, Label } = Widget
 
 function Animated(id: number) {
     const n = notifications.getNotification(id)!
@@ -22,7 +23,7 @@ function Animated(id: number) {
         child: inner,
     })
 
-    const box = Widget.Box({
+    const box = Box({
         hpack: "end",
         child: outer,
     })
@@ -39,7 +40,7 @@ function Animated(id: number) {
             inner.reveal_child = false
             timeout(transition.value, () => {
                 outer.reveal_child = false
-                timeout(transition.value, () => {
+                timeout(300, () => {
                     box.destroy()
                 })
             })
@@ -49,7 +50,7 @@ function Animated(id: number) {
 
 function PopupList() {
     const map: Map<number, ReturnType<typeof Animated>> = new Map
-    const box = Widget.Box({
+    const box = Box({
         hpack: "end",
         vertical: true,
         css: options.notifications.width.bind().as(w => `min-width: ${w}px;`),
@@ -83,7 +84,7 @@ export default (monitor: number) => Widget.Window({
     name: `notifications${monitor}`,
     anchor: position.bind(),
     class_name: "notifications",
-    child: Widget.Box({
+    child: Box({
         css: "padding: 2px;",
         child: PopupList(),
     }),
