@@ -1,6 +1,8 @@
 
 This is a work in progress.
 
+## 6-1-24: Pictures are now outdated, but the layout is still correct.
+
 ![AGSscreenshot0](https://github.com/gitmeED331/FireflyAGS/assets/142960718/759d6cf7-f9d6-41a9-bd4a-a2bda33381fa)
 
 ![AGSscreenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/4d37db1a-02d3-4ff0-92d8-d347054a9259)
