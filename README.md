@@ -62,10 +62,10 @@ Many of the files are not being used and will not be used, they will be removed 
 **I am running Arch Linux**
 
 ## Required apps/packages (all found in main repository and AUR)
-- pavcontrol
+- pavucontrol
 - pipewire-pulse
 - light (for screen brightness control)
-- mpd
+- mpd/mpris
 - power-profiles-daemon
 - upower
 
