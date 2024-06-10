@@ -6,7 +6,7 @@ const RoundedAngleEnd = Roundedges;
 const { Box, CenterBox, Button, Icon, Label, EventBox, Slider } = Widget;
 const { execAsync, lookUpIcon } = Utils;
 
-const mpris = await Service.import("mpris");;
+const mpris = await Service.import("mpris");
 const players = mpris.bind("players");
 const player = Mpris.getPlayer();
 
@@ -120,7 +120,7 @@ function Player(player) {
 		vpack: "center",
 		on_clicked: () => player.playPause(),
 		visible: player.bind("can_play"),
-		child: Widget.Icon({
+		child: Icon({
 			icon: player.bind("play_back_status").transform(s => {
 				switch (s) {
 					case "Playing": return PAUSE_ICON
@@ -136,7 +136,7 @@ function Player(player) {
 		vpack: "center",
 		on_clicked: () => player.previous(),
 		visible: player.bind("can_go_prev"),
-		child: Widget.Icon(PREV_ICON),
+		child: Icon(PREV_ICON),
 	})
 
 	const next = Button({
@@ -144,7 +144,7 @@ function Player(player) {
 		vpack: "center",
 		on_clicked: () => player.next(),
 		visible: player.bind("can_go_next"),
-		child: Widget.Icon(NEXT_ICON),
+		child: Icon(NEXT_ICON),
 	})
 
 	return Box(
@@ -179,24 +179,26 @@ function Player(player) {
 }
 
 function Muppet() {
-    return Widget.Box({
-        vertical: true,
-        //css: "min-height: 2px; min-width: 2px;", // small hack to make it visible
-        //visible: players.as(p => p.length > 0 ),
-        children: players.as(p => p.filter(p => p.playback_status != "Stopped").map(Player)),
-    })
+	return Box({
+		vertical: true,
+		children: Utils.watch([], [
+	  [Mpris, "player-changed"],
+	  [Mpris, "player-added"],
+	  [Mpris, "player-closed"],
+	], () => Mpris.players).transform(p => p.filter(p => p.play_back_status !== 'Stopped').map(Player)),
+	})
 }
 
 const PWin = () =>  PopupWindow({
-    name: "playwin",
-    className: "playwin",
-    anchor: pos,
-    layer: "top",
-    exclusivity: 'normal',
-    keymode: 'on-demand',
-    margins: [0,75],
-    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
-    child: Box({
+	name: "playwin",
+	className: "playwin",
+	anchor: pos,
+	layer: "top",
+	exclusivity: 'normal',
+	keymode: 'on-demand',
+	margins: [0,75],
+	transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+	child: Box({
 		vexpand: true,
 		hexpand: true,
 		children: [
@@ -213,19 +215,35 @@ export function Playwin() {
 	})
 }
 
+function trimTrackTitle(title) {
+    if (!title) return '';
+    const cleanPatterns = [
+        /【[^】]*】/,         // Touhou n weeb stuff
+        " [FREE DOWNLOAD]", // F-777
+        " (Radio Version)"
+    ];
+    cleanPatterns.forEach((expr) => title = title.replace(expr, ''));
+    return title;
+}
+
+const trackTitle = Label({
+	hexpand: true,
+	truncate: 'end',
+	//maxWidthChars: 30, // Doesn't matter, just needs to be non negative
+	setup: (self) => self.hook(Mpris, label => {
+		const mpris = Mpris.getPlayer('');
+		if (mpris)
+			label.label = `${trimTrackTitle(mpris.trackTitle)} • ${mpris.trackArtists.join(', ')}`;
+		else
+			self.label = 'No media';
+	}),
+})
+
 export const MediaBTN = ( ) => Button({
 	className: 'mediabtn',
-	vexpand: true,
+	vexpand: false,
 	hexpand: true,
 	onPrimaryClick: ( ) => App.toggleWindow("playwin"),
 	onSecondaryClickRelease: ( ) => { Hyprland.messageAsync('dispatch exec deezer') },
-	child: Label('-').hook(Mpris, self => {
-		if (Mpris.players[0]) {
-			const { track_title } = Mpris.players[0];
-			self.label = track_title.length > 30 ? `${track_title.substring(0, 30)}...` : track_title;
-		} 
-	else {
-		self.label = 'Nothing is playing';
-	}
-	}, 'player-changed'),
+	child: trackTitle
 });
