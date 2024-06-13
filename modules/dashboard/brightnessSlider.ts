@@ -2,10 +2,10 @@ import { Widget, Utils, Gio } from "../../imports";
 import Brightness from "./brightness";
 
 const { monitorFile, readFile, exec } = Utils
-const { Box } = Widget;
+const { Box, Slider, Label } = Widget;
 
-const Slider = () =>
-	Widget.Slider({
+const BSlider = () =>
+	Slider({
 		className: "brightsld Slider",
 		drawValue: false,
 		on_change: self => Brightness.screen_value = self.value,
@@ -13,7 +13,7 @@ const Slider = () =>
 	});
 	
 const Icon = () =>
-	Widget.Label({
+	Label({
 		className: "brightsldIcon",
 		setup: self => self.hook(Brightness, (self, screenValue) => {
         const icons = ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"];
@@ -31,13 +31,13 @@ export const BrightnessSlider = () =>
 				vpack: "center",
 				children: [
 					Icon(),
-					Widget.Label({
+					Label({
 						className: "brightsldLabel",
 						label: "Brightness",
 						hpack: "center",
 					}),
 				]
 			}),
-			Slider(),
+			BSlider(),
 		],
 	});

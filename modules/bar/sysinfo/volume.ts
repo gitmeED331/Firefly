@@ -1,5 +1,4 @@
 import { Widget, Audio, Utils, PopupWindow, Mpris } from "../../../imports";
-//import { VolumeTabs, AppMixer, SinkSelector, VolumeSlider } from "./volumeSlider";
 import options from "../../../options";
 import { Arrow, Menu } from "../../ToggleButton";
 import { dependencies, icon, sh } from "../../../lib/utils";
@@ -263,6 +262,8 @@ export const Volumebtn = () => Box({
 		Button({
 			onPrimaryClick: () => { App.toggleWindow("dashvol")},
 			onSecondaryClick: () => { audio.speaker.is_muted = !audio.speaker.is_muted },
+			on_scroll_up: () => audio.speaker.volume += 0.035,
+			on_scroll_down: () => audio.speaker.volume -= 0.035,
 			child:
 				Widget.Icon().hook(audio.speaker, self => {
 					const vol = audio.speaker.volume * 150;

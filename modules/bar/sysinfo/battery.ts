@@ -25,29 +25,6 @@ const PercentLabel = () => Widget.Revealer({
 	}),
 })
 
-/*const LevelBar = () => {
-	const level = Widget.CircularProgress({
-		className: "batlvlbar",
-		rounded: false,
-		inverted: false,
-		startAt: 0.75,
-		visible: bar.bind().as(b => b !== "hidden"),
-		value: battery.bind("percent").as(p => (p / 100) * blocks.value),
-	})
-	const update = () => {
-		level.value = (battery.percent / 100) * blocks.value
-		level.css = `block { min-width: ${width.value / blocks.value}pt; }`
-	}
-	return level
-		.hook(width, update)
-		.hook(blocks, update)
-		.hook(bar, () => {
-			level.vpack = bar.value === "whole" ? "fill" : "center"
-			level.hpack = bar.value === "whole" ? "fill" : "center"
-		})
-}
-*/
-
 const LevelBar = () => {
 	const level = Widget.LevelBar({
 		className: "batlvlbar",

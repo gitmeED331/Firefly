@@ -2,7 +2,7 @@ import { Widget, Utils, Mpris, Hyprland, PopupWindow, Roundedges, Mpris, Reveale
 import options from "../../options";
 import icons from "../../lib/icons.js";
 
-const { RoundedAngleEnd } = Roundedges;
+const RoundedAngleEnd = Roundedges;
 const { Box, CenterBox, Button, Icon, Label, EventBox, Slider } = Widget;
 const { execAsync, lookUpIcon } = Utils;
 

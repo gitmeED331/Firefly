@@ -73,6 +73,10 @@ const options = mkOptions(OPTIONS, {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 	},
 	
+	powerwin: {
+		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right", "left", "bottom"]),
+	},
+
 	notifications: {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 		width: opt(440),

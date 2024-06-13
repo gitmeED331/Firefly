@@ -7,11 +7,11 @@ import icons from "../../lib/icons";
 
 const systemtray = await Service.import("systemtray")
 const { ignore, include, stitem } = options.bar.systray
-const { Label, Revealer, Button, Box } = Widget
+const { Label, Revealer, Button, Box, Icon } = Widget
 
 const SysTrayItem = (item: TrayItem) => PanelButton({
     className: "systrayitem",
-    child: Widget.Icon({ icon: item.bind("icon") }),
+    child: Icon({ icon: item.bind("icon") }),
     tooltipMarkup: item.bind("tooltip_markup"),
     setup: self => {
         const { menu } = item

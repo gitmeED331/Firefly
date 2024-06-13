@@ -1,0 +1,70 @@
+// ------------ power profiiles in dashboard --------
+.pwrprofiles {
+	color: lime;
+	padding: 0.5rem 0.5rem;
+	font-size: 1rem;
+	&btn{
+		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,1) 100%);
+		border: $border;
+		border-radius: $radius2;
+		padding: 0.35rem 0.5rem;
+	}
+}
+
+.pwrcontrols {
+	font-size: 3rem;
+	padding: 5px;
+}
+
+.pwrtabs {
+	border: $border;
+	border-radius: $radius1;
+	padding: 0.25rem 0.25rem;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	color: #FFFF00;
+	font-size: 1.25rem;
+	background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
+	background-position: center;
+	background-blend-mode: difference;
+	background-size: contain;
+	background-color: steelblue;
+}
+
+// ---------- power menu window ------
+
+.pwrbtns {
+	font-size: 2rem;
+	border-radius: 5rem;
+	min-width: 10rem;
+	min-height: 10rem;
+	border-left: 0.5rem solid #0F9BFF;
+	border-right: 0.5rem solid #0F9BFF;
+	background-color: rgba(0,0,0,0.8);
+	margin: 0rem 1.5rem;
+	padding: 0.5rem;
+	&:hover {
+		border-left: 0.5rem dashed red;
+		border-right: 0.5rem dashed red;
+	}
+}
+.pwricon {
+	font-size: 5rem;
+}
+.pwrbox {
+	background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
+	background-position: center;
+	background-blend-mode: luminosity;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(0,0,0,0.8);
+	min-width: 400px;
+	min-height: 500px;
+	padding: 0rem 4rem;
+	border-radius: 3rem;
+}
+.pwrwin {
+	background-color: rgba(0,0,0,0.8)
+}

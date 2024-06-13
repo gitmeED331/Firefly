@@ -5,7 +5,7 @@ const { execAsync } = Utils;
 App.addIcons(`${App.configDir}/assets`);
 const { Box, Icon, Button, Revealer } = Widget;
 
-export const TerminalIcon = () => Button({
+export const TerminalIcon = () => Widget.Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'Terminal',
 	child: 
@@ -18,7 +18,7 @@ export const TerminalIcon = () => Button({
 	},
 })
 
-export const KontactIcon = () => Button({
+export const KontactIcon = () => Widget.Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'eMail',
 	child:
@@ -31,7 +31,7 @@ export const KontactIcon = () => Button({
 	},
 })
 
-export const VPNIcon = item => Button({
+export const VPNIcon = item => Widget.Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'WireGuard VPN',
 	child: 
@@ -44,7 +44,7 @@ export const VPNIcon = item => Button({
 	},
 })
 
-export const Enpass = () => Button({
+export const Enpass = () => Widget.Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'Enpass',
 	child: 

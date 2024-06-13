@@ -27,13 +27,13 @@ const Dashbtn = () => Button({
 });
 
 const Powerbtn = () => Button({
-	className: 'dashbtn',
-	tooltip_text: 'Power Menu',
+	className: 'dashbtn';
+	tooltip_text: 'Power Menu';
 	child:
 		Icon({
 			icon: 'preferences-system-network-wakeonlan'
-		}),
-	onClicked: () => App.toggleWindow("pwrwin")
+		});
+	onClicked: () => App.toggleWindow("pwrwin");
 });
 
 const Left = ()	=> Box({

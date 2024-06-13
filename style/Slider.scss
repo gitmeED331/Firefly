@@ -12,6 +12,16 @@
 	};
 }
 
+.Slider slider{
+  min-height: 15px;
+  min-width: 15px;
+  border-radius: 20px;
+  background-color: blue;
+  border: none;
+  box-shadow: 0px 0px 4px white;
+  margin-right: 2px;
+}
+
 //------------- VOLUME SLIDER ---------------------
 
 .volSlider {
@@ -23,6 +33,7 @@
 
 .volumesld {
 	margin-top: 0.5rem;
+	margin-right: 0.65rem;
 	&Label {
 		margin-bottom: 0.5rem;
 		font-size: 1.25rem;
@@ -83,6 +94,7 @@
 
 .mixeritem {
 	color: rgba(255,0,0,1);
+	margin-right: 0.65rem;
 	&icon {
 		color: rgba(255,0,0,1);
 		margin-right: 0.25rem;

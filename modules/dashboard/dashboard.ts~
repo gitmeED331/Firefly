@@ -44,7 +44,7 @@ const quickAccess = Box({
 	margins: [20,0,0,0],
     transition: "slide_left",
     layer: "top",
-    child:
+    child: 
         Box({
 			className: "dashcontainer",
             vertical:true,

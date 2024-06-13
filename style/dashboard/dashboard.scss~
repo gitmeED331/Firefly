@@ -1,0 +1,55 @@
+@import "quicktoggles";
+
+.dashboard {
+    font-weight: bold;
+    background: none;
+}
+
+.dashcontainer {
+	background-color: rgba(0,0,0,0.5);
+	min-height: 71.75rem;
+	border-radius: $radius-tbleft;
+	border-left: 2px solid #0F9BFF;
+	border-bottom: 2px solid #0F9BFF;
+	border-top: 2px solid #0F9BFF;
+	margin-top: 0.25rem;
+}
+
+.pwrprofiles {
+	color: lime;
+	padding: 0.5rem 0.5rem;
+	font-size: 1rem;
+	&btn{
+		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,1) 100%);
+		border: $border;
+		border-radius: $radius2;
+		padding: 0.35rem 0.5rem;
+	}
+}
+
+.pwrcontrols {
+	font-size: 3rem;
+	padding: 5px;
+	&btn {
+		
+	}
+}
+
+.pwrtabs {
+	border: $border;
+	border-radius: $radius1;
+	padding: 0.25rem 0.25rem;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	color: #FFFF00;
+	font-size: 1.25rem;
+	background-image: url("/home/topsykrets/.config/ags/Firefly/assets/lightning.png");
+	background-position: center;
+	background-blend-mode: difference;
+	background-size: contain;
+	background-color: steelblue;
+}
+pwrcenterBox {
+}

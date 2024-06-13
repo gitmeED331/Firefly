@@ -105,7 +105,7 @@ const pwrWIN = () => PopupWindow({
 		vertical: false,
 		children: [
 			Button({
-				className: "pwrbtns",
+				className: "pwrcontrolsbtn",
 				hpack: 'center',
 				vpack: 'center',
 				child: Box({
@@ -129,7 +129,7 @@ const pwrWIN = () => PopupWindow({
 				tooltip_text: 'Lock',
 			}),
 			Button({
-				className: "pwrbtns",
+				className: "pwrcontrolsbtn",
 				hpack: 'center',
 				vpack: 'center',
 				child: Box({
@@ -153,7 +153,7 @@ const pwrWIN = () => PopupWindow({
 				tooltip_text: 'Logout',
 			}),
 			Button({
-				className: "pwrbtns",
+				className: "pwrcontrolsbtn",
 				hpack: 'center',
 				vpack: 'center',
 				child: Box({
@@ -177,7 +177,7 @@ const pwrWIN = () => PopupWindow({
 				tooltip_text: 'Reboot',
 			}),
 			Button({
-				className: "pwrbtns",
+				className: "pwrcontrolsbtn",
 				hpack: 'center',
 				vpack: 'center',
 				child: Box({

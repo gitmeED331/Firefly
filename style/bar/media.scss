@@ -1,54 +1,55 @@
 .media {
-    color: #cdd6f4;
-    font-weight: bold;
-    border-bottom: $border;
-    &:hover {
-        color: $Hoverfont-color;
-    }
-	&btn {
-		background: $BarWidgetBG;
-		color: $Primfont-color;
-		border-bottom: $border;
-		font-weight: bold;
-		min-width: 12px;
-		min-height: 12px;
-		&:hover {
-		   color: $Hoverfont-color;
-		}
+	font-weight: bold;
+	background: $BarWidgetBG;
+}
+.mbar {
+	border-bottom: $border;
+}
+.mbtn {
+	//background: $BarWidgetBG;
+	//color: $Primfont-color;
+	min-width: 12px;
+	min-height: 12px;
+	&:hover {
+		color: $Hoverfont-color;
 	}
 }
 
 .player {
 	background: $BarWidgetBG;
-    padding: 5px;
+    padding-left: 10px;
     border: $border;
     border-radius: $radius3;
-    min-width: 300px;
-	min-height: 125px
+    min-width: 350px;
+	min-height: 10px
 }
 .trackimg {
-	background-size: 50px;
+	background-size: 25px;
 	background-position: center;
 	border-radius: 5px;
-	margin-right: 1rem;
+	margin: 0.25rem 0.25rem;
 }
 .playicon {
 	padding: 0rem;
-	margin: 0rem 1rem;
+	margin: 0rem 0.25rem;
+	margin-top: 0.25rem;
+	color: $Primfont-color;
+	font-size: 25px;
 }
 
 .tracktitle {
 	font-size: 1.2em;
 	border-radius: 3rem;
-	padding: 0.5rem 1rem;
-	background-color: rgba(0,0,0,0.75);
+	padding: 0rem 0.5rem;
+	//background-color: rgba(0,0,0,0.75);
 	color: rgba(255,0,0,1);
 }
 
 .artist {
-		font-size: 1.15em;
+		font-size: 1rem;
 		font-weight: bold;
-		margin-right: 2rem;
+		padding: 0rem 0.25rem;
+		//margin-right: 2rem;
 		color: cyan;
 	}
 	
@@ -106,7 +107,8 @@
 }
 
 .playercontrols {
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(15,155,255,0.5);
 	border-radius: 3rem;
-	padding: 0.5rem 0.3rem;
+	margin-left: 0.5rem;
+	//padding: 0.5rem 0.3rem;
 }
