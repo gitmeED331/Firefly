@@ -1,10 +1,12 @@
 
 ## This is a work in progress.
 
-![screenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/dca341a5-a96c-4966-bb04-80c2c271a806)
-![screenshot2](https://github.com/gitmeED331/FireflyAGS/assets/142960718/52791231-b7ed-4d3d-870b-9968f1259bcc)
-![screenshot3](https://github.com/gitmeED331/FireflyAGS/assets/142960718/dec2ef8a-dc8d-4ba9-b7ca-aebc2b7755a6)
-![screenshot4](https://github.com/gitmeED331/FireflyAGS/assets/142960718/a17146e6-f4bc-4873-a1d6-bc3af13216d9)
+![screenshot1](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot1.png)
+![screenshot2](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot2.png)
+![screenshot3](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot3.png)
+![screenshot4](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot4.png)
+
+https://github.com/gitmeED331/FireflyAGS/assets/142960718/28bf5b8d-5a53-4478-8330-a098923c981f
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
