@@ -1,14 +1,10 @@
 
-This is a work in progress.
+## This is a work in progress.
 
-## 6-1-24: Pictures are now outdated (completely new styling), but the layout is still correct.
-
-![AGSscreenshot0](https://github.com/gitmeED331/FireflyAGS/assets/142960718/759d6cf7-f9d6-41a9-bd4a-a2bda33381fa)
-
-![AGSscreenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/4d37db1a-02d3-4ff0-92d8-d347054a9259)
-
-![ags-overview](https://github.com/gitmeED331/FireflyAGS/assets/142960718/1b8d19ef-aba9-490b-8bdd-a8055a10e543)
-
+![screenshot4](https://github.com/gitmeED331/FireflyAGS/assets/142960718/a17146e6-f4bc-4873-a1d6-bc3af13216d9)
+![screenshot3](https://github.com/gitmeED331/FireflyAGS/assets/142960718/dec2ef8a-dc8d-4ba9-b7ca-aebc2b7755a6)
+![screenshot2](https://github.com/gitmeED331/FireflyAGS/assets/142960718/52791231-b7ed-4d3d-870b-9968f1259bcc)
+![screenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/dca341a5-a96c-4966-bb04-80c2c271a806)
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
