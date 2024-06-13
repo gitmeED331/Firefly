@@ -1,10 +1,9 @@
 
 ## This is a work in progress.
 
-![screenshot1](https://github.com/gitmeED331/FireflyAGS/assets/142960718/79ee6402-4109-4e39-9b6d-02c049914099)
-![screenshot2](https://github.com/gitmeED331/FireflyAGS/assets/142960718/008ab90c-2b16-4807-b2c8-e278a3087271)
-![screenshot3](https://github.com/gitmeED331/FireflyAGS/assets/142960718/bbe766d7-3a53-46fc-8ee9-94a1fe2f0bd2)
-![screenshot4](https://github.com/gitmeED331/FireflyAGS/assets/142960718/910f1f8a-683b-4297-b5fb-ccd82ace648d)
+### Here is a video show casing some of the main elements and you can find some pictures in the screenshots folder.
+
+https://github.com/gitmeED331/FireflyAGS/assets/142960718/3defcbed-7d0c-43e8-93e0-824d69d43ac5
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
