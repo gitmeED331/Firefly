@@ -1,4 +1,4 @@
-import { Utils, App, Gio, Gtk, Hyprland } from "./imports";
+import { Utils, App, Gio, Gtk, Hyprland, Widget } from "./imports";
 import "./lib/session";
 import init from "./lib/init";
 import options from "./options";
@@ -7,6 +7,7 @@ import options from "./options";
 import { Bar } from "./modules/bar/bar";
 import { Dashboard } from "./modules/dashboard/dashboard";
 import { Playwin } from "./modules/bar/media";
+import { powerWIN } from "./modules/dashboard/power";
 import { CalendarWin } from "./modules/bar/calendar";
 import{ Dashvol } from "./modules/bar/sysinfo/volume";
 //import { NetWidget } from "./modules/bar/sysinfo/network";
@@ -44,7 +45,8 @@ App.config({
 		Playwin()
 		CalendarWin()
 		NotificationPopups()
-		},
+		powerWIN()
+	},
 	closeWindowDelay: {
 		"overview": options.transition.value,
 		},
