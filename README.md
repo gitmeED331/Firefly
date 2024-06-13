@@ -6,8 +6,6 @@
 ![screenshot3](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot3.png)
 ![screenshot4](https://github.com/gitmeED331/FireflyAGS/screenshots/screenshot4.png)
 
-https://github.com/gitmeED331/FireflyAGS/assets/142960718/28bf5b8d-5a53-4478-8330-a098923c981f
-
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
 Many of the files are not being used and will not be used, they will be removed later, they remain until I reach a point I am happy with my setup.
