@@ -3,7 +3,11 @@
 
 ### Here is a video showcasing some of the main elements and you can find some pictures in the screenshots folder.
 
-https://github.com/gitmeED331/Firefly/assets/142960718/c68564e6-9d1b-439b-a1be-9c936e5a0643
+
+
+https://github.com/gitmeED331/Firefly/assets/142960718/e20c13d4-ebae-4454-94fa-1930f15ee46d
+
+
 
 The folder structure is a mess and will be cleaned up at a later time, when I reach a point I have every feature I want.
 
