@@ -1,0 +1,15 @@
+.BarBTN {
+    background: $WidgetBG;
+    border-bottom: $border;
+    font-size: 1.4rem;
+    &:hover {
+        color: $Hoverfont-color;
+    }
+}
+
+.BarBTN2 {
+    font-size: 1.4rem;
+    &:hover {
+        color: $Hoverfont-color;
+    }
+}

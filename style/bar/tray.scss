@@ -1,0 +1,36 @@
+.tray {
+	background: $WidgetBG;
+	border-bottom: $border;
+	> * {
+		margin: 0 3px;
+		margin-right: 4px;
+		margin-left: 4px;
+		border: 2px solid rgba(0,0,0,0);
+		background-color: transparent;
+		font-weight: bold;
+		padding: 1px 2px;
+	}
+}
+.systrayitem:hover {
+	background-color: #1e1e2e;
+	border-radius: 0rem 0rem 3rem 3rem;
+	border-bottom: 2px solid #0000FF;
+	border-left: 2px solid #0000FF;
+	border-right: 2px solid #0000FF;
+}
+
+menu {
+	menuitem {
+		background: linear-gradient(0deg, rgba(15,155,255,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 65%, rgba(15,155,255,1) 100%);
+		border-radius: 10px;
+		border: 2px solid #11111b;
+		color: $Primfont-color;
+		margin: 1px;
+		padding: 5px;
+		&:hover {
+			color: $Hoverfont-color;
+			border: 2px solid #0000FF;
+			font-weight: bold;
+		};
+	}
+}

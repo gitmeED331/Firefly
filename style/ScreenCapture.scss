@@ -1,0 +1,75 @@
+.ScreenCapture {
+	color: $Secfont-color;
+	font-weight: bold;
+	background: $WidgetBG;
+	//background-position: center;
+	//background-blend-mode: luminosity;
+	//background-repeat: no-repeat;
+	//background-size: 50% auto;
+	//background-color: rgba(0,0,0,0.6);
+	//min-width: 400px;
+	//min-height: 500px;
+	padding: 0rem 1rem;
+	border: $border;
+
+	button {
+		border-radius: 5rem;
+		min-width: 5rem;
+		min-height: 5rem;
+		border-left: 0.5rem solid #0F9BFF;
+		border-right: 0.5rem solid #0F9BFF;
+		border-top: 0.15rem solid #0F9BFF;
+		border-bottom: 0.15rem solid #0F9BFF;
+		background: linear-gradient(0deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 15%, rgba(15,155,255,0.7) 50%, rgba(255,255,255,1) 85%, rgba(255,255,255,0.5) 100%);
+		margin: 0rem 0.5rem;
+		padding: 0.5rem;
+
+		image {
+			//@include button;
+			border-radius: $radius;
+			min-width: 1em;
+			min-height: 1em;
+			font-size: 2rem;
+		}
+
+		label,
+		image {
+			color: black;
+		}
+
+		label {
+			//margin-top: 0rem;
+		}
+
+		&:hover {
+			image {
+				//@include button-hover;
+			}
+
+			label {
+				//color: $fg;
+			}
+			border-left: 0.5rem dashed red;
+			border-right: 0.5rem dashed red;
+			background: linear-gradient(0deg, rgba(255,0,0,0.5) 0%, rgba(255,0,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 85%, rgba(255,0,0,0.5) 100%);
+		}
+
+		&:focus image {
+			//@include button-focus;
+		}
+
+		&:active image {
+			//@include button-active;
+		}
+
+		&:focus,
+		&:active {
+			label {
+				color: $Secfont-color;
+			}
+			border-left: 0.5rem dashed rgba(255,255,0,1);
+			border-right: 0.5rem dashed rgba(255,255,0,1);
+			background: linear-gradient(0deg, rgba(255,255,0,0.5) 0%, rgba(255,255,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,255,0,1) 85%, rgba(255,255,0,0.5) 100%);
+		}
+	}
+}

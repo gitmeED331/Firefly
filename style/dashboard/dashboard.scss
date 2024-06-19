@@ -1,0 +1,16 @@
+@import "quicktoggles";
+
+.dashboard {
+    font-weight: bold;
+    background: none;
+}
+
+.dashcontainer {
+	background: $WidgetBG;
+	min-height: 71.75rem;
+	border-radius: $radius-tbleft;
+	border-left: 2px solid #0F9BFF;
+	border-bottom: 2px solid #0F9BFF;
+	border-top: 2px solid #0F9BFF;
+	margin-top: 0.25rem;
+}

@@ -1,0 +1,44 @@
+@keyframes lowBlink {
+  0% { color: #f5c2e7; }
+  50% { color: #cdd6f4; }
+  100% { color: #f5c2e7; }
+}
+
+.sysinfo {
+	background: $WidgetBG;
+	border-bottom: $border;
+	color: $Primfont-color;
+	font-weight: bold;
+}
+
+.volumebtn {
+	color: $Primfont-color;
+	&:hover {
+		color: $Hoverfont-color;
+		border: $border;
+	}
+}
+
+.battery {
+	border: none;
+	color: black;
+	&.low {
+		animation: lowBlink 3s infinite;
+	}
+		&:hover {
+		color: $Hoverfont-color;
+	}
+}
+.whole, .regular {
+	border-radius: 20rem;
+	background-color: rgba(0,0,0,0);
+	&.low {
+		animation: lowBlink 3s infinite;
+	}
+	& trough {
+		background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,35,0,0.8) 10%, lime 50%, rgba(0,35,0,0.8) 90%, rgba(0,0,0,0) 100%);
+		border-radius: 20rem;
+	}
+	& hightlight {
+	}
+}

@@ -1,0 +1,9 @@
+.clock {
+    background: $WidgetBG;
+    color: $Primfont-color;
+    font-weight: bold;
+    border-bottom: $border;
+    &:hover {
+        color: $Hoverfont-color;
+    }
+}

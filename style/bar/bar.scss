@@ -1,0 +1,21 @@
+@import "clock";
+@import "calendar";
+@import "media";
+@import "sysinfo";
+@import "title";
+@import "tray";
+@import "workspaces";
+
+.bar {
+    font-family: $font;
+    color: $Primfont-color;
+	background-image: none;
+	&left {
+		min-width: 100px;
+	}
+	&center {
+	}
+	&right {
+		min-width: 100px;
+	}
+}
