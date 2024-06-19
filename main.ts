@@ -7,12 +7,14 @@ import options from "./options";
 import { Bar } from "./modules/bar/bar";
 import { Dashboard } from "./modules/dashboard/dashboard";
 import { Playwin } from "./modules/bar/media";
-import { powerWIN } from "./modules/dashboard/power";
-import { CalendarWin } from "./modules/bar/calendar";
+import pwrprofiles from "./modules/powerprofile";
+import sessioncontrols from "./modules/sessioncontrol";
+import { Calendar } from "./modules/bar/calendar";
 import{ Dashvol } from "./modules/bar/sysinfo/volume";
 //import { NetWidget } from "./modules/bar/sysinfo/network";
-import Overview from "./modules/bar/overview/Overview";
+import Overview from "./modules/overview/Overview";
 import NotificationPopups from "./modules/notificationPopups";
+//import { ScreenCapture } from "./modules/ScreenCapture";
 
 const { execAsync, exec, monitorFile } = Utils;
 
@@ -43,9 +45,10 @@ App.config({
 		Dashboard()
 		Dashvol()
 		Playwin()
-		CalendarWin()
+		Calendar()
 		NotificationPopups()
-		powerWIN()
+
+		//ScreenCapture()
 	},
 	closeWindowDelay: {
 		"overview": options.transition.value,
@@ -55,5 +58,7 @@ App.config({
 	windows: () => [ 
 		Bar(),
 		Overview(),
+		sessioncontrols(),
+		pwrprofiles()
 	],
 })

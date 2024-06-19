@@ -73,8 +73,38 @@ const options = mkOptions(OPTIONS, {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 	},
 	
-	powerwin: {
+	pwrmenu: {
+		lock: opt("bash -c 'exec ags -b lockscreen -c ~/.config/ags/Lockscreen/lockscreen.js'"),
+		reboot: opt("systemctl reboot"),
+		logout: opt("bash -c 'exec  ~/.config/hypr/scripts/hyprkill.sh >/dev/null 2>&1 &'"),
+		shutdown: opt("systemctl -i poweroff"),
+		layout: opt<"line" | "box">("line"),
+		labels: opt(true),
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right", "left", "bottom"]),
+	},
+
+	ssrmenu: {
+		AShot: opt("bash -c"+"exec '"+"grim -g "+'"$(slurp)"'+" ~/Pictures/Screenshots/Screenshot-area_$(date +%Y-%m-%d_%H%M-%S).png'"),
+		FShot: opt("bash -c 'grim ~/Pictures/Screenshots/Screenshot-full_$(date +%Y-%m-%d_%H%M-%S).png'"),
+		//WShot: opt(""),
+		ARecord: opt("bash -c"+"exec '"+"wf-recorder -g "+'"$(slurp)"'+" -f ~/Pictures/Screenshots/Screenrecording-area_$(date +%Y-%m-%d_%H-%M-%S).mp4'"),
+		FRecord: opt("bash -c 'exec wf-recorder -f ~/Pictures/Screenshots/Screenrecording-full_$(date +%Y-%m-%d_%H%M-%S).mp4'"),
+		//WRecord: opt(""),
+		layout: opt<"line" | "box">("line"),
+		labels: opt(true),
+		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top"]),
+	},
+
+	pwrprof: {
+		performancelight: opt("light -S 100"),
+		performance: opt("performance"),
+		balancelight: opt("light -S 60"),
+		balance: opt("balanced"),
+		saverlight: opt("light -S 30"),
+		saver: opt("power-saver"),
+		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
+		layout: opt<"line" | "box">("line"),
+		labels: opt(true),
 	},
 
 	notifications: {
