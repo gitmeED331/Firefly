@@ -31,11 +31,11 @@ Many of the files are not being used and will not be used, they will be removed 
   - Status: nearly complete
   - issues:
     - [X] Reactive Volume icon with popup window sliders
-      - [X] added app mixer and sink selector, thanks to Aylur
+      - [X] added app mixer and sink selector
     - [ ] need to move the wifi controls from the system tray to the system info tray
     - [ ] need to create bluetooth control
-    - [ ] need to make power profile selection menu for the battery indicator
-    - [X] Added battery bar, thanks to Aylur
+    - [X] need to make power profile selection menu for the battery indicator
+    - [X] Added battery bar
 - [ ] Date/Clock & Calendar Popup
   - Status: nearly complete
   - Issues:
@@ -48,6 +48,7 @@ Many of the files are not being used and will not be used, they will be removed 
       - [ ] auto close on click off
       - [X] spanning notification section to the bottom of screen
 - [X] Lockscreen
+- [X] Session Control window
 - [X] AGS Greeter (greetd)
 - Theming/Styling
   - Status: almost complete
