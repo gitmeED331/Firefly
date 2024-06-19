@@ -1,6 +1,8 @@
+import { Utils, Notifications, GLib, Widget } from "../imports"
 import { type Notification } from "../types/service/notifications"
 import icons from "../lib/icons"
-import { Utils, Notifications, GLib, Widget } from "../imports"
+App.addIcons(`${App.configDir}/assets`);
+import options from "../options";
 
 const {Box, Label} = Widget
 
