@@ -20,20 +20,22 @@ const Spacer = () => Box({
 	hexpand: true,
 });
 const Dashbtn = () => Button({
-	class_name: 'dashbtn',
+	className: 'BarBTN',
+	css: 'padding-right: 0.5rem;',
 	tooltip_text: 'Dashboard',
 	onClicked: () => App.toggleWindow("dashboard"),
-	child: Icon({ icon: 'alienarena'}),
+	child: Icon({ icon: 'nix-snowflake-symbolic'}),
 });
 
 const Powerbtn = () => Button({
-	className: 'dashbtn',
+	className: 'BarBTN',
+	css: 'padding-right: 0.5rem;',
 	tooltip_text: 'Power Menu',
 	child:
 		Icon({
 			icon: 'preferences-system-network-wakeonlan'
 		}),
-	onClicked: () => App.toggleWindow("pwrwin")
+	onClicked: () => App.toggleWindow("sessioncontrols")
 });
 
 const Left = ()	=> Box({
@@ -85,7 +87,7 @@ const Center = () => Box({
 
 export const Bar = () => Window({
 	name: "bar",
-	layer:	'overlay',
+	layer:	'top',
 	anchor: pos.as(pos => [pos, "right", "left"]),
 	exclusivity: "exclusive",
 	child: CenterBox({

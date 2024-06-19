@@ -1,14 +1,14 @@
 import { Widget, Gtk, PopupWindow, Utils } from "../../imports";
 import options from "options"
 
-const { Box } = Widget;
+const { Box, Label } = Widget;
 const { execAsync } = Utils;
-const Calendar = Widget.subclass(Gtk.Calendar)
+//const Calendar = Widget.subclass(Gtk.Calendar)
 const { bar, datewin } = options;
 const pos = datewin.position.bind();
 const layout = Utils.derive([bar.position, datewin.position], (bar, qs) => 
-		`${bar}-${qs}` as const,
-	);
+    `${bar}-${qs}` as const,
+);
 
 const CalWidWin = () =>  PopupWindow({
     name: "calendar",
@@ -16,22 +16,23 @@ const CalWidWin = () =>  PopupWindow({
     anchor: pos,
     transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     layer: "top",
-     exclusivity: 'normal',
+    exclusivity: 'normal',
     keymode: 'on-demand',
     margins: [0,550],
     child: Box({
-		className: "calendar",
-		child: Calendar({
-			className: "calwid",
-			hexpand: false,
-			vexpand: true,
-			hpack: "center",
-			vpack: "center",
-		})
-	})
+        className: "calendarbox",
+        child: Widget.Calendar({
+            showDayNames: true,
+            showDetails: true,
+            showHeading: true,
+            showWeekNumbers: true,
+            hpack: "center",
+            vpack: "center",
+        })
+    })
 });
 
-export function CalendarWin() {
+export function Calendar() {
     App.addWindow(CalWidWin())
     layout.connect("changed", () => {
         App.removeWindow("calendar")

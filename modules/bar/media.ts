@@ -101,10 +101,10 @@ function Player(player) {
 //		label: player.bind("length").transform(lengthStr),
 //	})
 
-	const icon = () => Button({
-		onClicked: () => {
-			App.closeWindow('playwin');
-		},
+	const icon = () => Box({
+		//onClicked: () => {
+			//App.closeWindow('playwin');
+		//},
 		vexpand: true,
 		hpack: "center",
 		vpack: "center",
@@ -240,17 +240,18 @@ function trimTrackTitle(title) {
 		" (Radio Version)",
 		" (Album Version)",
 		" (Cafe Session)",
+		" (International Version)",
 	];
 	cleanPatterns.forEach((expr) => title = title.replace(expr, ''));
 	return title;
 }
 
 const trackTitle = Button({
-	classNames: ['media', 'mbtn'],
+	className:'mediaticker',
 	onPrimaryClick: ( ) => App.toggleWindow("playwin"),
 	onSecondaryClick: () => {
 		 const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
-		  player.playPause()
+		player.playPause()
 	},
 	child: Label({
 		hexpand: true,
@@ -267,7 +268,7 @@ const trackTitle = Button({
 })
 
 export const MediaBTN = ( ) => Box({
-	classNames: ['media','mbar'],
+	className: 'mediabtn',
 	vexpand: false,
 	hexpand: true,
 	children: [

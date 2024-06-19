@@ -37,12 +37,12 @@ const SysTrayItem = (item: TrayItem) => PanelButton({
 })
 
 export const Expandbtn = () => PanelButton ({
-	className: 'expandbtn',
+	className: 'BarBTN',
 	hexpand: false,
 	onPrimaryClick: () => { stitem.value = !stitem.value },
 	child: 
-		Label({
-			label: ' ',
+        Icon({
+            icon: 'hyprland-symbolic'
 		}),
 })
 
