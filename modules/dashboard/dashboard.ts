@@ -4,7 +4,6 @@ import { TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
 import { BluetoothWidget } from "./bluetooth.js";*/
 import { BrightnessSlider }  from "./brightnessSlider";
 import { NotificationList } from "./notificationList";
-import { PowerCenter } from "./power"
 import options from "../../options";
 
 const { Box } = Widget;
@@ -51,11 +50,6 @@ const quickAccess = Box({
             vexpand:true,
             hexpand: false,
             children: [
-				Box({
-					hexpand: false,
-					hpack: 'center',
-					child: PowerCenter(),
-				}),
                 Box({
                     className: "quicktoggles",
                     vertical: true,
