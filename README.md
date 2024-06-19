@@ -1,7 +1,7 @@
 
 ## This is a work in progress.
 
-### Here is a video show casing some of the main elements and you can find some pictures in the screenshots folder.
+### Here is a video showcasing some of the main elements and you can find some pictures in the screenshots folder.
 
 https://github.com/gitmeED331/FireflyAGS/assets/142960718/3defcbed-7d0c-43e8-93e0-824d69d43ac5
 
