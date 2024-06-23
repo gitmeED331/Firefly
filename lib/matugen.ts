@@ -1,4 +1,4 @@
-import wallpaper from "services/wallpaper"
+import wallpaper from "modules/service/wallpaper"
 import options from "options"
 import { sh, dependencies } from "./utils"
 

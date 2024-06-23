@@ -1,8 +1,8 @@
-import { type WindowProps } from "types/widgets/window"
-import { type RevealerProps } from "types/widgets/revealer"
-import { type EventBoxProps } from "types/widgets/eventbox"
+import { type WindowProps } from "../types/widgets/window"
+import { type RevealerProps } from "../types/widgets/revealer"
+import { type EventBoxProps } from "../types/widgets/eventbox"
 import type Gtk from "gi://Gtk?version=3.0"
-import options from "options"
+import options from "../options"
 
 type Transition = RevealerProps["transition"]
 type Child = WindowProps["child"]
@@ -37,7 +37,7 @@ const PopupRevealer = (
             class_name: "window-content",
             child,
         }),
-        transitionDuration: 150,
+        transitionDuration: options.transition.bind(),
         setup: self => self.hook(App, (_, wname, visible) => {
             if (wname === name)
                 self.reveal_child = visible

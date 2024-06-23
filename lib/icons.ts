@@ -8,9 +8,12 @@ export const substitutes = {
     "preferences-system": "emblem-system-symbolic",
     "com.github.Aylur.ags-symbolic": "controls-symbolic",
     "com.github.Aylur.ags": "controls-symbolic",
-    "pcloud1*":"pcloud-symbolic",
-    "deezer":"deezer-symbolic",
+    "pcloud": "pcloud-symbolic",
     "keepassxc":"keepassxc-symbolic",
+    "filen-desktop": "filen-desktop-symbolic",
+    "WebCord": "discord-symbolic",
+    "deezer-enhanced-symbolic": "deezer-symbolic",
+    "deezer": "deezer-symbolic",
 }
 
 export default {
@@ -70,7 +73,7 @@ export default {
     },
     powerprofile: {
         balanced: "power-profile-balanced-symbolic",
-        "power-saver": "power-profile-power-saver-symbolic",
+        'power-saver': "power-profile-power-saver-symbolic",
         performance: "power-profile-performance-symbolic",
     },
     battery: {
@@ -91,6 +94,7 @@ export default {
         reboot: "system-reboot-symbolic",
         logout: "system-log-out-symbolic",
         shutdown: "system-shutdown-symbolic",
+        lock: "system-lock-screen-symbolic",
     },
     recorder: {
         recording: "media-record-symbolic",
@@ -129,4 +133,10 @@ export default {
         dark: "dark-mode-symbolic",
         light: "light-mode-symbolic",
     },
+    SCMenu: {
+        AShot: "screenshooter-symbolic",
+        FShot: "accessories-screenshot-symbolic",
+        ARecord: "vm-snapshot-recording",
+        FRecord: "record",
+    }
 }

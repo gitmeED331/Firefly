@@ -10,7 +10,7 @@ export const RoundedCorner = (place, props) => Widget.DrawingArea({
   vpack: place.includes("top") ? "start" : "end",
   setup: widget => {
     //HACK: ensure a minimum size required for the window to even show up.
-    //size chande later from css
+    //size change later from css
     const r = 2;
     widget.set_size_request(r, r);
     widget.on("draw", (widget, cr) => {
