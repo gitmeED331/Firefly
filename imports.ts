@@ -21,9 +21,9 @@ import GLib from "gi://GLib";
 import Lock from "gi://GtkSessionLock";
 import Cairo from "gi://cairo";
 
-import PopupWindow from "./lib/PopupWindow.ts";
-import RegularWindow from "./lib/RegularWindow.ts";
-import * as Roundedges from "./lib/roundedCorner";
+import PopupWindow from "lib/PopupWindow.ts";
+import RegularWindow from "lib/RegularWindow.ts";
+import * as Roundedges from "lib/roundedCorner";
 
 export {
     App,

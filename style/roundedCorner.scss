@@ -7,13 +7,13 @@
 	background: $WidgetBG;
 	margin-right: 30px;
     margin-left: 0px;
-    border: 2px solid rgba(0,0,255,1);
+    border: $border;
 }
 .angleLeft {
 	background: $WidgetBG;
 	margin-right: 0px;
     margin-left: 30px;
-    border: 2px solid rgba(0,0,255,1);
+    border: $border;
 }
 
 .angleRightLarge, .angleLeftLarge {

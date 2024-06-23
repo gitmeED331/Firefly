@@ -1,69 +1,93 @@
 .notification {
-    min-width: 300px;
-    border-radius: 11px;
-    padding: 1rem;
-    margin: .5rem;
-    border: 1px solid $border-color;
+    min-width: 15rem;
+    border-radius: $radius * 0.5;
+    padding: 0.5rem;
+    margin: 0.5rem 0rem;
+    border: $border;
     background-color: $NotificationBG;
+	& box {
+		background-color: transparent;
+	}
+	image {margin-right: 0.25rem}
+	&.critical {
+		border: 3px dashed red;
+		color: red;
+		image {
+			color: red;
+		}
+		box {
+			background-color: transparent;
+		}
+	}
+
+	&.normal {
+		border: 3px dotted rgba(15,155,255,1);
+		color: $Primfont-color;
+		image {
+			color: $Primfont-color;
+		}
+	}
+
+	&.low {
+		border: 3px groove white;
+		color: white;
+		image {
+			color: white;
+		}
+		box {
+			background-color: transparent;
+		}
+	}
 }
 
-.notiftemIcon image {
-    font-size: 58px;
-    /* to center the icon */
-    margin: 5px;
-    color: $fg;
+.notifActions .action-button {
+	margin: 0 .4rem;
+	margin-top: .8rem;
+	font-size: 1.35rem;
+	&:first-child {
+		margin-left: 0.25rem;
+	}
+
+	&:last-child {
+		margin-right: 0.25rem;
+	}
 }
 
-.notiftemIcon box {
-    min-width: 68px;
-    min-height: 68px;
-    border-radius: 7px;
+.close-button {
+	font-size: 1.5rem;
+	margin-left: 0.25rem
 }
+//.time {
+	//font-size: 1rem;
+	// color: $Primfont-color;
+//}
 
-.notification box {
-	background-color: transparent;
-}
-
-.notification.critical {
-    border: 3px dashed red;
-	color: red;
-	image { color: red;};
-}
-
-.notification.normal {
-    border: 3px dotted rgba(15,155,255,1);
-    color: $Primfont-color;
-    image { color: $Primfont-color;};
-}
-
-.notification.low {
-    border: 3px groove white;
-    color: white;
-    image { color: white;};
-}
-
-.notif {
+.notif { //dashboard panel box
 	background-color: transparent;
 	margin-left: 0.5rem;
-	margin-right: 0rem;
+	margin-right: 0.5rem;
 	margin-top: 0rem;
 	margin-bottom: 0.25rem;
 	padding: 0rem 1rem;
 	&Item {
 		&Body {
-			padding: 1rem;
-			border-radius: 2rem;
+			padding: 0.25rem;
+			border-radius: $radius;
 			color: white;
 		}
 		&Icon {
 			font-size: 4rem;
+			box {
+				background-color: transparent;
+			}
 		}
 		&Title {
 			text-shadow: none;
 			font-size: 1.35rem;
 			font-weight: bold;
+			min-width: 95px;
 		}
-		&Description { 
+		&Description {
 			color: white;
 			text-shadow: none;
 			font-size: 0.9rem;
@@ -75,9 +99,9 @@
 		text-shadow: 15px 0px 10px yellow, -15px 0px 10px yellow, 0px 0px 0px yellow;
 	}
 	&panel {
-		border-radius: 3rem 0rem 0rem 3rem;
+		border-radius: $radius-tbleft;
 		margin-top: 1rem;
-		min-width: 300px;
+		min-width: 25rem;
 		&Box {
 			margin-right: 2rem;
 			margin-left: 2rem;
@@ -93,19 +117,6 @@
 	}
 }
 
-.notifActions .action-button {
-    margin: 0 .4rem;
-    margin-top: .8rem;
-}
-
-.notifActions .action-button:first-child {
-    margin-left: 0;
-}
-
-.notifActions .action-button:last-child {
-    margin-right: 0;
-}
-
 // ------------- bar
 .barNotification {
     background-color: #1e1e2e;
@@ -118,5 +129,5 @@
 }
 
 window.notification-popups box.notifications {
-    padding: .5rem;
+    padding: 0.5rem;
 }
