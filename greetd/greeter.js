@@ -2,6 +2,7 @@ const greetd = await Service.import('greetd');
 
 const name = Widget.Entry({
     placeholder_text: 'Username',
+    text: 'topsykrets',
     on_accept: () => password.grab_focus(),
 })
 

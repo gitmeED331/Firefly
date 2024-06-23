@@ -1,61 +1,98 @@
-import { Widget, Notifications, Utils, Gio, Gtk } from "../../imports";
+import { Widget, Notifications, Utils, Gio, Gtk, GLib } from "../../imports";
+import icons from "../../lib/icons"
+import Notification from "./Notification"
 
-const { Box, Label, Button } = Widget;
+const { Box, Label, Button, Icon } = Widget;
 
-function NotificationIcon({ app_entry, app_icon, image }) {
+const time = (time: number, format = "%H:%M") => GLib.DateTime
+.new_from_unix_local(time)
+.format(format)
+
+const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (image) {
         return Box({
-            css: `background-image: url("${image}");`
-                + "background-size: contain;"
-                + "background-repeat: no-repeat;"
-                + "background-position: center;",
+            hexpand: false,
+            vexpand: false,
+            className: "icon img",
+            css: `
+            background-image: url("${image}");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-width: 5rem;
+            min-height: 5rem;
+            `,
         })
     }
 
-    let icon = "dialog-information-symbolic"
+    let icon = icons.fallback.notification
     if (Utils.lookUpIcon(app_icon))
         icon = app_icon
 
-    if (app_entry && Utils.lookUpIcon(app_entry))
-        icon = app_entry
+        if (Utils.lookUpIcon(app_entry || ""))
+            icon = app_entry || ""
 
-    return Box({
-        child: Widget.Icon(icon),
-    })
+            return Box({
+                vpack: "center",
+                hexpand: false,
+                className: "notiftemIcon",
+                css: `
+                min-width: 20px;
+                min-height: 20px;
+                `,
+                child: Icon({
+                    icon,
+                    size: 58,
+                    hpack: "center", hexpand: true,
+                    vpack: "center", vexpand: true,
+                }),
+            })
 }
 
 function Notification(n) {
-    const icon = Box({
-        vpack: "start",
-        className: "notiftemIcon",
-        child: NotificationIcon(n),
-    })
-
     const title = Label({
         className: "notifItemTitle",
         xalign: 0,
         justification: "left",
         hexpand: true,
-        max_width_chars: 24,
+        maxWidthChars: 30,
+        lines: 2,
         truncate: "end",
         wrap: true,
         label: n.summary,
         use_markup: true,
+        vpack: "center",
+        hpack: "start"
+    })
+
+    const time = (time: number, format = "%H:%M") => GLib.DateTime
+        .new_from_unix_local(time)
+        .format(format)
+    const ntime = Label({
+        className: "time",
+        vpack: "center",
+        hpack: "end",
+        label: time(n.time),
     })
 
     const body = Label({
         className: "notifItemBody",
         hexpand: true,
+        vexpand: true,
         use_markup: true,
         xalign: 0,
         justification: "left",
-        max_width_chars: 24,
+        lines: 3,
+        maxWidthChars: 45,
+        truncate: "end",
         label: n.body.trim(),
         wrap: true,
+        vpack: "center",
     })
 
     const actions = Box({
         className: "actions",
+        vpack: "center",
         children: n.actions.map(({ id, label }) => Button({
             class_name: "action-button",
             on_clicked: () => {
@@ -70,22 +107,26 @@ function Notification(n) {
     return Widget.EventBox(
         {
             attribute: { id: n.id },
-            on_primary_click: n.dismiss,
+            onPrimaryClick: n.dismiss,
         },
         Box(
             {
-                className: `notification ${n.urgency}`,
-                vertical: true,
+            className: `notification ${n.urgency}`,
+            vertical: false,
+            vpack: "start",
+            spacing: 5,
             },
-            Box([
-                icon,
+            NotificationIcon(n),
+            Box(
+                { vertical: true, className:"notifDetails" },
                 Box(
-                    { vertical: true },
+                    {vertical: false, spacing: 5,},
                     title,
-                    body,
+                    ntime,
                 ),
-            ]),
-            actions,
+                body,
+                actions,
+            ),
         ),
     )
 }
@@ -95,12 +136,14 @@ const Notifs = Box({
     spacing: 7,
     vertical: true,
     vexpand: true,
+    vpack: "start",
     setup: (self) => {
         self.hook(Notifications, (self) => {
             self.children = Notifications.notifications.map(n => Box({
                 className: "notifItem",
-                spacing: 20,
+                spacing: 10,
                 vertical: true,
+                vpack: "start",
                 children: [
                     Button({
                         on_clicked: () => {
@@ -109,9 +152,9 @@ const Notifs = Box({
                         child: Notification(n),
                     })
                 ]
-			}))
-		})
-	}
+            }))
+        })
+    }
 })
 
 
@@ -124,18 +167,17 @@ const NotifBox = Widget.Scrollable({
 })
 
 const Empty = Box({
-  class_name: "notifEmpty",
-  spacing: 20,
-  hpack: "center",
-  vpack: "center",
-  vertical: true,
-  children: [
-    Widget.Label({
-      label: `󱙎 `,
-      vpack: "center",
-      vexpand: true,
-    })
-  ]
+    class_name: "notifEmpty",
+    hpack: "center",
+    vpack: "center",
+    vertical: true,
+    children: [
+        Widget.Label({
+            label: `󱙎 `,
+            vpack: "center",
+            vexpand: true,
+        })
+    ]
 })
 
 export const NotificationList = () => Box({
@@ -145,9 +187,9 @@ export const NotificationList = () => Box({
     vexpand: true,
     children: [
         Widget.CenterBox({
-			className: 'notifpanelBox',
+            className: 'notifpanelBox',
             start_widget: Label({
-				className: "notifpanelBoxTitle",
+                className: "notifpanelBoxTitle",
                 label: "Notifications",
                 vpack: 'end',
                 hpack: 'end',

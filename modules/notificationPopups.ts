@@ -12,7 +12,7 @@ function Animated(id: number) {
     const widget = Notification(n)
 
     const inner = Widget.Revealer({
-        transition: "slide_left",
+        transition: "slide_up",
         transition_duration: transition.value,
         child: widget,
     })
@@ -51,8 +51,9 @@ function Animated(id: number) {
 function PopupList() {
     const map: Map<number, ReturnType<typeof Animated>> = new Map
     const box = Box({
-        hpack: "end",
         vertical: true,
+        hexpand: true,
+        hpack: "fill",
         css: options.notifications.width.bind().as(w => `min-width: ${w}px;`),
     })
 
@@ -83,9 +84,10 @@ export default (monitor: number) => Widget.Window({
     monitor,
     name: `notifications${monitor}`,
     anchor: position.bind(),
-    class_name: "notifications",
+    className: "notifications",
+    hexpand: true,
     child: Box({
-        css: "padding: 2px;",
+        css: "padding: 2px",
         child: PopupList(),
     }),
 })

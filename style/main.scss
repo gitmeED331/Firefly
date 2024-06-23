@@ -1,61 +1,17 @@
-*:not(selection) {
+* { //:not(selection)
   all: unset;
+  font-family: "Liberation Mono";
+  font-size: 0.9rem;
 }
 
-// Vars
-$font: Liberation Mono;
-$Primfont-color: rgba(15,155,255,1);
-$Secfont-color: rgba(0,0,0,1);
-$Hoverfont-color: rgba(255,0,0,1);
-$font-size: 10pt;
-$materialStandard: cubic-bezier(0.2, 0, 0, 1);
-//$materialAccel: cubic-bezier(0.3, 0, 1, 1);
-//$materialDecel: cubic-bezier(0, 0, 0, 1);
-
-//Solids
-$WidgetBG: rgba(0,0,0,0.75);
-$NotificationBG: rgba(0,0,0,0.5);
-
-
-//Gradients
-//$primary-bg: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
-//$widget-bg: linear-gradient(0deg, rgba(15,155,255,0.5) 0%, rgba(0,0,0,1) 50%, rgba(15,155,255,1) 100%);
-$hover-bg: linear-gradient(0deg, rgba(55,0,0,0.5) 0%, rgba(255,0,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 85%, rgba(55,0,0,0.5) 100%);
-$active-gradient:  linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(15,155,255,0.5) 50%, rgba(0,0,0,0.25) 100%);
-//$NotificationListItemBG: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 100%);
-
-//Borders
-$border: 2px solid #0F9BFF;
-$border-width: 3px;
-$border-color: rgba(15,155,255,1);
-$radius: 2rem;
-$radius-tbleft: 3rem 0rem 0rem 3rem;
-$radius-tbright: 0rem 3rem 3rem 0rem;
-$radius-rltop: 3rem 3rem 0rem 0rem;
-$radius-rlbottom: 0rem 0rem 3rem 3rem;
-$padding: 0.3rem;
-
-
-
-
-$boxshad-bg: rgba(15,155,255,0.5);
-$shadow-color: rgba(15,155,255,1);
-$popover-border-color: #00FF00;
-$popover-radius: 10px;
-$popover-padding: 5px;
-$spacing: 12pt;
-$transition: 100ms;
-$fg: cyan;
-$hover-fg: red;
-
-
 // Components
+@import "variables";
 @import "bar/bar";
 @import "dashboard/dashboard";
 @import "roundedCorner";
-@import "overview";
 @import "notifications";
 @import "Power";
-@import "mixins/reuse";
+@import "mixins/mixins";
 @import "Slider";
+@import "overview";
 @import "ScreenCapture";

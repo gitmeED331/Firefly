@@ -233,7 +233,7 @@ const DVol = () =>  PopupWindow({
     name: "dashvol",
     className: "dashvol",
     anchor: pos,
-    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+    transition: "crossfade", //pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     layer: "top",
 	exclusivity: 'normal',
     keymode: 'on-demand',

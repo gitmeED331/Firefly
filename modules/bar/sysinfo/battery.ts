@@ -81,7 +81,7 @@ const Regular = () => Box({
 })
 
 export default () => PanelButton({
-	class_name: "battery",
+	className: "battery",
 	hexpand: false,
 	onSecondaryClick: () => { percentage.value = !percentage.value },
 	onPrimaryClick: () => App.toggleWindow("pwrprofiles"),

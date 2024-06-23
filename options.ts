@@ -1,12 +1,15 @@
-import { opt, mkOptions } from "./lib/option"
-import { distro } from "./lib/variables"
-import { icon } from "./lib/utils"
-import icons from "./lib/icons"
+import { opt, mkOptions } from "lib/option"
+import { distro } from "lib/variables"
+import { icon } from "lib/utils"
+import icons from "lib/icons"
 
 const options = mkOptions(OPTIONS, {
-	autotheme: opt(false),
-
 	transition: opt(200),
+
+	font: {
+		size: opt(13),
+		name: opt("Liberation Mono Font"),
+	},
 
 	bar: {
 		flatButtons: opt(false),
@@ -26,30 +29,56 @@ const options = mkOptions(OPTIONS, {
 		systray: {
 			stitem: opt(false),
 			ignore: opt([ 
-				'Deezer'
-			]),
-			include: opt([
-				'Cryptomator',
-				'Keepassxc',
-				'Enpass',
 			]),
 		},
+
+		// launcher: {
+		// 	icon: {
+		// 		colored: opt(true),
+		// 				  icon: opt(icon(distro.logo, icons.ui.search)),
+		// 	},
+		// 	label: {
+		// 		colored: opt(false),
+		// 				  label: opt(" Applications"),
+		// 	},
+		// 	action: opt(() => App.toggleWindow("launcher")),
+		// },
 	},
-		
-  layout: {
-			start: opt<Array<import("./modules/bar/bar").BarWidget>>([
-				"workspaces",
-				"title",
-			]),
-			center: opt<Array<import("./modules/bar/bar").BarWidget>>([
-				"media",
-			]),
-			end: opt<Array<import("./modules/bar/bar").BarWidget>>([
-				"systray",
-				"sysinfo",
-				"dashbtn",
-			]),
-		},
+
+	// launcher: {
+	// 	width: opt(0),
+	// 		  margin: opt(80),
+	// 		  sh: {
+	// 			  max: opt(16),
+	// 		  },
+	// 		  apps: {
+	// 			  iconSize: opt(62),
+	// 		  max: opt(6),
+	// 		  favorites: opt([
+	// 			  [
+	// 			"vivaldi",
+	// 			"org.kde.konsole",
+	// 			"pcmanfm-qt",
+	// 			"deezer-enhanced",
+	// 			  ],
+	// 		]),
+	// 	},
+	// },
+
+  	layout: {
+		start: opt<Array<import("./modules/bar/bar").BarWidget>>([
+			"workspaces",
+			"title",
+		]),
+		center: opt<Array<import("./modules/bar/bar").BarWidget>>([
+			"media",
+		]),
+		end: opt<Array<import("./modules/bar/bar").BarWidget>>([
+			"systray",
+			"sysinfo",
+			"dashbtn",
+		]),
+	},
 		
 	overview: {
 		scale: opt(15),
@@ -96,12 +125,16 @@ const options = mkOptions(OPTIONS, {
 	},
 
 	pwrprof: {
-		performancelight: opt("light -S 100"),
-		performance: opt("performance"),
-		balancelight: opt("light -S 60"),
-		balance: opt("balanced"),
-		saverlight: opt("light -S 30"),
-		saver: opt("power-saver"),
+		profile: {
+			performance: opt("performance"),
+			balanced: opt("balanced"),
+			powerSaver: opt("power-saver"),
+		},
+		light: {
+			performance: opt("light -S 100"),
+			balanced: opt("light -S 60"),
+			powerSaver: opt("light -S 30"),
+		},
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 		layout: opt<"line" | "box">("line"),
 		labels: opt(true),
@@ -111,7 +144,8 @@ const options = mkOptions(OPTIONS, {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 		width: opt(440),
 		blacklist: opt([
-			"Synology"
+			"Synology",
+
 		]),
 	},
 })

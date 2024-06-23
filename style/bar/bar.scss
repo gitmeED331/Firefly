@@ -7,13 +7,14 @@
 @import "workspaces";
 
 .bar {
-    font-family: $font;
     color: $Primfont-color;
 	background-image: none;
+	min-height: 5px;
 	&left {
 		min-width: 100px;
 	}
 	&center {
+		min-width: 100px;
 	}
 	&right {
 		min-width: 100px;

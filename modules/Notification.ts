@@ -1,16 +1,15 @@
 import { Utils, Notifications, GLib, Widget } from "../imports"
 import { type Notification } from "../types/service/notifications"
 import icons from "../lib/icons"
-App.addIcons(`${App.configDir}/assets`);
 import options from "../options";
 
-const {Box, Label} = Widget
+const {Box, Label, Button, Icon} = Widget
 
 const notifications = await Service.import("notifications")
 notifications.popupTimeout = 30000;
 notifications.forceTimeout = false;
 notifications.cacheActions = false;
-notifications.clearDelay = 100;
+notifications.clearDelay = 1000;
 
 const time = (time: number, format = "%H:%M") => GLib.DateTime
     .new_from_unix_local(time)
@@ -19,7 +18,6 @@ const time = (time: number, format = "%H:%M") => GLib.DateTime
 const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (image) {
         return Box({
-            vpack: "start",
             hexpand: false,
             className: "icon img",
             css: `
@@ -27,8 +25,8 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
-                min-width: 78px;
-                min-height: 78px;
+                min-width: 5rem;
+                min-height: 5rem;
             `,
         })
     }
@@ -41,12 +39,12 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
         icon = app_entry || ""
 
     return Box({
-        vpack: "start",
+        vpack: "center",
         hexpand: false,
         className: "notiftemIcon",
         css: `
-            min-width: 78px;
-            min-height: 78px;
+            min-width: 20px;
+            min-height: 20px;
         `,
         child: Widget.Icon({
             icon,
@@ -60,47 +58,60 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
 export default (notification: Notification) => {
     const content = Box({
         className: "content",
+        vpack: "center",
+        hpack: "fill",
         children: [
             NotificationIcon(notification),
             Box({
-                hexpand: true,
                 vertical: true,
+                hpack: "fill",
                 children: [
                     Box({
+                        spacing: 5,
+                        vertical: false,
+                        hexpand: true,
                         children: [
                             Label({
                                 className: "notifItemTitle",
                                 name: "nTitle",
                                 xalign: 0,
                                 justification: "left",
-                                hexpand: true,
-                                max_width_chars: 24,
+                                lines: 2,
+                                maxWidthChars: 35,
                                 truncate: "end",
                                 wrap: true,
-                                label: notification.summary.trim(),
                                 use_markup: true,
+                                hexpand: true,
+                                vpack: "center",
+                                hpack: "start",
+                                label: notification.summary.trim(),
                             }),
                             Label({
                                 className: "time",
-                                vpack: "start",
+                                hpack: "end",
+                                vpack: "center",
                                 label: time(notification.time),
                             }),
-                            Widget.Button({
+                            Button({
                                 className: "close-button",
-                                vpack: "start",
-                                child: Widget.Icon("window-close-symbolic"),
+                                hpack: "end",
+                                vpack: "center",
+                                child: Icon("window-close-symbolic"),
                                 on_clicked: notification.close,
-                            }),
+                            })
                         ],
                     }),
                     Label({
                         className: "notifItemBody",
-                        hexpand: true,
+                        hexpand: false,
+                        hpack: "start",
                         use_markup: true,
                         xalign: 0,
                         justification: "left",
                         label: notification.body.trim(),
-                        max_width_chars: 24,
+                        maxWidthChars: 50,
+                        lines: 3,
+                        truncate: "end",
                         wrap: true,
                     }),
                 ],
@@ -113,7 +124,7 @@ export default (notification: Notification) => {
         child: Widget.EventBox({
             child: Box({
                 className: "actions horizontal",
-                children: notification.actions.map(action => Widget.Button({
+                children: notification.actions.map(action => Button({
                     className: "action-button",
                     on_clicked: () => notification.invoke(action.id),
                     hexpand: true,
@@ -125,6 +136,8 @@ export default (notification: Notification) => {
 
     const eventbox = Widget.EventBox({
         vexpand: false,
+        hexpand: true,
+        hpack: "start",
         on_primary_click: notification.dismiss,
         on_hover() {
             if (actionsbox)

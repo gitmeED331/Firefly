@@ -33,6 +33,7 @@ function lengthStr(length) {
 	return `${min}:${sec0}${sec}`
 }
 
+
 /** @param {import('types/service/mpris').MprisPlayer} player */
 function Player(player) {
 	const img = Box({
@@ -64,21 +65,21 @@ function Player(player) {
 		label: player.bind("track_artists").transform(a => a.join(", ")),
 	})
 
-//	const positionSlider = Slider({
-//		class_name: "position",
-//		draw_value: false,
-//		on_change: ({ value }) => player.position = value * player.length,
-//		visible: player.bind("length").as(l => l > 0),
-//		setup: self => {
-//			function update() {
-//				const value = player.position / player.length
-//				self.value = value > 0 ? value : 0
-//			}
-//			self.hook(player, update)
-//			self.hook(player, update, "position")
-//			self.poll(1000, update)
-//		},
-//	})
+	const positionSlider = Slider({
+		class_name: "position",
+		draw_value: false,
+		on_change: ({ value }) => player.position = value * player.length,
+		visible: player.bind("length").as(l => l > 0),
+		setup: self => {
+			function update() {
+				const value = player.position / player.length
+				self.value = value > 0 ? value : 0
+			}
+			self.hook(player, update)
+			self.hook(player, update, "position")
+			self.poll(1000, update)
+		},
+	})
 
 	const positionLabel = Label({
 		className: "position",
@@ -94,12 +95,12 @@ function Player(player) {
 		},
 	})
 
-//	const lengthLabel = Label({
-//		className: "length",
-//		hpack: "center",
-//		visible: player.bind("length").transform(l => l > 0),
-//		label: player.bind("length").transform(lengthStr),
-//	})
+	const lengthLabel = Label({
+		className: "length",
+		hpack: "center",
+		visible: player.bind("length").transform(l => l > 0),
+		label: player.bind("length").transform(lengthStr),
+	})
 
 	const icon = () => Box({
 		//onClicked: () => {
@@ -152,12 +153,14 @@ function Player(player) {
 		visible: player.bind("can_go_next"),
 		child: Icon(NEXT_ICON),
 	})
+
 	const close = Button({
 		className: "close",
 		vpack: "center",
-		on_clicked: () => player.stop(),
-						child: Icon(CLOSE_ICON),
+		onClicked: () => player.stop(),
+		child: Icon(CLOSE_ICON),
 	})
+
 	return Box(
 		{
 			className: "player",
@@ -169,12 +172,19 @@ function Player(player) {
 			{
 				vertical: true,
 				hexpand: true,
+	  			hpack: "center",
+	  			vpack: "center",
 			},
 			title,
 			artist,
+			positionSlider,
 		),
 		Box(
-		{vertical: true},
+		{
+			vertical: true,
+	  		hpack: "center",
+	  		vpack: "center",
+		},
 		icon(),
 		positionLabel,
 		),
@@ -193,34 +203,26 @@ function Player(player) {
 	)
 }
 
-function PWinBox() {
-	return Box({
-		vertical: true,
-		children: Utils.watch([], [
-	  [Mpris, "player-changed"],
-	  [Mpris, "player-added"],
-	  [Mpris, "player-closed"],
-	], () => Mpris.players).transform(p => p.filter(p => p.play_back_status !== 'Stopped' ).map(Player)),
+function PWin() {
+	return PopupWindow({
+		name: "playwin",
+		className: "playwin",
+		anchor: pos,
+		layer: "top",
+		exclusivity: 'normal',
+		keymode: 'on-demand',
+		margins: [0,75],
+		transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+		child: Box({
+			vertical: true,
+			children: Utils.watch([], [
+				[Mpris, "player-changed"],
+				[Mpris, "player-added"],
+				[Mpris, "player-closed"],
+			], () => Mpris.players).transform(p => p.filter(p => p.play_back_status !== 'Stopped' ).map(Player)),
+		})
 	})
 }
-
-const PWin = () =>  PopupWindow({
-	name: "playwin",
-	className: "playwin",
-	anchor: pos,
-	layer: "top",
-	exclusivity: 'normal',
-	keymode: 'on-demand',
-	margins: [0,75],
-	transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
-	child: Box({
-		vexpand: true,
-		hexpand: true,
-		children: [
-			PWinBox(),
-		]
-	})
-});
 
 export function Playwin() {
 	App.addWindow(PWin())
@@ -271,8 +273,34 @@ export const MediaBTN = ( ) => Box({
 	className: 'mediabtn',
 	vexpand: false,
 	hexpand: true,
-	children: [
+	child:
 		trackTitle
-	]
 });
 
+
+// needs integration
+/*
+
+Mpris.connect("changed", (value) => {
+ c *onst statusOrder = {
+ Playing: 1,
+ Paused: 2,
+ Stopped: 3,
+};
+
+const isPlaying = value.players.find(
+	(p) => p["play-back-status"] === "Playing",
+	);
+
+	if (isPlaying) {
+		activePlayer.value = value.players.sort(
+			(a, b) =>
+			statusOrder[a["play-back-status"]] -
+			statusOrder[b["play-back-status"]],
+			)[0];
+}
+})
+
+---- needs to be built -----
+convert progress slider to an overlay progressbar
+*/

@@ -1,26 +1,28 @@
-import { Utils, App, Gio, Gtk, Hyprland, Widget } from "./imports";
-import "./lib/session";
-import init from "./lib/init";
-import options from "./options";
+import { Utils, App, Gio, Gtk, Hyprland, Widget } from "imports"
+import "lib/session"
+//import init from "lib/init"
+import { forMonitors } from "lib/utils"
+import options from "options"
+import DirectoryMonitorService from "lib/DirectoryMonitorService"
 
 // Windows
-import { Bar } from "./modules/bar/bar";
-import { Dashboard } from "./modules/dashboard/dashboard";
-import { Playwin } from "./modules/bar/media";
-import pwrprofiles from "./modules/powerprofile";
-import sessioncontrols from "./modules/sessioncontrol";
-import { Calendar } from "./modules/bar/calendar";
-import{ Dashvol } from "./modules/bar/sysinfo/volume";
-//import { NetWidget } from "./modules/bar/sysinfo/network";
-import Overview from "./modules/overview/Overview";
-import NotificationPopups from "./modules/notificationPopups";
-//import { ScreenCapture } from "./modules/ScreenCapture";
+import { Bar } from "modules/bar/bar"
+import { Dashboard } from "modules/dashboard/dashboard"
+import { Playwin } from "modules/bar/media"
+import { Calendar } from "modules/bar/calendar"
+import{ Dashvol } from "modules/bar/sysinfo/volume"
+
+
+import NotificationPopups from "modules/notificationPopups"
+import Overview from "modules/overview/Overview"
+import sessioncontrols from "modules/sessioncontrol"
+import pwrprofiles from "modules/powerprofile"
 
 const { execAsync, exec, monitorFile } = Utils;
 
-const scss = `${App.configDir}/style/main.scss`;
-const css = `${App.configDir}/style.css`;
-const icons = `${App.configDir}/assets`;
+const scss = `${App.configDir}/style/main.scss`
+const css = `${App.configDir}/style.css`
+const icons = `${App.configDir}/assets`
 
 const applyScss = () => {
 	// monitor for changes
@@ -39,6 +41,8 @@ const applyScss = () => {
 	);
 };
 
+DirectoryMonitorService.connect("changed", () => applyScss());
+
 // Main config
 App.config({
 	onConfigParsed: () => {
@@ -46,9 +50,6 @@ App.config({
 		Dashvol()
 		Playwin()
 		Calendar()
-		NotificationPopups()
-
-		//ScreenCapture()
 	},
 	closeWindowDelay: {
 		"overview": options.transition.value,
@@ -56,7 +57,8 @@ App.config({
 	style: applyScss(),
 	icons: icons,
 	windows: () => [ 
-		Bar(),
+		...forMonitors(Bar),
+		...forMonitors(NotificationPopups),
 		Overview(),
 		sessioncontrols(),
 		pwrprofiles()

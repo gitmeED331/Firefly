@@ -11,24 +11,27 @@
 		font-weight: bold;
 	}
 	button {
-		//linear-gradient(0deg, rgba(255,255,255,1) 0%, 	rgba(0,0,0,0) 50%, rgba(255,255,255,1) 100%);
 		border: $border;
 		border-width: 5px;
 		border-radius: $radius;
-		padding: 0.35rem 0.65rem;
+		padding: 0.45rem 0.65rem;
 		margin: 0.5rem 0.5rem;
 		&:first-child{
 			color: lime;
 			&:hover {
-				border-left: 5px dashed lime;
-				border-right: 5px dashed lime;
+				border-left: 5px solid lime;
+				border-right: 5px solid lime;
 				border-top: $border;
 				border-bottom: $border;
 				border-width: 5px;
 				background: linear-gradient(0deg, lime 0%, rgba(0,0,0,0) 50%, lime 100%);
 			}
-			&:focus,
-			&:active {
+			//&:focus,
+			// &:active {
+				// border-left-color: lime;
+				// border-right-color: lime;
+			// }
+			&.power-saver {
 				border-left-color: lime;
 				border-right-color: lime;
 			}
@@ -43,26 +46,38 @@
 				border-width: 5px;
 				background: linear-gradient(0deg, rgba(255,255,0,1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,0,1) 100%);
 			}
-			&:focus,
-			&:active {
+			// &:focus,
+			// &:active {
+				// border-left-color: yellow;
+				// border-right-color: yellow;
+			// }
+			&.balanced {
 				border-left-color: yellow;
+				border-left-style: dashed;
 				border-right-color: yellow;
+				border-right-style: dashed;
 			}
 		}
 		&:last-child{
 			color: red;
 			&:hover {
-				border-left: 5px dashed red;
-				border-right: 5px dashed red;
+				border-left: 5px dotted red;
+				border-right: 5px dotted red;
 				border-top: $border;
 				border-bottom: $border;
 				border-width: 5px;
 				background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 100%);
 			}
-			&:focus,
-			&:active {
+			// &:focus,
+			// &:active {
+				// border-left-color: red;
+				// border-right-color: red;
+			// }
+			&.performance {
 				border-left-color: red;
+				border-left-style: dotted;
 				border-right-color: red;
+				border-right-style: dotted;
 			}
 		}
 		label {

@@ -1,5 +1,5 @@
 import { Widget, Utils, Gio } from "../../imports";
-import Brightness from "./brightness";
+import Brightness from "../service/brightness";
 
 const { monitorFile, readFile, exec } = Utils
 const { Box, Slider, Label } = Widget;

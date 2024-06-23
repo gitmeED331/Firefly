@@ -1,9 +1,9 @@
-import { type TrayItem } from "../../types/service/systemtray"
+import { type TrayItem } from "types/service/systemtray"
 import PanelButton from "../PanelButton"
-import options from "../../options"
-import { Widget, SystemTray, Gdk } from "../../imports";
-import { icon } from "../../lib/utils";
-import icons from "../../lib/icons";
+import options from "options"
+import { Widget, SystemTray, Gdk } from "imports";
+import { icon } from "lib/utils";
+
 
 const systemtray = await Service.import("systemtray")
 const { ignore, include, stitem } = options.bar.systray
