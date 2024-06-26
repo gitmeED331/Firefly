@@ -1,7 +1,7 @@
 import { Widget, Utils, PopupWindow } from "../../imports";
 import { TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
-/*import { WiFi } from "./wifi.js";
-import { BluetoothWidget } from "./bluetooth.js";*/
+import { WifiSelection, NetworkToggle } from "./Network";
+import { BluetoothToggle, BluetoothDevices } from "./Bluetooth";
 import { BrightnessSlider }  from "./brightnessSlider";
 import { NotificationList } from "./notificationList";
 import options from "../../options";
@@ -14,6 +14,21 @@ const pos = options.dashboard.position.bind();
 const layout = Utils.derive([dashboard.position], (dashboard, qs) => 
 		`${dashboard}-${qs}` as const,
 	);
+
+const Row = (
+    toggles: Array<() => Gtk.Widget> = [],
+             menus: Array<() => Gtk.Widget> = [],
+) => Widget.Box({
+    vertical: true,
+    children: [
+        Widget.Box({
+            homogeneous: true,
+            class_name: "row horizontal",
+            children: toggles.map(w => w()),
+        }),
+        ...menus.map(w => w()),
+    ],
+})
 
 const quickAccess = Box({
 	className: "quickaccess",
@@ -49,6 +64,8 @@ const quickAccess = Box({
             vertical:true,
             vexpand:true,
             hexpand: false,
+            hpack: "center",
+            vpack: "center",
             children: [
                 Box({
                     className: "quicktoggles",
@@ -56,15 +73,12 @@ const quickAccess = Box({
                     vexpand: false,
                     children: [
                         quickAccess,
-                        /*Box({
-                            className: "buttons",
-                            children: [
-                               WiFi(),
-                                BluetoothWidget(),
-                            ]
-                        }),*/
                     ]   
                 }),
+                Row(
+                    [NetworkToggle, BluetoothToggle],
+                    [WifiSelection, BluetoothDevices],
+                ),
 				BrightnessSlider(),
                 NotificationList(),
             ]

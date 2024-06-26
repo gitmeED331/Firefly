@@ -18,11 +18,11 @@ const options = mkOptions(OPTIONS, {
 			workspaces: opt(4),
 		},
 		battery: {
-			bar: opt<"hidden" | "regular" | "whole">("whole"),
+			bar: opt<"hidden" | "regular" | "whole">("regular"),
 			charging: opt("#00D787"),
 			percentage: opt(true),
 			blocks: opt(10),
-			width: opt(50),
+			width: opt(30),
 			low: opt(30),
 		},
 
@@ -31,39 +31,27 @@ const options = mkOptions(OPTIONS, {
 			ignore: opt([ 
 			]),
 		},
-
-		// launcher: {
-		// 	icon: {
-		// 		colored: opt(true),
-		// 				  icon: opt(icon(distro.logo, icons.ui.search)),
-		// 	},
-		// 	label: {
-		// 		colored: opt(false),
-		// 				  label: opt(" Applications"),
-		// 	},
-		// 	action: opt(() => App.toggleWindow("launcher")),
-		// },
 	},
-
-	// launcher: {
-	// 	width: opt(0),
-	// 		  margin: opt(80),
-	// 		  sh: {
-	// 			  max: opt(16),
-	// 		  },
-	// 		  apps: {
-	// 			  iconSize: opt(62),
-	// 		  max: opt(6),
-	// 		  favorites: opt([
-	// 			  [
-	// 			"vivaldi",
-	// 			"org.kde.konsole",
-	// 			"pcmanfm-qt",
-	// 			"deezer-enhanced",
-	// 			  ],
-	// 		]),
-	// 	},
-	// },
+	
+	launcher: {
+        width: opt(0),
+        margin: opt(60),
+        sh: {
+            max: opt(16),
+        },
+        apps: {
+            iconSize: opt(32),
+            max: opt(6),
+            favorites: opt([
+                [
+                    "vivaldi",
+                    "konsole",
+                    "pcmanfm-qt",
+                    "deezer-enhanced",
+                ],
+            ]),
+        },
+    },
 
   	layout: {
 		start: opt<Array<import("./modules/bar/bar").BarWidget>>([
@@ -100,6 +88,7 @@ const options = mkOptions(OPTIONS, {
 	
 	dashboard: {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
+		networkSettings: opt("gtk-launch nm-connection-editor"),
 	},
 	
 	pwrmenu: {

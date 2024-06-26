@@ -1,4 +1,4 @@
-import { Widget, Utils, Gio } from "../../imports";
+import { Widget, Utils, Gio } from "imports";
 import Brightness from "../service/brightness";
 
 const { monitorFile, readFile, exec } = Utils
@@ -25,19 +25,22 @@ export const BrightnessSlider = () =>
 	Box({
 		className: "brightSlider",
 		vertical: true,
+		hpack: "center",
+		vpack: "center",
 		children: [
+			Label({
+				className: "brightsldLabel",
+				label: "Brightness",
+				hpack: "center",
+			}),
 			Box({
 				hpack: "center",
 				vpack: "center",
 				children: [
 					Icon(),
-					Label({
-						className: "brightsldLabel",
-						label: "Brightness",
-						hpack: "center",
-					}),
+					BSlider(),
 				]
 			}),
-			BSlider(),
+
 		],
 	});

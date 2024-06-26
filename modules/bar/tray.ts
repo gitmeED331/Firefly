@@ -1,12 +1,13 @@
 import { type TrayItem } from "types/service/systemtray"
 import PanelButton from "../PanelButton"
 import options from "options"
-import { Widget, SystemTray, Gdk } from "imports";
-import { icon } from "lib/utils";
+import { Widget, SystemTray, Gdk } from "imports"
+import { icon } from "lib/utils"
+import icons from "lib/icons"
 
 
 const systemtray = await Service.import("systemtray")
-const { ignore, include, stitem } = options.bar.systray
+const { ignore, stitem } = options.bar.systray
 const { Label, Revealer, Button, Box, Icon } = Widget
 
 const SysTrayItem = (item: TrayItem) => PanelButton({
@@ -39,7 +40,8 @@ const SysTrayItem = (item: TrayItem) => PanelButton({
 export const Expandbtn = () => PanelButton ({
 	className: 'BarBTN',
 	hexpand: false,
-	onPrimaryClick: () => { stitem.value = !stitem.value },
+	onPrimaryClick: () => App.toggleWindow("launcher"),
+    onSecondaryClick: () => { stitem.value = !stitem.value },
 	child: 
         Icon({
             icon: 'hyprland-symbolic'

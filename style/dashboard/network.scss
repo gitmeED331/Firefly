@@ -1,0 +1,122 @@
+.row {
+    @include spacing;
+    margin: 0.5rem 1rem;
+}
+
+.menu {
+    @include unset;
+    @include widget;
+    padding: $padding * 3;
+    margin-top: $spacing;
+    margin: 0.5rem 1rem;
+    .icon {
+        margin-right: 0.5rem;
+        font-size: 1.5rem;
+        color: yellow;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    separator {
+        margin: ($padding * 1);
+        background: $border-color;
+    }
+
+    button {
+        @include button($flat: true);
+        padding: $padding  *2;
+
+        image:first-child {
+            margin-right: $spacing * 2;
+        }
+    }
+
+    .bluetooth-devices {
+        @include spacing(.5);
+        margin-top: 0.5rem;
+
+        spinner {
+            margin-right: 1rem;
+        }
+    }
+
+    switch {
+        @include switch;
+    }
+}
+
+.sliders-box .menu {
+    margin: ($spacing * .5) 0;
+
+    &.app-mixer {
+        .mixer-item {
+            padding: $padding * .5;
+            padding-left: 0;
+            padding-right: $padding * 2;
+
+            scale {
+                //@include slider($width: .5em);
+            }
+
+            image {
+                font-size: 1.2em;
+                margin: 0 $padding;
+            }
+        }
+    }
+}
+
+.toggle-button {
+    @include button;
+    font-weight: bold;
+
+    image {
+        font-size: 1.3em;
+    }
+
+    label {
+        margin-left: $spacing * .3;
+    }
+
+    button {
+        @include button($flat: true);
+        padding: 0.5rem;
+        &:first-child {
+            //padding: $padding * 1.2;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            //padding: $padding * .5;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &.active {
+        background: $PrimaryBG;
+
+        label,
+        image {
+            color: $Primfont-color;
+        }
+    }
+}
+
+.simple-toggle {
+    @include button;
+    font-weight: bold;
+    padding: $padding * 1.2;
+
+    label {
+        margin-left: $spacing * .3;
+    }
+
+    image {
+        font-size: 1.3em;
+    }
+}

@@ -1,6 +1,7 @@
 .tray {
-	background: $WidgetBG;
+	background: $PrimaryBG;
 	border-bottom: $border;
+
 	> * {
 		margin: 0 3px;
 		margin-right: 4px;
@@ -10,13 +11,19 @@
 		font-weight: bold;
 		padding: 1px 2px;
 	}
-}
-.systrayitem:hover {
-	background-color: #1e1e2e;
-	border-radius: 0rem 0rem 3rem 3rem;
-	border-bottom: 2px solid #0000FF;
-	border-left: 2px solid #0000FF;
-	border-right: 2px solid #0000FF;
+
+	button {
+		image {
+		color: $Primfont-color;
+		}
+		&:hover {
+			background-color: #1e1e2e;
+			border-radius: 0rem 0rem 3rem 3rem;
+			border-bottom: 2px solid #0000FF;
+			border-left: 2px solid #0000FF;
+			border-right: 2px solid #0000FF;
+		}
+	}
 }
 
 menu {

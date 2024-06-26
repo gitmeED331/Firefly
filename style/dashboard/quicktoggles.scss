@@ -7,13 +7,11 @@
 	}
 }
 
-
-.buttons {
-    margin-top: 10px;
-	font-size: 1.5rem;
-	border-radius: 50%;
-	padding: 2rem;
+.brightsldIcon {
+    color: yellow;
+    font-size: 1.25rem;
 }
+
 
 .bluetooth, .wifi {
     background: #74c7ec;
@@ -33,18 +31,20 @@
     }
 }
 .quickaccess {
-	&icon {
-		background-color: rgba(0,0,0,1);
-		border-radius: 100%;
-		margin: 5px;
-		min-height: 24px;
-		min-width: 24px;
-		padding: 0.5rem;
-		font-size: 1.5rem;
-		&:hover{
-			background-color: rgba(15,155,255,1);
-		}
-	}
+    button {
+        border-radius: 50%;
+        margin: 0px 5px;
+        padding: 8px;
+        image {
+	    	border-radius: 100%;
+	    	min-height: 15px;
+	    	min-width: 15px;
+	    	font-size: 2rem;
+        }
+        &:hover{
+	    	background: $HoverBGG;
+	    }
+    }
 }
 
 .wifilist .wifi-group-list, .wifi-group, .netwidget {

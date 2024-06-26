@@ -1,8 +1,5 @@
-@import "clock";
 @import "calendar";
 @import "media";
-@import "sysinfo";
-@import "title";
 @import "tray";
 @import "workspaces";
 
@@ -19,4 +16,42 @@
 	&right {
 		min-width: 100px;
 	}
+}
+
+//  -------------- window title
+
+.wintitle {
+	background: $PrimaryBG;
+	color: $Primfont-color;
+	font-weight: bold;
+	padding: 1px 0px;
+	border-bottom: $border;
+	&:hover {
+		color: $Hoverfont-color;
+		image {
+			animation: spin 1s infinite;
+		}
+	}
+}
+
+// --------------- clock
+
+.clock {
+	background: $PrimaryBG;
+	color: $Primfont-color;
+	font-weight: bold;
+	border-bottom: $border;
+	&:hover {
+		color: $Hoverfont-color;
+	}
+}
+
+
+// --------------- sysinfo
+
+.sysinfo {
+	background: $PrimaryBG;
+	border-bottom: $border;
+	color: $Primfont-color;
+	font-weight: bold;
 }

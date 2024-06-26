@@ -1,10 +1,12 @@
+@import "../mixins/mixins";
+
 .mediabtn {
 	border-bottom: $border;
-	background: $WidgetBG;
+	background: $PrimaryBG;
 }
 
 .mediaticker {
-	//background: $WidgetBG;
+	//background: $PrimaryBG;
 	color: $Primfont-color;
 	font-weight: bold;
 	//min-width: 12px;
@@ -15,7 +17,7 @@
 }
 
 .player {
-	background: $WidgetBG;
+	background: $PrimaryBG;
     padding-left: 10px;
     border: $border;
     border-radius: $radius * 1.5;
@@ -41,7 +43,7 @@
 	font-weight: bold;
 	padding: 0rem 0.5rem;
 	margin-top: 0.3rem;
-	//background: $WidgetBG;
+	//background: $PrimaryBG;
 	color: rgba(255,0,0,1);
 }
 

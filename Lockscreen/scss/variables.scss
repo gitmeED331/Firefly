@@ -7,12 +7,6 @@ $Thirdfont-color: rgba(155,255,15,1); // -- green
 $Hoverfont-color: rgba(255,0,0,1); // -- red
 $font-size: 10px;
 
-//------- Transitions
-$transition: 100ms;
-$materialStandard: cubic-bezier(0.2, 0, 0, 1);
-$materialAccel: cubic-bezier(0.3, 0, 1, 1);
-$materialDecel: cubic-bezier(0, 0, 0, 1);
-$squeezebezier: cubic-bezier(0.5, 3, 0, 1);
 
 //--------- msic
 $boxshad-bg: rgba(15,155,255,0.5);
@@ -20,7 +14,12 @@ $shadow-color: rgba(15,155,255,1);
 $popover-border-color: #00FF00;
 $popover-radius: 1rem;
 $popover-padding: 0.5rem;
-$LauncherBG: url("./assets/launchgerBG.jpg");
+$spacing: 1rem;
+$transition: 100ms;
+$materialStandard: cubic-bezier(0.2, 0, 0, 1);
+$materialAccel: cubic-bezier(0.3, 0, 1, 1);
+$materialDecel: cubic-bezier(0, 0, 0, 1);
+$squeezebezier: cubic-bezier(0.5, 3, 0, 1);
 
 //--------- Solids
 $PrimaryBG: rgba(0,0,0,0.75);

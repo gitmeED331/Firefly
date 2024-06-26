@@ -1,27 +1,74 @@
 .workspaces {
-	background: $WidgetBG;
-	//border-color: rgba(0,0,255,1);
-	border-bottom: $border;
+    background: $PrimaryBG;
+    border-bottom: $border;
     & button {
-        color: rgba(100,255,100,1);
+        color: $Primfont-color;
         margin-left: 5px;
-        padding: 1px;
+        padding: 2px;
         min-height: 8px;
-        min-width: 14px;
-        transition: all 0.3s $materialStandard;
+        min-width: 16px;
+        transition: all 2s $squeezebezier;
+        image {
+            color: $Primfont-color;
+        }
         &:hover {
-            color: $Hoverfont-color;
-            font-weight: bold;
-            min-width: 18px;
+            // color: $Hoverfont-color;
+            // font-weight: bold;
+            //min-width: 18px;
+            image {
+                color: $Hoverfont-color;
+                animation: spin 1s infinite;
             }
-        &.focused {
-			border: 2px solid #7A2048;
-			background: rgba(0, 0, 0, 0.8);
-			border-radius: 3rem 3rem 3rem 3rem;
-			font-weight: bold;
-			color: #FF0000;
-			min-width: 20px;
-		}
-    }
-}
+        }
+        &.occupied {
+            border: 2px solid rgba(0,0,0,0);
+            border-radius: $radius;
+            //color: $Secfont-color;
+            &:hover {
+                //color: $Hoverfont-color;
+                font-weight: bold;
+                //min-width: 18px;
+                image {
+                    color: $Hoverfont-color
+                }
+            }
+            image {
+                color: $Secfont-color
+            }
+        }
 
+        &.active {
+            border: 2px solid #00ccff;
+            //background: rgba(255, 0, 0, 0.8);
+            border-radius: $radius;
+            // font-weight: bold;
+            // color: $Thirdfont-color;
+            &:hover {
+                // color: $Hoverfont-color;
+                // font-weight: bold;
+                //min-width: 18px;
+                image {
+                    color: $Hoverfont-color;
+                }
+            }
+            image {
+                color: $Thirdfont-color
+            }
+        }
+    }
+
+    // &.active,
+    // &:active {
+    //     label {
+    //         background-color: transparentize($Primfont-color, .3);
+    //
+    //         &.occupied {
+    //             background-color: transparentize($Primfont-color, .15);
+    //         }
+    //
+    //         &.active {
+    //             background-color: $Primfont-color;
+    //         }
+    //     }
+    // }
+}

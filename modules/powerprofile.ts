@@ -2,7 +2,7 @@
 // ---------- Power Profiles Window --------
 //
 import { Widget, Hyprland, Utils, PopupWindow } from "imports";
-import icons from "lib/icons.js";
+import icons from "lib/icons";
 import options from "options";
 import Brightness from "./service/brightness"
 
@@ -27,11 +27,9 @@ class Profiles extends Service {
 
 	#cmd = ""
 	#lightcmd = ""
-	#cnamecmd = ""
 
 	get cmd() { return this.#cmd }
 	get lightcmd() { return this.#lightcmd }
-	get cnamecmd() { return this.#cnamecmd }
 
 	action(action: Action) {
 		[this.#cmd, this.#lightcmd] = {

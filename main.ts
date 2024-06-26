@@ -17,6 +17,7 @@ import NotificationPopups from "modules/notificationPopups"
 import Overview from "modules/overview/Overview"
 import sessioncontrols from "modules/sessioncontrol"
 import pwrprofiles from "modules/powerprofile"
+import Launcher from "modules/launcher/Launcher"
 
 const { execAsync, exec, monitorFile } = Utils;
 
@@ -61,6 +62,7 @@ App.config({
 		...forMonitors(NotificationPopups),
 		Overview(),
 		sessioncontrols(),
-		pwrprofiles()
+		pwrprofiles(),
+		Launcher()
 	],
 })

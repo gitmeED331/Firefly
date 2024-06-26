@@ -1,9 +1,19 @@
+@keyframes lowBlink {
+    0% { color: #ff0000; }
+    50% { color: #ffff00; }
+    100% { color: #000066; }
+}
+
 .BarBTN {
-    background: $WidgetBG;
+    background: $PrimaryBG;
     border-bottom: $border;
     font-size: 1.4rem;
     &:hover {
         color: $Hoverfont-color;
+        image {
+            animation: spin 1s infinite;
+
+        }
     }
 }
 
@@ -11,5 +21,6 @@
     font-size: 1.4rem;
     &:hover {
         color: $Hoverfont-color;
+        animation: spin 1s infinite;
     }
 }

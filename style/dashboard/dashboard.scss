@@ -1,4 +1,5 @@
 @import "quicktoggles";
+@import "network";
 
 .dashboard {
     font-weight: bold;
@@ -6,7 +7,7 @@
 }
 
 .dashcontainer {
-	background: $WidgetBG;
+	background: $PrimaryBG;
 	min-height: 71.75rem;
 	border-radius: $radius-tbleft;
 	border-left: $border;

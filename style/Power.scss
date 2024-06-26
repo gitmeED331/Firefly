@@ -1,9 +1,51 @@
+@keyframes lowBlink {
+	0% { color: #ff0000; }
+	50% { color: #ffff00; }
+	100% { color: #000066; }
+}
+
+
+// ------------- Battery bar --------------
+
+.battery {
+	border: none;
+	color: $Primfont-color;
+	font-size: 0.5rem;
+	label {
+		margin-right: 0.25rem;
+	}
+	&.low {
+		animation: lowBlink 3s infinite;
+	}
+	&:hover {
+		color: $Hoverfont-color;
+	}
+}
+
+.whole, .regular {
+	&.low {
+		animation: lowBlink 3s infinite;
+	}
+	& trough {
+		border: $border;
+		border-radius: $radius*5;
+		block {
+			//background: linear-gradient(0deg, rgba(0,35,0,0.65) 0%, rgba(0,35,0,0.8) 10%, lime 50%, rgba(0,35,0,0.8) 90%, rgba(0,35,0,0.65) 100%);
+			min-height: 10px;
+			background-color: lime;
+			border-radius: $radius * 5;
+			margin: 0px 0.25px;
+		}
+	}
+}
+
+
 // ----------- Power controls on battery button -------
 
 .pwrprofiles {
 	border: $border;
 	border-radius: $radius / 2;
-	background: $WidgetBG;
+	background: $PrimaryBG;
 	font-size: 1rem;
 	color: lime;
 	label {
@@ -114,7 +156,7 @@
 		min-height: 10rem;
 		border-left: 0.5rem solid #0F9BFF;
 		border-right: 0.5rem solid #0F9BFF;
-		background: linear-gradient(0deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 15%, rgba(0,0,0,0) 50%, rgba(255,255,255,1) 85%, rgba(255,255,255,0.5) 100%);
+		background: linear-gradient(0deg, rgba(0,0,255,0.5) 0%, rgba(0,0,255,1) 15%, rgba(0,0,0,0) 50%, rgba(0,0,255,1) 85%, rgba(0,0,255,0.5) 100%);
 		margin: 0rem 1.5rem;
 		padding: 0.5rem;
 
@@ -128,16 +170,18 @@
 
 		label,
 		image {
-			//color: black;
+			color: $Primfont-color;
 		}
 
 		label {
 			//margin-top: 0rem;
+			font-size: 1.5rem
 		}
 
 		&:hover {
 			image {
 				//@include button-hover;
+				animation: spin 1s infinite;
 			}
 
 			label {

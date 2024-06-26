@@ -3,21 +3,25 @@
   border-radius: 1rem
 }
 
-.angleRight {
-	background: $WidgetBG;
-	margin-right: 30px;
-    margin-left: 0px;
-    border: $border;
-}
-.angleLeft {
-	background: $WidgetBG;
-	margin-right: 0px;
-    margin-left: 30px;
-    border: $border;
+.angle {
+	&Right {
+		color: $border-color;
+		background: $PrimaryBG;
+		margin-right: 30px;
+    	margin-left: 0px;
+    	border: $border;
+	}
+	&Left {
+		color: $border-color;
+		background: $PrimaryBG;
+		margin-right: 0px;
+    	margin-left: 30px;
+    	border: $border;
+	}
 }
 
 .angleRightLarge, .angleLeftLarge {
-	background: $WidgetBG;
+	background: $PrimaryBG;
 	border: 50px solid yellow;
 }
 

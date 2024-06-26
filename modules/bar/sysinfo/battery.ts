@@ -1,8 +1,8 @@
-import { Widget, Utils, Battery } from "../../../imports";
+import { Widget, Utils, Battery } from "imports";
 const { Box, Button } = Widget;
 
-import icons from "../../../lib/icons"
-import options from "../../../options"
+import icons from "lib/icons"
+import options from "options"
 import PanelButton from "../../PanelButton"
 
 const powerProfiles = await Service.import('powerprofiles')

@@ -6,7 +6,7 @@ const { Window, Box, CenterBox, Button, Icon, Label, Slider } = Widget;
 const mpris = await Service.import("mpris");
 
 // Widgets
-import { Workspaces } from "./workspaces";
+import Workspaces  from "./workspaces";
 import { Title } from "./title";
 import { MediaBTN } from "./media";
 import { SysInfo } from	"./sysinfo/sysinfo";

@@ -1,3 +1,5 @@
+App.addIcons(`${App.configDir}/assets`)
+
 export const substitutes = {
     "geany": "geany-symbolic",
     "vivaldi": "vivaldi-symbolic",
@@ -8,12 +10,14 @@ export const substitutes = {
     "preferences-system": "emblem-system-symbolic",
     "com.github.Aylur.ags-symbolic": "controls-symbolic",
     "com.github.Aylur.ags": "controls-symbolic",
-    "pcloud": "pcloud-symbolic",
+    "pcloud-symbolic": "pcloud-symbolic",
     "keepassxc":"keepassxc-symbolic",
-    "filen-desktop": "filen-desktop-symbolic",
+    //"filen-desktop": "filen-desktop-symbolic",
+    "filen-desktop-symbolic": "filen-desktop-symbolic",
     "WebCord": "discord-symbolic",
     "deezer-enhanced-symbolic": "deezer-symbolic",
     "deezer": "deezer-symbolic",
+    "com.visualstudio.code.oss-symbolic":"vs-code-symbolic",
 }
 
 export default {
@@ -138,5 +142,23 @@ export default {
         FShot: "accessories-screenshot-symbolic",
         ARecord: "vm-snapshot-recording",
         FRecord: "record",
+    },
+    launcher: {
+        search: "system-search-symbolic",
+        utility: "applications-utilities-symbolic",
+        system: "emblem-system-symbolic",
+        education: "applications-science-symbolic",
+        development: "applications-engineering-symbolic",
+        network: "network-wired-symbolic",
+        office: "x-office-document-symbolic",
+        game: "applications-games-symbolic",
+        multimedia: "applications-multimedia-symbolic",
+        hyprland: "hyprland-symbolic",
+      },
+    wsicon: {
+        ws1: "flaming-claw-symbolic",
+        ws2: "fox-symbolic",
+        ws3: "snake-symbolic",
+        ws4: "dragon-symbolic",
     }
 }

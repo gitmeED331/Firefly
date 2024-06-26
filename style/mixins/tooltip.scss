@@ -7,7 +7,7 @@ tooltip {
     border: none;
 
     >*>* {
-        background: $WidgetBG;
+        background: $PrimaryBG;
         border-radius: $radius;
         border: $border-width solid $popover-border-color;
         color: $Primfont-color;

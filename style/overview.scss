@@ -34,7 +34,7 @@
         @include button;
         margin: $padding;
         &:hover {
-            background: $hover-bg;
+            background: $HoverBGG;
         }
         &.hidden {
             @include hidden;

@@ -1,6 +1,7 @@
 * {
   all: unset;
-  font-family: "CaskaydiaCove Nerd Font";
+  font-family: "Liberation Mono";
+  font-size: 1rem;
 }
 
 .lock-container {

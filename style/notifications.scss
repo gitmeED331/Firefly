@@ -61,17 +61,21 @@
 	//font-size: 1rem;
 	// color: $Primfont-color;
 //}
-
+//
+//---------------- dashboard notifications
+//
 .notif { //dashboard panel box
+	// all:unset;
 	background-color: transparent;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
+	//margin-left: 2.5rem;
+//	margin-right: 0.25rem;
 	margin-top: 0rem;
-	margin-bottom: 0.25rem;
-	padding: 0rem 1rem;
+	margin-bottom: 0rem;
+	//padding: 0rem 0.05rem;
+	//min-width: 30rem;
 	&Item {
 		&Body {
-			padding: 0.25rem;
+			padding: 0.1rem;
 			border-radius: $radius;
 			color: white;
 		}
@@ -83,9 +87,8 @@
 		}
 		&Title {
 			text-shadow: none;
-			font-size: 1.35rem;
+			font-size: 1.15rem;
 			font-weight: bold;
-			min-width: 95px;
 		}
 		&Description {
 			color: white;
@@ -94,24 +97,29 @@
 		}
 	}
 	&Empty {
-		color: $Primfont-color;
-		font-size: 7rem;
-		text-shadow: 15px 0px 10px yellow, -15px 0px 10px yellow, 0px 0px 0px yellow;
+		label {
+			all: unset;
+			//color: $Primfont-color;
+			font-size: 10rem;
+			text-shadow: 15px 0px 10px yellow, -15px 0px 10px yellow, 0px 0px 0px yellow;
+		}
 	}
 	&panel {
 		border-radius: $radius-tbleft;
 		margin-top: 1rem;
 		min-width: 25rem;
+		padding-left: 2.5rem;
+		padding-right: 0.5rem;
 		&Box {
-			margin-right: 2rem;
+			margin-right: 1rem;
 			margin-left: 2rem;
-			&Title {
+			label {
 				font-size: 1.5rem;
 				color: $Primfont-color;
 			}
-			&Icon {
-				font-size: 1.25rem;
-				color: $Primfont-color;
+			button {
+				color:  $Primfont-color;
+
 			}
 		}
 	}

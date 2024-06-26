@@ -5,10 +5,40 @@ import { RoundedAngleEnd, RoundedCorner } from "./modules/roundedCorner/index.js
 import Clock from "./modules/clock/index.js";
 import SessionBox, {SessionBoxTooltip} from "./modules/powermenu/sessionbox.js";
 import { MprisCorner } from "./modules/mpris/index.js";
+import AstalAuth from "gi://AstalAuth";
 
 Utils.exec(`sass ${App.configDir}/scss/lock.scss ${App.configDir}/lockstyle.css`);
 App.applyCss(`${App.configDir}/lockstyle.css`);
 
+
+const prompt = Variable("Enter Password:");
+const inputVisible = Variable(false);
+const inputNeeded = Variable(false);
+
+const auth = new AstalAuth.Pam();
+auth.connect("auth-info", (auth, msg) => {
+  prompt.setValue(msg);
+  auth.supply_secret(null);
+});
+auth.connect("auth-error", (auth, msg) => {
+  prompt.setValue(msg);
+  auth.supply_secret(null);
+});
+auth.connect("auth-prompt-visible", (auth, msg) => {
+  prompt.setValue(msg);
+  inputVisible.setValue(true);
+  inputNeeded.setValue(true);
+});
+auth.connect("auth-prompt-hidden", (auth, msg) => {
+  prompt.setValue(msg);
+  inputVisible.setValue(false);
+  inputNeeded.setValue(true);
+});
+
+auth.connect("success", unlock);
+auth.connect("fail", p => {
+  auth.start_authenticate();
+});
 
 const lock = Lock.prepare_lock();
 
@@ -16,34 +46,35 @@ const windows = [];
 
 function unlock() {
   for (const win of windows) {
-    win.child.children[0].reveal_child = false;
+    win.window.child.children[0].reveal_child = false;
   }
   Utils.timeout(500, () => {
     lock.unlock_and_destroy();
-    windows.forEach(w => w.destroy());
+    windows.forEach(w => w.window.destroy());
     Gdk.Display.get_default()?.sync();
     App.quit();
   });
 }
 
+
 const Right = () => Widget.Box({
   hpack: "end",
   children: [
     RoundedAngleEnd("topleft", {class_name: "angle", hexpand: true}),
-    Clock(),
+                               Clock(),
   ]
 });
 
 const Left = () => Widget.Box({
   children: [
     SessionBox(),
-    RoundedAngleEnd("topright", {class_name: "angle"})
+                              RoundedAngleEnd("topright", {class_name: "angle"})
   ]
 });
 
 const Bar = () => Widget.CenterBox({
   start_widget: Left(),
-  end_widget: Right(),
+                                   end_widget: Right(),
 });
 
 const LoginBox = () => Widget.Box({
@@ -65,31 +96,30 @@ const LoginBox = () => Widget.Box({
             class_name: "entry-box",
             vertical: true,
             children: [
-              Widget.Label("Enter password:"),
+              Widget.Label({
+                label: prompt.bind()
+              }),
               Widget.Separator(),
-              Widget.Entry({
-                hpack: "center",
-                xalign: 0.5,
-                visibility: false,
-                placeholder_text: "password",
-                on_accept: self => {
-                  self.sensitive = false;
-                  Utils.authenticate(self.text ?? "")
-                    .then(() => unlock())
-                    .catch(e => {
-                      self.text = "";
-                      self.parent.children[0].label = e.message;
-                      self.sensitive = true;
-                    });
-                }
-              }).on("realize", (entry) => entry.grab_focus()),
+                     Widget.Entry({
+                       hpack: "center",
+                       xalign: 0.5,
+                       visibility: inputVisible.bind(),
+                                  sensitive: inputNeeded.bind(),
+                                  on_accept: self => {
+                                    inputNeeded.setValue(false);
+                                    auth.supply_secret(self.text);
+                                    self.text = "";
+                                  }
+                     }).on("realize", (entry) => entry.grab_focus()),
             ]
           })
         ]
       }),
       overlays: [
         RoundedCorner("topleft", {class_name: "corner"}),
-        RoundedCorner("topright", {class_name: "corner"}),
+                   RoundedCorner("topright", {class_name: "corner"}),
+                   RoundedCorner("bottomleft", {class_name: "corner"}),
+                   RoundedCorner("bottomright", {class_name: "corner"}),
       ]
     })
   ]
@@ -108,13 +138,13 @@ const LockWindow = () => new Gtk.Window({
           vertical: true,
           children: [
             Bar(),
-            Widget.Overlay({
-              child: LoginBox(),
-              overlays: [
-                SessionBoxTooltip(),
-                MprisCorner()
-              ]
-            })
+                          Widget.Overlay({
+                            child: LoginBox(),
+                                         overlays: [
+                                           SessionBoxTooltip(),
+                                         MprisCorner()
+                                         ]
+                          })
           ]
         })
       }).on("realize", self => Utils.idle(() => self.reveal_child = true))
@@ -124,32 +154,38 @@ const LockWindow = () => new Gtk.Window({
 
 
 function createWindow(monitor){
-  const win = LockWindow();
+  const window = LockWindow();
+  const win = {window, monitor};
   windows.push(win);
-  lock.new_surface(win, monitor);
-  win.show();
+  return win;
 }
 
-function on_locked() {
+function lock_screen() {
   const display = Gdk.Display.get_default();
   for (let m = 0;  m < display?.get_n_monitors();  m++) {
     const monitor = display?.get_monitor(m);
     createWindow(monitor);
   }
   display?.connect("monitor-added", (disp, monitor) => {
-    createWindow(monitor);
+    const w = createWindow(monitor);
+    lock.new_surface(w.window, w.monitor);
+    w.window.show();
+  });
+  lock.lock_lock();
+  windows.map(w => {
+    lock.new_surface(w.window, w.monitor);
+    w.window.show();
   });
 }
 
 function on_finished() {
   lock.destroy();
+  windows.forEach(w => w.window.destroy());
   Gdk.Display.get_default()?.sync();
   App.quit();
 }
 
-lock.connect("locked", on_locked);
+// lock.connect("locked", on_locked);
 lock.connect("finished", on_finished);
-
-lock.lock_lock();
-
-
+lock_screen();
+auth.start_authenticate();

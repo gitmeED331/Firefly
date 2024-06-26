@@ -1,12 +1,12 @@
 @mixin button-focus() {
     box-shadow: inset 0 0 0 $border-width $border-color;
-    background: $hover-bg;
+    background: $HoverBGG;
     color: $Hoverfont-color;
 }
 
 @mixin button-hover() {
     box-shadow: inset 0 0 2px $border-width $border-color;
-    background: $hover-bg;
+    background: $HoverBGG;
     color: $Hoverfont-color;
 }
 
@@ -35,7 +35,7 @@
     }
 
     @else {
-        background: $WidgetBG;
+        background: $PrimaryBG;
         box-shadow: inset 0 0 0 $border-width $border-color;
     }
 

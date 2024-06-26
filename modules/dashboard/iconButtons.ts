@@ -8,10 +8,9 @@ const { Box, Icon, Button, Revealer } = Widget;
 export const TerminalIcon = () => Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'Terminal',
-	child: 
-		Widget.Icon({
-			icon: 'terminator'
-		}),
+	child: Icon({
+		icon: 'terminator'
+	}),
 	onClicked: () => {
 		Hyprland.messageAsync(`dispatch exec konsole`);
 		App.closeWindow('dashboard');
@@ -21,10 +20,9 @@ export const TerminalIcon = () => Button({
 export const KontactIcon = () => Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'eMail',
-	child:
-		Widget.Icon({
-			icon: 'kube-mail'
-		}),
+	child: Icon({
+		icon: 'kube-mail'
+	}),
 	onClicked: () => {
 		Hyprland.messageAsync(`dispatch exec kontact`);
 		App.closeWindow('dashboard');
@@ -34,10 +32,9 @@ export const KontactIcon = () => Button({
 export const VPNIcon = item => Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'WireGuard VPN',
-	child: 
-		Widget.Icon({
-			icon: 'preferences-system-network-vpn'
-		}),
+	child: Icon({
+		icon: 'preferences-system-network-vpn'
+	}),
 	onClicked: () => {
 		Hyprland.messageAsync(`dispatch exec wireguird`);
 		App.closeWindow('dashboard');
@@ -47,10 +44,9 @@ export const VPNIcon = item => Button({
 export const Enpass = () => Button({
 	className: 'quickaccessicon',
 	tooltip_text: 'Enpass',
-	child: 
-		Widget.Icon({
-			icon: 'enpass'
-		}),
+	child: Icon({
+		icon: 'enpass'
+	}),
 	onClicked: () => {
 		Hyprland.messageAsync(`dispatch exec enpass`);
 		App.closeWindow('dashboard');
