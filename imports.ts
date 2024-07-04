@@ -18,6 +18,7 @@ import Gio from "gi://Gio";
 import Gtk from 'gi://Gtk';
 import Gdk from "gi://Gdk";
 import GLib from "gi://GLib";
+import type GObject from "gi://GObject"
 import Lock from "gi://GtkSessionLock";
 import Cairo from "gi://cairo";
 
@@ -44,6 +45,7 @@ export {
     Gtk,
     Gdk,
     GLib,
+    GObject,
     Cairo,
     PopupWindow,
     Roundedges,

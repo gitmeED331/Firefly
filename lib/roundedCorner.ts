@@ -87,8 +87,35 @@ export const RoundedAngleEnd = (place, props) => Widget.DrawingArea({
           cr.setSourceRGBA(border_color.red, border_color.green, border_color.blue, border_color.alpha);
           cr.stroke();
           break;
-      }
 
+          case "bottomleft":
+            cr.moveTo(0, r);
+            cr.curveTo(ratio * r / 2, r, ratio * r / 2, 0, ratio * r, 0);
+            cr.lineTo(ratio * r, r);
+            cr.closePath();
+            cr.clip();
+            Gtk.render_background(context, cr, 0, 0, r * ratio, r);
+            cr.moveTo(0, r);
+            cr.curveTo(ratio * r / 2, r, ratio * r / 2, 0, ratio * r, 0);
+            cr.setLineWidth(border_width * 2);
+            cr.setSourceRGBA(border_color.red, border_color.green, border_color.blue, border_color.alpha);
+            cr.stroke();
+          break;
+
+          case "bottomright":
+            cr.moveTo(ratio * r, r);
+            cr.curveTo(ratio * r / 2, r, ratio * r / 2, 0, 0, 0);
+            cr.lineTo(0, r);
+            cr.closePath();
+            cr.clip();
+            Gtk.render_background(context, cr, 0, 0, r*ratio, r);
+            cr.moveTo(ratio * r, r);
+            cr.curveTo(ratio * r / 2, r, ratio * r / 2, 0, 0, 0);
+            cr.setLineWidth(border_width * 2);
+            cr.setSourceRGBA(border_color.red, border_color.green, border_color.blue, border_color.alpha);
+            cr.stroke();    
+          break;
+      }
       // cr.setLineWidth(border_width);
       // cr.setSourceRGBA(border_color.red, border_color.green, border_color.blue, border_color.alpha);
     });

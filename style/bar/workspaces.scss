@@ -11,6 +11,9 @@
         image {
             color: $Primfont-color;
         }
+        label {
+            color: $Primfont-color;
+        }
         &:hover {
             // color: $Hoverfont-color;
             // font-weight: bold;
@@ -31,8 +34,14 @@
                 image {
                     color: $Hoverfont-color
                 }
+                label {
+                    color: $Hoverfont-color
+                }
             }
             image {
+                color: $Secfont-color
+            }
+            label {
                 color: $Secfont-color
             }
         }

@@ -3,6 +3,7 @@ App.addIcons(`${App.configDir}/assets`)
 export const substitutes = {
     "geany": "geany-symbolic",
     "vivaldi": "vivaldi-symbolic",
+    "org.kde.konsole": "terminal-symbolic",
     "konsole": "terminal-symbolic",
     "audio-headset-bluetooth": "audio-headphones-symbolic",
     "audio-card-analog-usb": "audio-speakers-symbolic",
@@ -15,13 +16,21 @@ export const substitutes = {
     //"filen-desktop": "filen-desktop-symbolic",
     "filen-desktop-symbolic": "filen-desktop-symbolic",
     "WebCord": "discord-symbolic",
+    "armcord-symbolic": "discord-symbolic",
+    "ArmCord":"discord-symbolic",
     "deezer-enhanced-symbolic": "deezer-symbolic",
     "deezer": "deezer-symbolic",
     "com.visualstudio.code.oss-symbolic":"vs-code-symbolic",
+    "code-oss":"vs-code-symbolic",
+    "kate-symbolic": "geany-symbolic",
+    "org.kde.kate": "geany-symbolic",
 }
 
 export default {
+    settings: "preferences-system-symbolic",
+    refresh: "view-refresh-symbolic",
     missing: "image-missing-symbolic",
+
     app: {
         terminal: "terminal-symbolic",
     },
@@ -94,11 +103,11 @@ export default {
         screen: "display-brightness-symbolic",
     },
     powermenu: {
-        sleep: "weather-clear-night-symbolic",
-        reboot: "system-reboot-symbolic",
-        logout: "system-log-out-symbolic",
-        shutdown: "system-shutdown-symbolic",
         lock: "system-lock-screen-symbolic",
+        logout: "system-log-out-symbolic",
+        reboot: "system-reboot-symbolic",
+        shutdown: "system-shutdown-symbolic",
+
     },
     recorder: {
         recording: "media-record-symbolic",
@@ -156,9 +165,9 @@ export default {
         hyprland: "hyprland-symbolic",
       },
     wsicon: {
-        ws1: "flaming-claw-symbolic",
+        ws1: "dragon-symbolic",
         ws2: "fox-symbolic",
         ws3: "snake-symbolic",
-        ws4: "dragon-symbolic",
+        ws4: "flaming-claw-symbolic",
     }
 }

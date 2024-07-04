@@ -1,19 +1,20 @@
-import { Widget, Utils, Mpris, Hyprland, Audio, Roundedges } from "../../imports";
-import options from "../../options";
+import { Widget, Utils, Mpris, Hyprland, Audio, Roundedges } from "imports";
+import options from "options";
 
-const { RoundedAngleEnd } = Roundedges;
-const { Window, Box, CenterBox, Button, Icon, Label, Slider } = Widget;
+const { RoundedAngleEnd } = Roundedges
+const { Window, Box, CenterBox, Button, Icon, Label, Slider } = Widget
 const mpris = await Service.import("mpris");
 
-// Widgets
-import Workspaces  from "./workspaces";
-import { Title } from "./title";
-import { MediaBTN } from "./media";
-import { SysInfo } from	"./sysinfo/sysinfo";
-import {TrayReveal, Expandbtn} from "./tray";
-import { Clock } from "./clock";
 
-const pos = options.bar.position.bind();
+// Widgets
+import Workspaces  from "./workspaces"
+import { Title } from "./title"
+import { TickerBTN } from "./media"
+import { SysInfo } from	"./sysinfo/sysinfo"
+import {TrayReveal, Expandbtn} from "./tray"
+import { Clock } from "./clock"
+
+const pos = options.bar.position.bind()
 
 const Spacer = () => Box({
 	//className: "spacer",
@@ -58,7 +59,7 @@ const Right	= () =>	Box({
 	children: [
 		Spacer(),
 		RoundedAngleEnd("topleft", {className: "angleLeft"}),
-		MediaBTN(),
+		TickerBTN(),
 		RoundedAngleEnd("topright", {className: "angleRight"}),
 		Spacer(),
 		RoundedAngleEnd("topleft", {className: "angleLeft"}),

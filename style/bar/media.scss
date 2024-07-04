@@ -1,34 +1,43 @@
 @import "../mixins/mixins";
 
-.mediabtn {
-	border-bottom: $border;
-	background: $PrimaryBG;
-}
-
-.mediaticker {
-	//background: $PrimaryBG;
-	color: $Primfont-color;
-	font-weight: bold;
-	//min-width: 12px;
-	//min-height: 12px;
-	&:hover {
-		color: $Hoverfont-color;
+.ticker {
+	&btn {
+		border-bottom: $border;
+		background: $PrimaryBG;
+		font-weight: bold;
+		min-width: 1rem;
+		&:hover {
+			color: $Hoverfont-color;
+		}
+		tooltip {
+			font-weight: bold;
+			padding: 10px
+		}
+	}
+	&artist {
+		color: $Secfont-color;
+		font-size: 1rem;
+	}
+	&track {
+		font-size: 1rem;
+		color: $Primfont-color;
 	}
 }
 
 .player {
 	background: $PrimaryBG;
-    padding-left: 10px;
+    padding-left: 0px;
     border: $border;
     border-radius: $radius * 1.5;
-    min-width: 400px;
+    min-width: 450px;
 	min-height: 10px;
 }
+
 .trackimg {
 	background-size: 25px;
 	background-position: center;
-	border-radius: 5px;
-	margin: 0.25rem 0.25rem;
+	border-radius: $radius-tbleft;
+	margin-right: 0.25rem;
 }
 .playicon {
 	padding: 0rem;
@@ -42,16 +51,17 @@
 	font-size: 1.2em;
 	font-weight: bold;
 	padding: 0rem 0.5rem;
-	margin-top: 0.3rem;
+	margin-top: 0.65rem;
 	//background: $PrimaryBG;
-	color: rgba(255,0,0,1);
+	color: $Primfont-color;
+
 }
 
 .artist {
 		font-size: 1rem;
 		padding: 0rem 0.25rem;
 		//margin-right: 2rem;
-		color: cyan;
+		color: $Secfont-color;
 	}
 	
 .player scale.position {
@@ -77,20 +87,15 @@
 }
 
 .player button {
-	min-height: 1rem;
-	min-width: 1rem;
-	margin-left: 0.5rem;
-	margin-right: 0.25rem;
-	padding: 2.5px;
-}
-
-.player	button {
 	color: #cdd6f4;
-	font-weight: bold;
-	font-size: 1.5rem;
 	border: 2px solid rgba(0,0,0,0);
+	image {
+		font-size: 1.5rem;
+		margin: 0rem 0.25rem;
+	}
 	&.play-pause {
 		margin: 0rem 0.25rem;
+
 		&:hover {
 			color: yellow;
 		}
@@ -101,6 +106,7 @@
 		}
 	}
 	&.close {
+		margin-left: 1rem;
 		&:hover {
 			color: red;
 		}
@@ -109,6 +115,14 @@
 
 .playercontrols {
 	background-color: rgba(15,155,255,0.5);
-	border-radius: 3rem;
-	margin-left: 0.5rem;
+	border-top-right-radius: 3rem;
+	border-bottom-right-radius: 3rem;
+	//margin-left: 0.5rem;
+	padding: 0rem 0.5rem;
+}
+
+.mediacurves {
+	background-color: rgba(15,155,255,0.5);
+	border: $border;
+	color: $border-color;
 }

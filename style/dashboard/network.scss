@@ -1,6 +1,7 @@
+
 .row {
     @include spacing;
-    margin: 0.5rem 1rem;
+    margin: 1rem 1rem;
 }
 
 .menu {
@@ -9,6 +10,7 @@
     padding: $padding * 3;
     margin-top: $spacing;
     margin: 0.5rem 1rem;
+
     .icon {
         margin-right: 0.5rem;
         font-size: 1.5rem;
@@ -18,6 +20,7 @@
     .title {
         font-weight: bold;
         font-size: 1.25rem;
+        color: $Secfont-color;
     }
 
     separator {
@@ -28,6 +31,7 @@
     button {
         @include button($flat: true);
         padding: $padding  *2;
+        color: $Primfont-color;
 
         image:first-child {
             margin-right: $spacing * 2;
@@ -48,33 +52,34 @@
     }
 }
 
-.sliders-box .menu {
-    margin: ($spacing * .5) 0;
-
-    &.app-mixer {
-        .mixer-item {
-            padding: $padding * .5;
-            padding-left: 0;
-            padding-right: $padding * 2;
-
-            scale {
-                //@include slider($width: .5em);
-            }
-
-            image {
-                font-size: 1.2em;
-                margin: 0 $padding;
-            }
-        }
-    }
-}
+// .sliders-box .menu {
+//     margin: ($spacing * .5) 0;
+//
+//     &.app-mixer {
+//         .mixer-item {
+//             padding: $padding * .5;
+//             padding-left: 0;
+//             padding-right: $padding * 2;
+//
+//             scale {
+//                 //@include slider($width: .5em);
+//             }
+//
+//             image {
+//                 font-size: 2rem;
+//                 margin: 0 $padding;
+//             }
+//         }
+//     }
+// }
 
 .toggle-button {
     @include button;
     font-weight: bold;
 
+
     image {
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
 
     label {
@@ -84,6 +89,7 @@
     button {
         @include button($flat: true);
         padding: 0.5rem;
+        
         &:first-child {
             //padding: $padding * 1.2;
             border-top-right-radius: 0;

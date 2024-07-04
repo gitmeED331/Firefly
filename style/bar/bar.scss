@@ -23,9 +23,10 @@
 .wintitle {
 	background: $PrimaryBG;
 	color: $Primfont-color;
+	border-bottom: $border;
 	font-weight: bold;
 	padding: 1px 0px;
-	border-bottom: $border;
+
 	&:hover {
 		color: $Hoverfont-color;
 		image {
@@ -39,13 +40,13 @@
 .clock {
 	background: $PrimaryBG;
 	color: $Primfont-color;
-	font-weight: bold;
 	border-bottom: $border;
+	font-weight: bold;
+
 	&:hover {
 		color: $Hoverfont-color;
 	}
 }
-
 
 // --------------- sysinfo
 

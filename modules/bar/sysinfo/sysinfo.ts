@@ -1,4 +1,4 @@
-import { Widget, Utils, Hyprland, Roundedges } from "../../../imports"
+import { Widget, Utils, Hyprland, Roundedges } from "imports"
 import { Volumebtn } from "./volume"
 import Battery from "./battery"
 

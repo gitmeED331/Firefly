@@ -1,7 +1,7 @@
-import { Utils, Notifications, GLib, Widget } from "../imports"
-import { type Notification } from "../types/service/notifications"
-import icons from "../lib/icons"
-import options from "../options";
+import { Utils, Notifications, GLib, Widget } from "imports"
+import { type Notification } from "types/service/notifications"
+import icons from "lib/icons"
+import options from "options";
 
 const {Box, Label, Button, Icon} = Widget
 

@@ -1,4 +1,5 @@
 import GLib from "gi://GLib"
+import {Gdk} from "imports"
 // import options from "options"
 //
 // const intval = options.system.fetchInterval.value
@@ -40,3 +41,15 @@ export const distro = {
 //         return Number.parseInt(n) / 100_000
 //     }],
 // })
+
+export const verticalMargin = () => {
+    const screenHeight = Gdk.Screen.get_default().get_height(); // Get screen height
+    const verticalMargin = screenHeight * .765; // Adjust the percentage as needed
+    return verticalMargin;
+}
+
+export const horizontalMargin = () => {
+    const screenWidth = Gdk.Screen.get_default().get_width(); // Get screen width
+    const horizontalMargin = screenWidth * .765; // Adjust the percentage as needed
+    return horizontalMargin;
+}

@@ -16,3 +16,4 @@ lockstyle.css
 tsconfig.json
 package.json
 package-lock.json
+*.bak

@@ -3,7 +3,7 @@ const { Box, Button } = Widget;
 
 import icons from "lib/icons"
 import options from "options"
-import PanelButton from "../../PanelButton"
+import PanelButton from "../../buttons/PanelButton"
 
 const powerProfiles = await Service.import('powerprofiles')
 const battery = await Service.import("battery")
@@ -86,7 +86,8 @@ export default () => PanelButton({
 	onSecondaryClick: () => { percentage.value = !percentage.value },
 	onPrimaryClick: () => App.toggleWindow("pwrprofiles"),
 	visible: battery.bind("available"),
-	tooltip_text: powerProfiles.bind('active_profile'),
+	tooltipText: powerProfiles.bind('active_profile'),
+
 	child: Widget.Box({
 		expand: true,
 		visible: battery.bind("available"),

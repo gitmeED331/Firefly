@@ -1,9 +1,9 @@
-import { Widget, Audio, Utils, PopupWindow, Mpris } from "../../../imports";
-import options from "../../../options";
-import { Arrow, Menu } from "../../ToggleButton";
-import { dependencies, icon, sh } from "../../../lib/utils";
-import icons from "../../../lib/icons.js";
-import { type Stream } from "../../../types/service/audio";
+import { Widget, Audio, Utils, PopupWindow, Mpris } from "imports";
+import options from "options";
+import { Arrow, Menu } from "../../buttons/ToggleButton";
+import { dependencies, icon, sh } from "lib/utils";
+import icons from "lib/icons.js";
+import { type Stream } from "types/service/audio";
 
 const audio = await Service.import('audio');
 const { Box, Button, Icon, Slider, Label } = Widget;
@@ -203,7 +203,7 @@ const VolumeSlider = () => Box({
 });
 
 const VolumeTabs = () => Box({
-    className: "volSlider",
+    className: "volumeTabs",
     vexpand: true,
     hexpand: true,
     vertical: true,

@@ -1,5 +1,5 @@
 import { type TrayItem } from "types/service/systemtray"
-import PanelButton from "../PanelButton"
+import PanelButton from "../buttons/PanelButton"
 import options from "options"
 import { Widget, SystemTray, Gdk } from "imports"
 import { icon } from "lib/utils"

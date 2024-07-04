@@ -1,6 +1,7 @@
 import Notification from "./Notification"
-import options from "../options"
-import { Utils, Notifications, Widget } from "../imports"
+import options from "options"
+import { Utils, Notifications, Widget } from "imports"
+
 const notifications = await Service.import("notifications")
 const { transition } = options
 const { position } = options.notifications

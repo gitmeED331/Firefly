@@ -1,5 +1,5 @@
-import { Widget, Gtk, PopupWindow, Utils } from "../../imports";
-import options from "../../options"
+import { Widget, Gtk, PopupWindow, Utils } from "imports";
+import options from "options"
 
 const { Box, Label } = Widget;
 const { execAsync } = Utils;

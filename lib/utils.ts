@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type Application } from "types/service/applications"
 import icons, { substitutes } from "./icons"
-import { Gtk, Gdk, GLib } from "../imports"
+import { Gtk, Gdk, GLib } from "imports"
 App.addIcons(`${App.configDir}/assets`)
 
 export type Binding<T> = import("types/service").Binding<any, any, T>

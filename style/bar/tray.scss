@@ -14,7 +14,8 @@
 
 	button {
 		image {
-		color: $Primfont-color;
+			color: $Primfont-color;
+			font-size: 1.15rem;
 		}
 		&:hover {
 			background-color: #1e1e2e;
@@ -38,6 +39,12 @@ menu {
 			color: $Hoverfont-color;
 			border: 2px solid #0000FF;
 			font-weight: bold;
-		};
+			image {
+				color: $Hoverfont-color;
+			}
+		}
+		image {
+			color: $Primfont-color;
+		}
 	}
 }

@@ -1,4 +1,4 @@
-import { Menu, ArrowToggleButton } from "../ToggleButton"
+import { Menu, ArrowToggleButton } from "../buttons/ToggleButton"
 import icons from "lib/icons"
 import { dependencies, sh } from "lib/utils"
 import options from "options"

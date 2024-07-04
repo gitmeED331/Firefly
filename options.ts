@@ -15,7 +15,7 @@ const options = mkOptions(OPTIONS, {
 		flatButtons: opt(false),
 		position: opt<"top" | "bottom">("top"),
 		workspaces: {
-			workspaces: opt(4),
+			workspaces: opt(8),
 		},
 		battery: {
 			bar: opt<"hidden" | "regular" | "whole">("regular"),
@@ -87,7 +87,7 @@ const options = mkOptions(OPTIONS, {
 	},
 	
 	dashboard: {
-		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
+		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "bottom", "right"]),
 		networkSettings: opt("gtk-launch nm-connection-editor"),
 	},
 	

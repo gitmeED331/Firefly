@@ -135,20 +135,29 @@
 // ---------- power menu window ------
 
 .sessioncontrols {
+	all:unset;
 	color: $Secfont-color;
 	font-size: 2rem;
 	font-weight: bold;
-	background-color: rgba(0,0,0,0.6);
-	padding: 0rem 4rem;
+	background: $PrimaryBG;
+	padding-right: 2rem;
+	padding-left: 2rem;
+	padding-bottom: 200rem;
+	min-width: 5rem;
 	&-box {
-		border-radius: 20rem;
-		background-image: url("./assets/lightning.png");
-		background-position: center;
-		background-blend-mode: luminosity;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-		background-color: rgba(0,0,0,0.6);
-		padding: 6rem;
+		//border-radius: 20rem;
+		//background-image: url("./assets/lightning.png");
+		// background-position: center;
+		// background-blend-mode: luminosity;
+		// background-repeat: no-repeat;
+		// background-size: 100% 100%;
+		// background-color: rgba(0,0,0,0.6);
+		background: $PrimaryBG;
+		border-top: 3px solid rgba(0,0,0,0);
+		border-top: $border;
+		border-width: $border-width / 2;
+		padding-bottom: 5rem;
+		padding-top: 2rem;
 	}
 	button {
 		border-radius: 5rem;
@@ -157,15 +166,15 @@
 		border-left: 0.5rem solid #0F9BFF;
 		border-right: 0.5rem solid #0F9BFF;
 		background: linear-gradient(0deg, rgba(0,0,255,0.5) 0%, rgba(0,0,255,1) 15%, rgba(0,0,0,0) 50%, rgba(0,0,255,1) 85%, rgba(0,0,255,0.5) 100%);
-		margin: 0rem 1.5rem;
 		padding: 0.5rem;
-
+		&:first-child, &:nth-child(2), &:nth-child(3), &:last-child {
 		image {
 			//@include button;
-			border-radius: $radius;
+			//border-radius: $radius;
 			min-width: 1.7em;
 			min-height: 1.7em;
 			font-size: 4rem;
+		}
 		}
 
 		label,
@@ -175,13 +184,19 @@
 
 		label {
 			//margin-top: 0rem;
-			font-size: 1.5rem
+			font-size: 1.75rem
 		}
+
+		&:hover, &:focus, &:active {
+			image {
+				animation: spin 1s infinite;
+			}
+		}
+
 
 		&:hover {
 			image {
 				//@include button-hover;
-				animation: spin 1s infinite;
 			}
 
 			label {

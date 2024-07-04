@@ -1,13 +1,13 @@
 //
 //---------------- Session Control Window -------------
 //
-import { Widget, Hyprland, Utils, PopupWindow} from "../imports";
-import icons from "../lib/icons.js";
-import options from "../options";
-App.addIcons(`${App.configDir}/assets`);
+import { Widget, Utils, PopupWindow, Roundedges, Gdk } from "imports"
+import icons from "lib/icons.js"
+import options from "options"
 
-const { Button, Box, Label, Revealer, Icon, EventBox } = Widget;
-const { pwrmenu } = options;
+const { RoundedAngleEnd } = Roundedges
+const { Button, Box, Label, Revealer, Icon, EventBox } = Widget
+const { pwrmenu } = options
 
 type Action = "lock" | "reboot" | "logout" | "shutdown"
 
@@ -39,6 +39,8 @@ const SysButton = (action: Action, label: string) => Button({
 	on_clicked: () => powermenu.action(action) || Utils.execAsync(powermenu.cmd),
 	child: Box({
 		vertical: true,
+		vpack: "center",
+		hpack: "center",
 		className: "sessioncontrol-btn",
 		children: [
 			Icon(icons.powermenu[action]),
@@ -50,41 +52,47 @@ const SysButton = (action: Action, label: string) => Button({
 	}),
 })
 
+const verticalMargin = () => {
+	const screenHeight = Gdk.Screen.get_default().get_height(); // Get screen height
+	const verticalMargin = screenHeight * .765; // Adjust the percentage as needed
+	return verticalMargin;
+}
+
 export default () => PopupWindow({
 	name: "sessioncontrols",
 	className: "sessioncontrols",
-	transition: "crossfade",
-	child: Box<Gtk.Widget>({
-		className: "sessioncontrols-box",
-		vexpand: false,
-		hexpand: false,
-		vpack: "center",
+	anchor: ["top", "left", "right", "bottom"],
+	transition: "slide_up",
+	child: Box({
+		className: "sessioncontrols-firstbox",
 		hpack: "center",
+		vpack: "end",
+		vexpand: true,
+		css: `margin-top: ${verticalMargin()}px;`,
+		//css: `margin-top: 62rem;`,
 		setup: self => self.hook(pwrmenu.layout, () => {
 			self.toggleClassName("box", pwrmenu.layout.value === "box")
 			self.toggleClassName("line", pwrmenu.layout.value === "line")
 		}),
-		children: pwrmenu.layout.bind().as(layout => {
-			switch (layout) {
-				case "line": return [
+		children: [
+			RoundedAngleEnd("bottomleft", {class_name: "angleLarge"}),
+			
+			Box({
+				vpack: "end",
+				className: "sessioncontrols-box",
+				hpack: "center",
+				hexpand: false,
+				vexpand: false,
+				spacing: 30,
+				children:[
 					SysButton("lock", "Lock"),
 					SysButton("logout", "Log Out"),
 					SysButton("reboot", "Reboot"),
 					SysButton("shutdown", "Shutdown"),
 				]
-				case "box": return [
-					Box(
-						{
-							vertical: false,
-							className: "sessioncontrols-btn",
-						},
-						SysButton("lock", "Lock"),
-						SysButton("logout", "Log Out"),
-						SysButton("reboot", "Reboot"),
-						SysButton("shutdown", "Shutdown"),
-					),
-				]
-			}
-		}),
+			}),
+
+			RoundedAngleEnd("bottomright", {class_name: "angleLarge"}),
+		]
 	}),
 })

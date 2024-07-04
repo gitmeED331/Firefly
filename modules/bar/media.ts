@@ -1,14 +1,16 @@
-import { Widget, Utils, Mpris, Hyprland, PopupWindow, Roundedges, Mpris, Revealer } from "../../imports";
-import options from "../../options";
-import icons from "../../lib/icons.js";
+import { Widget, Utils, Mpris, PopupWindow, Roundedges, Revealer, Gtk, Gdk } from "imports"
+import options from "options"
+import icon from "lib/utils"
+import icons from "lib/icons"
+import {horizontalMargin} from "../buttons/variables"
 
-const { RoundedAngleEnd } = Roundedges;
-const { Box, CenterBox, Button, Icon, Label, EventBox, Slider } = Widget;
-const { execAsync, lookUpIcon } = Utils;
+const { RoundedAngleEnd, RoundedCorner } = Roundedges
+const { Box, Button, Icon, Label, Slider, EventBox } = Widget
+const { execAsync, lookUpIcon } = Utils
 
-const mpris = await Service.import("mpris");
-const players = mpris.bind("players");
-const player = Mpris.getPlayer();
+const mpris = await Service.import("mpris")
+const players = Mpris.bind("players")
+const player = Mpris.getPlayer("Deezer") || Mpris.getPlayer('')
 
 const { bar, playwin } = options;
 const pos = playwin.position.bind();
@@ -23,6 +25,26 @@ const PREV_ICON = "media-skip-backward-symbolic"
 const NEXT_ICON = "media-skip-forward-symbolic"
 const CLOSE_ICON = "window-close-symbolic"
 
+const Spacer = () => Box({
+	//className: "spacer",
+	vexpand: true,
+});
+
+
+function trimTrackTitle(title) {
+	if (!title) return '';
+	const cleanPatterns = [
+		/【[^】]*】/,         // Touhou n weeb stuff
+		" [FREE DOWNLOAD]", // F-777
+		" (Radio Version)",
+		" (Album Version)",
+		" (Cafe Session)",
+		" (International Version)",
+	];
+	cleanPatterns.forEach((expr) => title = title.replace(expr, ''));
+	return title;
+}
+
 // ----------- The Player ------------
 
 /** @param {number} length */
@@ -36,13 +58,29 @@ function lengthStr(length) {
 
 /** @param {import('types/service/mpris').MprisPlayer} player */
 function Player(player) {
+
 	const img = Box({
-		className: "trackimg",
+		class_name: "trackimg",
 		vpack: "center",
-		css: player.bind("cover_path").transform(p => `
-			background-image: url('${p}');
-		`),
-	})
+		hpack: "center",
+		css: player.bind("track_cover_url").transform(p => {
+			if (!p) {
+				return `
+				min-width: 0px;
+				min-height: 0px;
+				border: none;
+				margin: 0px;
+				padding: 0px;
+				`;
+			} else {
+				return `
+				background-image: url('${p}');
+				min-width: 60px;
+				min-height: 65px;
+				`;
+			}
+		}),
+	});
 
 	const title = Label({
 		className: "tracktitle",
@@ -51,8 +89,9 @@ function Player(player) {
 		vpack: "end",
 		vexpand: true,
 		truncate: 'end',
-		maxWidthChars: 30,
-		label: player.bind("track_title"),
+		maxWidthChars: 35,
+		lines: 1,
+		label: `${trimTrackTitle(player.trackTitle)}`,
 	})
 
 	const artist = Label({
@@ -65,21 +104,24 @@ function Player(player) {
 		label: player.bind("track_artists").transform(a => a.join(", ")),
 	})
 
-	const positionSlider = Slider({
+
+	const positionSlider = Widget.Slider({
 		class_name: "position",
 		draw_value: false,
 		on_change: ({ value }) => player.position = value * player.length,
 		visible: player.bind("length").as(l => l > 0),
 		setup: self => {
 			function update() {
-				const value = player.position / player.length
-				self.value = value > 0 ? value : 0
+				const value = player.position / player.length;
+				self.value = value > 0 ? value : 0;
 			}
-			self.hook(player, update)
-			self.hook(player, update, "position")
-			self.poll(1000, update)
+			self.hook(player, update);
+			self.hook(player, update, "position");
+			self.poll(1000, update);
 		},
-	})
+	}).on("realize", self => {
+		self.visible = player.length > 0;
+	});
 
 	const positionLabel = Label({
 		className: "position",
@@ -102,25 +144,18 @@ function Player(player) {
 		label: player.bind("length").transform(lengthStr),
 	})
 
-	const icon = () => Box({
-		//onClicked: () => {
-			//App.closeWindow('playwin');
-		//},
-		vexpand: true,
-		hpack: "center",
+	const icon = () => Icon({
+		hexpand: true,
+		hpack: "end",
 		vpack: "center",
-		child: Icon({
-			hexpand: true,
-			hpack: "end",
-			vpack: "center",
-			className: "playicon",
-			tooltip_text: player.identity || "",
-			icon: player.bind("entry").transform(entry => {
-				const name = `${entry}-symbolic`
-				return Utils.lookUpIcon(name) ? name : FALLBACK_ICON
-			}),
-		})
+		className: "playicon",
+		tooltip_text: player.identity || "",
+		icon: player.bind("entry").transform(entry => {
+			const name = `${entry}`
+			return Utils.lookUpIcon(name) ? name : FALLBACK_ICON
+		}),
 	})
+
 
 	const playPause = Button({
 		class_name: "play-pause",
@@ -169,31 +204,44 @@ function Player(player) {
 		},
 		img,
 		Box(
-			{
-				vertical: true,
-				hexpand: true,
-	  			hpack: "center",
-	  			vpack: "center",
-			},
-			title,
-			artist,
-			positionSlider,
+			{ vertical: true, vpack: "center",},
+			Box(
+				{vertical: false,},
+				Box(
+					{
+						vertical: true,
+						hexpand: true,
+						hpack: "fill",
+						vpack: "center",
+						spacing: 5,
+					},
+					title,
+					artist,
+				),
+				Box(
+					{
+						vertical: true,
+						hpack: "end",
+						vpack: "center",
+						spacing: 5,
+					},
+					icon(),
+					positionLabel,
+				),
+			),
+		positionSlider,
 		),
-		Box(
-		{
-			vertical: true,
-	  		hpack: "center",
-	  		vpack: "center",
-		},
-		icon(),
-		positionLabel,
+		Box({vertical: true, vpack: "fill", },
+		RoundedCorner("topright", {className: "mediacurves", vpack: "start"}),
+		Spacer(),
+		RoundedCorner("bottomright", {className: "mediacurves", vpack: "end"}),
 		),
 		Box(
 			{
 			className: "playercontrols",
 			vexpand: false,
 			hexpand: false,
-			hpack: 'end',
+			hpack: 'center',
 			},
 			prev,
 			playPause,
@@ -209,19 +257,20 @@ function PWin() {
 		className: "playwin",
 		anchor: pos,
 		layer: "top",
-		exclusivity: 'normal',
-		keymode: 'on-demand',
-		margins: [0,75],
-		transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+		exclusivity: "normal",
+		keymode: "on-demand",
+		margins: [0, 90, 0, 0],
+		transition: pos.as(pos => (pos === "top" ? "slide_down" : "slide_up")),
 		child: Box({
-			vertical: true,
-			children: Utils.watch([], [
-				[Mpris, "player-changed"],
-				[Mpris, "player-added"],
-				[Mpris, "player-closed"],
-			], () => Mpris.players).transform(p => p.filter(p => p.play_back_status !== 'Stopped' ).map(Player)),
-		})
-	})
+		vertical: true,
+		children: Utils.watch([], [
+			[Mpris, "player-changed"],
+			[Mpris, "player-added"],
+			[Mpris, "player-closed"],
+		], () => Mpris.players)
+			.transform(p => p.filter(p => p.play_back_status !== 'Stopped').map(Player)),
+		}),
+	});
 }
 
 export function Playwin() {
@@ -232,75 +281,123 @@ export function Playwin() {
 	})
 }
 
-// ------------- Bar Ticker -----------
+// ------------- Bar Media Ticker button -----------
 
-function trimTrackTitle(title) {
-	if (!title) return '';
-	const cleanPatterns = [
-		/【[^】]*】/,         // Touhou n weeb stuff
-		" [FREE DOWNLOAD]", // F-777
-		" (Radio Version)",
-		" (Album Version)",
-		" (Cafe Session)",
-		" (International Version)",
-	];
-	cleanPatterns.forEach((expr) => title = title.replace(expr, ''));
-	return title;
-}
-
-const trackTitle = Button({
-	className:'mediaticker',
-	onPrimaryClick: ( ) => App.toggleWindow("playwin"),
-	onSecondaryClick: () => {
-		 const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
-		player.playPause()
-	},
-	child: Label({
-		hexpand: true,
+export function TickerBTN() {
+	const tickerTrack = Label({
+		className: "tickertrack",
+		wrap: false,
+		hpack: "center",
+		vpack: "center",
+		vexpand: true,
 		truncate: 'end',
 		//maxWidthChars: 30,
-		setup: (self) => self.hook(Mpris, label => {
-			const mpris = Mpris.getPlayer('');
-			if (mpris)
-				label.label =  ` ${trimTrackTitle(mpris.trackTitle)} • ${mpris.trackArtists.join(', ')}`;
-			else
-				self.label = 'No media';
-		}),
+		label: "",
 	})
-})
 
-export const MediaBTN = ( ) => Box({
-	className: 'mediabtn',
-	vexpand: false,
-	hexpand: true,
-	child:
-		trackTitle
-});
+	const tickerArtist = Label({
+		className: "tickerartist",
+		wrap: false,
+		hpack: "center",
+		vpack: "center",
+		truncate: 'end',
+		//maxWidthChars: 30,
+		label: "",
+	})
 
+	const tickerIcon = Icon({
+		hexpand: true,
+		hpack: "center",
+		vpack: "center",
+		className: "tickericon",
+		tooltip_text: "",
+		icon: FALLBACK_ICON,
+	})
 
-// needs integration
-/*
+	const noMediaLabel = Label({
+		className: "nomedia",
+		wrap: false,
+		hpack: "center",
+		vpack: "center",
+		hexpand: true,
+		label: "No Media"
+	})
 
-Mpris.connect("changed", (value) => {
- c *onst statusOrder = {
- Playing: 1,
- Paused: 2,
- Stopped: 3,
-};
+	const tickerContent = Box(
+		{
+			vertical: false,
+			visible: true,
+			spacing: 5,
+		},
+		tickerTrack,
+		tickerIcon,
+		tickerArtist,
+	)
 
-const isPlaying = value.players.find(
-	(p) => p["play-back-status"] === "Playing",
-	);
+	const tickerBox = Box({
+		vertical: false,
+		hexpand: true,
+		vexpand: false,
+		visible: true,
+		vpack: "center",
+		children: [noMediaLabel],
+	})
 
-	if (isPlaying) {
-		activePlayer.value = value.players.sort(
-			(a, b) =>
-			statusOrder[a["play-back-status"]] -
-			statusOrder[b["play-back-status"]],
-			)[0];
+	const updateTicker = (player) => {
+		if (player) {
+			if (tickerTrack && tickerArtist && tickerIcon) {
+				tickerTrack.label = `${trimTrackTitle(player.trackTitle)}`;
+				tickerArtist.label = player.trackArtists.join(", ");
+				tickerIcon.tooltip_text = player.identity || "";
+
+			const iconName = player.entry ? `${player.entry}` : FALLBACK_ICON;
+				tickerIcon.icon = Utils.lookUpIcon(iconName) ? iconName : FALLBACK_ICON;
+
+			if (tickerBox.get_children().includes(noMediaLabel)) {
+				tickerBox.remove(noMediaLabel);
+			}
+			if (!tickerBox.get_children().includes(tickerContent)) {
+				tickerBox.add(tickerContent);
+			}
+		}
+		} else {
+			if (tickerBox.get_children().includes(tickerContent)) {
+				tickerBox.remove(tickerContent);
+			}
+
+			if (!tickerBox.get_children().includes(noMediaLabel)) {
+				tickerBox.add(noMediaLabel);
+			}
+		}
+	}
+
+	const button = Button({
+		className: 'tickerbtn',
+		vexpand: false,
+		hexpand: true,
+		onPrimaryClick: () => App.toggleWindow("playwin"),
+		setup: (self) => {
+			const update = () => {
+				const player = Mpris.getPlayer('Deezer') || Mpris.getPlayer('');
+				if (player) {
+					self.tooltipMarkup = `<b>${player.identity}</b>\n\n<u>${player.trackArtists.join(", ")}</u>\n\n${player.trackTitle}`;
+					//`${player.identity}\n${player.trackArtists.join(", ")}\n\t${player.trackTitle}`;
+					self.onSecondaryClick = () => player.playPause();
+					self.onScrollUp = () => player.previous();
+					self.onScrollDown = () => player.next();
+
+				} else {
+					self.tooltipText = "";
+					self.onSecondaryClick = null;
+					self.onScrollUp = null;
+					self.onScrollDown = null;
+				}
+				updateTicker(player);
+		}
+		update();
+		setInterval(update, 1000);
+		}
+	}, tickerBox);
+
+	return button;
 }
-})
-
----- needs to be built -----
-convert progress slider to an overlay progressbar
-*/

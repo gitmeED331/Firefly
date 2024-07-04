@@ -123,24 +123,12 @@ export default () => PopupWindow({
 					self.toggleClassName("box", pwrprof.layout.value === "box")
 					self.toggleClassName("line", pwrprof.layout.value === "line")
 				}),
-				children: pwrprof.layout.bind().as(layout => {
-					switch (layout) {
-						case "line": return [
-							SysButton("power-saver", "Saver"),
-							SysButton("balanced", "Balanced"),
-							SysButton("performance", "Performance"),
-						]
-						case "box": return [
-							Box(
-								{vertical: false,},
-								SysButton("power-saver", "Saver"),
-								SysButton("balanced", "Balanced"),
-								SysButton("performance", "Performance"),
-							),
-						]
-					}
-				}),
-			})
+				children: [
+					SysButton("power-saver", "Saver"),
+					SysButton("balanced", "Balanced"),
+					SysButton("performance", "Performance"),
+				]
+			}),
 		]
 	})
 })

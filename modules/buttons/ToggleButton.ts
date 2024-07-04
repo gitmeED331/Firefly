@@ -1,8 +1,8 @@
-import { type IconProps } from "../types/widgets/icon"
-import { type LabelProps } from "../types/widgets/label"
-import type GObject from "gi://GObject?version=2.0"
-import type Gtk from "gi://Gtk?version=3.0"
-import icons from "../lib/icons"
+import {Gtk, GObject} from "imports"
+import { type IconProps } from "types/widgets/icon"
+import { type LabelProps } from "types/widgets/label"
+//import type GObject from "gi://GObject?version=2.0"
+import icons from "lib/icons"
 
 export const opened = Variable("")
 App.connect("window-toggled", (_, name: string, visible: boolean) => {

@@ -7,7 +7,9 @@
 .BarBTN {
     background: $PrimaryBG;
     border-bottom: $border;
-    font-size: 1.4rem;
+    image {
+        font-size: 1.15rem;
+    }
     &:hover {
         color: $Hoverfont-color;
         image {

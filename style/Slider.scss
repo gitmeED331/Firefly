@@ -1,3 +1,4 @@
+// general slider style
 .Slider {
 	min-width: 15rem;
 	& trough {
@@ -21,20 +22,22 @@
 	box-shadow: 0px 0px 4px white;
 }
 
-//------------- VOLUME SLIDER ---------------------
-
 // volume button in the sysinfo widget
 .volumebtn {
 	color: $Primfont-color;
+	image {
+		font-size: 1.15rem;
+	}
 	&:hover {
 		color: $Hoverfont-color;
-		border: $border;
 	}
 }
 
-.volSlider {
+//------------- VOLUME SLIDER ---------------------
+
+.volumeTabs {
 	background: $PrimaryBG;
-	border-radius: 2.5rem;
+	border-radius: $radius * 1.25;
 	border: $border;
 	padding: 1rem;
 }
@@ -56,14 +59,8 @@
 	}
 }
 
-//.volmenus {
-//	margin-top: 0.5rem;
-//	&items {
-//		margin-left: 0.5rem;
-//	}
-//}
-
-.menu {
+.dashvol .menu {
+	all:unset;
 	&.app-mixer {
 		.title {
 			background: $PrimaryBG;
@@ -81,7 +78,7 @@
 		}
 	}
 	&.sink-selector {
-		color: rgba(255,0,0,1);
+		color: $Primfont-color;
 		.title {
 			background: $PrimaryBG;
 			box-shadow: inset 0.25rem 0.25rem 1rem rgba(0,0,0,1);
@@ -101,15 +98,15 @@
 }
 
 .mixeritem {
-	color: rgba(255,0,0,1);
+	color: $Primfont-color;
 	margin-right: 0.65rem;
 	&icon {
-		color: rgba(255,0,0,1);
+		color: $Primfont-color;
 		margin-right: 0.25rem;
 		margin-top: 0.25rem;
 	}
 	&label {
-		color: #cdd6f4;
+		color: $Primfont-color;
 		margin-top: 0.25rem;
 	}
 
@@ -125,9 +122,11 @@
 	}
 	&icon {
 		margin-right: 0.25rem;
+		color: $Primfont-color;
 	}
 	&label {
 		margin-top: 0.25rem;
+		color: $Primfont-color;
 	}
 	&:last-child {
 		margin-bottom: 0.5rem;

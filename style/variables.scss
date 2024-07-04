@@ -1,8 +1,8 @@
 //--------- Vars -------------
 // --------- fonts
 $font: Liberation Mono;
-$Primfont-color: rgba(255, 140, 0,1);  // rgba(15,155,255,1); // -- Orange
-$Secfont-color: rgba(15,155,255,1);  // -- Blue
+$Primfont-color: rgba(255, 140, 0,1);  // rgba(15,155,255,1); // -- Orange #ff8c00
+$Secfont-color: rgba(15,155,255,1);  // -- Blue #0f9bff
 $Thirdfont-color: rgba(155,255,15,1); // -- green
 $Hoverfont-color: rgba(255,0,0,1); // -- red
 $font-size: 10px;
@@ -17,7 +17,7 @@ $squeezebezier: cubic-bezier(0.5, 3, 0, 1);
 //--------- msic
 $boxshad-bg: rgba(15,155,255,0.5);
 $shadow-color: rgba(15,155,255,1);
-$popover-border-color: #00FF00;
+$popover-border-color: rgba(0,0,0,0); //#99ccff;
 $popover-radius: 1rem;
 $popover-padding: 0.5rem;
 $LauncherBG: url("./assets/launchgerBG.jpg");
@@ -37,7 +37,7 @@ $active-gradient:  linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(15,155,255,0.
 
 //--------- Borders
 $border: 2px solid #0f9bff;
-$border-width: 3px;
+$border-width: 1rem;
 $border-color: #0f9bff; //rgba(15,155,255,1);
 $radius: 2rem;
 $radius-tbleft: 3rem 0rem 0rem 3rem;

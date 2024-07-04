@@ -1,5 +1,5 @@
 import options from "options"
-import { Notifications } from "../imports"
+import { Notifications } from "imports"
 const notifs = Notifications
 
 // TODO: consider adding this to upstream

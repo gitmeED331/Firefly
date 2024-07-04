@@ -12,7 +12,6 @@ import { Playwin } from "modules/bar/media"
 import { Calendar } from "modules/bar/calendar"
 import{ Dashvol } from "modules/bar/sysinfo/volume"
 
-
 import NotificationPopups from "modules/notificationPopups"
 import Overview from "modules/overview/Overview"
 import sessioncontrols from "modules/sessioncontrol"

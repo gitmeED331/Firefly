@@ -1,5 +1,5 @@
-import { Widget, Hyprland, Utils } from "../../imports";
-import { icon } from "../../lib/utils";
+import { Widget, Hyprland, Utils } from "imports";
+import { icon } from "lib/utils";
 //import icons from "../../lib/icons";
 //App.addIcons(`${App.configDir}/assets`);
 

@@ -1,6 +1,7 @@
 .corner {
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(15,155,255,1) 54%, rgba(0,0,0,1) 100%);
-  border-radius: 1rem
+  border-radius: 1rem;
+  margin: 3rem 10rem;
 }
 
 .angle {
@@ -14,15 +15,17 @@
 	&Left {
 		color: $border-color;
 		background: $PrimaryBG;
-		margin-right: 0px;
-    	margin-left: 30px;
+//		margin-right: 0px;
+//    	margin-left: 30px;
     	border: $border;
 	}
 }
 
-.angleRightLarge, .angleLeftLarge {
+.angleLarge {
+	color: $border-color;
 	background: $PrimaryBG;
-	border: 50px solid yellow;
+	border: $border;
+	border-width: $border-width /2;
 }
 
 

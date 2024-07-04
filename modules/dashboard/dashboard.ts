@@ -1,10 +1,11 @@
-import { Widget, Utils, PopupWindow } from "../../imports";
-import { TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
+import { Widget, Utils, PopupWindow } from "imports";
+// import { TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
 import { WifiSelection, NetworkToggle } from "./Network";
 import { BluetoothToggle, BluetoothDevices } from "./Bluetooth";
 import { BrightnessSlider }  from "./brightnessSlider";
 import { NotificationList } from "./notificationList";
-import options from "../../options";
+import options from "options";
+
 
 const { Box } = Widget;
 const { execAsync } = Utils;
@@ -30,25 +31,25 @@ const Row = (
     ],
 })
 
-const quickAccess = Box({
-	className: "quickaccess",
-	vertical: true,
-	hexpand: false,
-	hpack: 'center',
-	children: [
-		Box({
-			vertical: false,
-			hexpand: true,
-			hpack: 'center',
-			children: [
-				Enpass(),
-				KontactIcon(),
-				VPNIcon(),
-				TerminalIcon(),
-			]
-		}),
-    ]
-});
+// const quickAccess = Box({
+// 	className: "quickaccess",
+// 	vertical: true,
+// 	hexpand: false,
+// 	hpack: 'center',
+// 	children: [
+// 		Box({
+// 			vertical: false,
+// 			hexpand: true,
+// 			hpack: 'center',
+// 			children: [
+// 				Enpass(),
+// 				KontactIcon(),
+// 				VPNIcon(),
+// 				TerminalIcon(),
+// 			]
+// 		}),
+//     ]
+// });
 	
  const Dash = () =>  PopupWindow({
     name: "dashboard",
@@ -61,20 +62,20 @@ const quickAccess = Box({
     child:
         Box({
 			className: "dashcontainer",
-            vertical:true,
-            vexpand:true,
+            vertical: true,
+            vexpand: true,
             hexpand: false,
             hpack: "center",
             vpack: "center",
             children: [
-                Box({
-                    className: "quicktoggles",
-                    vertical: true,
-                    vexpand: false,
-                    children: [
-                        quickAccess,
-                    ]   
-                }),
+                // Box({
+                //     className: "quicktoggles",
+                //     vertical: true,
+                //     vexpand: false,
+                //     children: [
+                //         quickAccess,
+                //     ]
+                // }),
                 Row(
                     [NetworkToggle, BluetoothToggle],
                     [WifiSelection, BluetoothDevices],
