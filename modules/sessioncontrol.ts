@@ -4,6 +4,7 @@
 import { Widget, Utils, PopupWindow, Roundedges, Gdk } from "imports"
 import icons from "lib/icons.js"
 import options from "options"
+import { winheight } from "lib/screensizeadjust"
 
 const { RoundedAngleEnd } = Roundedges
 const { Button, Box, Label, Revealer, Icon, EventBox } = Widget
@@ -52,12 +53,6 @@ const SysButton = (action: Action, label: string) => Button({
 	}),
 })
 
-const verticalMargin = () => {
-	const screenHeight = Gdk.Screen.get_default().get_height(); // Get screen height
-	const verticalMargin = screenHeight * .765; // Adjust the percentage as needed
-	return verticalMargin;
-}
-
 export default () => PopupWindow({
 	name: "sessioncontrols",
 	className: "sessioncontrols",
@@ -68,8 +63,7 @@ export default () => PopupWindow({
 		hpack: "center",
 		vpack: "end",
 		vexpand: true,
-		css: `margin-top: ${verticalMargin()}px;`,
-		//css: `margin-top: 62rem;`,
+		css: `margin-top: ${winheight(0.765)}px;`,
 		setup: self => self.hook(pwrmenu.layout, () => {
 			self.toggleClassName("box", pwrmenu.layout.value === "box")
 			self.toggleClassName("line", pwrmenu.layout.value === "line")

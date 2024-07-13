@@ -1,5 +1,4 @@
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import Variable from "resource:///com/github/Aylur/ags/variable.js";
+import { Widget, Variable } from 'imports'
 
 const timeVar = Variable("", {
   poll: [1000, ["date", "+%H:%M:%S"]]

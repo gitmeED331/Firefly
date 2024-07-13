@@ -2,13 +2,6 @@
 	color: $Secfont-color;
 	font-weight: bold;
 	background: $PrimaryBG;
-	//background-position: center;
-	//background-blend-mode: luminosity;
-	//background-repeat: no-repeat;
-	//background-size: 50% auto;
-	//background-color: rgba(0,0,0,0.6);
-	//min-width: 400px;
-	//min-height: 500px;
 	padding: 0rem 1rem;
 	border: $border;
 
@@ -20,7 +13,7 @@
 		border-right: 0.5rem solid #0F9BFF;
 		border-top: 0.15rem solid #0F9BFF;
 		border-bottom: 0.15rem solid #0F9BFF;
-		background: linear-gradient(0deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 15%, rgba(15,155,255,0.7) 50%, rgba(255,255,255,1) 85%, rgba(255,255,255,0.5) 100%);
+		background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 15%, rgba(15, 155, 255, 0.7) 50%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0.5) 100%);
 		margin: 0rem 0.5rem;
 		padding: 0.5rem;
 
@@ -49,9 +42,10 @@
 			label {
 				//color: $fg;
 			}
+
 			border-left: 0.5rem dashed red;
 			border-right: 0.5rem dashed red;
-			background: linear-gradient(0deg, rgba(255,0,0,0.5) 0%, rgba(255,0,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 85%, rgba(255,0,0,0.5) 100%);
+			background: linear-gradient(0deg, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(255, 0, 0, 1) 85%, rgba(255, 0, 0, 0.5) 100%);
 		}
 
 		&:focus image {
@@ -67,9 +61,10 @@
 			label {
 				color: $Secfont-color;
 			}
-			border-left: 0.5rem dashed rgba(255,255,0,1);
-			border-right: 0.5rem dashed rgba(255,255,0,1);
-			background: linear-gradient(0deg, rgba(255,255,0,0.5) 0%, rgba(255,255,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,255,0,1) 85%, rgba(255,255,0,0.5) 100%);
+
+			border-left: 0.5rem dashed rgba(255, 255, 0, 1);
+			border-right: 0.5rem dashed rgba(255, 255, 0, 1);
+			background: linear-gradient(0deg, rgba(255, 255, 0, 0.5) 0%, rgba(255, 255, 0, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 0, 1) 85%, rgba(255, 255, 0, 0.5) 100%);
 		}
 	}
 }

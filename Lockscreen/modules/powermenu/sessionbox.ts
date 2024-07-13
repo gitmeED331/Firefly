@@ -1,7 +1,9 @@
-import icons from "../icons/index.js";
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import {execAsync} from "resource:///com/github/Aylur/ags/utils.js";
-import { RoundedAngleEnd, RoundedCorner } from "../roundedCorner/index.js";
+import icons from "../icons/index";
+
+import { Widget, Utils, App, Roundedges } from 'imports'
+
+const {execAsync} = Utils
+const { RoundedCorner, RoundedAngleEnd } = Roundedges
 
 const sessionBoxTooltipText = Variable({text: "", visible: false});
 

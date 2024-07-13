@@ -1,5 +1,5 @@
-import { RoundedCorner } from "../roundedCorner/index.js";
-import { PlayerIcon, MprisPlayer } from "./mprisList.js";
+import { RoundedCorner } from "lib/roundedCorner"
+import { PlayerIcon, MprisPlayer } from "./mprisList"
 
 const Mpris = await Service.import("mpris");
 

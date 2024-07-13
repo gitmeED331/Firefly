@@ -1,8 +1,10 @@
+import { Widget, Utils, Service, Network } from "imports"
 import { Menu, ArrowToggleButton } from "../buttons/ToggleButton"
 import icons from "lib/icons"
 import { dependencies, sh } from "lib/utils"
 import options from "options"
-const { wifi } = await Service.import("network")
+//const { wifi } = await Service.import("network")
+const { wifi } = Network
 
 export const NetworkToggle = () => ArrowToggleButton({
     name: "network",

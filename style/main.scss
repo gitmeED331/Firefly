@@ -1,4 +1,5 @@
-* { //:not(selection)
+* {
+  //:not(selection)
   all: unset;
   font-family: "Liberation Mono";
   font-size: 0.9rem;
@@ -14,5 +15,6 @@
 @import "mixins/mixins";
 @import "Slider";
 @import "overview";
-@import "ScreenCapture";
+//@import "ScreenCapture";
 @import "launcher";
+@import "cliphist";

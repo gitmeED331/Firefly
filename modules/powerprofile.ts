@@ -6,7 +6,7 @@ import icons from "lib/icons";
 import options from "options";
 import Brightness from "./service/brightness"
 
-const { Button, Box, Label, Revealer, Icon, EventBox } = Widget;
+const { Button, Box, Label, Icon } = Widget;
 const { pwrprof } = options;
 const { powerprofile } = icons;
 

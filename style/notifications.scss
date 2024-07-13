@@ -1,39 +1,51 @@
 .notification {
-    min-width: 15rem;
-    border-radius: $radius * 0.5;
-    padding: 0.5rem;
-    margin: 0.5rem 0rem;
-    border: $border;
-    background-color: $NotificationBG;
-	& box {
+	min-width: 15rem;
+	border-radius: $radius-tbleft;
+	border-bottom-right-radius: $radius/2;
+	border-top-right-radius: $radius/2;
+	padding: 0.5rem;
+	border: $border;
+	background-color: $NotificationBG;
+	margin: 0.5rem 0rem;
+
+	box {
 		background-color: transparent;
 	}
-	image {margin-right: 0.25rem}
+
+	image {
+		margin-right: 0.25rem
+	}
+
 	&.critical {
 		border: 3px dashed red;
 		color: red;
+
 		image {
 			color: red;
 		}
+
 		box {
 			background-color: transparent;
 		}
 	}
 
 	&.normal {
-		border: 3px dotted rgba(15,155,255,1);
-		color: $Primfont-color;
+		border: 3px dotted rgba(15, 155, 255, 1);
+		color: $font-color1;
+
 		image {
-			color: $Primfont-color;
+			color: $font-color1;
 		}
 	}
 
 	&.low {
 		border: 3px groove white;
 		color: white;
+
 		image {
 			color: white;
 		}
+
 		box {
 			background-color: transparent;
 		}
@@ -44,6 +56,7 @@
 	margin: 0 .4rem;
 	margin-top: .8rem;
 	font-size: 1.35rem;
+
 	&:first-child {
 		margin-left: 0.25rem;
 	}
@@ -57,68 +70,75 @@
 	font-size: 1.5rem;
 	margin-left: 0.25rem
 }
-//.time {
-	//font-size: 1rem;
-	// color: $Primfont-color;
-//}
+
 //
 //---------------- dashboard notifications
 //
-.notif { //dashboard panel box
+.notif {
+	//dashboard panel box
 	// all:unset;
 	background-color: transparent;
-	//margin-left: 2.5rem;
-//	margin-right: 0.25rem;
-	margin-top: 0rem;
-	margin-bottom: 0rem;
-	//padding: 0rem 0.05rem;
-	//min-width: 30rem;
+
 	&Item {
+		box {
+			margin: unset;
+		}
+
 		&Body {
 			padding: 0.1rem;
-			border-radius: $radius;
+			//border-radius: $radius;
 			color: white;
 		}
+
 		&Icon {
 			font-size: 4rem;
+
 			box {
 				background-color: transparent;
 			}
 		}
+
 		&Title {
 			text-shadow: none;
 			font-size: 1.15rem;
 			font-weight: bold;
 		}
+
 		&Description {
 			color: white;
 			text-shadow: none;
 			font-size: 0.9rem;
 		}
 	}
+
 	&Empty {
 		label {
 			all: unset;
-			//color: $Primfont-color;
+			//color: $font-color1;
 			font-size: 10rem;
 			text-shadow: 15px 0px 10px yellow, -15px 0px 10px yellow, 0px 0px 0px yellow;
 		}
 	}
+
 	&panel {
 		border-radius: $radius-tbleft;
-		margin-top: 1rem;
+		margin-top: 0.5rem;
 		min-width: 25rem;
 		padding-left: 2.5rem;
 		padding-right: 0.5rem;
+
 		&Box {
 			margin-right: 1rem;
 			margin-left: 2rem;
+			margin-bottom: 0.5rem;
+
 			label {
 				font-size: 1.5rem;
-				color: $Primfont-color;
+				color: $font-color1;
 			}
+
 			button {
-				color:  $Primfont-color;
+				color: $font-color1;
 
 			}
 		}
@@ -127,15 +147,15 @@
 
 // ------------- bar
 .barNotification {
-    background-color: #1e1e2e;
-    border-radius: 2rem;
-    border: 2px solid #11111b;
-    color: #cdd6f4;
-    font-weight: bold;
-    margin-right: 10px;
-    padding: 1px 15px;
+	background-color: #1e1e2e;
+	border-radius: 2rem;
+	border: 2px solid #11111b;
+	color: #cdd6f4;
+	font-weight: bold;
+	margin-right: 10px;
+	padding: 1px 15px;
 }
 
 window.notification-popups box.notifications {
-    padding: 0.5rem;
+	padding: 0.5rem;
 }

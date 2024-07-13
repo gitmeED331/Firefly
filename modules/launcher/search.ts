@@ -1,6 +1,7 @@
 import { App, Applications, Widget, Utils, Gtk, Hyprland} from "imports"
 import {Fzf} from "../../node_modules/fzf/dist/fzf.es.js"
-import icons from "lib/icons";
+import icons from "lib/icons"
+import { icon } from "lib/utils"
 
 const { lookUpIcon } = Utils
 const { Box, Button, Label, Icon } = Widget
@@ -14,13 +15,13 @@ const { Box, Button, Label, Icon } = Widget
  * @param {import('types/service/applications.js').Application} app
  */
 export const AppIcon = app => {
-  const icon = app.icon_name && lookUpIcon(app.icon_name)
-    ? app.icon_name
-    : "image-missing";
+  // const icon = app.icon_name && lookUpIcon(app.icon_name)
+  //   ? app.icon_name
+  //   : "image-missing";
 
   return Widget.Icon({
     class_name: "app-icon",
-    icon: icon,
+    icon: icon(app.icon_name),
   });
 };
 
@@ -31,7 +32,7 @@ const AppButton = app => Button({
   on_clicked: () => {
     App.closeWindow("launcher");
     //app.launch();
-    Hyprland.sendMessage(`dispatch exec ${app.executable}`).then(e => print(e)).catch(logError);
+    Hyprland.MessageAsync(`dispatch exec ${app.executable}`).then(e => print(e)).catch(logError);
     app.frequency++;
   },
   attribute: {"app": app},

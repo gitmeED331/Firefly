@@ -1,59 +1,81 @@
 .launcher-switcher {
-  .launcher-switcher-button {
+  background: $PrimaryBG;
+
+  &-button {
     background: none;
-    margin-left: 15px;
+
+    // margin-left: 15px;
     &.focused {
       background-color: black;
       border-radius: $radius-tbleft;
+      border-left: $border;
+      border-top: $border;
+      border-bottom: $border;
+
       image {
-        background-color: black;
+        background: $active-gradient;
         border-radius: $radius-tbleft;
       }
     }
+
     &:hover {
       background: $HoverBGG;
       background-color: black;
       border-radius: $radius-tbleft;
     }
-    // &.before-focused {
-    //   image { border-bottom-right-radius: 1rem; };
-    // }
-    // &.after-focused {
-    //   image { border-top-right-radius: 1rem; }
-    // }
+
+    &.before-focused {
+      image {
+        border-bottom-right-radius: 1rem;
+      }
+
+      ;
+    }
+
+    &.after-focused {
+      image {
+        border-top-right-radius: 1rem;
+      }
+    }
+
     image {
       padding: 10px;
       //background: $PrimaryBG;
-      color: $Primfont-color;
+      color: $font-color1;
       font-size: 2rem;
     }
-    // &:first-child {
-    //   border-radius: $radius-tbleft;
-    // }
-    // &:last-child {
-    //   border-radius: $radius-tbleft;
-    // }
+
+    &:first-child {
+      border-radius: $radius-tbleft;
+    }
+
+    &:last-child {
+      border-radius: $radius-tbleft;
+    }
   }
 }
 
 .launcher {
+  // search  tab
   background: $LauncherBG;
   background-color: black;
   background-size: auto 50%;
   background-position: center;
   background-repeat: no-repeat;
   //border-top-left-radius: 3rem;
-  border-radius: $radius;
-  min-width: 25rem;
+  border-radius: $radius-tbright;
+  border: $border;
 
   .launcher-search {
     margin: 1rem;
     background: none;
+
     .search-entry {
       border-radius: $radius;
       margin-bottom: 5px;
       padding: 8px;
       border: $border;
+
       image.left {
         margin-right: 8px;
       }
@@ -62,14 +84,17 @@
     .search-scroll {
       .search-results {
         //color for letter highlighting
-        color: $Primfont-color;
+        color: $font-color1;
+
         .app-button {
-          color: $Primfont-color;
+          color: $font-color1;
           padding: 5px;
           border-radius: $radius;
+
           &:hover {
             background: $HoverBGG;
           }
+
           .app-icon {
             font-size: 2rem;
             margin-right: 5px;
@@ -82,7 +107,7 @@
 
           .app-description {
             font-size: 0.8rem;
-            color: $Secfont-color;
+            color: $font-color2;
           }
 
           &.focused {
@@ -105,23 +130,23 @@
     .app-button {
       padding: 8px;
       border-radius: $radius;
-      background-color: rgba(0,0,0,0.75);
+      background-color: rgba(0, 0, 0, 0.75);
+
       &:hover {
         background: $HoverBGG;
       }
+
       &.focused {
         background: $PrimaryBG;
       }
+
       .app-icon {
         font-size: 2rem;
       }
+
       .app-name {
         font-size: 1rem;
       }
     }
   }
 }
-
-
-
-

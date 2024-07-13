@@ -1,41 +1,35 @@
-import { Widget, Gtk, PopupWindow, Utils } from "imports";
+import { Widget, PopupWindow, Utils, Gtk, App, GLib } from "imports"
 import options from "options"
+import GridCalendar from "../Widgets/GridCalendar"
 
-const { Box, Label } = Widget;
-const { execAsync } = Utils;
-//const Calendar = Widget.subclass(Gtk.Calendar)
-const { bar, datewin } = options;
-const pos = datewin.position.bind();
-const layout = Utils.derive([bar.position, datewin.position], (bar, qs) => 
-    `${bar}-${qs}` as const,
-);
+const { Box, Label, Button, Icon } = Widget
+const { execAsync } = Utils
+const { bar, datewin } = options
+const pos = datewin.position.bind()
+const layout = Utils.derive(
+  [bar.position, datewin.position],
+  (bar, qs) => `${bar}-${qs}` as const,
+)
 
-const CalWidWin = () =>  PopupWindow({
+const CalWidWin = () =>
+  PopupWindow({
     name: "calendar",
     className: "calpopwin",
-    anchor: pos,
-    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+    anchor: ["top"],
+    transition: pos.as((pos) => (pos === "top" ? "slide_down" : "slide_up")),
     layer: "top",
-    exclusivity: 'normal',
-    keymode: 'on-demand',
-    margins: [0,550],
+    exclusivity: "normal",
+    keymode: "on-demand",
     child: Box({
-        className: "calendarbox",
-        child: Widget.Calendar({
-            showDayNames: true,
-            showDetails: true,
-            showHeading: true,
-            showWeekNumbers: true,
-            hpack: "center",
-            vpack: "center",
-        })
-    })
-});
+      className: "calendarbox",
+      child: GridCalendar(),
+    }),
+  })
 
 export function Calendar() {
-    App.addWindow(CalWidWin())
-    layout.connect("changed", () => {
-        App.removeWindow("calendar")
-        App.addWindow(CalWidWin())
-    })
+  App.addWindow(CalWidWin());
+  layout.connect("changed", () => {
+    App.removeWindow("calendar");
+    App.addWindow(CalWidWin());
+  });
 }

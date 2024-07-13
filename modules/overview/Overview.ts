@@ -1,7 +1,7 @@
 import Workspace from "./Workspace"
-import { range } from "../../lib/utils"
-import { Hyprland, PopupWindow } from "../../imports"
-import options from "../../options"
+import { range } from "lib/utils"
+import { Hyprland, PopupWindow } from "imports"
+import options from "options"
 
 const {Box} = Widget
 

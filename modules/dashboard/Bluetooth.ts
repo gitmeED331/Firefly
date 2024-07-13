@@ -1,3 +1,4 @@
+import { Widget, Utils, Service } from "imports"
 import { type BluetoothDevice } from "types/service/bluetooth"
 import { Menu, ArrowToggleButton } from "../buttons/ToggleButton"
 import icons from "lib/icons"
@@ -47,7 +48,7 @@ const DeviceItem = (device: BluetoothDevice) => Widget.Box({
 
 export const BluetoothDevices = () => Menu({
     name: "bluetooth",
-    icon: icons.bluetooth.disabled,
+    icon: icons.bluetooth.enabled,
     title: "Bluetooth",
     content: [
         Widget.Box({

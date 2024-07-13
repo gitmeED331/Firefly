@@ -1,7 +1,5 @@
 import { Widget, Hyprland, Utils } from "imports";
 import { icon } from "lib/utils";
-//import icons from "../../lib/icons";
-//App.addIcons(`${App.configDir}/assets`);
 
 const { execAsync } = Utils;
 const { Box, Button, Label, Icon } = Widget;
@@ -12,8 +10,11 @@ export const Title = () => Button({
 	child: Box({
 		spacing: 5,
 		children: [
-			Icon({ icon: Hyprland.active.client.bind("class").as(icon)}),
+			Icon({
+				vpack: "center",
+				icon: Hyprland.active.client.bind("class").as(icon)}),
 			Label({
+				vpack: "center",
 				label: Hyprland.active.client.bind('title'),
 				truncate: 'end',
 			}),

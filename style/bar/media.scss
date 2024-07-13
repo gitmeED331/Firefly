@@ -6,44 +6,75 @@
 		background: $PrimaryBG;
 		font-weight: bold;
 		min-width: 1rem;
-		&:hover {
-			color: $Hoverfont-color;
-		}
+
 		tooltip {
 			font-weight: bold;
 			padding: 10px
 		}
+
+		&:hover {
+
+			.tickertrack {
+				color: $font-color5;
+			}
+
+			.tickerartist {
+				color: $font-color1
+			}
+
+			image {
+				animation: spin 1s infinite;
+			}
+		}
+
+		image {
+			-gtk-icon-transform: scale(2);
+		}
 	}
+
 	&artist {
-		color: $Secfont-color;
+		color: $font-color2;
 		font-size: 1rem;
 	}
+
 	&track {
 		font-size: 1rem;
-		color: $Primfont-color;
+		color: $font-color1;
 	}
+
+	&icon {
+		color: red;
+	}
+}
+
+.tickerbox {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .player {
 	background: $PrimaryBG;
-    padding-left: 0px;
-    border: $border;
-    border-radius: $radius * 1.5;
-    min-width: 450px;
+	padding: 0px;
+	border: $border;
+	border-radius: $radius * 1.5;
+	min-width: 450px;
 	min-height: 10px;
 }
 
 .trackimg {
-	background-size: 25px;
+	background-size: cover;
 	background-position: center;
+	background-repeat: no-repeat;
 	border-radius: $radius-tbleft;
 	margin-right: 0.25rem;
 }
+
 .playicon {
 	padding: 0rem;
 	margin: 0rem 0.25rem;
 	margin-top: 0.25rem;
-	color: $Primfont-color;
+	color: $font-color1;
 	font-size: 25px;
 }
 
@@ -53,29 +84,32 @@
 	padding: 0rem 0.5rem;
 	margin-top: 0.65rem;
 	//background: $PrimaryBG;
-	color: $Primfont-color;
+	color: $font-color1;
 
 }
 
 .artist {
-		font-size: 1rem;
-		padding: 0rem 0.25rem;
-		//margin-right: 2rem;
-		color: $Secfont-color;
-	}
-	
+	font-size: 1rem;
+	padding: 0rem 0.25rem;
+	//margin-right: 2rem;
+	color: $font-color2;
+}
+
 .player scale.position {
-    margin-bottom: .3em;
-    padding: 0.25rem;
+	margin-bottom: .3em;
+	padding: 0.25rem;
 	min-width: 12rem;
+
 	trough {
-    	min-height: 10px;
-    	background: $SliderTrough;
+		min-height: 10px;
+		background: $SliderTrough;
 	}
+
 	highlight {
-    	background: $SliderHighlight;
+		background: $SliderHighlight;
 		border-radius: $radius;
 	}
+
 	slider {
 		min-height: 10px;
 		min-width: 10px;
@@ -88,11 +122,13 @@
 
 .player button {
 	color: #cdd6f4;
-	border: 2px solid rgba(0,0,0,0);
+	border: 2px solid rgba(0, 0, 0, 0);
+
 	image {
 		font-size: 1.5rem;
 		margin: 0rem 0.25rem;
 	}
+
 	&.play-pause {
 		margin: 0rem 0.25rem;
 
@@ -100,13 +136,17 @@
 			color: yellow;
 		}
 	}
-	&.next, &.previous {
+
+	&.next,
+	&.previous {
 		&:hover {
 			color: lime;
 		}
 	}
+
 	&.close {
 		margin-left: 1rem;
+
 		&:hover {
 			color: red;
 		}
@@ -114,7 +154,7 @@
 }
 
 .playercontrols {
-	background-color: rgba(15,155,255,0.5);
+	background-color: rgba(15, 155, 255, 0.5);
 	border-top-right-radius: 3rem;
 	border-bottom-right-radius: 3rem;
 	//margin-left: 0.5rem;
@@ -122,7 +162,7 @@
 }
 
 .mediacurves {
-	background-color: rgba(15,155,255,0.5);
+	background-color: rgba(15, 155, 255, 0.5);
 	border: $border;
 	color: $border-color;
 }

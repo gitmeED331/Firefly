@@ -1,10 +1,11 @@
 //--------- Vars -------------
 // --------- fonts
 $font: Liberation Mono;
-$Primfont-color: rgba(255, 140, 0,1);  // rgba(15,155,255,1); // -- Orange #ff8c00
-$Secfont-color: rgba(15,155,255,1);  // -- Blue #0f9bff
-$Thirdfont-color: rgba(155,255,15,1); // -- green
-$Hoverfont-color: rgba(255,0,0,1); // -- red
+$font-color1: rgba(255, 140, 0, 1); // rgba(15,155,255,1); // -- Orange #ff8c00
+$font-color2: rgba(15, 155, 255, 1); // -- Blue #0f9bff
+$font-color3: rgba(155, 255, 15, 1); // -- green
+$font-color4: rgba(255, 0, 0, 1); // -- red #ff0000
+$font-color5: rgba(0, 0, 255, 1);
 $font-size: 10px;
 
 //------- Transitions
@@ -15,24 +16,24 @@ $materialDecel: cubic-bezier(0, 0, 0, 1);
 $squeezebezier: cubic-bezier(0.5, 3, 0, 1);
 
 //--------- msic
-$boxshad-bg: rgba(15,155,255,0.5);
-$shadow-color: rgba(15,155,255,1);
-$popover-border-color: rgba(0,0,0,0); //#99ccff;
+$boxshad-bg: rgba(15, 155, 255, 0.5);
+$shadow-color: rgba(15, 155, 255, 1);
+$popover-border-color: rgba(0, 0, 0, 0); //#99ccff;
 $popover-radius: 1rem;
 $popover-padding: 0.5rem;
 $LauncherBG: url("./assets/launchgerBG.jpg");
 
 //--------- Solids
-$PrimaryBG: rgba(0,0,0,0.75);
+$PrimaryBG: rgba(0, 0, 0, 0.75);
 $SecondaryBG: #0e0e1e;
-$HoverBG: rgba(15,155,255,1);
-$NotificationBG: rgba(0,0,0,0.75);
+$HoverBG: rgba(15, 155, 255, 1);
+$NotificationBG: rgba(0, 0, 0, 0.75);
 
 //---------Gradients
 //$primary-bg: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
 //$widget-bg: linear-gradient(0deg, rgba(15,155,255,0.5) 0%, rgba(0,0,0,1) 50%, rgba(15,155,255,1) 100%);
-$HoverBGG: linear-gradient(0deg, rgba(0,0,55,0.5) 0%, rgba(0,0,255,1) 15%, rgba(0,0,0,0) 50%, rgba(0,0,255,1) 85%, rgba(0,0,55,0.5) 100%);
-$active-gradient:  linear-gradient(0deg, rgba(0,0,0,0.25) 0%, rgba(15,155,255,0.5) 50%, rgba(0,0,0,0.25) 100%);
+$HoverBGG: linear-gradient(0deg, rgba(0, 0, 55, 0.5) 0%, rgba(0, 0, 255, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 255, 1) 85%, rgba(0, 0, 55, 0.5) 100%);
+$active-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(15, 155, 255, 0.5) 50%, rgba(0, 0, 0, 0.25) 100%);
 //$NotificationListItemBG: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 100%);
 
 //--------- Borders
@@ -48,5 +49,5 @@ $padding: 0.3rem;
 $spacing: 0.3rem;
 
 //--------- Sliders
-$SliderTrough: linear-gradient(0deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.25) 30%, rgba(0,255,0,1) 50%, rgba(0,0,0,0.25) 70%,rgba(0,0,0,0.1) 100%);
-$SliderHighlight: linear-gradient(0deg, rgba(0,255,0,0.25) 0%, rgba(0,0,255,0.75) 30%, rgba(0,255,255,1) 50%, rgba(0,0,255,0.75) 70%, rgba(0,255,0,0.25) 100%);
+$SliderTrough: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.25) 30%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 0, 0.25) 70%, rgba(0, 0, 0, 0.1) 100%);
+$SliderHighlight: linear-gradient(0deg, rgba(0, 255, 0, 0.25) 0%, rgba(0, 0, 255, 0.75) 30%, rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 0.75) 70%, rgba(0, 255, 0, 0.25) 100%);

@@ -1,7 +1,15 @@
 @keyframes lowBlink {
-	0% { color: #ff0000; }
-	50% { color: #ffff00; }
-	100% { color: #000066; }
+	0% {
+		color: #ff0000;
+	}
+
+	50% {
+		color: #ffff00;
+	}
+
+	100% {
+		color: #000066;
+	}
 }
 
 
@@ -9,28 +17,33 @@
 
 .battery {
 	border: none;
-	color: $Primfont-color;
+	color: $font-color1;
 	font-size: 0.5rem;
+
 	label {
 		margin-right: 0.25rem;
 	}
+
 	&.low {
 		animation: lowBlink 3s infinite;
 	}
+
 	&:hover {
-		color: $Hoverfont-color;
+		color: $font-color4;
 	}
 }
 
-.whole, .regular {
+.whole,
+.regular {
 	&.low {
 		animation: lowBlink 3s infinite;
 	}
+
 	& trough {
 		border: $border;
 		border-radius: $radius*5;
+
 		block {
-			//background: linear-gradient(0deg, rgba(0,35,0,0.65) 0%, rgba(0,35,0,0.8) 10%, lime 50%, rgba(0,35,0,0.8) 90%, rgba(0,35,0,0.65) 100%);
 			min-height: 10px;
 			background-color: lime;
 			border-radius: $radius * 5;
@@ -48,51 +61,49 @@
 	background: $PrimaryBG;
 	font-size: 1rem;
 	color: lime;
+
 	label {
 		margin-top: 0.5rem;
 		font-weight: bold;
 	}
+
 	button {
 		border: $border;
 		border-width: 5px;
 		border-radius: $radius;
 		padding: 0.45rem 0.65rem;
 		margin: 0.5rem 0.5rem;
-		&:first-child{
+
+		&:first-child {
 			color: lime;
+
 			&:hover {
 				border-left: 5px solid lime;
 				border-right: 5px solid lime;
 				border-top: $border;
 				border-bottom: $border;
 				border-width: 5px;
-				background: linear-gradient(0deg, lime 0%, rgba(0,0,0,0) 50%, lime 100%);
+				background: linear-gradient(0deg, lime 0%, rgba(0, 0, 0, 0) 50%, lime 100%);
 			}
-			//&:focus,
-			// &:active {
-				// border-left-color: lime;
-				// border-right-color: lime;
-			// }
+
 			&.power-saver {
 				border-left-color: lime;
 				border-right-color: lime;
 			}
 		}
-		&:nth-child(2){
+
+		&:nth-child(2) {
 			color: yellow;
+
 			&:hover {
 				border-left: 5px dashed yellow;
 				border-right: 5px dashed yellow;
 				border-top: $border;
 				border-bottom: $border;
 				border-width: 5px;
-				background: linear-gradient(0deg, rgba(255,255,0,1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,0,1) 100%);
+				background: linear-gradient(0deg, rgba(255, 255, 0, 1) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 0, 1) 100%);
 			}
-			// &:focus,
-			// &:active {
-				// border-left-color: yellow;
-				// border-right-color: yellow;
-			// }
+
 			&.balanced {
 				border-left-color: yellow;
 				border-left-style: dashed;
@@ -100,21 +111,19 @@
 				border-right-style: dashed;
 			}
 		}
-		&:last-child{
+
+		&:last-child {
 			color: red;
+
 			&:hover {
 				border-left: 5px dotted red;
 				border-right: 5px dotted red;
 				border-top: $border;
 				border-bottom: $border;
 				border-width: 5px;
-				background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 100%);
+				background: linear-gradient(0deg, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 0, 0, 1) 100%);
 			}
-			// &:focus,
-			// &:active {
-				// border-left-color: red;
-				// border-right-color: red;
-			// }
+
 			&.performance {
 				border-left-color: red;
 				border-left-style: dotted;
@@ -122,10 +131,12 @@
 				border-right-style: dotted;
 			}
 		}
+
 		label {
 			font-weight: bold;
 			margin-top: 0.25rem;
 		}
+
 		image {
 			font-size: 1.5rem;
 		}
@@ -135,8 +146,8 @@
 // ---------- power menu window ------
 
 .sessioncontrols {
-	all:unset;
-	color: $Secfont-color;
+	all: unset;
+	color: $font-color2;
 	font-size: 2rem;
 	font-weight: bold;
 	background: $PrimaryBG;
@@ -144,42 +155,41 @@
 	padding-left: 2rem;
 	padding-bottom: 200rem;
 	min-width: 5rem;
+
 	&-box {
-		//border-radius: 20rem;
-		//background-image: url("./assets/lightning.png");
-		// background-position: center;
-		// background-blend-mode: luminosity;
-		// background-repeat: no-repeat;
-		// background-size: 100% 100%;
-		// background-color: rgba(0,0,0,0.6);
 		background: $PrimaryBG;
-		border-top: 3px solid rgba(0,0,0,0);
+		border-top: 3px solid rgba(0, 0, 0, 0);
 		border-top: $border;
 		border-width: $border-width / 2;
 		padding-bottom: 5rem;
 		padding-top: 2rem;
 	}
+
 	button {
 		border-radius: 5rem;
 		min-width: 10rem;
 		min-height: 10rem;
 		border-left: 0.5rem solid #0F9BFF;
 		border-right: 0.5rem solid #0F9BFF;
-		background: linear-gradient(0deg, rgba(0,0,255,0.5) 0%, rgba(0,0,255,1) 15%, rgba(0,0,0,0) 50%, rgba(0,0,255,1) 85%, rgba(0,0,255,0.5) 100%);
+		background: linear-gradient(0deg, rgba(0, 0, 255, 0.5) 0%, rgba(0, 0, 255, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 255, 1) 85%, rgba(0, 0, 255, 0.5) 100%);
 		padding: 0.5rem;
-		&:first-child, &:nth-child(2), &:nth-child(3), &:last-child {
-		image {
-			//@include button;
-			//border-radius: $radius;
-			min-width: 1.7em;
-			min-height: 1.7em;
-			font-size: 4rem;
-		}
+
+		&:first-child,
+		&:nth-child(2),
+		&:nth-child(3),
+		&:last-child {
+			image {
+				//@include button;
+				//border-radius: $radius;
+				min-width: 1.7em;
+				min-height: 1.7em;
+				font-size: 4rem;
+			}
 		}
 
 		label,
 		image {
-			color: $Primfont-color;
+			color: $font-color1;
 		}
 
 		label {
@@ -187,7 +197,9 @@
 			font-size: 1.75rem
 		}
 
-		&:hover, &:focus, &:active {
+		&:hover,
+		&:focus,
+		&:active {
 			image {
 				animation: spin 1s infinite;
 			}
@@ -202,9 +214,10 @@
 			label {
 				//color: $fg;
 			}
+
 			border-left: 0.5rem dashed red;
 			border-right: 0.5rem dashed red;
-			background: linear-gradient(0deg, rgba(255,0,0,0.5) 0%, rgba(255,0,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,0,0,1) 85%, rgba(255,0,0,0.5) 100%);
+			background: linear-gradient(0deg, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(255, 0, 0, 1) 85%, rgba(255, 0, 0, 0.5) 100%);
 		}
 
 		&:focus image {
@@ -218,11 +231,12 @@
 		&:focus,
 		&:active {
 			label {
-				color: $Secfont-color;
+				color: $font-color2;
 			}
-			border-left: 0.5rem dashed rgba(255,255,0,1);
-			border-right: 0.5rem dashed rgba(255,255,0,1);
-			background: linear-gradient(0deg, rgba(255,255,0,0.5) 0%, rgba(255,255,0,1) 15%, rgba(0,0,0,0) 50%, rgba(255,255,0,1) 85%, rgba(255,255,0,0.5) 100%);
+
+			border-left: 0.5rem dashed rgba(255, 255, 0, 1);
+			border-right: 0.5rem dashed rgba(255, 255, 0, 1);
+			background: linear-gradient(0deg, rgba(255, 255, 0, 0.5) 0%, rgba(255, 255, 0, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 0, 1) 85%, rgba(255, 255, 0, 0.5) 100%);
 		}
 	}
 }

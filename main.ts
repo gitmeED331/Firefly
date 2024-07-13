@@ -4,13 +4,15 @@ import "lib/session"
 import { forMonitors } from "lib/utils"
 import options from "options"
 import DirectoryMonitorService from "lib/DirectoryMonitorService"
+import icon from "lib/utils"
 
 // Windows
 import { Bar } from "modules/bar/bar"
 import { Dashboard } from "modules/dashboard/dashboard"
 import { Playwin } from "modules/bar/media"
 import { Calendar } from "modules/bar/calendar"
-import{ Dashvol } from "modules/bar/sysinfo/volume"
+import { Dashvol } from "modules/bar/sysinfo/volume"
+import { cliphist } from "./cliphist.ts";
 
 import NotificationPopups from "modules/notificationPopups"
 import Overview from "modules/overview/Overview"
@@ -23,6 +25,7 @@ const { execAsync, exec, monitorFile } = Utils;
 const scss = `${App.configDir}/style/main.scss`
 const css = `${App.configDir}/style.css`
 const icons = `${App.configDir}/assets`
+
 
 const applyScss = () => {
 	// monitor for changes
@@ -62,6 +65,7 @@ App.config({
 		Overview(),
 		sessioncontrols(),
 		pwrprofiles(),
-		Launcher()
+		Launcher(),
+		cliphist,
 	],
 })

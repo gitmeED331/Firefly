@@ -1,6 +1,6 @@
-import { Widget, Hyprland, Utils, PopupWindow} from "../imports";
-import icons from "../lib/icons.js";
-import options from "../options";
+import { Widget, Hyprland, Utils, PopupWindow} from "imports";
+import icons from "lib/icons.js";
+import options from "options";
 App.addIcons(`${App.configDir}/assets`);
 
 const { Button, Box, Label, Icon, EventBox } = Widget;

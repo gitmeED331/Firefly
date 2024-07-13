@@ -1,7 +1,10 @@
-import Widget, {Box} from "resource:///com/github/Aylur/ags/widget.js";
-import icons from "../icons/index.js";
-import Mpris from "resource:///com/github/Aylur/ags/service/mpris.js";
-import {lookUpIcon, execAsync} from "resource:///com/github/Aylur/ags/utils.js";
+import icons from "../icons/index";
+
+import { Widget, Utils, App, Roundedges, Mpris } from 'imports'
+
+const { RoundedCorner, RoundedAngleEnd } = Roundedges
+const {Box} = Widget
+const {lookUpIcon, execAsync} = Utils
 
 /**
  * @param {string} coverPath

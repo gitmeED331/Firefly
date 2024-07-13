@@ -1,20 +1,19 @@
-import { Utils, Widget, Hyprland } from "imports";
-import options from "options";
-import icons from "lib/icons";
+import { Utils, Widget, Hyprland } from "imports"
+import icons from "lib/icons"
 
-const { execAsync } = Utils;
-const { Box, Button, Label, Icon } = Widget;
+const { execAsync } = Utils
+const { Box, Button, Label, Icon } = Widget
 
-let hyprland;
+let hyprland
 Service.import("hyprland").then(service => {
-    hyprland = service;
+    hyprland = service
 }).catch(error => {
     console.error("Failed to import Hyprland service:", error);
-});
+})
 
 const dispatch = (arg: string | number) => {
     execAsync(`hyprctl dispatch workspace ${arg}`);
-};
+}
 
 export default () => {
     const workspaces = Box({
@@ -48,4 +47,4 @@ export default () => {
         className: "workspaces",
         child: workspaces,
     });
-};
+}

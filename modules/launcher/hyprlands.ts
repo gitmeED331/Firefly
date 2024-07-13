@@ -1,12 +1,13 @@
 import { App, Applications, Hyprland, Widget, Utils, Gtk } from "imports"
 import {Fzf} from "../../node_modules/fzf/dist/fzf.es.js"
-import icons from "lib/icons";
+import icons from "lib/icons"
+import {icon} from "lib/utils"
 
 const { lookUpIcon } = Utils
 
 const { Box, Button, Label, Icon } = Widget
 
-/**
+/**i
  * @typedef {import('node_modules/fzf/dist/types/main').Fzf<import('types/widgets/button.js').default[]>} FzfAppButton
  * @typedef {import('node_modules/fzf/dist/types/main').FzfResultItem<import('types/widgets/button.js').default>}
  * FzfResultAppButton
@@ -16,13 +17,9 @@ const { Box, Button, Label, Icon } = Widget
  * @param {import('types/service/hyprland.js').Client} app
  */
 export const AppIcon = app => {
-  const icon = app.class && lookUpIcon(app.class)
-    ? app.class
-    : "image-missing";
-
-  return Widget.Icon({
+  return Icon({
     class_name: "app-icon",
-    icon: icon,
+    icon: icon(app.class),
   });
 };
 

@@ -1,6 +1,6 @@
 import Window from "./Window";
-import { Gdk, Gtk, Hyprland, Utils } from "../../imports";
-import options from "../../options";
+import { Gdk, Gtk, Hyprland, Utils } from "imports";
+import options from "options";
 
 const { overview } = options
 

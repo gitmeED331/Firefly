@@ -1,5 +1,5 @@
 import { Widget, Utils, Battery } from "imports";
-const { Box, Button } = Widget;
+const { Box } = Widget;
 
 import icons from "lib/icons"
 import options from "options"

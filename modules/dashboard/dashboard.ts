@@ -1,24 +1,22 @@
-import { Widget, Utils, PopupWindow } from "imports";
-// import { TerminalIcon, KontactIcon, VPNIcon, Enpass } from "./iconButtons";
-import { WifiSelection, NetworkToggle } from "./Network";
-import { BluetoothToggle, BluetoothDevices } from "./Bluetooth";
-import { BrightnessSlider }  from "./brightnessSlider";
-import { NotificationList } from "./notificationList";
-import options from "options";
+import { Widget, Utils, PopupWindow, Gtk, App } from "imports"
+import { WifiSelection, NetworkToggle } from "./Network"
+import { BluetoothToggle, BluetoothDevices } from "./Bluetooth"
+import { BrightnessSlider } from "./brightnessSlider"
+import { NotificationList } from "./notificationList"
+import { winheight } from "lib/screensizeadjust"
+import options from "options"
+import GridCalendar from "../Widgets/GridCalendar"
 
-
-const { Box } = Widget;
-const { execAsync } = Utils;
-
-const { dashboard } = options;
-const pos = options.dashboard.position.bind();
-const layout = Utils.derive([dashboard.position], (dashboard, qs) => 
-		`${dashboard}-${qs}` as const,
-	);
+const { Box } = Widget
+const { dashboard } = options
+const pos = options.dashboard.position.bind()
+const layout = Utils.derive([dashboard.position], (dashboard, qs) =>
+    `${dashboard}-${qs}` as const,
+)
 
 const Row = (
     toggles: Array<() => Gtk.Widget> = [],
-             menus: Array<() => Gtk.Widget> = [],
+    menus: Array<() => Gtk.Widget> = [],
 ) => Widget.Box({
     vertical: true,
     children: [
@@ -31,57 +29,40 @@ const Row = (
     ],
 })
 
-// const quickAccess = Box({
-// 	className: "quickaccess",
-// 	vertical: true,
-// 	hexpand: false,
-// 	hpack: 'center',
-// 	children: [
-// 		Box({
-// 			vertical: false,
-// 			hexpand: true,
-// 			hpack: 'center',
-// 			children: [
-// 				Enpass(),
-// 				KontactIcon(),
-// 				VPNIcon(),
-// 				TerminalIcon(),
-// 			]
-// 		}),
-//     ]
-// });
-	
- const Dash = () =>  PopupWindow({
+const dashcal = () => Box({
+    className: "dashcal",
+    name: "dashcalbox",
+    hpack: "center",
+    hexpand: true,
+    child: GridCalendar(),
+})
+
+const Dash = () => PopupWindow({
     name: "dashboard",
     className: "dashboard",
-	anchor: pos,
-	vexpand: true,
-	margins: [20,0,0,0],
+    anchor: pos,
+    vexpand: true,
+    margins: [20, 0, 0, 0],
     transition: "slide_left",
     layer: "top",
     child:
         Box({
-			className: "dashcontainer",
+            className: "dashcontainer",
             vertical: true,
             vexpand: true,
             hexpand: false,
             hpack: "center",
             vpack: "center",
+            css: `min-height: ${winheight(0.97)}px;`,
             children: [
-                // Box({
-                //     className: "quicktoggles",
-                //     vertical: true,
-                //     vexpand: false,
-                //     children: [
-                //         quickAccess,
-                //     ]
-                // }),
                 Row(
                     [NetworkToggle, BluetoothToggle],
                     [WifiSelection, BluetoothDevices],
                 ),
-				BrightnessSlider(),
+                BrightnessSlider(),
                 NotificationList(),
+                dashcal(),
+
             ]
         })
 });

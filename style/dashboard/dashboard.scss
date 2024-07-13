@@ -1,15 +1,15 @@
-@import "quicktoggles";
+//@import "quicktoggles";
 @import "network";
 
 .dashboard {
-    font-weight: bold;
-    background: none;
+	font-weight: bold;
+	background: none;
 }
 
 .dashcontainer {
-	background: $PrimaryBG;	
+	background: $PrimaryBG;
 	border-radius: $radius-tbleft;
-	min-height: 70rem;
+	//min-height: 78.75rem;
 	border-left: $border;
 	border-bottom: $border;
 	border-top: $border;

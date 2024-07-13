@@ -15,23 +15,26 @@ import Notifications from 'resource:///com/github/Aylur/ags/service/notification
 import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
 
 import Gio from "gi://Gio";
-import Gtk from 'gi://Gtk';
+import Gtk from 'gi://Gtk'; //?version=4.0
 import Gdk from "gi://Gdk";
 import GLib from "gi://GLib";
 import type GObject from "gi://GObject"
 import Lock from "gi://GtkSessionLock";
 import Cairo from "gi://cairo";
 
-import PopupWindow from "./lib/PopupWindow.ts";
-import RegularWindow from "./lib/RegularWindow.ts";
+import AstalAuth from "gi://AstalAuth";
+
+import PopupWindow from "./lib/PopupWindow";
+import RegularWindow from "./lib/RegularWindow";
 import * as Roundedges from "./lib/roundedCorner";
 
 export {
     App,
-    Widget,
     Service,
-    Variable,
     Utils,
+    Variable,
+    Widget,
+    
     Applications,
     Audio,
     Battery,
@@ -41,13 +44,18 @@ export {
     Network,
     Notifications,
     SystemTray,
+
+    Cairo,
     Gio,
     Gtk,
     Gdk,
     GLib,
     GObject,
-    Cairo,
-    PopupWindow,
-    Roundedges,
     Lock,
+    
+    AstalAuth,
+
+    PopupWindow,
+    RegularWindow,
+    Roundedges,
 };

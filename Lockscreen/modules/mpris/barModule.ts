@@ -1,8 +1,10 @@
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import * as Utils from "resource:///com/github/Aylur/ags/utils.js";
-import {RoundedAngleEnd} from "../roundedCorner/index.js";
-import Mpris from "resource:///com/github/Aylur/ags/service/mpris.js";
-import icons from "../icons/index.js";
+import icons from '../icons/index';
+
+import { Widget, Utils, App, Roundedges, Mpris } from 'imports'
+
+const { RoundedAngleEnd } = Roundedges
+const {Box} = Widget
+const {lookUpIcon, execAsync} = Utils
 
 const MusicContainer = () => Widget.EventBox({
   on_primary_click: () => {

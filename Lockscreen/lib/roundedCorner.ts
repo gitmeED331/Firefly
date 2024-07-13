@@ -1,5 +1,4 @@
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import Gtk from "gi://Gtk?version=3.0";
+import { Widget, Gtk } from 'imports'
 
 /**
  * @param {string} place

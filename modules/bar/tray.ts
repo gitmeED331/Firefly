@@ -2,13 +2,9 @@ import { type TrayItem } from "types/service/systemtray"
 import PanelButton from "../buttons/PanelButton"
 import options from "options"
 import { Widget, SystemTray, Gdk } from "imports"
-import { icon } from "lib/utils"
-import icons from "lib/icons"
 
-
-const systemtray = await Service.import("systemtray")
 const { ignore, stitem } = options.bar.systray
-const { Label, Revealer, Button, Box, Icon } = Widget
+const { Revealer, Icon } = Widget
 
 const SysTrayItem = (item: TrayItem) => PanelButton({
     className: "systrayitem",
@@ -37,23 +33,23 @@ const SysTrayItem = (item: TrayItem) => PanelButton({
         btn, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null),
 })
 
-export const Expandbtn = () => PanelButton ({
-	className: 'BarBTN',
-	hexpand: false,
-	onPrimaryClick: () => App.toggleWindow("launcher"),
+export const Expandbtn = () => PanelButton({
+    className: 'BarBTN',
+    hexpand: false,
+    onPrimaryClick: () => App.toggleWindow("launcher"),
     onSecondaryClick: () => { stitem.value = !stitem.value },
-	child: 
+    child:
         Icon({
             icon: 'hyprland-symbolic'
-		}),
+        }),
 })
 
 export const TrayReveal = () => Revealer({
     transition: "slide_right",
     clickThrough: false,
     revealChild: stitem.bind(),
-    child: Widget.Box({className: "tray",})
-		.bind("children", systemtray, "items", i => i
-			.filter(({ id }) => !ignore.value.includes(id))
-			.map(SysTrayItem)),
+    child: Widget.Box({ className: "tray", })
+        .bind("children", SystemTray, "items", i => i
+            .filter(({ id }) => !ignore.value.includes(id))
+            .map(SysTrayItem)),
 })
