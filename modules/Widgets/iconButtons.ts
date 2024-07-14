@@ -1,4 +1,4 @@
-import { Widget, Utils, Hyprland, Gtk } from "../../imports";
+import { Widget, Utils, Hyprland, Gtk, App } from "../../imports";
 
 //const hyprland = await Service.import('hyprland');
 const { execAsync } = Utils;

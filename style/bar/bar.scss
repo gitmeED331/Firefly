@@ -68,3 +68,16 @@
 	color: $font-color1;
 	font-weight: bold;
 }
+
+// volume button in sysinfo tray
+.volumebtn {
+	color: $font-color1;
+
+	image {
+		font-size: 1.15rem;
+	}
+
+	button:hover {
+		color: $font-color5;
+	}
+}

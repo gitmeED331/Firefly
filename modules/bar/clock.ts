@@ -1,5 +1,5 @@
 import { Widget, Utils } from "imports";
-import { Calendar } from "./calendar"; // Adjust the import path as per your file structure
+import { Calendar } from "../Windows/index"
 
 const { Button } = Widget;
 const { execAsync } = Utils;

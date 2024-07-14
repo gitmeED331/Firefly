@@ -16,8 +16,7 @@
 
 		image {
 			color: $font-color1;
-			font-size: 1.15rem;
-			//-gtk-icon-style: symbolic;
+			//font-size: 1.15rem;
 		}
 
 		&:hover {
@@ -27,9 +26,8 @@
 			border-left: 2px solid #0000FF;
 			border-right: 2px solid #0000FF;
 
-			image {
-				-gtk-icon-transform: scale(2);
-			}
+			// image {
+			// }
 		}
 	}
 }

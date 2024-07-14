@@ -1,6 +1,6 @@
-import { Service, App, Utils, Gio } from "../imports"
+import { Service, App, Utils, Gio } from "imports"
 
-const { monitorFile} = Utils
+const { monitorFile } = Utils
 
 class DirectoryMonitorService extends Service {
   static {

@@ -1,9 +1,8 @@
-import { App, Applications, Widget, Utils, Gtk, Hyprland} from "imports"
-import {Fzf} from "../../node_modules/fzf/dist/fzf.es.js"
+import { App, Applications, Widget, Gtk, Hyprland } from "imports"
+import { Fzf } from "../../../node_modules/fzf/dist/fzf.es.js"
 import icons from "lib/icons"
 import { icon } from "lib/utils"
 
-const { lookUpIcon } = Utils
 const { Box, Button, Label, Icon } = Widget
 /**
  * @typedef {import('node_modules/fzf/dist/types/main').Fzf<import('types/widgets/button').default[]>} FzfAppButton
@@ -19,7 +18,7 @@ export const AppIcon = app => {
   //   ? app.icon_name
   //   : "image-missing";
 
-  return Widget.Icon({
+  return Icon({
     class_name: "app-icon",
     icon: icon(app.icon_name),
   });
@@ -32,10 +31,10 @@ const AppButton = app => Button({
   on_clicked: () => {
     App.closeWindow("launcher");
     //app.launch();
-    Hyprland.MessageAsync(`dispatch exec ${app.executable}`).then(e => print(e)).catch(logError);
+    Hyprland.messageAsync(`dispatch exec ${app.executable}`).then(e => print(e)).catch(logError);
     app.frequency++;
   },
-  attribute: {"app": app},
+  attribute: { "app": app },
   tooltip_text: app.description,
   class_name: "app-button",
   child: Box({
@@ -125,15 +124,15 @@ const SearchBox = (launcherState) => {
       results.children[0]?.attribute.app.launch();
       App.closeWindow("launcher");
     })
-    .hook(launcherState, () =>{
-      if(launcherState.value != "Search") return;
+    .hook(launcherState, () => {
+      if (launcherState.value != "Search") return;
       entry.text = "-";
       entry.text = "";
       entry.grab_focus();
     })
     .hook(App, (_, name, visible) => {
       if (name !== "launcher" || !visible) return;
-      if(launcherState.value == "Search") {
+      if (launcherState.value == "Search") {
         entry.text = "-";
         entry.text = "";
         entry.grab_focus();

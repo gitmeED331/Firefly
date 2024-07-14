@@ -28,19 +28,6 @@
 	box-shadow: 0px 0px 4px white;
 }
 
-// volume button in the sysinfo widget
-.volumebtn {
-	color: $font-color1;
-
-	image {
-		font-size: 1.15rem;
-	}
-
-	&:hover {
-		color: $font-color4;
-	}
-}
-
 //------------- VOLUME SLIDER ---------------------
 
 .volumeTabs {
@@ -66,6 +53,10 @@
 		margin-right: 0.5rem;
 		margin-top: 0.5rem;
 		text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
+
+		image {
+			color: $font-color1;
+		}
 	}
 }
 
@@ -171,5 +162,10 @@
 	&Icon {
 		margin-right: 1rem;
 		text-shadow: 0px 0px 0px red, 0px 0px 0px red, 0px 0px 0px red, 0px -5px 3px $shadow-color;
+		color: $font-color1;
+
+		&:hover {
+			color: $font-color5;
+		}
 	}
 }

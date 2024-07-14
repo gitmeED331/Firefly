@@ -29,7 +29,7 @@
 	}
 
 	&:hover {
-		color: $font-color4;
+		color: $font-color5;
 	}
 }
 
@@ -86,7 +86,7 @@
 				background: linear-gradient(0deg, lime 0%, rgba(0, 0, 0, 0) 50%, lime 100%);
 			}
 
-			&.power-saver {
+			.power-saver {
 				border-left-color: lime;
 				border-right-color: lime;
 			}
@@ -104,7 +104,7 @@
 				background: linear-gradient(0deg, rgba(255, 255, 0, 1) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 0, 1) 100%);
 			}
 
-			&.balanced {
+			.balanced {
 				border-left-color: yellow;
 				border-left-style: dashed;
 				border-right-color: yellow;
@@ -124,7 +124,7 @@
 				background: linear-gradient(0deg, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 0, 0, 1) 100%);
 			}
 
-			&.performance {
+			.performance {
 				border-left-color: red;
 				border-left-style: dotted;
 				border-right-color: red;
@@ -207,25 +207,9 @@
 
 
 		&:hover {
-			image {
-				//@include button-hover;
-			}
-
-			label {
-				//color: $fg;
-			}
-
 			border-left: 0.5rem dashed red;
 			border-right: 0.5rem dashed red;
 			background: linear-gradient(0deg, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(255, 0, 0, 1) 85%, rgba(255, 0, 0, 0.5) 100%);
-		}
-
-		&:focus image {
-			//@include button-focus;
-		}
-
-		&:active image {
-			//@include button-active;
 		}
 
 		&:focus,

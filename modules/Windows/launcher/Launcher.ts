@@ -5,7 +5,6 @@ import Categories from "./categories";
 import HyprlandBox from "./hyprlands";
 import StackState from "./stackState";
 import icons from "lib/icons";
-import { icon } from "lib/utils";
 import { winwidth } from "lib/screensizeadjust";
 
 const { Box, Button, Label, Icon } = Widget;

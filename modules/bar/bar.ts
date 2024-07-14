@@ -7,11 +7,11 @@ const mpris = await Service.import("mpris");
 
 
 // Widgets
-import Workspaces  from "./workspaces"
-import { Title } from "./title"
-import { TickerBTN } from "./media"
-import { SysInfo } from	"./sysinfo/sysinfo"
-import {TrayReveal, Expandbtn} from "./tray"
+import Workspaces from "./workspaces"
+import { Title } from "./AppTitleTicker"
+import { TickerBTN } from "./MediaTicker"
+import { SysInfo } from "./sysinfo"
+import { TrayReveal, Expandbtn } from "./tray"
 import { Clock } from "./clock"
 
 const pos = options.bar.position.bind()
@@ -25,7 +25,7 @@ const Dashbtn = () => Button({
 	css: 'padding-right: 0.5rem;',
 	tooltip_text: 'Dashboard',
 	onClicked: () => App.toggleWindow("dashboard"),
-	child: Icon({ icon: 'nix-snowflake-symbolic'}),
+	child: Icon({ icon: 'nix-snowflake-symbolic' }),
 });
 
 const Powerbtn = () => Button({
@@ -39,48 +39,48 @@ const Powerbtn = () => Button({
 	onClicked: () => App.toggleWindow("sessioncontrols")
 });
 
-const Left = ()	=> Box({
+const Left = () => Box({
 	className: "barleft",
-	hpack:	"start",
-	children: [ 
+	hpack: "start",
+	children: [
 		Workspaces(),
-		RoundedAngleEnd("topright", {className: "angleRight"}),
+		RoundedAngleEnd("topright", { className: "angleRight" }),
 		Spacer(),
-		RoundedAngleEnd("topleft", {className: "angleLeft"}),
+		RoundedAngleEnd("topleft", { className: "angleLeft" }),
 		Title(),
-		RoundedAngleEnd("topright", {className: "angleRight"}),
+		RoundedAngleEnd("topright", { className: "angleRight" }),
 		Spacer(),
 	],
 });
-const Right	= () =>	Box({
+const Right = () => Box({
 	className: "barright",
-	hpack:	"end",
+	hpack: "end",
 	hexpand: true,
 	children: [
 		Spacer(),
-		RoundedAngleEnd("topleft", {className: "angleLeft"}),
+		RoundedAngleEnd("topleft", { className: "angleLeft" }),
 		TickerBTN(),
-		RoundedAngleEnd("topright", {className: "angleRight"}),
+		RoundedAngleEnd("topright", { className: "angleRight" }),
 		Spacer(),
-		RoundedAngleEnd("topleft", {className: "angleLeft"}),
+		RoundedAngleEnd("topleft", { className: "angleLeft" }),
 		Dashbtn(),
 		Powerbtn(),
 	],
 });
 const Center = () => Box({
 	className: "barcenter",
-	hpack:	"center",
+	hpack: "center",
 	hexpand: true,
 	children: [
 		Spacer(),
-		RoundedAngleEnd("topleft", {className: "angleLeft"}),
+		RoundedAngleEnd("topleft", { className: "angleLeft" }),
 		Clock(),
-		RoundedAngleEnd("topright", {className: "angleRight"}),
+		RoundedAngleEnd("topright", { className: "angleRight" }),
 		Spacer(),
-		RoundedAngleEnd("topleft", {className: "angleLeft"}),
+		RoundedAngleEnd("topleft", { className: "angleLeft" }),
 		Expandbtn(),
 		TrayReveal(),
-		RoundedAngleEnd("topright", {className: "angleRight"}),
+		RoundedAngleEnd("topright", { className: "angleRight" }),
 		Spacer(),
 		SysInfo(),
 	],
@@ -88,7 +88,7 @@ const Center = () => Box({
 
 export const Bar = () => Window({
 	name: "bar",
-	layer:	'top',
+	layer: 'top',
 	anchor: pos.as(pos => [pos, "right", "left"]),
 	exclusivity: "exclusive",
 	child: CenterBox({

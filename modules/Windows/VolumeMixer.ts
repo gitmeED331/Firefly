@@ -1,6 +1,6 @@
 import { Widget, Audio, Utils, PopupWindow, App } from "imports";
 import options from "options";
-import { Arrow, Menu } from "../../buttons/ToggleButton";
+import { Arrow, Menu } from "../buttons/ToggleButton";
 import { dependencies, icon, sh } from "lib/utils";
 import icons from "lib/icons.js";
 import { type Stream } from "types/service/audio";
@@ -12,6 +12,8 @@ const pos = dashvol.position.bind();
 const layout = Utils.derive([bar.position, dashvol.position], (bar, qs) =>
     `${bar}-${qs}` as const,
 );
+
+// --- Volume Slider PopupWindow ---
 
 type Type = "microphone" | "speaker" | "headset"
 
@@ -227,9 +229,9 @@ const VolumeTabs = () => Box({
     ],
 })
 
-const DVol = () => PopupWindow({
-    name: "dashvol",
-    className: "dashvol",
+const VolumePopup = () => PopupWindow({
+    name: "volumemixer",
+    className: "volumemixer",
     anchor: pos,
     transition: "crossfade", //pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
     layer: "top",
@@ -245,35 +247,10 @@ const DVol = () => PopupWindow({
         })
 });
 
-export function Dashvol() {
-    App.addWindow(DVol())
+export function VolumeMixer() {
+    App.addWindow(VolumePopup())
     layout.connect("changed", () => {
-        App.removeWindow("dashvol")
-        App.addWindow(DVol())
+        App.removeWindow("volumemixer")
+        App.addWindow(VolumePopup())
     })
 }
-
-
-export const Volumebtn = () => Box({
-    className: 'volumebtn',
-    child:
-        Button({
-            onPrimaryClick: () => { App.toggleWindow("dashvol") },
-            onSecondaryClick: () => { Audio.speaker.is_muted = !Audio.speaker.is_muted },
-            on_scroll_up: () => Audio.speaker.volume += 0.035,
-            on_scroll_down: () => Audio.speaker.volume -= 0.035,
-            child:
-                Widget.Icon().hook(Audio.speaker, self => {
-                    const vol = Audio.speaker.volume * 150;
-                    const icon = [
-                        [101, 'overamplified'],
-                        [67, 'high'],
-                        [34, 'medium'],
-                        [1, 'low'],
-                        [0, 'muted'],
-                    ].find(([threshold]) => threshold <= vol)?.[1];
-                    self.icon = `audio-volume-${icon}-symbolic`;
-                    self.tooltip_text = `Volume ${Math.floor(vol)}%`;
-                }),
-        }),
-});

@@ -1,7 +1,7 @@
 //
 //---------------- Session Control Window -------------
 //
-import { Widget, Utils, PopupWindow, Roundedges, Gdk } from "imports"
+import { Widget, Utils, PopupWindow, Roundedges, Gdk, Service, App } from "imports"
 import icons from "lib/icons.js"
 import options from "options"
 import { winheight } from "lib/screensizeadjust"
@@ -69,8 +69,8 @@ export default () => PopupWindow({
 			self.toggleClassName("line", pwrmenu.layout.value === "line")
 		}),
 		children: [
-			RoundedAngleEnd("bottomleft", {class_name: "angleLarge"}),
-			
+			RoundedAngleEnd("bottomleft", { class_name: "angleLarge" }),
+
 			Box({
 				vpack: "end",
 				className: "sessioncontrols-box",
@@ -78,7 +78,7 @@ export default () => PopupWindow({
 				hexpand: false,
 				vexpand: false,
 				spacing: 30,
-				children:[
+				children: [
 					SysButton("lock", "Lock"),
 					SysButton("logout", "Log Out"),
 					SysButton("reboot", "Reboot"),
@@ -86,7 +86,7 @@ export default () => PopupWindow({
 				]
 			}),
 
-			RoundedAngleEnd("bottomright", {class_name: "angleLarge"}),
+			RoundedAngleEnd("bottomright", { class_name: "angleLarge" }),
 		]
 	}),
 })

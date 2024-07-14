@@ -1,11 +1,17 @@
 import { Widget, Utils, PopupWindow, Gtk, App } from "imports"
-import { WifiSelection, NetworkToggle } from "./Network"
-import { BluetoothToggle, BluetoothDevices } from "./Bluetooth"
-import { BrightnessSlider } from "./brightnessSlider"
-import { NotificationList } from "./notificationList"
 import { winheight } from "lib/screensizeadjust"
 import options from "options"
-import GridCalendar from "../Widgets/GridCalendar"
+
+// --- imported widgets ---
+import {
+    WifiSelection,
+    NetworkToggle,
+    BluetoothToggle,
+    BluetoothDevices,
+    BrightnessSlider,
+    GridCalendar,
+} from "../../Widgets"
+import { NotificationList } from "./notificationList"
 
 const { Box } = Widget
 const { dashboard } = options

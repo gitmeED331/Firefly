@@ -1,6 +1,5 @@
-import { Widget, Utils, Hyprland, Roundedges } from "imports"
-import { Volumebtn } from "./volume"
-import Battery from "./battery"
+import { Widget, Roundedges } from "imports"
+import { VolumeIndicator, Battery } from "../Widgets/index"
 
 const { RoundedAngleEnd } = Roundedges;
 const { Box } = Widget;
@@ -10,9 +9,8 @@ const SysInfoBox = () => Box({
 	class_name: 'sysinfo',
 	spacing: 8,
 	children: [
-		Volumebtn(),
+		VolumeIndicator(),
 		Battery(),
-		//SSRBTN(),
 	]
 });
 

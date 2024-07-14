@@ -4,11 +4,11 @@ import icons from "lib/icons";
 
 const { Box, Label, Button, Icon } = Widget;
 
-const notifications = await Service.import("notifications");
-notifications.popupTimeout = 30000;
-notifications.forceTimeout = false;
-notifications.cacheActions = false;
-notifications.clearDelay = 1000;
+//const notifications = await Service.import("notifications");
+Notifications.popupTimeout = 30000;
+Notifications.forceTimeout = false;
+Notifications.cacheActions = false;
+Notifications.clearDelay = 1000;
 
 const time = (time: number, format = "%H:%M") =>
   GLib.DateTime.new_from_unix_local(time).format(format);
@@ -120,21 +120,21 @@ export default (notification: Notification) => {
   const actionsbox =
     notification.actions.length > 0
       ? Widget.Revealer({
-          transition: "slide_down",
-          child: Widget.EventBox({
-            child: Box({
-              className: "actions horizontal",
-              children: notification.actions.map((action) =>
-                Button({
-                  className: "action-button",
-                  on_clicked: () => notification.invoke(action.id),
-                  hexpand: true,
-                  child: Label(action.label),
-                }),
-              ),
-            }),
+        transition: "slide_down",
+        child: Widget.EventBox({
+          child: Box({
+            className: "actions horizontal",
+            children: notification.actions.map((action) =>
+              Button({
+                className: "action-button",
+                on_clicked: () => notification.invoke(action.id),
+                hexpand: true,
+                child: Label(action.label),
+              }),
+            ),
           }),
-        })
+        }),
+      })
       : null;
 
   const eventbox = Widget.EventBox({

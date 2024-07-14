@@ -1,6 +1,6 @@
 import { Widget, PopupWindow, Utils, Gtk, App, GLib } from "imports"
 import options from "options"
-import GridCalendar from "../Widgets/GridCalendar"
+import { GridCalendar } from "../Widgets/index"
 
 const { Box, Label, Button, Icon } = Widget
 const { execAsync } = Utils

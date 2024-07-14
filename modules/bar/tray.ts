@@ -8,7 +8,7 @@ const { Revealer, Icon } = Widget
 
 const SysTrayItem = (item: TrayItem) => PanelButton({
     className: "systrayitem",
-    child: Icon({ icon: item.bind("icon") }),
+    child: Icon({ size: 15, icon: item.bind("icon") }),
     tooltipMarkup: item.bind("tooltip_markup"),
     setup: self => {
         const { menu } = item

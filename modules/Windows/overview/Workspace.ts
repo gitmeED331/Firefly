@@ -1,5 +1,5 @@
 import Window from "./Window";
-import { Gdk, Gtk, Hyprland, Utils } from "imports";
+import { Gdk, Gtk, Hyprland, Widget, App } from "imports";
 import options from "options";
 
 const { overview } = options
@@ -25,7 +25,7 @@ export default (id: number) => {
 
     // TODO: early return if position is unchaged
     async function update() {
-        const json = await Hyprland.messageAsync("j/clients").catch(()=>null)
+        const json = await Hyprland.messageAsync("j/clients").catch(() => null)
         if (!json)
             return
 

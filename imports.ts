@@ -34,7 +34,7 @@ export {
     Utils,
     Variable,
     Widget,
-    
+
     Applications,
     Audio,
     Battery,
@@ -52,7 +52,7 @@ export {
     GLib,
     GObject,
     Lock,
-    
+
     AstalAuth,
 
     PopupWindow,

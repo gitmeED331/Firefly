@@ -1,24 +1,24 @@
-import { Utils, App, Gio, Gtk, Hyprland, Widget } from "imports"
+import { Utils, App } from "imports"
 import "lib/session"
 //import init from "lib/init"
 import { forMonitors } from "lib/utils"
 import options from "options"
 import DirectoryMonitorService from "lib/DirectoryMonitorService"
-import icon from "lib/utils"
 
 // Windows
 import { Bar } from "modules/bar/bar"
-import { Dashboard } from "modules/dashboard/dashboard"
-import { Playwin } from "modules/bar/media"
-import { Calendar } from "modules/bar/calendar"
-import { Dashvol } from "modules/bar/sysinfo/volume"
-import { cliphist } from "./cliphist.ts";
-
-import NotificationPopups from "modules/notificationPopups"
-import Overview from "modules/overview/Overview"
-import sessioncontrols from "modules/sessioncontrol"
-import pwrprofiles from "modules/powerprofile"
-import Launcher from "modules/launcher/Launcher"
+import {
+	Dashboard,
+	MediaPlayerWindow,
+	Calendar,
+	VolumeMixer,
+	NotificationPopups,
+	Overview,
+	sessioncontrols,
+	pwrprofiles,
+	Launcher,
+	cliphist
+} from "modules/Windows/index"
 
 const { execAsync, exec, monitorFile } = Utils;
 
@@ -32,10 +32,10 @@ const applyScss = () => {
 	monitorFile(
 		// directory that contains the scss files
 		`${App.configDir}/style`,
-	
+
 		exec(`sass ${scss} ${css}`),
 		console.log("Scss compiled"),
-	
+
 		// main scss file
 		App.resetCss(),
 		console.log("Reset"),
@@ -50,21 +50,21 @@ DirectoryMonitorService.connect("changed", () => applyScss());
 App.config({
 	onConfigParsed: () => {
 		Dashboard()
-		Dashvol()
-		Playwin()
+		VolumeMixer()
+		MediaPlayerWindow()
 		Calendar()
 	},
 	closeWindowDelay: {
 		"overview": options.transition.value,
-		},
+	},
 	style: applyScss(),
 	icons: icons,
-	windows: () => [ 
+	windows: () => [
 		...forMonitors(Bar),
 		...forMonitors(NotificationPopups),
+		pwrprofiles(),
 		Overview(),
 		sessioncontrols(),
-		pwrprofiles(),
 		Launcher(),
 		cliphist,
 	],
