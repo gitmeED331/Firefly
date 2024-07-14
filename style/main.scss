@@ -7,14 +7,5 @@
 
 // Components
 @import "variables";
-@import "bar/bar";
-@import "dashboard/dashboard";
-@import "roundedCorner";
-@import "notifications";
-@import "Power";
 @import "mixins/mixins";
-@import "Slider";
-@import "overview";
-//@import "ScreenCapture";
-@import "launcher";
-@import "cliphist";
+@import "components/index";
