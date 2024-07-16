@@ -30,7 +30,7 @@
     }
 }
 
-.dashvol .menu {
+.volumemixer .menu {
     all: unset;
 
     &.app-mixer {
@@ -95,6 +95,7 @@
 }
 
 .sinkitem {
+
     &box {
         margin-top: 0.25rem;
     }

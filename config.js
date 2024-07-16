@@ -2,7 +2,7 @@ import GLib from "gi://GLib"
 
 const main = "/tmp/asztal/main.js"
 const entry = `${App.configDir}/main.ts`
-const bundler = GLib.getenv("AGS_BUNDLER") || "bun"
+const bundler = GLib.getenv("AGS_BUNDLER") || "esbuild"
 
 const v = {
     ags: pkg.version?.split(".").map(Number) || [],

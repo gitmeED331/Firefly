@@ -93,7 +93,7 @@ export default () => PopupWindow({
 					vertical: false,
 					hpack: "center",
 					vpack: "center",
-					spacing: 10,
+					spacing: 20,
 					children: [
 						Label({
 							useMarkup: true,
@@ -102,17 +102,20 @@ export default () => PopupWindow({
 							label: powerProfiles.bind('active_profile').transform(l => l.toUpperCase())
 						}),
 						Label({
+							vpack: "center",
+							css: `padding-bottom: 5px;`,
 							setup: self => self.hook(Brightness, (self, screenValue) => {
 								const icons = ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"];
 								self.label = `${icons[Math.floor((Brightness.screen_value * 100) / 15)]}`;
 							}, 'screen-changed'),
 						}),
 						Label({
+							vpack: "center",
 							label: Brightness.bind("screen-value").as(v => `${Math.floor(v * 100)}%`)
 						}),
 					]
 				}),
-				Box<Gtk.Widget>({
+				Box({
 					className: "pwrprofile-box",
 					vertical: false,
 					vexpand: false,
