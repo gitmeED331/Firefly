@@ -35,19 +35,23 @@
 
 .whole,
 .regular {
-	&.low {
-		animation: lowBlink 3s infinite;
-	}
 
 	& trough {
 		border: $border;
 		border-radius: $radius*5;
+		min-width: 75px;
+		background: linear-gradient(90deg, red, black 100%);
 
 		block {
 			min-height: 10px;
-			background-color: lime;
 			border-radius: $radius * 5;
 			margin: 0px 0.25px;
+
+			&.empty {}
+
+			&.filled {
+				background: linear-gradient(90deg, black, $font-color3 100%);
+			}
 		}
 	}
 }

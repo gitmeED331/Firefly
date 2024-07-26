@@ -1,5 +1,3 @@
-App.addIcons(`${App.configDir}/assets`);
-
 export const substitutes = {
   "geany": "geany-symbolic",
   "vivaldi": "vivaldi-symbolic",
@@ -32,6 +30,15 @@ export default {
   settings: "preferences-system-symbolic",
   refresh: "view-refresh-symbolic",
   missing: "image-missing-symbolic",
+
+  player: {
+    FALLBACK: "audio-x-generic-symbolic",
+    PLAY: "media-playback-start-symbolic",
+    PAUSE: "media-playback-pause-symbolic",
+    PREV: "media-skip-backward-symbolic",
+    NEXT: "media-skip-forward-symbolic",
+    CLOSE: "close-circle-outline-symbolic",
+  },
 
   app: {
     terminal: "terminal-symbolic",

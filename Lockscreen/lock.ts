@@ -1,27 +1,79 @@
-import { Gtk, Gdk, Lock, AstalAuth, Roundedges } from 'imports'
+import Lock from "gi://GtkSessionLock";
+import Gdk from "gi://Gdk?version=3.0";
+import Gtk from "gi://Gtk?version=3.0";
+import { RoundedAngleEnd, RoundedCorner } from "./lib/roundedCorner";
 import Clock from "./modules/clock";
-import SessionBox, {SessionBoxTooltip} from "./modules/powermenu/sessionbox.js";
+import SessionBox, { SessionBoxTooltip } from "./modules/powermenu/sessionbox";
 import { MprisCorner } from "./modules/mpris/index.js";
-
-const { RoundedAngleEnd, RoundedCorner } = Roundedges
+import AstalAuth from "gi://AstalAuth";
 
 Utils.exec(`sass ${App.configDir}/scss/lock.scss ${App.configDir}/lockstyle.css`);
 App.applyCss(`${App.configDir}/lockstyle.css`);
 
-
-const prompt = Variable("Enter Password:");
+const prompt = Variable("");
 const inputVisible = Variable(false);
 const inputNeeded = Variable(false);
 
 const auth = new AstalAuth.Pam();
-auth.connect("auth-info", (auth, msg) => {
-  prompt.setValue(msg);
-  auth.supply_secret(null);
-});
-auth.connect("auth-error", (auth, msg) => {
-  prompt.setValue(msg);
-  auth.supply_secret(null);
-});
+
+
+const Notif = (msg, type) => {
+  const notif = Widget.Box({
+    class_name: `auth-notif ${type}`,
+    children: [
+      Widget.Label({
+        label: msg,
+        max_width_chars: 25,
+        wrap: true,
+      })
+    ]
+  });
+
+  const revealer = Widget.Revealer({
+    child: notif,
+    hpack: "end",
+    transition: "slide_left",
+    transition_duration: 250,
+    reveal_child: false,
+  });
+
+  Utils.timeout(20000, () => {
+    revealer.reveal_child = false;
+    Utils.timeout(revealer.transition_duration, () => {
+      revealer.destroy();
+    });
+  });
+  Utils.idle(() => {
+    revealer.reveal_child = true;
+  });
+  return revealer;
+};
+
+const AuthNotifs = () => Widget.Box({
+  hpack: "end",
+  vpack: "start",
+  vertical: true,
+})
+  .hook(auth, (self, msg) => {
+    if (!msg) return;
+    self.add(Notif(msg, "error"));
+    self.show_all();
+    auth.supply_secret(null);
+  }, "auth-error")
+  .hook(auth, (self, msg) => {
+    if (!msg) return;
+    self.add(Notif(msg, "info"));
+    self.show_all();
+    auth.supply_secret(null);
+  }, "auth-info")
+  .hook(auth, (self, msg) => {
+    if (!msg) return;
+    self.add(Notif(msg, "fail"));
+    self.show_all();
+  }, "fail");
+
+
+
 auth.connect("auth-prompt-visible", (auth, msg) => {
   prompt.setValue(msg);
   inputVisible.setValue(true);
@@ -34,7 +86,7 @@ auth.connect("auth-prompt-hidden", (auth, msg) => {
 });
 
 auth.connect("success", unlock);
-auth.connect("fail", p => {
+auth.connect("fail", (p, msg) => {
   auth.start_authenticate();
 });
 
@@ -58,7 +110,7 @@ function unlock() {
 const Right = () => Widget.Box({
   hpack: "end",
   children: [
-    RoundedAngleEnd("topleft", {class_name: "angle", hexpand: true}),
+    RoundedAngleEnd("topleft", { class_name: "angle", hexpand: true }),
     Clock(),
   ]
 });
@@ -66,7 +118,7 @@ const Right = () => Widget.Box({
 const Left = () => Widget.Box({
   children: [
     SessionBox(),
-    RoundedAngleEnd("topright", {class_name: "angle"})
+    RoundedAngleEnd("topright", { class_name: "angle" })
   ]
 });
 
@@ -91,33 +143,33 @@ const LoginBox = () => Widget.Box({
             class_name: "avatar",
           }),
           Widget.Box({
-            class_name: "entry-box",
+            class_name: inputNeeded.bind().as(n => `entry-box ${n ? "" : "hidden"}`),
             vertical: true,
             children: [
               Widget.Label({
                 label: prompt.bind()
               }),
               Widget.Separator(),
-                    Widget.Entry({
-                      hpack: "center",
-                      xalign: 0.5,
-                      visibility: inputVisible.bind(),
-                                  sensitive: inputNeeded.bind(),
-                                  on_accept: self => {
-                                    inputNeeded.setValue(false);
-                                    auth.supply_secret(self.text);
-                                    self.text = "";
-                                  }
-                    }).on("realize", (entry) => entry.grab_focus()),
+              Widget.Entry({
+                hpack: "center",
+                xalign: 0.5,
+                visibility: inputVisible.bind(),
+                sensitive: inputNeeded.bind(),
+                on_accept: self => {
+                  inputNeeded.setValue(false);
+                  auth.supply_secret(self.text);
+                  self.text = "";
+                }
+              }).on("realize", (entry) => entry.grab_focus()),
             ]
           })
         ]
       }),
       overlays: [
-        RoundedCorner("topleft", {class_name: "corner"}),
-                  RoundedCorner("topright", {class_name: "corner"}),
-                  RoundedCorner("bottomleft", {class_name: "corner"}),
-                  RoundedCorner("bottomright", {class_name: "corner"}),
+        RoundedCorner("topleft", { class_name: "corner" }),
+        RoundedCorner("topright", { class_name: "corner" }),
+        RoundedCorner("bottomleft", { class_name: "corner" }),
+        RoundedCorner("bottomright", { class_name: "corner" }),
       ]
     })
   ]
@@ -140,7 +192,8 @@ const LockWindow = () => new Gtk.Window({
               child: LoginBox(),
               overlays: [
                 SessionBoxTooltip(),
-                MprisCorner()
+                MprisCorner(),
+                AuthNotifs(),
               ]
             })
           ]
@@ -151,16 +204,16 @@ const LockWindow = () => new Gtk.Window({
 });
 
 
-function createWindow(monitor){
+function createWindow(monitor) {
   const window = LockWindow();
-  const win = {window, monitor};
+  const win = { window, monitor };
   windows.push(win);
   return win;
 }
 
 function lock_screen() {
   const display = Gdk.Display.get_default();
-  for (let m = 0;  m < display?.get_n_monitors();  m++) {
+  for (let m = 0; m < display?.get_n_monitors(); m++) {
     const monitor = display?.get_monitor(m);
     createWindow(monitor);
   }

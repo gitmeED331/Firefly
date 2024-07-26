@@ -3,17 +3,17 @@ import icons from '../icons/index';
 import { Widget, Utils, App, Roundedges, Mpris } from 'imports'
 
 const { RoundedAngleEnd } = Roundedges
-const {Box} = Widget
-const {lookUpIcon, execAsync} = Utils
+const { Box } = Widget
+const { lookUpIcon, execAsync } = Utils
 
 const MusicContainer = () => Widget.EventBox({
   on_primary_click: () => {
-    const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+    const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
     if (!player) return;
     player.playPause();
   },
   on_secondary_click: () => {
-    const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+    const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
     if (!player) return;
     player.next();
   },
@@ -25,7 +25,7 @@ const MusicContainer = () => Widget.EventBox({
         start_at: 0.75,
         child: Widget.Icon()
           .hook(Mpris, (icon) => {
-            const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+            const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
             if (!player) return;
             let icn = icons.mpris.stopped;
             if (player.play_back_status === "Playing")
@@ -36,12 +36,12 @@ const MusicContainer = () => Widget.EventBox({
           }),
       })
         .hook(Mpris, (prog) => {
-          const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+          const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
           if (!player) return;
           prog.value = player.position / player.length;
         })
         .poll(1000, (prog) => {
-          const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+          const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
           if (!player) return;
           prog.value = player.position / player.length;
         }),
@@ -50,7 +50,7 @@ const MusicContainer = () => Widget.EventBox({
         truncate: "end",
       })
         .hook(Mpris, (label) => {
-          const player = Mpris.getPlayer("spotify") || Mpris.getPlayer();
+          const player = Mpris.getPlayer("deezer") || Mpris.getPlayer();
           if (!player) return;
           label.label = player?.track_title + " - " + player?.track_artists;
         })
@@ -60,9 +60,9 @@ const MusicContainer = () => Widget.EventBox({
 const MusicBarContainer = () => Widget.Box({
   hexpand: true,
   children: [
-    RoundedAngleEnd("topleft", {class_name: "angle"}),
+    RoundedAngleEnd("topleft", { class_name: "angle" }),
     MusicContainer(),
-    RoundedAngleEnd("topright", {class_name: "angle"}),
+    RoundedAngleEnd("topright", { class_name: "angle" }),
   ],
 });
 

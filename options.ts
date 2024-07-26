@@ -28,32 +28,32 @@ const options = mkOptions(OPTIONS, {
 
 		systray: {
 			stitem: opt(false),
-			ignore: opt([ 
+			ignore: opt([
 			]),
 		},
 	},
-	
-	launcher: {
-        width: opt(0),
-        margin: opt(60),
-        sh: {
-            max: opt(16),
-        },
-        apps: {
-            iconSize: opt(32),
-            max: opt(6),
-            favorites: opt([
-                [
-                    "vivaldi",
-                    "konsole",
-                    "pcmanfm-qt",
-                    "deezer-enhanced",
-                ],
-            ]),
-        },
-    },
 
-  	layout: {
+	launcher: {
+		width: opt(0),
+		margin: opt(60),
+		sh: {
+			max: opt(16),
+		},
+		apps: {
+			iconSize: opt(32),
+			max: opt(6),
+			favorites: opt([
+				[
+					"vivaldi",
+					"konsole",
+					"pcmanfm-qt",
+					"deezer-enhanced",
+				],
+			]),
+		},
+	},
+
+	layout: {
 		start: opt<Array<import("./modules/bar/bar").BarWidget>>([
 			"workspaces",
 			"title",
@@ -67,7 +67,7 @@ const options = mkOptions(OPTIONS, {
 			"dashbtn",
 		]),
 	},
-		
+
 	overview: {
 		scale: opt(15),
 		workspaces: opt(4),
@@ -77,20 +77,20 @@ const options = mkOptions(OPTIONS, {
 	datewin: {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "left"]),
 	},
-	
+
 	playwin: {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 	},
-	
+
 	dashvol: {
-		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top","right"]),
+		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
 	},
-	
+
 	dashboard: {
 		position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "bottom", "right"]),
 		networkSettings: opt("gtk-launch nm-connection-editor"),
 	},
-	
+
 	pwrmenu: {
 		lock: opt("bash -c 'exec ags -b lockscreen -c ~/.config/ags/Lockscreen/lockscreen.js'"),
 		reboot: opt("systemctl reboot"),
@@ -102,10 +102,10 @@ const options = mkOptions(OPTIONS, {
 	},
 
 	ssrmenu: {
-		AShot: opt("bash -c"+"exec '"+"grim -g "+'"$(slurp)"'+" ~/Pictures/Screenshots/Screenshot-area_$(date +%Y-%m-%d_%H%M-%S).png'"),
+		AShot: opt("bash -c" + "exec '" + "grim -g " + '"$(slurp)"' + " ~/Pictures/Screenshots/Screenshot-area_$(date +%Y-%m-%d_%H%M-%S).png'"),
 		FShot: opt("bash -c 'grim ~/Pictures/Screenshots/Screenshot-full_$(date +%Y-%m-%d_%H%M-%S).png'"),
 		//WShot: opt(""),
-		ARecord: opt("bash -c"+"exec '"+"wf-recorder -g "+'"$(slurp)"'+" -f ~/Pictures/Screenshots/Screenrecording-area_$(date +%Y-%m-%d_%H-%M-%S).mp4'"),
+		ARecord: opt("bash -c" + "exec '" + "wf-recorder -g " + '"$(slurp)"' + " -f ~/Pictures/Screenshots/Screenrecording-area_$(date +%Y-%m-%d_%H-%M-%S).mp4'"),
 		FRecord: opt("bash -c 'exec wf-recorder -f ~/Pictures/Screenshots/Screenrecording-full_$(date +%Y-%m-%d_%H%M-%S).mp4'"),
 		//WRecord: opt(""),
 		layout: opt<"line" | "box">("line"),

@@ -1,4 +1,4 @@
-import { Utils, Widget, Hyprland } from "imports"
+import { Utils, Widget, Hyprland, Service, App } from "imports"
 import icons from "lib/icons"
 
 const { execAsync } = Utils
@@ -7,8 +7,6 @@ const { Box, Button, Label, Icon } = Widget
 let hyprland
 Service.import("hyprland").then(service => {
     hyprland = service
-}).catch(error => {
-    console.error("Failed to import Hyprland service:", error);
 })
 
 const dispatch = (arg: string | number) => {
@@ -24,7 +22,7 @@ export default () => {
 
             onMiddleClick: () => App.toggleWindow("overview"),
             onPrimaryClick: () => dispatch(i),
-            onSecondaryClick: () => Hyprland.messageAsync([`dispatch movetoworkspacesilent ${i}`]).catch(console.error),
+            onSecondaryClick: () => Hyprland.messageAsync([`dispatch movetoworkspacesilent ${i}`]),
 
             attribute: i,
 
@@ -37,7 +35,7 @@ export default () => {
         })),
         setup: self => self.hook(Hyprland, () => {
             self.children.forEach(btn => {
-                btn.visible = btn.attribute <= 4 || hyprland.workspaces.some(ws => ws.id === btn.attribute);
+                btn.visible = btn.attribute <= 4 || Hyprland.workspaces.some(ws => ws.id === btn.attribute);
             });
         }),
     });

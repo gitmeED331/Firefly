@@ -1,5 +1,6 @@
-import { Widget, Utils, Mpris, App } from "imports"
+import { Widget, Utils, Mpris, App, Gdk, Variable } from "imports"
 import options from "options"
+import { Player } from "../Widgets/index"
 
 //const { RoundedCorner } = Roundedges
 const { Box, Button, Icon, Label } = Widget

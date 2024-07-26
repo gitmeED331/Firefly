@@ -1,20 +1,20 @@
-import { Dashboard } from "./dashboard/dashboard.ts"
-import { MediaPlayerWindow } from "./MediaPlayer.ts"
-import { Calendar } from "./calendar.ts"
-import { VolumeMixer } from "./VolumeMixer.ts"
-import { cliphist } from "./cliphist.ts";
+import { Dashboard } from "./dashboard/dashboard"
+import { MediaPlayerWindow } from "./MediaPlayer"
+import { Calendar } from "./calendar"
+import { AudioMixerPopup } from "./AudioMixer"
+import { cliphist } from "./cliphist";
 
-import NotificationPopups from "./notificationPopups.ts"
-import Overview from "./overview/Overview.ts"
-import sessioncontrols from "./sessioncontrol.ts"
-import pwrprofiles from "./powerprofile.ts"
-import Launcher from "./launcher/Launcher.ts"
+import NotificationPopups from "./notificationPopups"
+import Overview from "./overview/Overview"
+import sessioncontrols from "./sessioncontrol"
+import pwrprofiles from "./powerprofile"
+import Launcher from "./launcher/Launcher"
 
 export {
     Dashboard,
     MediaPlayerWindow,
     Calendar,
-    VolumeMixer,
+    AudioMixerPopup,
     NotificationPopups,
     Overview,
     sessioncontrols,

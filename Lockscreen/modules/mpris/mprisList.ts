@@ -3,8 +3,8 @@ import icons from "../icons/index";
 import { Widget, Utils, App, Roundedges, Mpris } from 'imports'
 
 const { RoundedCorner, RoundedAngleEnd } = Roundedges
-const {Box} = Widget
-const {lookUpIcon, execAsync} = Utils
+const { Box } = Widget
+const { lookUpIcon, execAsync } = Utils
 
 /**
  * @param {string} coverPath
@@ -24,7 +24,7 @@ async function blurCoverArtCss(coverPath) {
     transition: all 0.7s ease;
     background-repeat: no-repeat;`;
 
-  if(coverPath) {
+  if (coverPath) {
     const color = await execAsync(`bash -c "convert ${coverPath} -alpha off -crop 5%x100%0+0+0 -colors 1 -unique-colors txt: | head -n2 | tail -n1 | cut -f4 -d' '"`);
     return genCss(coverPath, color);
   }
@@ -89,7 +89,7 @@ export const MprisPlayer = player => Widget.Box({
           class_name: "music-control-box",
           children: [
             Widget.Box({
-              class_name: "spacing-10",
+              spacing: 15,
               vpack: "center",
               children: [
                 Widget.Button({
@@ -103,7 +103,7 @@ export const MprisPlayer = player => Widget.Box({
                     class_name: "music-progress",
                     start_at: 0.75,
                     child: Widget.Icon({
-                      class_name: "music-button",
+                      class_names: ["music-button", "music-playpause"],
                     })
                       .hook(Mpris, (icon) => {
                         let icn = icons.mpris.stopped;

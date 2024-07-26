@@ -1,7 +1,6 @@
-import { Widget, Utils, PopupWindow, Gtk, App } from "imports"
+import { Widget, Utils, PopupWindow, Gtk, App, Mpris, Variable } from "imports"
 import { winheight } from "lib/screensizeadjust"
 import options from "options"
-//import Media from './mediatest';
 
 // --- imported widgets ---
 import {
@@ -11,6 +10,7 @@ import {
     BluetoothDevices,
     BrightnessSlider,
     GridCalendar,
+    //Player,
 } from "../../Widgets"
 import { NotificationList } from "./notificationList"
 
@@ -44,6 +44,22 @@ const dashcal = () => Box({
     child: GridCalendar(),
 })
 
+// const players = Mpris.bind("players")
+// const player = Mpris.getPlayer("Deezer") || Mpris.getPlayer('')
+
+// const PlayerContainer = (player) => Box({
+//     className: "playercontainer",
+//     vpack: "center",
+//     hpack: "center",
+//     vertical: true,
+//     children: Utils.watch([], [
+//         [Mpris, "player-changed"],
+//         [Mpris, "player-added"],
+//         [Mpris, "player-closed"],
+//     ], () => Mpris.players)
+//         .transform(p => p.filter(p => p.play_back_status !== 'Stopped').map(Player)),
+// })
+
 const Dash = () => PopupWindow({
     name: "dashboard",
     className: "dashboard",
@@ -69,7 +85,6 @@ const Dash = () => PopupWindow({
                 BrightnessSlider(),
                 NotificationList(),
                 dashcal(),
-
             ]
         })
 });

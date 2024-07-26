@@ -1,11 +1,9 @@
-import icons from "../icons/index";
+import icons from "../icons/index.js";
+import Widget from "resource:///com/github/Aylur/ags/widget.js";
+import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
+import { RoundedAngleEnd, RoundedCorner } from "../../lib/roundedCorner";
 
-import { Widget, Utils, App, Roundedges } from 'imports'
-
-const {execAsync} = Utils
-const { RoundedCorner, RoundedAngleEnd } = Roundedges
-
-const sessionBoxTooltipText = Variable({text: "", visible: false});
+const sessionBoxTooltipText = Variable({ text: "", visible: false });
 
 export const SessionBoxTooltip = () => Widget.Box({
   vpack: "start",
@@ -22,10 +20,10 @@ export const SessionBoxTooltip = () => Widget.Box({
                 class_name: "tooltip",
                 label: sessionBoxTooltipText.bind().as(v => v.text)
               }),
-              RoundedAngleEnd("topright", {class_name: "angle"})
+              RoundedAngleEnd("topright", { class_name: "angle" })
             ]
           }),
-          RoundedCorner("topleft", {class_name: "corner"}),
+          RoundedCorner("topleft", { class_name: "corner" }),
         ]
       })
     })
@@ -47,10 +45,10 @@ const SessionButton = (name, icon, command, props = {}) => {
       icon: icon,
     }),
     onHover: () => {
-      sessionBoxTooltipText.setValue({text: name, visible: true});
+      sessionBoxTooltipText.setValue({ text: name, visible: true });
     },
     onHoverLost: () => {
-      sessionBoxTooltipText.setValue({text: name, visible: false});
+      sessionBoxTooltipText.setValue({ text: name, visible: false });
     },
     ...props,
   });

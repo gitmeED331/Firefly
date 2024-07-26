@@ -1,7 +1,6 @@
 * {
   all: unset;
-  font-family: "Liberation Mono";
-  font-size: 1rem;
+  font-family: "Liberation Mono Font";
 }
 
 .lock-container {
@@ -14,25 +13,29 @@
   background-image: url("./avatar.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 999px;
+  border-radius: 6rem;
   min-height: 10rem;
   min-width: 10rem;
 }
 
 .entry-box {
-  background: rgba(14, 14, 30, 0.8);
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 1rem;
   min-width: 350px;
   padding: 8px;
+  transition: opacity 200ms;
+  border: 2px solid #0f9bff;
 }
-
-entry {
+.entry-box.hidden {
+  opacity: 0.5;
+}
+.entry-box entry {
   min-width: 350px;
 }
 
 .tooltip {
-  background-color: #0e0e1e;
-  color: #CDD6F4;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(15, 155, 255);
   padding: 0 0 8px 8px;
 }
 
@@ -40,43 +43,50 @@ separator {
   margin: 3px;
   min-width: 1px;
   min-height: 1px;
-  background-color: #1e1e2e;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .clock-container {
-  background-color: #0e0e1e;
+  background-color: rgba(0, 0, 0, 0.5);
   padding-right: 8px;
+  border-bottom: 2px solid #0f9bff;
 }
 
 .clock-container .clock-date {
-  font-size: 0.6rem;
-  color: #9278b6;
+  font-size: 1rem;
+  color: rgb(255, 140, 0);
 }
 
 .clock-container .clock-time {
-  font-size: 0.7rem;
+  font-size: 1.2rem;
 }
 
 .session-button {
-  background-color: #0e0e1e;
-  color: #CDD6F4;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 140, 0);
   padding: 0px 8px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #0f9bff;
 }
 
 .corner {
-  background-color: #0e0e1e;
-  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
 }
 
 .angle {
-  background-color: #0e0e1e;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #0f9bff;
+  border: 2px solid #0f9bff;
 }
 
 .corner-container {
-  background-color: #0e0e1e;
+  background-color: rgba(0, 0, 0, 0.5);
   border-top-right-radius: 1rem;
   min-width: 2rem;
   min-height: 2rem;
+  border-top: 2px solid #0f9bff;
+  border-right: 2px solid #0f9bff;
 }
 
 .music-player-icon {
@@ -90,7 +100,7 @@ separator {
 }
 
 .music-container {
-  background-color: #1e1e2e;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   padding: 1rem;
   margin-top: 5px;
@@ -101,28 +111,57 @@ separator {
   padding-right: 8px;
 }
 .music-container .music-player-name {
-  text-shadow: 0.1rem 0.1rem #0e0e1e;
+  text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+  color: rgb(255, 140, 0);
 }
 .music-container .music-artist {
-  text-shadow: 0.1rem 0.1rem #0e0e1e;
+  text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
   padding-top: 5px;
+  color: rgb(15, 155, 255);
 }
 .music-container .music-title {
   font-weight: bold;
-  text-shadow: 0.1rem 0.1rem #0e0e1e;
+  text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
   padding-top: 5px;
+  color: rgb(255, 140, 0);
 }
 .music-container .music-control-box {
   padding-top: 1.5rem;
 }
 .music-container .music-control-box .music-button {
   font-size: 1.6rem;
-  -gtk-icon-shadow: 0.1rem 0.1rem #0e0e1e;
+  -gtk-icon-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+  color: #cdd6f4;
+}
+.music-container .music-control-box .music-button:first-child:hover, .music-container .music-control-box .music-button:last-child:hover {
+  color: lime;
+}
+.music-container .music-control-box .music-button .music-playpause:hover, .music-container .music-control-box .music-button:nth-child(2):hover {
+  color: yellow;
 }
 .music-container .music-control-box .music-progress {
   font-size: 3px;
   min-width: 40px;
   min-height: 40px;
+  color: rgb(15, 155, 255);
+}
+
+.auth-notif {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  margin-bottom: 0.25rem;
+  min-width: 20rem;
+  border-radius: 1rem;
+}
+.auth-notif.error {
+  border-left: 0.3rem solid red;
+}
+.auth-notif.fail {
+  border-left: 0.3rem solid rgb(15, 155, 255);
+}
+.auth-notif.info {
+  border-left: 0.3rem solid white;
 }
 
 /*# sourceMappingURL=lockstyle.css.map */

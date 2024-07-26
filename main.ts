@@ -11,7 +11,7 @@ import {
 	Dashboard,
 	MediaPlayerWindow,
 	Calendar,
-	VolumeMixer,
+	AudioMixerPopup,
 	NotificationPopups,
 	Overview,
 	sessioncontrols,
@@ -50,7 +50,7 @@ DirectoryMonitorService.connect("changed", () => applyScss());
 App.config({
 	onConfigParsed: () => {
 		Dashboard()
-		VolumeMixer()
+		AudioMixerPopup()
 		MediaPlayerWindow()
 		Calendar()
 	},

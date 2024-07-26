@@ -1,4 +1,4 @@
-import { Widget, Utils, Battery, Service } from "imports";
+import { Widget, Utils, Battery, Service, App } from "imports";
 const { Box } = Widget;
 
 import icons from "lib/icons"

@@ -1,5 +1,6 @@
 @import "../mixins/mixins";
 
+// ---- Ticker ----
 .ticker {
 	&btn {
 		border-bottom: $border;
@@ -49,61 +50,92 @@
 	background-position: center;
 }
 
+// ---- Player ----
 .player {
 	background: $PrimaryBG;
 	padding: 0px;
 	border: $border;
 	border-radius: $radius * 1.5;
-	min-width: 450px;
+	min-width: 400px;
 	min-height: 10px;
+	padding-left: 2.5rem;
+	padding-right: 0.25rem;
+	padding-top: 0.5rem;
+	box-shadow: inset -0.75rem 0rem 1rem 0rem $PrimaryBG,
+		inset 0rem 0rem 0rem 0rem $PrimaryBG,
+		inset 0rem 0rem 0rem 0rem $PrimaryBG;
+
+	.mediainfo {
+		padding-left: 0rem;
+		margin-left: 6rem;
+		margin-right: 2rem;
+	}
+
+	.playercontrols {
+		margin-top: -1rem;
+		margin-bottom: 0.75rem;
+	}
 }
 
-.trackimg {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	border-radius: $radius-tbleft;
-	margin-right: 0.25rem;
+.track {
+
+	&position,
+	&length {
+		color: $font-color1;
+		text-shadow: 0.1rem 0.1rem $PrimaryBG;
+	}
+
+	&img {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		border-radius: $radius-tbleft;
+		margin-right: 0.25rem;
+	}
 }
 
 .playicon {
-	padding: 0rem;
-	margin: 0rem 0.25rem;
-	margin-top: 0.25rem;
 	color: $font-color1;
-	font-size: 25px;
+	-gtk-icon-style: symbolic;
+	-gtk-icon-shadow: 0.3rem 0.3rem 0.2rem $PrimaryBG;
+}
+
+.trackinfo {
+	min-width: 250px;
+
 }
 
 .tracktitle {
 	font-size: 1.2em;
 	font-weight: bold;
-	padding: 0rem 0.5rem;
-	margin-top: 0.65rem;
-	//background: $PrimaryBG;
 	color: $font-color1;
+	text-shadow: 0.1rem 0.1rem $PrimaryBG;
 
 }
 
 .artist {
-	font-size: 1rem;
-	padding: 0rem 0.25rem;
-	//margin-right: 2rem;
+	font-size: 1.1rem;
 	color: $font-color2;
+	text-shadow: 0.1rem 0.1rem $PrimaryBG;
 }
 
 .player scale.position {
-	margin-bottom: .3em;
+	margin-bottom: 0.3em;
 	padding: 0.25rem;
 	min-width: 12rem;
+
 
 	trough {
 		min-height: 10px;
 		background: $SliderTrough;
+		border-radius: $radius;
+		box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 1);
 	}
 
 	highlight {
 		background: $SliderHighlight;
 		border-radius: $radius;
+
 	}
 
 	slider {
@@ -125,40 +157,44 @@
 		margin: 0rem 0.25rem;
 	}
 
-	&.play-pause {
-		margin: 0rem 0.25rem;
+	&.previous {
+		-gtk-icon-shadow: -0.2rem 0.2rem $PrimaryBG;
 
 		&:hover {
-			color: yellow;
+			color: red;
+			-gtk-icon-shadow: -0.2rem 0.2rem $font-color5;
 		}
 	}
 
-	&.next,
-	&.previous {
+	&.play-pause {
+		margin: 0rem 0.25rem;
+		-gtk-icon-shadow: 0.1rem 0.3rem $PrimaryBG;
+
 		&:hover {
-			color: lime;
+			color: yellow;
+			-gtk-icon-shadow: 0.1rem 0.3rem $font-color4;
+		}
+	}
+
+	&.next {
+		-gtk-icon-shadow: 0.2rem 0.2rem $PrimaryBG;
+
+		&:hover {
+			color: $font-color5;
+			-gtk-icon-shadow: 0.2rem 0.2rem yellow;
 		}
 	}
 
 	&.close {
-		margin-left: 1rem;
+		margin-left: -1.75rem;
+		margin-right: -0.3rem;
+		border-radius: $radius-tbleft;
+		background: $font-color2;
+		color: $font-color2;
+		box-shadow: -0.5rem 0rem 1rem 0.5rem rgba(0, 0, 0, 1);
 
 		&:hover {
 			color: red;
 		}
 	}
-}
-
-.playercontrols {
-	background-color: rgba(15, 155, 255, 0.5);
-	border-top-right-radius: 3rem;
-	border-bottom-right-radius: 3rem;
-	//margin-left: 0.5rem;
-	padding: 0rem 0.5rem;
-}
-
-.mediacurves {
-	background-color: rgba(15, 155, 255, 0.5);
-	border: $border;
-	color: $border-color;
 }

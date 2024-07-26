@@ -1,41 +1,74 @@
-
-@import "colors";
-
 * {
   all: unset;
-  font-family: "Liberation Mono";
-  font-size: 1rem;
+  font-family: "Liberation Mono Font";
 }
 
+// ---- variables ----
+$surface: rgba(0, 0, 0, 0.5);
+$surface_variant: rgba(0, 0, 0, 0.75);
+$on_surface: rgba(255, 255, 255, 1);
+$on_surface_variant: rgba(255, 255, 255, 0.7);
+$on_background: rgba(255, 255, 255, 1);
+$on_background_variant: rgba(255, 255, 255, 0.7);
+$outline: rgba(255, 255, 255, 0.5);
+$shadow: rgba(0, 0, 0, 0.2);
+
+// --------- fonts
+$font: Liberation Mono;
+$font-color1: rgba(255, 140, 0, 1); // rgba(15,155,255,1); // -- Orange #ff8c00
+$font-color2: rgba(15, 155, 255, 1); // -- Blue #0f9bff
+$font-color3: rgba(155, 255, 15, 1); // -- green
+$font-color4: rgba(255, 0, 0, 1); // -- red #ff0000
+$font-color5: rgba(0, 0, 255, 1);
+$font-size: 10px;
+
+//--------- Borders
+$border: 2px solid #0f9bff;
+$border-width: 1rem;
+$border-color: #0f9bff; //rgba(15,155,255,1);
+$radius: 2rem;
+$radius-tbleft: 3rem 0rem 0rem 3rem;
+$radius-tbright: 0rem 3rem 3rem 0rem;
+$radius-rltop: 3rem 3rem 0rem 0rem;
+$radius-rlbottom: 0rem 0rem 3rem 3rem;
+
+// ---- styles ----
+
 .lock-container {
-  background-image: url("./background.jpg");
+  background-image: url('./background.jpg');
   background-position: center;
   background-size: cover;
 }
 
 .avatar {
-  background-image: url("./avatar.jpg");
+  background-image: url('./avatar.jpg');
   background-size: cover;
   background-position: center;
-  border-radius: 999px;
+  border-radius: $radius * 3;
   min-height: 10rem;
   min-width: 10rem;
 }
 
 .entry-box {
-  background: rgba(14, 14, 30, 0.80);
-  border-radius: 1rem;
+  background: transparentize($surface, 0.05);
+  border-radius: $radius / 2;
   min-width: 350px;
   padding: 8px;
-}
+  transition: opacity 200ms;
+  border: $border;
 
-entry {
-  min-width: 350px;
+  &.hidden {
+    opacity: 0.5;
+  }
+
+  entry {
+    min-width: 350px;
+  }
 }
 
 .tooltip {
-  background-color: $dark-background;
-  color: $primary-color;
+  background-color: $surface;
+  color: $font-color2;
   padding: 0 0 8px 8px;
 }
 
@@ -43,40 +76,51 @@ separator {
   margin: 3px;
   min-width: 1px;
   min-height: 1px;
-  background-color: $light-background;
+  background-color: $surface_variant;
 }
+
 .clock-container {
-  background-color: $dark-background;
+  background-color: $surface;
   padding-right: 8px;
+  border-bottom: $border;
+
 }
+
 .clock-container .clock-date {
-  font-size: 0.6rem;
-  color: $primary-fg;
+  font-size: 1rem;
+  color: $font-color1;
 }
+
 .clock-container .clock-time {
-  font-size: 0.7rem;
+  font-size: 1.2rem;
 }
 
 .session-button {
-  background-color: $dark-background;
-  color: $primary-color;
+  background-color: $surface;
+  color: $font-color1;
   padding: 0px 8px;
+  font-size: 1.5rem;
+  border-bottom: $border;
 }
 
 .corner {
-  background-color: $dark-background;
-  border-radius: 1rem;
+  background-color: $surface;
+  font-size: 1rem;
 }
 
 .angle {
-  background-color: $dark-background;
+  background-color: $surface;
+  color: $border-color;
+  border: $border;
 }
 
 .corner-container {
-  background-color: $dark-background;
+  background-color: $surface;
   border-top-right-radius: 1rem;
   min-width: 2rem;
   min-height: 2rem;
+  border-top: $border;
+  border-right: $border;
 }
 
 .music-player-icon {
@@ -91,7 +135,7 @@ separator {
 
 .music-container {
 
-  background-color: $secondary_bg;
+  background-color: $surface;
   border-radius: 1rem;
   padding: 1rem;
   margin-top: 5px;
@@ -99,35 +143,73 @@ separator {
 
   .music-player-icon {
     font-size: 1.6rem;
-    padding-right: 8px
+    padding-right: 8px;
   }
 
   .music-player-name {
-    text-shadow: 0.1rem 0.1rem $primary_bg;
+    text-shadow: 0.1rem 0.1rem $surface;
+    color: $font-color1;
   }
 
   .music-artist {
-    text-shadow: 0.1rem 0.1rem $primary_bg;
+    text-shadow: 0.1rem 0.1rem $surface;
     padding-top: 5px;
+    color: $font-color2;
   }
 
   .music-title {
     font-weight: bold;
-    text-shadow: 0.1rem 0.1rem $primary_bg;
+    text-shadow: 0.1rem 0.1rem $surface;
     padding-top: 5px;
+    color: $font-color1;
   }
 
   .music-control-box {
     padding-top: 1.5rem;
+
     .music-button {
       font-size: 1.6rem;
-      -gtk-icon-shadow: 0.1rem 0.1rem $primary_bg;
+      -gtk-icon-shadow: 0.2rem 0.2rem $surface;
+      color: #cdd6f4;
+
+      &:first-child:hover,
+      &:last-child:hover {
+        color: lime;
+      }
+
+      .music-playpause:hover,
+      &:nth-child(2):hover {
+        color: yellow;
+      }
     }
 
     .music-progress {
       font-size: 3px;
       min-width: 40px;
       min-height: 40px;
+      color: $font-color2;
     }
+  }
+}
+
+
+.auth-notif {
+  background-color: $surface;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  margin-bottom: 0.25rem;
+  min-width: 20rem;
+  border-radius: 1rem;
+
+  &.error {
+    border-left: 0.3rem solid red;
+  }
+
+  &.fail {
+    border-left: 0.3rem solid rgba(15, 155, 255, 1);
+  }
+
+  &.info {
+    border-left: 0.3rem solid white;
   }
 }

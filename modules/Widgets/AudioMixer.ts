@@ -17,6 +17,28 @@ const layout = Utils.derive([bar.position, dashvol.position], (bar, qs) =>
 
 type Type = "microphone" | "speaker" | "headset"
 
+const speakerIcon = (type: Type = 'speaker') => Button({
+    className: "volumesldIcon",
+    onClicked: () => Audio[type].is_muted = !Audio[type].is_muted,
+    child: Widget.Icon().hook(Audio[type], self => {
+        const vol = Audio[type].volume * 150;
+        let icon = [
+            [101, 'overamplified'],
+            [67, 'high'],
+            [34, 'medium'],
+            [1, 'low'],
+            [0, 'muted'],
+        ].find(([threshold]) => threshold <= vol)?.[1];
+        if (Audio[type].is_muted) {
+            icon = 'muted';
+            self.tooltip_text = 'Muted';
+        } else {
+            self.tooltip_text = `Volume ${Math.floor(vol)}%`;
+        }
+        self.icon = `audio-volume-${icon}-symbolic`;
+        self.toggleClassName('muted', Audio[type].is_muted);
+    })
+})
 const speakerSlider = (type: Type = 'speaker') => Slider({
     className: "volumesld Slider",
     hexpand: true,
@@ -30,6 +52,28 @@ const speakerSlider = (type: Type = 'speaker') => Slider({
     },
 });
 
+const micIcon = (type: Type = 'microphone') => Button({
+    className: "volumesldIcon",
+    onClicked: () => Audio[type].is_muted = !Audio[type].is_muted,
+    child: Widget.Icon().hook(Audio[type], self => {
+        const vol = Audio[type].volume * 100;
+        let icon = [
+            [67, 'high'],
+            [34, 'medium'],
+            [1, 'low'],
+            [0, 'muted'],
+        ].find(([threshold]) => threshold <= vol)?.[1];
+        if (Audio[type].is_muted) {
+            icon = 'muted';
+            self.tooltip_text = 'Muted';
+        } else {
+            self.tooltip_text = `Volume ${Math.floor(vol)}%`;
+        }
+        self.icon = `microphone-sensitivity-${icon}-symbolic`;
+        self.toggleClassName('muted', Audio[type].is_muted);
+        self.tooltip_text = `Microphone ${Math.floor(vol)}%`;
+    }),
+});
 const micSlider = (type: Type = 'microphone') => Slider({
     className: "volumesld Slider",
     hexpand: true,
@@ -41,39 +85,6 @@ const micSlider = (type: Type = 'microphone') => Slider({
             Audio[type].is_muted = false
         }
     },
-});
-
-const speakerIcon = (type: Type = 'speaker') => Button({
-    className: "volumesldIcon",
-    onClicked: () => Audio.speaker.is_muted = !Audio.speaker.is_muted,
-    child: Widget.Icon().hook(Audio.speaker, self => {
-        const vol = Audio.speaker.volume * 150;
-        const icon = [
-            [101, 'overamplified'],
-            [67, 'high'],
-            [34, 'medium'],
-            [1, 'low'],
-            [0, 'muted'],
-        ].find(([threshold]) => threshold <= vol)?.[1];
-        self.icon = `audio-volume-${icon}-symbolic`;
-        self.tooltip_text = `Volume ${Math.floor(vol)}%`;
-    })
-})
-
-const micIcon = (type: Type = 'microphone') => Button({
-    className: "volumesldIcon",
-    onClicked: () => Audio.microphone.is_muted = !Audio.microphone.is_muted,
-    child: Widget.Icon().hook(Audio.microphone, self => {
-        const vol = Audio.microphone.volume * 100;
-        const icon = [
-            [67, 'high'],
-            [34, 'medium'],
-            [1, 'low'],
-            [0, 'muted'],
-        ].find(([threshold]) => threshold <= vol)?.[1];
-        self.icon = `microphone-sensitivity-${icon}-symbolic`;
-        self.tooltip_text = `Microphone ${Math.floor(vol)}%`;
-    }),
 });
 
 const SettingsButton = () => Button({
@@ -92,39 +103,66 @@ const SettingsButton = () => Button({
     }),
 })
 
-const MixerItem = (stream: Stream) => Box(
-    {
+function MixerItem(stream: Stream) {
+    function mixerLabel() {
+        return Box({
+            spacing: 2.5,
+            vertical: false,
+            vpack: "center",
+            children: [
+                Icon(
+                    {
+                        vpack: "start",
+                        className: "mixeritemicon",
+                        tooltip_text: stream.bind("description").as(n => n || ""),
+                        icon: stream.bind("name").as(n => {
+                            return Utils.lookUpIcon(n || "")
+                                ? (n || "")
+                                : icons.fallback.audio
+                        }),
+                    }),
+
+                Label(
+                    {
+                        vpack: "center",
+                        xalign: 0,
+                        className: "mixeritemlabel",
+                        truncate: "end",
+                        max_width_chars: 28,
+                        label: stream.bind("name").as(d => d || ""),
+                    })
+            ],
+
+            setup: self => {
+                if (stream.id && Audio[stream.id]) {
+                    self.toggleClassName('muted', Audio[stream.id].is_muted);
+                }
+            },
+        })
+    }
+
+    function mixerSlider() {
+        return Slider({
+            className: "mixeritemslider Slider",
+            hexpand: true,
+            draw_value: false,
+            value: stream.bind("volume"),
+            on_change: ({ value }) => stream.volume = value,
+        })
+    }
+
+    return Box({
         hexpand: true,
         className: "mixeritem",
+        vpack: "center",
         vertical: true,
-    },
-    Box(
-        { vertical: false },
-        Icon({
-            className: "mixeritemicon",
-            tooltip_text: stream.bind("description").as(n => n || ""),
-            icon: stream.bind("name").as(n => {
-                return Utils.lookUpIcon(n || "")
-                    ? (n || "")
-                    : icons.fallback.audio
-            }),
-        }),
-        Label({
-            xalign: 0,
-            className: "mixeritemlabel",
-            truncate: "end",
-            max_width_chars: 28,
-            label: stream.bind("name").as(d => d || ""),
-        }),
-    ),
-    Slider({
-        className: "mixeritemslider Slider",
-        hexpand: true,
-        draw_value: false,
-        value: stream.bind("volume"),
-        on_change: ({ value }) => stream.volume = value,
-    }),
-)
+        children: [
+            mixerLabel(),
+            mixerSlider(),
+        ]
+
+    })
+}
 
 const SinkItem = (stream: Stream) => Button({
     hexpand: true,
@@ -202,8 +240,8 @@ const VolumeSlider = () => Box({
     ],
 });
 
-const VolumeTabs = () => Box({
-    className: "volumeTabs",
+const AudioMixer = () => Box({
+    className: "audiomixer",
     vexpand: true,
     hexpand: true,
     vertical: true,
@@ -229,28 +267,4 @@ const VolumeTabs = () => Box({
     ],
 })
 
-const VolumePopup = () => PopupWindow({
-    name: "volumemixer",
-    className: "volumemixer",
-    anchor: pos,
-    transition: "crossfade", //pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
-    layer: "top",
-    exclusivity: 'normal',
-    keymode: 'on-demand',
-    margins: [0, 525],
-    child:
-        Box({
-            vertical: true,
-            children: [
-                VolumeTabs(),
-            ]
-        })
-});
-
-export function VolumeMixer() {
-    App.addWindow(VolumePopup())
-    layout.connect("changed", () => {
-        App.removeWindow("volumemixer")
-        App.addWindow(VolumePopup())
-    })
-}
+export default AudioMixer
