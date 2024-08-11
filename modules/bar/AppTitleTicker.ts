@@ -1,18 +1,19 @@
 import { Widget, Hyprland, Utils } from "imports";
-import { icon } from "lib/utils";
+import { icon } from "lib/icons";
 
 const { execAsync } = Utils;
 const { Box, Button, Label, Icon } = Widget;
 
 export const Title = () => Button({
 	className: 'wintitle',
-	visible:Hyprland.active.client.bind('title').transform(title => title.length > 0),
+	visible: Hyprland.active.client.bind('title').transform(title => title.length > 0),
 	child: Box({
 		spacing: 5,
 		children: [
 			Icon({
 				vpack: "center",
-				icon: Hyprland.active.client.bind("class").as(icon)}),
+				icon: Hyprland.active.client.bind("class").as(icon)
+			}),
 			Label({
 				vpack: "center",
 				label: Hyprland.active.client.bind('title'),

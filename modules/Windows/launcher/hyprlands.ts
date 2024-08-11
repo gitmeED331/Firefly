@@ -1,7 +1,6 @@
 import { App, Hyprland, Widget, Gtk } from "imports"
 import { Fzf } from "../../../node_modules/fzf/dist/fzf.es.js"
-import icons from "lib/icons"
-import { icon } from "lib/utils"
+import icons, { icon } from "lib/icons"
 
 const { Box, Button, Label, Icon } = Widget
 

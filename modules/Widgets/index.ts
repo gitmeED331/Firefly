@@ -1,10 +1,8 @@
 import AudioMixer from "./AudioMixer"
 import Battery from "./battery"
-import { BluetoothToggle, BluetoothDevices } from "./Bluetooth"
 import { BrightnessSlider } from "./brightnessSlider"
 import GridCalendar from "./GridCalendar"
 import Player from "./MediaPlayer"
-import { WifiSelection, NetworkToggle } from "./Network"
 import Notification from "./Notification"
 import { VolumeIndicator } from "./VolumeIndicator"
 
@@ -13,10 +11,6 @@ import { VolumeIndicator } from "./VolumeIndicator"
 export {
     AudioMixer,
     Notification,
-    WifiSelection,
-    NetworkToggle,
-    BluetoothToggle,
-    BluetoothDevices,
     BrightnessSlider,
     GridCalendar,
     VolumeIndicator,

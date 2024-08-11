@@ -3,9 +3,9 @@
 $font: Liberation Mono;
 $font-color1: rgba(255, 140, 0, 1); // rgba(15,155,255,1); // -- Orange #ff8c00
 $font-color2: rgba(15, 155, 255, 1); // -- Blue #0f9bff
-$font-color3: rgba(155, 255, 15, 1); // -- green
+$font-color3: rgba(155, 255, 15, 1); // -- green #9fff0f
 $font-color4: rgba(255, 0, 0, 1); // -- red #ff0000
-$font-color5: rgba(0, 0, 255, 1);
+$font-color5: rgba(0, 0, 255, 1); // -- dark blue #0000ff
 $font-size: 10px;
 
 //------- Transitions
@@ -24,8 +24,9 @@ $popover-padding: 0.5rem;
 $LauncherBG: url("./assets/launchgerBG.jpg");
 
 //--------- Solids
-$PrimaryBG: rgba(0, 0, 0, 0.75);
-$SecondaryBG: #0e0e1e;
+$PrimaryBG: rgba(0, 0, 0, 0.65); // #0f9bff
+$SecondaryBG: rgba(0, 0, 0, 0.8);
+$ThirdBG: rgba(14, 14, 30, 0.8); //  #0e0e1e
 $HoverBG: rgba(15, 155, 255, 1);
 $NotificationBG: rgba(0, 0, 0, 0.75);
 
@@ -33,6 +34,7 @@ $NotificationBG: rgba(0, 0, 0, 0.75);
 //$primary-bg: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,0,0,1) 50%, rgba(55,0,0,1) 100%);
 //$widget-bg: linear-gradient(0deg, rgba(15,155,255,0.5) 0%, rgba(0,0,0,1) 50%, rgba(15,155,255,1) 100%);
 $HoverBGG: linear-gradient(0deg, rgba(0, 0, 55, 0.5) 0%, rgba(0, 0, 255, 1) 15%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 255, 1) 85%, rgba(0, 0, 55, 0.5) 100%);
+$HoverBGG-underline: linear-gradient(0deg, rgba(0, 0, 55, 0.5) 0%, rgba(0, 0, 255, 1) 15%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 85%, rgba(0, 0, 0, 0.8) 100%);
 $active-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(15, 155, 255, 0.5) 50%, rgba(0, 0, 0, 0.25) 100%);
 //$NotificationListItemBG: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 100%);
 

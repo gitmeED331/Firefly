@@ -1,0 +1,249 @@
+// --- button in sysinfo bar ---
+.barbutton {
+    &:hover {
+        color: $font-color5
+    }
+
+    &-label {
+        color: $font-color2;
+    }
+}
+
+.menu {
+    &-label-container {
+        border-bottom: $border;
+        border-radius: $radius;
+        padding: 0rem 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    &-container {
+        background: $SecondaryBG;
+        border-radius: $radius * 1.25;
+        border: $border;
+        padding: 1rem;
+        min-width: 25rem;
+    }
+
+    &-label {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: $font-color2;
+    }
+}
+
+// --- Bluetooth ---   
+.bluetooth {
+    &-disabled {
+        color: $font-color4;
+
+        &.dim {
+            opacity: 0.7;
+        }
+    }
+
+    &-no-devices {
+        color: $font-color4;
+
+        &.dim {
+            opacity: 0.7;
+        }
+    }
+
+    &.menu-switch {
+        .toggle-enabled {
+            color: $font-color3;
+        }
+
+        .toggle-disabled {
+            color: $font-color4;
+        }
+
+        &:hover {
+            .toggle-enabled {
+                color: $font-color4;
+            }
+
+            .toggle-disabled {
+                color: $font-color3;
+            }
+        }
+    }
+
+    &-element-item {
+        border-radius: $radius;
+        //margin: 0.25rem 0rem;
+        color: $font-color1;
+        padding: 0.25rem 0.5rem;
+
+        &:hover {
+            color: $font-color2;
+            border-bottom: $border;
+
+            border-radius: 3rem;
+
+            .connection-status {
+                color: $font-color1;
+                padding-left: 2rem;
+            }
+        }
+
+        .connection-status {
+            color: $font-color2;
+            padding-left: 2rem;
+        }
+
+    }
+
+    &-controls {
+        color: $font-color1;
+
+        &:hover {
+            color: $font-color5
+        }
+    }
+
+    &.menu-icon-button {
+        &.paired {
+            color: $font-color3;
+
+            &:hover {
+                color: $font-color4
+            }
+        }
+
+        &.unpaired {
+            color: yellow;
+        }
+
+        &.untrust {
+            &:hover {
+                color: $font-color4;
+            }
+        }
+
+        &.delete {
+            &:hover {
+                color: $font-color4;
+            }
+        }
+
+        &.disconnect {
+            &:hover {
+                color: $font-color4;
+            }
+        }
+
+    }
+
+    .search {
+        color: $font-color1;
+
+        &:hover {
+            color: $font-color5
+        }
+
+        .spinning {
+            color: $font-color3;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+}
+
+// --- Network ---
+.network {
+    &-menu {
+        button {
+            padding: 0.25rem 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        button:hover {
+            color: $font-color5;
+            border-bottom: $border;
+            border-radius: 3rem;
+        }
+
+        &.wired {
+            color: $font-color1;
+            padding-bottom: 1rem;
+
+            & image {
+                font-size: 1.75rem;
+            }
+
+            .network-icon.ethernet {
+                color: $font-color4;
+
+                &.active {
+                    color: $font-color3
+                }
+            }
+
+        }
+
+        &.wifi {
+            color: $font-color1;
+
+            .active-connection.active {
+                color: $font-color2;
+            }
+
+            .network-icon.wifi {
+                color: $font-color2;
+
+                &.active {
+                    color: $font-color1;
+                }
+            }
+
+            .connection {
+                &-secure {
+                    color: $font-color3;
+                }
+
+                &-unsecure {
+                    color: $font-color4;
+                }
+
+            }
+        }
+
+        &-content {
+            padding: 0rem 0.75rem;
+
+        }
+
+    }
+
+    .menu-icon-button {
+        color: $font-color3;
+        border: unset;
+
+        &:hover {
+            color: $font-color4;
+            border: unset
+        }
+    }
+
+    .search {
+        color: $font-color1;
+        border: unset;
+
+        &:hover {
+            color: $font-color5;
+            border: unset
+        }
+
+        .spinning {
+            color: $font-color3;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+}
+
+.waps-not-found {
+    color: $font-color4;
+}

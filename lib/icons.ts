@@ -1,4 +1,8 @@
-export const substitutes = {
+import { GLib, Utils, App } from "imports"
+
+App.addIcons(`${GLib.get_user_data_dir()}/icons/Astal`)
+
+const substitutes = {
   "geany": "geany-symbolic",
   "vivaldi": "vivaldi-symbolic",
   "vivaldi-stable": "vivaldi-symbolic",
@@ -16,17 +20,20 @@ export const substitutes = {
   //"filen-desktop": "filen-desktop-symbolic",
   "filen-desktop-symbolic": "filen-desktop-symbolic",
   "WebCord": "discord-symbolic",
+  "discord": "discord-symbolic",
   "armcord-symbolic": "discord-symbolic",
   "ArmCord": "discord-symbolic",
+  "vesktop-symbolic": "discord-symbolic",
   "deezer-enhanced-symbolic": "deezer-symbolic",
   "deezer": "deezer-symbolic",
   "com.visualstudio.code.oss-symbolic": "vs-code-symbolic",
   "code-oss": "vs-code-symbolic",
   "kate-symbolic": "geany-symbolic",
   "org.kde.kate": "codepen-symbolic",
+  "dev.zed.Zed": "zed-symbolic",
 };
 
-export default {
+const icons = {
   settings: "preferences-system-symbolic",
   refresh: "view-refresh-symbolic",
   missing: "image-missing-symbolic",
@@ -179,3 +186,23 @@ export default {
     ws4: "flaming-claw-symbolic",
   },
 };
+export default icons
+
+export type Binding<T> = import("types/service").Binding<any, any, T>;
+
+/**
+ * @param name - The name of the icon or null.
+ * @param fallback - The fallback icon name, defaults to icons.missing.
+ * @returns The appropriate icon based on the provided name or the fallback icon.
+ */
+export function icon(name: string | null, fallback = icons.missing): string {
+  if (!name) return fallback || "";
+
+  if (GLib.file_test(name, GLib.FileTest.EXISTS)) return name;
+
+  const icon = substitutes[name] || name;
+  if (Utils.lookUpIcon(icon)) return icon;
+
+  print(`no icon substitute "${icon}" for "${name}", fallback: "${fallback}"`);
+  return fallback;
+}

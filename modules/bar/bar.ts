@@ -1,6 +1,6 @@
 import { Widget, Roundedges, App, Service } from "imports";
 import options from "options";
-
+import { icon } from "lib/icons";
 const { RoundedAngleEnd } = Roundedges
 const { Window, Box, CenterBox, Button, Icon } = Widget
 const mpris = await Service.import("mpris");
@@ -30,7 +30,7 @@ const Powerbtn = () => Button({
 	tooltip_text: 'Power Menu',
 	child:
 		Icon({
-			icon: 'preferences-system-network-wakeonlan'
+			icon: icon('power-symbolic')
 		}),
 	onClicked: () => App.toggleWindow("sessioncontrols")
 });

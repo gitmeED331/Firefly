@@ -1,7 +1,7 @@
 import { type Client } from "types/service/hyprland";
-import { createSurfaceFromWidget, icon } from "lib/utils";
+import { createSurfaceFromWidget } from "lib/utils";
 import options from "options";
-import icons from "lib/icons";
+import icons, { icon } from "lib/icons";
 import { Widget, Gtk, Gdk, Hyprland } from "imports";
 
 const { overview } = options

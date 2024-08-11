@@ -1,3 +1,4 @@
+
 import GLib from "gi://GLib"
 
 const main = "/tmp/asztal/main.js"

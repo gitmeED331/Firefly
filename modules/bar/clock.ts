@@ -1,23 +1,17 @@
-import { Widget, Utils } from "imports";
+import { Gdk, Widget, Utils, App, Variable, GLib } from "imports";
 import { Calendar } from "../Windows/index"
 
-const { Button } = Widget;
-const { execAsync } = Utils;
+const { Button, Label } = Widget;
+
+const time = Variable(GLib.DateTime.new_now_local(), {
+  poll: [1000, () => GLib.DateTime.new_now_local()],
+})
 
 export const Clock = () =>
   Button({
     className: "clock",
-    onClicked: () => {
-      if (!App.getWindow("calendar")) {
-        App.addWindow(Calendar());
-      } else {
-        App.toggleWindow("calendar");
-      }
-    },
-    setup: (self) => {
-      self.poll(1000, (self) =>
-        execAsync(["date", "+%a %b %d %H:%M"])
-          .then((time) => (self.label = time))
-      );
-    },
+    onClicked: () => App.toggleWindow("calendar"),
+    child: Label({
+      label: time.bind().as(c => c.format("%a %b %d %H:%M.%S")),
+    }),
   });

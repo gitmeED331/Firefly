@@ -35,6 +35,7 @@ function trimTrackTitle(title) {
 		" (Album Version)",
 		" (Cafe Session)",
 		" (International Version)",
+		" (Remastered)",
 	];
 	cleanPatterns.forEach((expr) => title = title.replace(expr, ''));
 	return title
@@ -97,7 +98,7 @@ export function TickerBTN() {
 		className: "tickerbox",
 		vertical: false,
 		hexpand: true,
-		vexpand: false,
+		vexpand: true,
 		visible: true,
 		vpack: "center",
 		children: [noMediaLabel],
@@ -134,14 +135,14 @@ export function TickerBTN() {
 
 	const button = Button({
 		className: 'tickerbtn',
-		vexpand: false,
+		vexpand: true,
 		hexpand: true,
 		onPrimaryClick: () => App.toggleWindow("mediaplayerwindow"),
 		setup: (self) => {
 			const update = () => {
 				const player = Mpris.getPlayer('Deezer') || Mpris.getPlayer('');
 				if (player) {
-					self.tooltip_markup = `<b>${player.identity}</b>\n\n<u>${player.trackArtists.join(", ")}</u>\n\n${player.trackTitle}`;
+					self.tooltip_markup = `<b>${player.identity}:</b>\n\n<u>${player.trackArtists.join(", ")}</u> - ${player.trackTitle}`;
 					self.on_secondary_click = () => player.playPause();
 					self.on_scroll_up = () => player.previous();
 					self.on_scroll_down = () => player.next();

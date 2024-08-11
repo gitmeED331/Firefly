@@ -1,4 +1,4 @@
-import { Widget, Utils, Mpris } from "imports"
+import { Variable, Widget, Utils, Mpris } from "imports"
 import icons from "lib/icons"
 
 const { Box, Button, Icon, Label, Slider, } = Widget
@@ -120,7 +120,6 @@ function Player(player) {
             const entryValue = player.entry;
             if (entryValue && typeof entryValue === 'string') {
                 await Utils.execAsync(`bash -c 'hyprctl dispatch exec "${entryValue}"'`);
-            } else {
             }
         },
         child: Icon({
@@ -171,15 +170,15 @@ function Player(player) {
     },
         Icon(icons.player.NEXT),
     )
-
-    const close = Button({
-        className: "close",
-        vpack: "center",
-        onClicked: () => player.stop(),
-
-    },
-        Icon(icons.player.CLOSE),
-    )
+    let revealClose = Variable(false)
+    const close =
+        Button({
+            className: "close",
+            vpack: "center",
+            onClicked: () => player.stop(),
+        },
+            Icon(icons.player.CLOSE),
+        )
 
     return Box(
         { vertical: false, spacing: 5, hpack: "end", vpack: "center", className: "player", },

@@ -1,4 +1,4 @@
-import {Gtk, GObject} from "imports"
+import { Gtk, GObject, App, Utils, Variable, Widget } from "imports"
 import { type IconProps } from "types/widgets/icon"
 import { type LabelProps } from "types/widgets/label"
 //import type GObject from "gi://GObject?version=2.0"

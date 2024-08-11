@@ -11,28 +11,17 @@ const layout = Utils.derive([bar.position, dashvol.position], (bar, qs) =>
 );
 
 // --- Audio Mixer PopupWindow ---
-const AudioMixerWindow = () => PopupWindow({
+export default () => PopupWindow({
     name: "audiomixerwindow",
     className: "audiomixerwindow",
     anchor: pos,
-    transition: "crossfade", //pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
+    transition: "crossfade",
     layer: "top",
     exclusivity: 'normal',
     keymode: 'on-demand',
     margins: [0, 525],
     child:
-        Box({
-            vertical: true,
-            children: [
-                AudioMixer(),
-            ]
-        })
+        AudioMixer(),
+
 });
 
-export function AudioMixerPopup() {
-    App.addWindow(AudioMixerWindow())
-    layout.connect("changed", () => {
-        App.removeWindow("audiomixerwindow")
-        App.addWindow(AudioMixerWindow())
-    })
-}

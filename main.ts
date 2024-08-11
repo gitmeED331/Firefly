@@ -9,24 +9,26 @@ import DirectoryMonitorService from "lib/DirectoryMonitorService"
 import { Bar } from "modules/bar/bar"
 import {
 	Dashboard,
-	MediaPlayerWindow,
-	Calendar,
-	AudioMixerPopup,
+	MediaPlayer,
+	calendar,
+	AudioMixer,
 	NotificationPopups,
 	Overview,
 	sessioncontrols,
 	pwrprofiles,
 	Launcher,
-	cliphist
+	cliphist,
+	bluetoothmenu,
+	networkmenu
 } from "modules/Windows/index"
 
 const { execAsync, exec, monitorFile } = Utils;
 
 const scss = `${App.configDir}/style/main.scss`
 const css = `${App.configDir}/style.css`
-const icons = `${App.configDir}/assets`
+const icons = `${App.dataDir}/icons/astal`
 
-
+//console.time("startup")
 const applyScss = () => {
 	// monitor for changes
 	monitorFile(
@@ -48,17 +50,10 @@ DirectoryMonitorService.connect("changed", () => applyScss());
 
 // Main config
 App.config({
-	onConfigParsed: () => {
-		Dashboard()
-		AudioMixerPopup()
-		MediaPlayerWindow()
-		Calendar()
-	},
-	closeWindowDelay: {
-		"overview": options.transition.value,
-	},
 	style: applyScss(),
 	icons: icons,
+
+
 	windows: () => [
 		...forMonitors(Bar),
 		...forMonitors(NotificationPopups),
@@ -67,5 +62,22 @@ App.config({
 		sessioncontrols(),
 		Launcher(),
 		cliphist,
+		networkmenu(),
+		bluetoothmenu(),
+		calendar(),
+		AudioMixer(),
+		MediaPlayer(),
+		Dashboard(),
+		//console.timeEnd("startup")
 	],
+	closeWindowDelay: {
+		"overview": options.transition.value,
+		"dashboard": options.transition.value,
+		"pwrprofiles": options.transition.value,
+		"sessioncontrols": options.transition.value,
+		"launcher": options.transition.value,
+		"audiomixer": options.transition.value,
+		"mediaplayer": options.transition.value,
+
+	},
 })

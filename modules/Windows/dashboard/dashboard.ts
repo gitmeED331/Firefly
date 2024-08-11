@@ -4,10 +4,6 @@ import options from "options"
 
 // --- imported widgets ---
 import {
-    WifiSelection,
-    NetworkToggle,
-    BluetoothToggle,
-    BluetoothDevices,
     BrightnessSlider,
     GridCalendar,
     //Player,
@@ -60,12 +56,12 @@ const dashcal = () => Box({
 //         .transform(p => p.filter(p => p.play_back_status !== 'Stopped').map(Player)),
 // })
 
-const Dash = () => PopupWindow({
+export default () => PopupWindow({
     name: "dashboard",
     className: "dashboard",
-    anchor: pos,
+    anchor: ["right"],
     vexpand: true,
-    margins: [20, 0, 0, 0],
+    exclusivity: "normal",
     transition: "slide_left",
     layer: "top",
     child:
@@ -76,23 +72,11 @@ const Dash = () => PopupWindow({
             hexpand: false,
             hpack: "center",
             vpack: "center",
-            css: `min-height: ${winheight(0.97)}px;`,
+            css: `min-height: ${winheight(0.954)}px;`,
             children: [
-                Row(
-                    [NetworkToggle, BluetoothToggle],
-                    [WifiSelection, BluetoothDevices],
-                ),
                 BrightnessSlider(),
                 NotificationList(),
                 dashcal(),
             ]
         })
 });
-
-export function Dashboard() {
-    App.addWindow(Dash())
-    layout.connect("changed", () => {
-        App.removeWindow("dashboard")
-        App.addWindow(Dash())
-    })
-}

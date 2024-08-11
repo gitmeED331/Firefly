@@ -2,8 +2,7 @@ import { type TrayItem } from "types/service/systemtray"
 import PanelButton from "../buttons/PanelButton"
 import options from "options"
 import { Widget, SystemTray, Gdk, App } from "imports"
-// import AstalTray from "gi://AstalTray";
-// const SystemTray = AstalTray.Tray.get_default();
+import { icon } from "lib/icons"
 
 const { ignore, stitem } = options.bar.systray
 const { Revealer, Icon } = Widget

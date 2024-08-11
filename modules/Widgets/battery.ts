@@ -28,7 +28,7 @@ const PercentLabel = () => Widget.Revealer({
 const LevelBar = () => {
 	const level = Widget.LevelBar({
 		className: "batlvlbar",
-		bar_mode: "discreet",
+		bar_mode: "continuous",
 		max_value: blocks.bind(),
 		visible: bar.bind().as(b => b !== "hidden"),
 		value: Battery.bind("percent").as(p => (p / 100) * blocks.value),

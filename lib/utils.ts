@@ -2,28 +2,7 @@
 import { type Application } from "types/service/applications"
 import { Gtk, Gdk, GLib, Utils } from "imports"
 
-import icons, { substitutes } from "./icons"
-App.addIcons(`${App.configDir}/assets`)
 
-export type Binding<T> = import("types/service").Binding<any, any, T>
-
-/**
-  * @returns substitute icon || name || fallback icon
-  */
-export function icon(name: string | null, fallback = icons.missing) {
-    if (!name)
-        return fallback || ""
-
-    if (GLib.file_test(name, GLib.FileTest.EXISTS))
-        return name
-
-    const icon = (substitutes[name] || name)
-    if (Utils.lookUpIcon(icon))
-        return icon
-
-    print(`no icon substitute "${icon}" for "${name}", fallback: "${fallback}"`)
-    return fallback
-}
 
 /**
  * @returns execAsync(["bash", "-c", cmd])

@@ -7,6 +7,7 @@
 		background: $PrimaryBG;
 		font-weight: bold;
 		min-width: 1rem;
+		min-height: 1rem;
 
 		tooltip {
 			font-weight: bold;
@@ -31,11 +32,11 @@
 
 	&artist {
 		color: $font-color2;
-		font-size: 1rem;
+		font-size: 1.1rem;
 	}
 
 	&track {
-		font-size: 1rem;
+		font-size: 1.1rem;
 		color: $font-color1;
 	}
 
@@ -48,6 +49,7 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	padding: 2px 0px;
 }
 
 // ---- Player ----

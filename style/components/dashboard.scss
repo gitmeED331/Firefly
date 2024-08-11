@@ -4,11 +4,10 @@
 }
 
 .dashcontainer {
-	background: $PrimaryBG;
+	background: $SecondaryBG;
 	border-radius: $radius-tbleft;
-	//min-height: 78.75rem;
 	border-left: $border;
 	border-bottom: $border;
 	border-top: $border;
-	margin-top: 0.25rem;
+	padding-top: 1.5rem;
 }
