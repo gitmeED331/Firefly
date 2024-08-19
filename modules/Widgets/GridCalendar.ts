@@ -2,6 +2,8 @@ import { Widget, Gtk } from "imports";
 //import { ComboBoxText } from "./widgets";
 
 const { Box, Label, Button, Icon } = Widget;
+import { icon } from "lib/icons"
+
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -58,14 +60,16 @@ function GridCalendar() {
     dayLabels = [];
 
     daysOfWeek.forEach((day, index) => {
-      const dayLabel = new Label({ label: day, className: "calendar-days" });
+      const dayLabel = new Label({ label: day });
+      dayLabel.get_style_context().add_class("calendar-days");
       gridCalendar.attach(dayLabel, index, 0, 1, 1);
       dayLabels.push(dayLabel);
     });
 
     updatedWeeks.forEach((week, rowIndex) => {
       week.forEach((day, columnIndex) => {
-        const dayLabel = new Label({ label: day.toString() || '', className: 'calendar-day' });
+        const dayLabel = new Label({ label: day.toString() || '' });
+        dayLabel.get_style_context().add_class('calendar-day');
         if (day === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
           dayLabel.set_markup(`<b>${day}</b>`);
           dayLabel.get_style_context().add_class("calendar-today");
@@ -78,79 +82,111 @@ function GridCalendar() {
     gridCalendar.show_all();
   };
 
-  const monthSelector = new Gtk.ComboBoxText();
-  monthNamesShort.forEach((month, index) => {
-    monthSelector.append_text(month);
-  });
-  monthSelector.get_style_context().add_class("calendar-month-selector");
-  monthSelector.set_hexpand(false);
-  monthSelector.set_vexpand(false);
-  monthSelector.set_halign(Gtk.Align.CENTER);
-  monthSelector.set_valign(Gtk.Align.CENTER);
-  monthSelector.set_active(currentMonth);
-  monthSelector.connect('changed', () => {
-    currentMonth = monthSelector.get_active();
-    updateGridCalendar();
-  });
-
-  const years = Array.from({ length: 16 }, (_, i) => currentYear - 5 + i); // Show 5 years prior and 10 years later
-  const yearSelector = new Gtk.ComboBoxText();
-  years.forEach((year) => {
-    yearSelector.append_text(year.toString());
-  });
-  yearSelector.get_style_context().add_class("calendar-year-selector");
-  yearSelector.set_hexpand(false);
-  yearSelector.set_vexpand(false);
-  yearSelector.set_halign(Gtk.Align.CENTER);
-  yearSelector.set_valign(Gtk.Align.CENTER);
-  yearSelector.set_active(years.indexOf(currentYear));
-  yearSelector.connect('changed', () => {
-    currentYear = parseInt(yearSelector.get_active_text(), 10);
-    updateGridCalendar();
-  });
-
-  const Spacer = () => Box({
-    hexpand: true,
-    css: `min-width: 20px;`,
-  });
-
-  const returnToTodayButton = Button({
-    className: "calendar-return-today-button",
-    hpack: 'center',
-    child: Icon({ icon: "nix-snowflake-symbolic" }),
-    onClicked: () => {
-      currentMonth = new Date().getMonth();
-      currentYear = new Date().getFullYear();
-      monthSelector.set_active(currentMonth);
-      yearSelector.set_active(years.indexOf(currentYear));
-      updateGridCalendar();
+  const changeMonth = (offset) => {
+    currentMonth += offset;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear -= 1;
+    } else if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear += 1;
     }
-  });
+    monthLabel.set_text(monthNamesShort[currentMonth]);
+    yearLabel.set_text(currentYear.toString());
+    updateGridCalendar();
+  };
 
-  const header = Widget.CenterBox({
-    className: "calendar-header",
-    vertical: false,
-    spacing: 30,
-    hpack: "center",
-    vpack: "center",
-    startWidget: monthSelector,
-    centerWidget: returnToTodayButton,
-    endWidget: yearSelector,
-  });
+  const changeYear = (offset) => {
+    currentYear += offset;
+    yearLabel.set_text(currentYear.toString());
+    updateGridCalendar();
+  };
+
+  const monthLabel = new Label({ label: monthNamesShort[currentMonth] });
+  monthLabel.get_style_context().add_class("calendar-month-label");
+
+  const yearLabel = new Label({ label: currentYear.toString() });
+  yearLabel.get_style_context().add_class("calendar-year-label");
+
+  const header = (
+    Box(
+      {
+        vertical: false,
+        spacing: 10,
+        hpack: "center",
+        vpack: "center",
+      },
+      Button(
+        {
+          className: "calendar month arrow-left",
+          hpack: "center",
+          vpack: "center",
+          onClicked: () => changeMonth(-1)
+        },
+        Icon({ icon: icon("arrow-back-circle-symbolic") })
+      ),
+      monthLabel,
+      Button(
+        {
+          className: "calendar month arrow-right",
+          hpack: "center",
+          vpack: "center",
+          onClicked: () => changeMonth(1)
+        },
+        Icon({ icon: icon("arrow-forward-circle-symbolic") })
+      ),
+
+      Button(
+        {
+          className: "calendar return-today",
+          hpack: "center",
+          vpack: "center",
+          onClicked: () => {
+            currentMonth = new Date().getMonth();
+            currentYear = new Date().getFullYear();
+            monthLabel.set_text(monthNamesShort[currentMonth]);
+            yearLabel.set_text(currentYear.toString());
+            updateGridCalendar();
+          }
+        },
+        Icon({
+          icon: "nix-snowflake-symbolic"
+        }),
+      ),
+      Button(
+        {
+          className: "calendar year arrow-left",
+          hpack: "center",
+          vpack: "center",
+          onClicked: () => changeYear(-1)
+        },
+        Icon({ icon: icon("arrow-back-circle-symbolic") })
+      ),
+      yearLabel,
+      Button(
+        {
+          className: "calendar year arrow-right",
+          hpack: "center",
+          vpack: "center",
+          onClicked: () => changeYear(1)
+        },
+        Icon({ icon: icon("arrow-forward-circle-symbolic") }),
+      ),
+    )
+  );
 
   updateGridCalendar();
 
-  return Box(
-    {
-      name: "GridCalendar",
-      className: "calendar-grid",
+  return (
+    Box({
       vertical: true,
       hpack: "center",
       vpack: "center",
     },
-    header,
-    gridCalendar,
-  );
+      header,
+      gridCalendar
+    )
+  )
 }
 
 export default GridCalendar;

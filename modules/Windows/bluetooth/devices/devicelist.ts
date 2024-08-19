@@ -64,7 +64,6 @@ const devices = (bluetooth: Bluetooth, self: Box<any, any>) => {
                 ],
             }));
         }
-
         return (self.child = Widget.Box({
 
             vertical: true,
@@ -74,6 +73,7 @@ const devices = (bluetooth: Bluetooth, self: Box<any, any>) => {
                         Widget.Button({
                             hexpand: true,
                             class_name: `bluetooth-element-item ${device}`,
+                            tooltip_text: device.bind("battery_level") ? `${device.alias} - ${device.battery_level * 100}%` : device.alias,
                             on_primary_click: () => {
                                 if (!conDevNames.includes(device.address))
                                     device.setConnection(true);

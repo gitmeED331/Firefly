@@ -12,40 +12,6 @@
     padding: 0.5rem 2.5rem;
 }
 
-// calendar {
-//     font-family: $font;
-//     border-radius: 3rem;
-//     color: $font-color1;
-//     font-size: 1.25rem;
-//     padding: 0.25rem;
-//
-//     &.header {
-//         color: red;
-//     }
-//
-//     &:selected {
-//         background: radial-gradient(rgba(0, 0, 0, 1) 25%,
-//                 rgba(15, 155, 255, 1) 100%);
-//         color: red;
-//     }
-//
-//     &:indeterminate {
-//         color: rgba(91, 84, 84, 0.8);
-//     }
-//
-//     &.button {
-//         background-color: rgba(0, 160, 255, 1);
-//         box-shadow: inset 5px -5px 5px -5px rgba(19, 55, 111, 1);
-//         color: black;
-//         font-weight: bold;
-//     }
-//
-//     &:hover {
-//         color: $font-color4;
-//         background-color: rgba(155, 0, 255, 1);
-//     }
-// }
-
 .calendar {
     font-family: $font;
 
@@ -56,26 +22,6 @@
 
         label {
             margin: 3px;
-        }
-    }
-
-    &-return-today-button {
-        color: $font-color1;
-        background: $active-gradient;
-        border-radius: $radius;
-
-        image {
-            font-size: 1.25rem;
-            padding: 0.25rem 1.5rem;
-        }
-
-        &:hover {
-            background: $HoverBGG;
-
-            image {
-                color: $font-color3;
-                animation: spin 1s infinite;
-            }
         }
     }
 
@@ -98,39 +44,63 @@
         padding: 0.2rem 0.6rem;
         border-radius: $radius;
         font-size: 1.25rem;
-        font-weight: bold;
+        font-weight: 100;
     }
 
     &-today {
-        background: radial-gradient(rgba(0, 0, 0, 1) 25%, rgba(15, 155, 255, 1) 100%);
+        background: radial-gradient(rgba(0, 0, 0, 1) 25%,
+                rgba(15, 155, 255, 1) 100%);
         color: red;
         border-radius: $radius;
         font-weight: bolder;
     }
 }
 
-/* Style the main combobox elements */
-.calendar-month-selector,
-.calendar-year-selector {
+.calendar-year-label,
+.calendar-month-label {
+    font-size: 1.5rem;
+    color: $font-color1;
+}
 
-    menu,
-    cellview {
+.calendar.year,
+.calendar.month {
+    &.label {
+        color: $font-color1;
+    }
+
+    &.arrow-left {
+        color: $font-color4;
         font-size: 1.5rem;
-        margin: 0px;
-        padding: 0px;
+    }
 
-        &:hover {
-            color: $font-color5;
-        }
+    &.arrow-right {
+        color: $font-color3;
+        font-size: 1.5rem;
+    }
 
-        menuitem,
-        cellview {
-            all: unset;
-            border-radius: $radius;
-            background: linear-gradient(0deg, rgba(15, 155, 255, 1) 0%, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 1) 65%, rgba(15, 155, 255, 1) 100%);
-            font-size: 1rem;
-            padding: 1px 2px;
-            margin: 0px;
+    &:hover {
+        color: $font-color5;
+    }
+}
+
+.calendar.return-today {
+    color: $font-color1;
+    background: $active-gradient;
+    border-radius: $radius;
+    min-width: 50px;
+    min-height: 30px;
+
+    image {
+        font-size: 1.25rem;
+        padding: 0.25rem 1.5rem;
+    }
+
+    &:hover {
+        background: $HoverBGG;
+
+        image {
+            color: $font-color3;
+            animation: spin 1s infinite;
         }
     }
 }

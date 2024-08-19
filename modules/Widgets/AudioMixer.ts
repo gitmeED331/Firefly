@@ -44,7 +44,7 @@ const speakerSlider = (type: Type = "speaker") =>
 		className: "volumesld Slider",
 		hexpand: true,
 		drawValue: false,
-		value: Audio[type].bind("volume"),
+		value: Math.min(Math.max(Audio[type].bind("volume"), 0), 1.5),
 		on_change: ({ value, dragging }) => {
 			if (dragging) {
 				Audio[type].volume = value;
