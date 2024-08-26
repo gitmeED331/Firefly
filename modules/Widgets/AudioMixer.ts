@@ -14,7 +14,7 @@ const layout = Utils.derive(
 	(bar, qs) => `${bar}-${qs}` as const,
 );
 
-type Type = "microphone" | "speaker" | "headset";
+type Type = "microphone" | "speaker";
 
 const speakerIcon = (type: Type = "speaker") =>
 	Button({
@@ -28,7 +28,7 @@ const speakerIcon = (type: Type = "speaker") =>
 				[34, "medium"],
 				[1, "low"],
 				[0, "muted"],
-			].find(([threshold]) => threshold <= vol)?.[1];
+			].find(([threshold]) => Number(threshold) <= vol)?.[1];
 			if (Audio[type].is_muted) {
 				icon = "muted";
 				self.tooltip_text = "Muted";
@@ -44,7 +44,9 @@ const speakerSlider = (type: Type = "speaker") =>
 		className: "volumesld Slider",
 		hexpand: true,
 		drawValue: false,
-		value: Math.min(Math.max(Audio[type].bind("volume"), 0), 1.5),
+		min: 0,
+		max: 1.5,
+		value: Audio[type].bind("volume"),
 		on_change: ({ value, dragging }) => {
 			if (dragging) {
 				Audio[type].volume = value;
@@ -64,7 +66,7 @@ const micIcon = (type: Type = "microphone") =>
 				[34, "medium"],
 				[1, "low"],
 				[0, "muted"],
-			].find(([threshold]) => threshold <= vol)?.[1];
+			].find(([threshold]) => Number(threshold) <= vol)?.[1];
 			if (Audio[type].is_muted) {
 				icon = "muted";
 				self.tooltip_text = "Muted";
