@@ -5,8 +5,8 @@ import Notification from "./Notification"
 const { Box, Label, Button, Icon } = Widget;
 
 const time = (time: number, format = "%H:%M") => GLib.DateTime
-.new_from_unix_local(time)
-.format(format)
+    .new_from_unix_local(time)
+    .format(format)
 
 const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (image) {
@@ -29,24 +29,24 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notification) => {
     if (Utils.lookUpIcon(app_icon))
         icon = app_icon
 
-        if (Utils.lookUpIcon(app_entry || ""))
-            icon = app_entry || ""
+    if (Utils.lookUpIcon(app_entry || ""))
+        icon = app_entry || ""
 
-            return Box({
-                vpack: "center",
-                hexpand: false,
-                className: "notiftemIcon",
-                css: `
+    return Box({
+        vpack: "center",
+        hexpand: false,
+        className: "notiftemIcon",
+        css: `
                 min-width: 20px;
                 min-height: 20px;
                 `,
-                child: Icon({
-                    icon,
-                    size: 58,
-                    hpack: "center", hexpand: true,
-                    vpack: "center", vexpand: true,
-                }),
-            })
+        child: Icon({
+            icon,
+            size: 58,
+            hpack: "center", hexpand: true,
+            vpack: "center", vexpand: true,
+        }),
+    })
 }
 
 function Notification(n) {
@@ -65,7 +65,7 @@ function Notification(n) {
         hpack: "fill"
     })
 
-    const time = (time: number, format = "%H:%M") => GLib.DateTime
+    const time = (time: number, format = "%b %d %H:%M") => GLib.DateTime
         .new_from_unix_local(time)
         .format(format)
     const ntime = Label({
@@ -112,16 +112,16 @@ function Notification(n) {
         },
         Box(
             {
-            className: `notification ${n.urgency}`,
-            vertical: false,
-            vpack: "start",
-            spacing: 5,
+                className: `notification ${n.urgency}`,
+                vertical: false,
+                vpack: "start",
+                spacing: 5,
             },
             NotificationIcon(n),
             Box(
-                { vertical: true, className:"notifDetails" },
+                { vertical: true, className: "notifDetails" },
                 Box(
-                    {vertical: false, spacing: 5,},
+                    { vertical: false, spacing: 5, },
                     title,
                     ntime,
                 ),
